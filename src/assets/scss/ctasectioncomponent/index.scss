@@ -1,0 +1,128 @@
+@import '../mixins.scss';
+@import '../variables.scss';
+
+.cta-component {
+    width: 100%;
+    height: 260px;
+    min-height: 260px;
+    margin: 0 auto;
+    background-color: $basic-blue;
+    padding: 55px;
+    h1{
+        color:#FFF;
+        font-size:42px;
+        font-family: $font-family;
+        font-weight: 400;
+    }
+    .cta-section {
+        text-transform: uppercase;
+        margin-top: 10px;
+        padding-left: 55px;
+        div {
+            border-radius: 15px;
+        }
+        .featured-cta-wo {
+            float: left;
+            margin-right: $w1-gutter;
+            div {
+                cursor: pointer;
+            }            
+            .emergency-wo {
+                @include featured-box-cta;
+                background-color: #F20050;
+                margin-bottom: $p5-margin;
+                padding: 15px 10px;
+                span:first-child {
+                    @include cta-first-child;
+                }
+                span:last-child {
+                    @include cta-last-child;
+                    padding: 0px 10px;
+                }
+            }
+        }
+        .common-cta-wo {
+            div {
+                cursor: pointer;
+            }
+            display: flex;
+            flex-direction: row;
+            .assign-to-me-wo {
+                @include basic-box-cta;
+                margin-right: $w1-gutter;
+                p:first-child {
+                    color: #49b900;
+                    @include cta-font-number;
+                }
+                p:last-child{
+                    @include cta-font-span;
+                }
+                &:hover {
+                    background: linear-gradient(180deg, white 0%, #54A6DA 100%);
+                    color: #FFFFFF;
+                }
+            }
+            .pending-acceptance-wo {
+                @include basic-box-cta;
+                margin-right: $w1-gutter;
+                p:first-child {
+                    color: #fc9236;
+                    @include cta-font-number;
+                }
+                p:last-child{
+                    @include cta-font-span;
+                }
+                &:hover {
+                    background: linear-gradient(180deg, white 0%, #54A6DA 100%);
+                    color: #FFFFFF;
+                }
+            }
+            .unassigned-wo {
+                @include basic-box-cta;
+                p:first-child {
+                    color: #ee1057;
+                    @include cta-font-number;
+                }
+                p:last-child{
+                    @include cta-font-span;
+                }
+                &:hover {
+                    background: linear-gradient(180deg, white 0%, #54A6DA 100%);
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .featured-cta-wo  {
+        float: none !important;
+        margin-right: 0px;
+    }
+    .common-cta-wo {
+        display: block !important;
+        flex-direction: column !important;
+    }  
+    .cta-component {
+        text-align: center;
+        justify-content: center;
+    }  
+    .emergency-wo, .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo {
+        width: 100% !important;
+    } 
+    .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo {
+        height: auto !important;
+        padding-top: 0px !important;
+        margin-bottom: 1.4vw !important;
+    }            
+}
+@media only screen and (max-width: 1440px) {
+    .cta-component {
+        height: auto;  
+        .cta-section {
+            padding-left: 0px;
+        }           
+    }
+}
+

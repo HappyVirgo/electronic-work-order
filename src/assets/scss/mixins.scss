@@ -1,0 +1,44 @@
+@import './variables.scss';
+
+@mixin basic-box-cta {
+    width: 200px;  
+    flex-basis: 200px;       
+    height: 150px;
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(212,236,246,1) 100%);
+    text-align: center;
+    float:left;
+    padding-top: 10px;
+}
+
+@mixin featured-box-cta {
+    width: 200px;            
+    height: 70px;
+    color: #FFF;
+    text-align: center;
+}
+
+@mixin cta-first-child {
+    font-size: $px42-font-size;
+    font-family: $font-family;
+    font-weight: 800;
+    float: left;
+    margin-top: -10px;
+}
+
+@mixin cta-last-child {
+    font-family: $font-family;
+    font-weight: 800;
+    font-size: $px12-font-size;    
+}
+
+@mixin cta-font-span {
+    font-family: $font-family;
+    font-weight: 800;
+    font-size: $px12-font-size;
+}
+
+@mixin cta-font-number {
+    font-family: $font-family;
+    font-weight: 400;    
+    font-size: $px64-font-size;
+}

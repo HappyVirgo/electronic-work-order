@@ -1,0 +1,57 @@
+/**
+ * Description: Create CTA components
+ * Author: Carlos Blanco
+ * Created: 9/1/2020
+ * Ticket: ET-242
+ */
+
+//Basic Imports
+import React from 'react';
+//import PropTypes from 'prop-types';
+
+//Material UI
+import Grid from '@material-ui/core/Grid';
+
+//Layouts
+import {
+    FeaturedCTALayout,
+    CTASectionLayout
+} from './layouts'
+
+
+const CTASectionComponent = ({ctadata, changeData}) => {
+
+    //Process to retrieve user data 
+    let assignedToMeWorkOrders
+    let emergencyWorkOrders
+    let pendingWorkOrders
+    let unassignedWorkOrders
+    /** Wait until data is already fetched
+     ** Then assign values to variables
+     * */
+    if(ctadata!==undefined) {
+        assignedToMeWorkOrders = ctadata.data.assignedToMeWorkOrders
+        emergencyWorkOrders = ctadata.data.emergencyWorkOrders
+        pendingWorkOrders = ctadata.data.pendingWorkOrders
+        unassignedWorkOrders = ctadata.data.unassignedWorkOrders
+    }
+    return (
+            <Grid container className="cta-component">
+                <Grid item xs={12} md={12} lg={5}>
+                    <h1>Work Orders</h1>
+                </Grid>
+                <Grid item xs={12} md={12} lg={7} className="cta-section">
+                    <FeaturedCTALayout 
+                        emergencyWorkOrders={emergencyWorkOrders} 
+                    />
+                    <CTASectionLayout
+                        assignedToMeWorkOrders={assignedToMeWorkOrders}
+                        pendingWorkOrders={pendingWorkOrders} 
+                        unassignedWorkOrders={unassignedWorkOrders} 
+                    />
+                </Grid>
+            </Grid>
+    );
+};
+
+export default React.memo(CTASectionComponent);
