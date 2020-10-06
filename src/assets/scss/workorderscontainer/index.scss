@@ -1,0 +1,15 @@
+@import '../mixins.scss';
+@import '../variables.scss';
+
+.work-orders-container {
+    background-color: $basic-background-color;
+    width: 100% !important;
+}
+.content-section {
+    margin-top: 20px;    
+}
+@media only screen and (max-width: 1440px) {
+    .work-orders-container {
+        display: block !important;
+    }
+}
