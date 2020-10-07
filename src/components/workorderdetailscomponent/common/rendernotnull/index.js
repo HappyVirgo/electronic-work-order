@@ -13,6 +13,13 @@ import DirectionsIcon from '@material-ui/icons/Directions';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
+//Layouts
+import {
+    DetailsImageLayout,
+    MainDetails,
+    MainActions
+} from '../../layouts'
+
 const useStyles = makeStyles((theme) => ({
     actionButtonGrid:{
         width: '160px',
@@ -25,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         width: '150px',
         height: '32px',
         fontSize: '13px',
-        borderRadius: 16,
+        borderRadius: "16px",
         '&:hover': {
             backgroundColor: '#54A6DA',
             borderColor: '#0072CE',
@@ -100,7 +107,7 @@ export const RenderNotNull = ({detailsdata}) => {
             let pre_assetName = detailsdata.data.work_order.asset
             assetName = pre_assetName!==null?detailsdata.data.work_order.asset.name:nullVal;
         }        
-        woType = detailsdata.data.work_order.asset!==null?detailsdata.data.work_order.asset.woType:nullVal;
+        woType = detailsdata.data.work_order.asset!==null?detailsdata.data.work_order.woType:nullVal;
         if(detailsdata.data.work_order.asset!==null){
             let pre_manufacturer = detailsdata.data.work_order.asset.manufacturer
             manufacturer = pre_manufacturer!==null?detailsdata.data.work_order.asset.manufacturer.companyName:nullVal;
@@ -132,24 +139,17 @@ export const RenderNotNull = ({detailsdata}) => {
     return(
         <div>
             <Grid container spacing={0}>
-                <Grid item xs={3}>
-                    <span>image</span>
-                </Grid>
-                <Grid item xs={6}>
-                    <h1>{assetName!==null?assetName:nullVal}</h1>
-                    <h3>{woType!==null?woType:nullVal}</h3>
-                    <span>Manufacturer: {manufacturer!==null?manufacturer:nullVal}</span><br/>
-                    <span>Model: {model!==null?model:nullVal}</span><br/>
-                    <span>Serial: {serial!==null?serial:nullVal}</span><br/>
-                    <span>Warranty: <b>{warranty===true?"Available":"Not Available"}</b></span><br/>
-                </Grid>
-                <Grid item xs={3} className={classes.actionButtonGrid}>
-                    <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<NoteAddIcon />}>Add note</Button>
-                    <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<NotInterestedIcon />}>Not Fixed</Button>
-                    <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<DirectionsIcon />}>Reassign</Button>
-                    <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<CheckBoxIcon />}>Complete</Button>
-                    <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<CancelIcon />}>Cancel&nbsp;&nbsp;&nbsp;&nbsp;</Button>
-                </Grid>
+                <DetailsImageLayout />
+                <MainDetails 
+                    assetName={assetName}
+                    woType={woType}
+                    manufacturer={manufacturer}
+                    model={model}
+                    serial={serial}
+                    warranty={warranty}
+                    nullVal={nullVal}
+                />
+                <MainActions />
             </Grid>
             <Grid className={classes.linkButtonGrid}>
                 <Button variant="contained" color="primary" className={classes.linkButton} >Work Order</Button>
