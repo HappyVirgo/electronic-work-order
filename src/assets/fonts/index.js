@@ -1,8 +1,8 @@
-import SfUiDisplayBold from '../fonts/sf-ui-display-bold-58646a511e3d9.woff';
-import SfUiDisplaySemibold from '../fonts/sf-ui-display-semibold-58646eddcae92.woff';
-import SfUiDisplayMedium from '../fonts/sf-ui-display-medium-58646be638f96.woff';
-import SfUiDisplayLight from '../fonts/sf-ui-display-light-58646b33e0551.woff';
-import SfUiDisplayHeavy from '../fonts/sf-ui-display-heavy-586470160b9e5.woff';
+import { Bold } from "./bold";
+import { Medium } from "./medium";
+import { Light } from "./light";
+import { SemiBold } from "./semibold";
+import { Heavy } from "./heavy";
 
 export const SfUiLight = {
     fontFamily: 'SfUiDisplay',
@@ -12,7 +12,7 @@ export const SfUiLight = {
     src: `
         local('SfUiDisplay'),    
         local('SfUiDisplayLight'),
-        url(${SfUiDisplayLight}) format('woff')
+        url(data:application/x-font-woff;charset=utf-8;base64,${Light}) format('woff')
     `,
 };
 
@@ -24,7 +24,7 @@ export const SfUiMedium = {
     src: `
         local('SfUiDisplay'),    
         local('SfUiDisplayMedium'),
-        url(${SfUiDisplayMedium}) format('woff')
+        url(data:application/x-font-woff;charset=utf-8;base64,${Medium}) format('woff')
     `,
 };
 
@@ -36,7 +36,7 @@ export const SfUiSemibold = {
     src: `
         local('SfUiDisplay'),    
         local('SfUiDisplaySemibold'),
-        url(${SfUiDisplaySemibold}) format('woff')
+        url(data:application/x-font-woff;charset=utf-8;base64,${SemiBold}) format('woff')
     `,
 };
 
@@ -48,7 +48,7 @@ export const SfUiBold = {
     src: `
         local('SfUiDisplay'),    
         local('SfUiDisplayBold'),
-        url(${SfUiDisplayBold}) format('woff')
+        url(data:application/x-font-woff;charset=utf-8;base64,${Bold}) format('woff')
     `,
 };
 
@@ -60,6 +60,6 @@ export const SfUiHeavy = {
     src: `
         local('SfUiDisplay'),    
         local('SfUiDisplayHeavy'),
-        url(${SfUiDisplayHeavy}) format('woff')
+        url(data:application/x-font-woff;charset=utf-8;base64,${Heavy}) format('woff')
     `,
 };
