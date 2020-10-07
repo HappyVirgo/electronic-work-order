@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function TabPanel(props) {
+const TabPanel = (props) => {
     const { children, value, index, ...other } = props;
     return (
         <div
@@ -53,7 +53,7 @@ function TabPanel(props) {
         </div>
     );
 }
-function a11yProps(index) {
+const a11yProps = (index) => {
     return {
         id: `simple-tab-${index}`,
         'aria-controls': `simple-tabpanel-${index}`,

@@ -8,7 +8,7 @@ import {
     CTASectionComponent, 
     DataTableComponent, 
     WorkOrderDetailsComponent,
-    TabsComponent,
+    //TabsComponent,
     ModalComponent
 } from '../../components'
 
@@ -180,7 +180,6 @@ class WorkOrdersBuilder extends Component {
                         <Grid item xs={12} md={12} lg={5}>
                             <WorkOrderDetailsComponent detailsdata={detailsdata}></WorkOrderDetailsComponent>
                             <ModalComponent></ModalComponent>
-                            <TabsComponent history={historydata} attachments={attachmentsdata} notes={notesdata}></TabsComponent>
                         </Grid>  
                     </Grid>  
                 </div>  
@@ -189,6 +188,11 @@ class WorkOrdersBuilder extends Component {
         );
     }
 }
+/*
+    <WorkOrderDetailsComponent detailsdata={detailsdata}></WorkOrderDetailsComponent>
+    <ModalComponent></ModalComponent>
+    <TabsComponent history={historydata} attachments={attachmentsdata} notes={notesdata}></TabsComponent>
+*/
 
 const mapStateToProps = state => ({
     ...state

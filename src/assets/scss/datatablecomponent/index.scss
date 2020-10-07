@@ -2,8 +2,8 @@
 @import '../variables.scss';
 
 .data-table-component {
-    padding: 0px 25px;
     width: 100%;
+    padding: 0px 25px;
 }
 .datatable-row {
     cursor: pointer; 
@@ -196,4 +196,28 @@
         font-family: $font-family;
         font-weight: 700;         
     }    
+}
+
+@media only screen and (max-width: 500px) {
+    .data-table-component {
+        padding: 0px;
+    }
+    .data-table-row {
+        div {
+            line-height: 28px !important;
+        }
+    }
+    .dtableCols {
+        line-height: 12px !important;
+    }
+    .pending-status {
+        span {
+        font-size: 10px;
+        padding-left: 0px;
+        }
+        &::before{
+            width: 10px;
+            height: 10px;
+        }
+    }
 }

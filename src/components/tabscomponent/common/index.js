@@ -52,8 +52,8 @@ const useTableStyles = makeStyles(theme => ({
     cell: {
     display: "block",
     flexGrow: 0,
-    flexShrink: 0
-    // flex: 1
+    flexShrink: 0,
+    flex: 1
     },
     expandingCell: {
     flex: 1
