@@ -42,3 +42,9 @@
     font-weight: 400;    
     font-size: $px64-font-size;
 }
+
+@mixin action-icons {
+    width: 25px;
+    height: 25px;
+    background-color: #ffffff;      
+}

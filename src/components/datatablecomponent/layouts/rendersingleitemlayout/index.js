@@ -31,12 +31,24 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
         case "Pending":
             data = statusPending({getExtraKey, getDataKey, checkItem, item, change})
             break;
+        case "Pending SP Acceptance":
+            data = statusPending({getExtraKey, getDataKey, checkItem, item, change})
+            break;    
+        case "Proposal Submitted":
+            data = statusPending({getExtraKey, getDataKey, checkItem, item, change})
+            break;                      
         case "Accepted":
             data = statusAccepted({getExtraKey, getDataKey, checkItem, item, change})
-            break;             
+            break; 
+        case "Proposal Approved":
+            data = statusAccepted({getExtraKey, getDataKey, checkItem, item, change})
+            break;               
         case "UnAssigned":
             data = statusUnassigned({getExtraKey, getDataKey, checkItem, item, change})
-            break;   
+            break; 
+        case "Not Fixed":
+            data = statusUnassigned({getExtraKey, getDataKey, checkItem, item, change})
+            break;            
         //Priority
         case "L1 - Emergency":
             data = priorityL1Emergency({getExtraKey, getDataKey, checkItem, item, change})
