@@ -35,9 +35,11 @@ const useStyles = makeStyles((theme) => ({
 const WorkOrderDetailsComponent = ({detailsdata}) => {
     const classes = useStyles()
     return (
-        <Paper className={classes.paper}>
-            <Details detailsdata={detailsdata}></Details>
-        </Paper>
+        <div className="details-container">
+            <Paper className={classes.paper}>
+                <Details detailsdata={detailsdata}></Details>
+            </Paper>
+        </div>
     );
 };
 

@@ -16,18 +16,14 @@ import {
 } from '../../../../assets/icons'
 
 const useStyles = makeStyles((theme) => ({
-    actionButtonGrid:{
-        maxWidth: '160px',
-    },
     actionButton:{
-        textAlign: "center",
         color: "#FFFFFF",
-        margin: '3px 0',
         backgroundColor: '#0072CE',
         fontWeight: 'bold',
         width: '150px',
         height: '32px',
         fontSize: '13px',
+        margin: '5px',
         borderRadius: '16px !important',
         '&:hover': {
             backgroundColor: '#54A6DA',
@@ -41,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export const MainActions = () => {
     const classes = useStyles()
     return (
-        <Grid item sx={12} md={3} className={classes.actionButtonGrid}>
+        <Grid item xs={12} md={3} className="actionButtonGrid">
             <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<AddNote/>}>Add note</Button>
             <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<NotFixed/>}>Not Fixed</Button>
             <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<ReAssigned/>}>Reassign</Button>
