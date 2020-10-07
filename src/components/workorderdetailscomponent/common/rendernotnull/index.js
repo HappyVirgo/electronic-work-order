@@ -5,11 +5,6 @@ import Moment from 'react-moment';
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import NoteAddIcon from '@material-ui/icons/NoteAdd';
-import CancelIcon from '@material-ui/icons/Cancel';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import NotInterestedIcon from '@material-ui/icons/NotInterested';
-import DirectionsIcon from '@material-ui/icons/Directions';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
@@ -17,29 +12,10 @@ import Grid from '@material-ui/core/Grid';
 import {
     DetailsImageLayout,
     MainDetails,
-    MainActions
+    MainActions,
 } from '../../layouts'
 
 const useStyles = makeStyles((theme) => ({
-    actionButtonGrid:{
-        width: '160px',
-    },
-    actionButton:{
-        color: "#FFFFFF",
-        margin: '3px 0',
-        backgroundColor: '#0072CE',
-        fontWeight: 'bold',
-        width: '150px',
-        height: '32px',
-        fontSize: '13px',
-        borderRadius: "16px",
-        '&:hover': {
-            backgroundColor: '#54A6DA',
-            borderColor: '#0072CE',
-            boxShadow: 'none',
-        }
-
-    },
     linkButtonGrid:{
         margin: '60px 0px 20px 0px'
     },
@@ -81,6 +57,7 @@ export const RenderNotNull = ({detailsdata}) => {
     let manufacturer
     let model
     let serial
+    let assetType
     let warranty
     //Enhanced Section
     let id
@@ -114,6 +91,7 @@ export const RenderNotNull = ({detailsdata}) => {
         }
         model = detailsdata.data.work_order.asset!==null?detailsdata.data.work_order.asset.modelNumber:nullVal;
         serial = detailsdata.data.work_order.asset!==null?detailsdata.data.work_order.asset.serialNumber:nullVal;
+        assetType = detailsdata.data.work_order.assetType!==null?detailsdata.data.work_order.assetType.name:nullVal;
         warranty = detailsdata.data.work_order.asset!==null?detailsdata.data.work_order.warrantyAvailable:nullVal;
         //Enhanced Section
         id = detailsdata.data.work_order.id!==null?detailsdata.data.work_order.id:nullVal;
@@ -146,6 +124,7 @@ export const RenderNotNull = ({detailsdata}) => {
                     manufacturer={manufacturer}
                     model={model}
                     serial={serial}
+                    assetType={assetType}
                     warranty={warranty}
                     nullVal={nullVal}
                 />
