@@ -10,12 +10,18 @@ import { Typography } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     title: {
         fontSize: "21px",
-        fontWeight: "600"
+        fontWeight: "600",
+        backgroundColor: "#e2f9ff",
+        padding: "10px",
+        width: "30%",
+        borderRadius: "5px",
+        marginBottom: "10px"
     },
     description: {
         fontSize: "16px"
     },
     workOrderDescriptionContainer: {
+        marginTop: "25px",
         marginBottom: "25px"
     }
 }));
