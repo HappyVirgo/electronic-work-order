@@ -33,6 +33,7 @@ export const RenderNotNull = ({detailsdata}) => {
     let image
     //Store data to display in new array
     let assetName
+    let workOrderId
     let woType
     let manufacturer
     let model
@@ -64,12 +65,14 @@ export const RenderNotNull = ({detailsdata}) => {
             let pre_image = detailsdata.data.work_order.asset.assetImage
             image = pre_image[0]!==undefined?pre_image[0]['fileName']:nullVal;
         }         
-        
         //Short Detail Section
         if(detailsdata.data.work_order.asset!==null){
             let pre_assetName = detailsdata.data.work_order.asset
             assetName = pre_assetName!==null?detailsdata.data.work_order.asset.name:nullVal;
         }        
+        if(detailsdata.data.work_order!==null){
+            workOrderId = detailsdata.data.work_order.id!==null?detailsdata.data.work_order.id:nullVal;
+        }          
         woType = detailsdata.data.work_order.asset!==null?detailsdata.data.work_order.woType:nullVal;
         if(detailsdata.data.work_order.asset!==null){
             let pre_manufacturer = detailsdata.data.work_order.asset.manufacturer
@@ -107,6 +110,7 @@ export const RenderNotNull = ({detailsdata}) => {
                     image={image}
                 />
                 <MainDetails 
+                    workOrderId={workOrderId}
                     assetName={assetName}
                     woType={woType}
                     manufacturer={manufacturer}

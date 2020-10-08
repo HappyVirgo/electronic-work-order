@@ -20,11 +20,12 @@ const useStyles = makeStyles((theme) => ({
 export const DetailsImageLayout = ({image}) => {
     const classes = useStyles()
     let img
-    if(image!==null){
-        img = IMG_URL+image
+    if(image!==undefined){
+        img = image!==null?IMG_URL+image:PLACEHOLDER_URL
     } else {
         img = PLACEHOLDER_URL
     }
+    console.log(image)
     return (
         <Grid item md={3} className="img-container">
             <img 
