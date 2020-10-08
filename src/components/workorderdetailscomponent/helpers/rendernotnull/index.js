@@ -28,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
 export const RenderNotNull = ({detailsdata}) => {
     const classes = useStyles()
     //In null case
-    const nullVal = "null";    
+    const nullVal = null;    
+    //Image Section
+    let image
     //Store data to display in new array
     let assetName
     let woType
@@ -57,6 +59,12 @@ export const RenderNotNull = ({detailsdata}) => {
     let proposalStatus    
 
     if(detailsdata!==undefined){
+        //Image Section
+        if(detailsdata.data.work_order.asset!==null){
+            let pre_image = detailsdata.data.work_order.asset.assetImage
+            image = pre_image[0]!==undefined?pre_image[0]['fileName']:nullVal;
+        }         
+        
         //Short Detail Section
         if(detailsdata.data.work_order.asset!==null){
             let pre_assetName = detailsdata.data.work_order.asset
@@ -95,7 +103,9 @@ export const RenderNotNull = ({detailsdata}) => {
     return(
         <div>
             <Grid container spacing={0}>
-                <DetailsImageLayout />
+                <DetailsImageLayout
+                    image={image}
+                />
                 <MainDetails 
                     assetName={assetName}
                     woType={woType}
