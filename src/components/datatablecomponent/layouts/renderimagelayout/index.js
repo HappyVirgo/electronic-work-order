@@ -26,7 +26,6 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
     return (
         <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
             <img 
-                height="100"
                 width="80"
                 alt={`img-${item['workOrderId']}`}
                 src={img!==undefined?img:PLACEHOLDER_URL}
