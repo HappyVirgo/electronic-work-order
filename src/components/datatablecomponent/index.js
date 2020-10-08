@@ -33,7 +33,8 @@ const columns = [
     imgPath: "fileName",    
     numeric: false,
     multi_item: false,
-    image: true
+    image: true,
+    width: "20%"
   }, 
   {
     label: "Asset Information",
@@ -43,7 +44,8 @@ const columns = [
     multi_item: true,
     serviceprovider_index: "profile",
     serviceprovider: "companyName",
-    workorderid: "workOrderId"
+    workorderid: "workOrderId",
+    width: "35%"
   },   
   {
     label: "Status",

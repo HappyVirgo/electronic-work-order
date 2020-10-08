@@ -37,12 +37,12 @@ const useStyles = makeStyles((theme) => ({
 export const MainActions = () => {
     const classes = useStyles()
     return (
-        <Grid item xs={12} md={3} className="actionButtonGrid">
-            <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<AddNote/>}>Add note</Button>
-            <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<NotFixed/>}>Not Fixed</Button>
-            <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<ReAssigned/>}>Reassign</Button>
-            <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<Complete/>}>Complete</Button>
-            <Button variant="contained" color="primary" className={classes.actionButton} startIcon={<Cancel/>}>Cancel&nbsp;&nbsp;&nbsp;&nbsp;</Button>
+        <Grid item xs={12} md={4} className="actionButtonGrid">
+            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<AddNote/>}>Add note</Button>
+            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<NotFixed/>}>Not Fixed</Button>
+            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<ReAssigned/>}>Reassign</Button>
+            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Complete/>}>Complete</Button>
+            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Cancel/>}>Cancel&nbsp;&nbsp;&nbsp;&nbsp;</Button>
         </Grid>
     )
 }

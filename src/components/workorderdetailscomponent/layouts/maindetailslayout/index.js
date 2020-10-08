@@ -24,7 +24,7 @@ export const MainDetails = ({assetName, woType, manufacturer, model, serial, ass
         warrantyText = "Not Available"
     }
     return (
-        <Grid item xs={12} md={6} className="main_details">
+        <Grid item xs={6} md={5} className="main_details">
             <Typography variant="h1" className={classes.Typography}>{assetName!==null?assetName:nullVal} <br/><small>{woType!==null?woType:nullVal}</small></Typography>
             <Typography >Manufacturer: {manufacturer!==null?manufacturer:nullVal}</Typography>
             <Typography>Model #: {model!==null?model:nullVal}</Typography>
