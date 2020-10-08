@@ -1,5 +1,5 @@
-import {RenderNull} from '../common/rendernull'   
-import {RenderNotNull} from '../common/rendernotnull'    
+import {RenderNull} from '../helpers/rendernull'   
+import {RenderNotNull} from '../helpers/rendernotnull'    
 import {Details} from '../layouts/detailslayout'  
 import {DetailsImageLayout} from '../layouts/detailsimagelayout'     
 import {MainDetails} from '../layouts/maindetailslayout'  
