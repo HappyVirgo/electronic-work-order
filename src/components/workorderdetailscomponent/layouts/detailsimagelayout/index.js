@@ -5,6 +5,11 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+//Constants
+import {
+    IMG_URL,
+    PLACEHOLDER_URL
+} from '../../constants'
 
 const useStyles = makeStyles((theme) => ({
     img: {
@@ -12,13 +17,21 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const DetailsImageLayout = () => {
+export const DetailsImageLayout = ({image}) => {
     const classes = useStyles()
+    console.log(image)
+    let img
+    if(image!==null){
+        img = IMG_URL+image
+    } else {
+        img = PLACEHOLDER_URL
+    }
+    console.log(img)
     return (
         <Grid item md={3} className="img-container">
             <img 
                 className={classes.img}
-                src='https://via.placeholder.com/150x210'
+                src={img}
                 alt='details_image'
             />
         </Grid>
