@@ -17,18 +17,67 @@ const useStyles = makeStyles((theme) => ({
         border: "1px solid #cccccc",
         borderRadius: "5px",
         padding: "10px"
-    },    
+    },  
+    date: {
+        fontWeight: 600,
+        color: "#F20050",
+    }  
 }));
 
 export const BoxedDetails = ({currentEta, serviceProvider, proposalStatus, nullVal}) => {
     const classes = useStyles()
     return (
         <Grid item xs={7} className={classes.etaSection}>
-            <Typography className={classes.text}><strong>Current ETA: </strong><Moment format="MMMM D, YYYY hh:mm a">{currentEta!==null?currentEta:nullVal}</Moment></Typography>
-            <Typography className={classes.text}><strong>Service Provider: </strong>{serviceProvider!==null?serviceProvider:nullVal}</Typography>
-            <Typography className={classes.text}><strong>Assigned To: </strong>N/A</Typography>
-            <Typography className={classes.text}><strong>Proposal Status: </strong>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
-            <Typography className={classes.text}><strong>Invoice Status: </strong>{proposalStatus!==null?proposalStatus:nullVal}</Typography>                    
+            <Grid container>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}><strong>Current ETA: </strong></Typography>
+                </Grid>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}><span className={classes.date}><Moment format="MMMM D, YYYY hh:mm a">{currentEta!==null?currentEta:nullVal}</Moment></span></Typography>
+                </Grid>
+            </Grid>
+            <Grid container>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}><strong>Service Provider: </strong></Typography>
+                </Grid>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}>{serviceProvider!==null?serviceProvider:nullVal}</Typography>
+                </Grid>
+            </Grid>            
+            <Grid container>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}><strong>Assigned To: </strong></Typography>
+                </Grid>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}>N/A</Typography>
+                </Grid>
+            </Grid>     
+            <Grid container>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}><strong>Proposal Status: </strong></Typography>                    
+                </Grid>
+                <Grid container xs={6}>
+                    <Grid item xs={6}>
+                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
+                    </Grid> 
+                </Grid>               
+            </Grid>                    
+            <Grid container>
+                <Grid item xs={6}>
+                    <Typography className={classes.text}><strong>Invoice Status: </strong></Typography>                    
+                </Grid>
+                <Grid container xs={6}>
+                    <Grid item xs={6}>
+                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
+                    </Grid> 
+                </Grid>               
+            </Grid>             
         </Grid>
     )
 }

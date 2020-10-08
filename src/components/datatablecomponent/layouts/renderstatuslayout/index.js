@@ -1,8 +1,8 @@
 /**
-* Description: Render single item column 
+* Description: Render status item column 
 * Author: Carlos Blanco
-* Date: 9/8/2020
-* Ticket: ET-249 
+* Date: 10/5/2020
+* Ticket: ET-344 
 * */
 //Basic imports
 import React from "react";

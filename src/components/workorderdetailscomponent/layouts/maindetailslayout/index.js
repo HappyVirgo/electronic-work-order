@@ -23,11 +23,9 @@ export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model
         warrantyBadge = "warranty_not_available"
         warrantyText = "Not Available"
     }
-    console.log(workOrderId)
-    console.log(assetName)
     return (
         <Grid item xs={6} md={5} className="main_details">
-            <Typography variant="h1" className={classes.Typography}>{assetName!==undefined || assetName!==null?assetName:workOrderId} <br/><small>{woType!==null?woType:nullVal}</small></Typography>
+            <Typography variant="h1" className={classes.Typography}>{assetName!==undefined?(assetName!==null?assetName:workOrderId):workOrderId} <br/><small>{woType!==null?woType:nullVal}</small></Typography>
             <Typography >Manufacturer: {manufacturer!==null?manufacturer:nullVal}</Typography>
             <Typography>Model #: {model!==null?model:nullVal}</Typography>
             <Typography>Serial #: {serial!==null?serial:nullVal}</Typography>
