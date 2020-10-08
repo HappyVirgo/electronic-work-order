@@ -14,7 +14,9 @@
         margin-bottom: 10px;
     }
 }
-
+.link-button-grid {
+    display: flex;
+}  
 //Warranty Support
 .warranty_available {
     span {
@@ -84,10 +86,16 @@
     mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI0LjMuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTAgNTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8Zz4KCQk8cmVjdCB4PSIyMy40NCIgeT0iMTQuNzkiIHRyYW5zZm9ybT0ibWF0cml4KDAuNzA3MSAtMC43MDcxIDAuNzA3MSAwLjcwNzEgLTEwLjA3OTMgMjUuMjUzNSkiIHdpZHRoPSI0IiBoZWlnaHQ9IjIwIi8+Cgk8L2c+Cgk8Zz4KCQk8cmVjdCB4PSIxNS40NCIgeT0iMjIuNzkiIHRyYW5zZm9ybT0ibWF0cml4KDAuNzA3MSAtMC43MDcxIDAuNzA3MSAwLjcwNzEgLTEwLjA3OTMgMjUuMjUyMykiIHdpZHRoPSIyMCIgaGVpZ2h0PSI0Ii8+Cgk8L2c+CjwvZz4KPGc+Cgk8cGF0aCBkPSJNMjUuNDQsNDQuNzljLTExLjAzLDAtMjAtOC45Ny0yMC0yMHM4Ljk3LTIwLDIwLTIwczIwLDguOTcsMjAsMjBTMzYuNDcsNDQuNzksMjUuNDQsNDQuNzl6IE0yNS40NCw4Ljc5CgkJYy04LjgyLDAtMTYsNy4xOC0xNiwxNnM3LjE4LDE2LDE2LDE2czE2LTcuMTgsMTYtMTZTMzQuMjYsOC43OSwyNS40NCw4Ljc5eiIvPgo8L2c+Cjwvc3ZnPgo=') no-repeat 50% 50%;      
 }
 
-@media only screen and (max-width: 400px) {  
-    .actionButtonGrid {
+@media only screen and (max-width: 600px) {  
+    .action-button-grid {
         display: block !important;
-    }       
+    }   
+    .link-button-grid {
+        display: inline-block;
+    } 
+    .action-button {
+        width: 100% !important;
+    }              
 }
 @media only screen and (max-width: 800px) { 
     .img-container{
@@ -102,22 +110,15 @@
         max-width: 100% !important;
         flex-basis: 100% !important;        
     }    
-    .actionButtonGrid {
-        display: contents;
+    .action-button-grid {
         text-align: center;
-    }     
-    .link-button-grid {
-        display: inline-block;
-    }            
+    }                   
 }
 @media only screen and (max-width: 1024px) {           
     .details-container {
         width: 100%;
         padding: 0px 15px;
-    }     
-    .action-button {
-        width: 100% !important;
-    }   
+    }       
     .link-button {
         width: 100% !important;
         margin-bottom: 10px !important;        
@@ -125,5 +126,10 @@
     .link-button-grid {
         width: 100% !important;
         margin: 20px 0px 20px 0px !important;;
+    }             
+}
+@media only screen and (min-width: 1024px) {           
+    .action-button {
+        width: 100% !important;
     }             
 }

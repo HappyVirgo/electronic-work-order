@@ -1,10 +1,8 @@
 //Basic imports
 import React from 'react';
-import Moment from 'react-moment';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
@@ -13,35 +11,15 @@ import {
     DetailsImageLayout,
     MainDetails,
     MainActions,
-    LinkActions
+    LinkActions,
+    WorkOrderDescription,
+    EnhancedDetails,
+    BoxedDetails,
+    LocationDetails
 } from '../../layouts'
 
 const useStyles = makeStyles((theme) => ({
-    linkButtonGrid:{
-        margin: '60px 0px 20px 0px'
-    },
-    linkButton:{
-        color: "#0072CE",
-        margin: '0 5px',
-        backgroundColor: '#F4F8FE',
-        fontWeight: 'bold',
-        width: '23%',
-        height: '30px',
-        fontSize: '11px',
-        borderRadius: 15,
-        '&:hover': {
-            backgroundColor: '#54A6DA',
-            borderColor: '#0072CE',
-            boxShadow: 'none',
-            color: "#FFFFFF",
-        }
-    },
-    enhancedDetails: {
-        marginTop: '30px'
-    },
-    etaSection: {
-        border: "1px solid #000"
-    },
+
     locationDetails: {
         marginLeft: "50%"
     }
@@ -133,39 +111,33 @@ export const RenderNotNull = ({detailsdata}) => {
             <LinkActions />
             <Divider/>
             <Grid container spacing={0} className={classes.enhancedDetails}>
-                <Grid item xs={12}>
-                    <h1>Work Order: {id!==null?id:nullVal}</h1>
-                    <p>{description!==null?description:nullVal}</p>                    
-                </Grid>
-                <Grid item xs={6}>
-                    <p><b>Status: </b>{status!==null?status:nullVal}</p>
-                    <p><b>Priority: </b>{priority!==null?priority:nullVal}</p>
-                    <p><b>Trade Type: </b>{tradeType!==null?tradeType:nullVal}</p>
-                    <p><b>Problem Type: </b>{problemType!==null?problemType:nullVal}</p>
-                    <p><b>Category: </b>{categoryType!==null?categoryType:nullVal}</p>
-                    <p><b>WO Type: </b>{woType!==null?woType:nullVal}</p>
-                    <p><b>NTE: </b>${nte!==null?nte:nullVal}</p>
-                </Grid>
-                <Grid item xs={6} className={classes.etaSection}>
-                    <p><b>Current ETA: </b><Moment format="MMMM D, YYYY hh:mm a">{currentEta!==null?currentEta:nullVal}</Moment></p>
-                    <p><b>Service Provider: </b>{serviceProvider!==null?serviceProvider:nullVal}</p>
-                    <p><b>Assigned To: </b>N/A</p>
-                    <p><b>Proposal Status: </b>{proposalStatus!==null?proposalStatus:nullVal}</p>
-                    <p><b>Invoice Status: </b>{proposalStatus!==null?proposalStatus:nullVal}</p>                    
-                </Grid>
-
-                <Grid container className={classes.locationDetails}>
-                    <Grid item xs={3}>
-                        <b>Location Details: </b>
-                    </Grid>
-                    <Grid item xs={3}>
-                        <p>
-                        {locationAddress!==null?locationAddress:nullVal}<br/>
-                        {location!==null?location:nullVal}<br/>
-                        {locationPhone!==null?locationPhone:nullVal}
-                        </p>
-                    </Grid>               
-                </Grid>                   
+                <WorkOrderDescription
+                    id={id}
+                    description={description}
+                    nullVal={nullVal}
+                />
+                <EnhancedDetails 
+                    status={status}
+                    priority={priority}
+                    tradeType={tradeType}
+                    problemType={problemType}
+                    categoryType={categoryType}
+                    woType={woType}
+                    nte={nte}
+                    nullVal={nullVal}
+                />
+                <BoxedDetails 
+                    currentEta={currentEta}
+                    serviceProvider={serviceProvider}
+                    proposalStatus={proposalStatus}
+                    nullVal={nullVal}
+                />
+                <LocationDetails
+                    locationAddress={locationAddress}
+                    location={location}
+                    locationPhone={locationPhone}
+                    nullVal={nullVal}
+                />                   
             </Grid>
         </div>            
     )
