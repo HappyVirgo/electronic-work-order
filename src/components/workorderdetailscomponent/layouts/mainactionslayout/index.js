@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export const MainActions = () => {
     const classes = useStyles()
     return (
-        <Grid item xs={12} md={4} className="actionButtonGrid">
+        <Grid item xs={12} md={4} className="action-button-grid">
             <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<AddNote/>}>Add note</Button>
             <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<NotFixed/>}>Not Fixed</Button>
             <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<ReAssigned/>}>Reassign</Button>
