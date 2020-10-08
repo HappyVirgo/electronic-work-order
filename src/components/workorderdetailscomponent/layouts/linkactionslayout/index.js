@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
     linkButtonGrid:{
-        margin: '60px 0px 20px 0px'
+        margin: '60px 0px 20px 0px',
     },
     linkButton:{
         color: "#0072CE",
@@ -30,14 +30,14 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const MainActions = () => {
+export const LinkActions = () => {
     const classes = useStyles()
     return (
-        <Grid className={classes.linkButtonGrid}>
-            <Button variant="contained" color="primary" className={classes.linkButton} >Work Order</Button>
-            <Button variant="contained" color="primary" className={classes.linkButton} >Asset</Button>
-            <Button variant="contained" color="primary" className={classes.linkButton} >Invoice</Button>
-            <Button variant="contained" color="primary" className={classes.linkButton} >Proposal</Button>
+        <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
+            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`}>Work Order</Button>
+            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Asset</Button>
+            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Invoice</Button>
+            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Proposal</Button>
         </Grid>
     )
 }

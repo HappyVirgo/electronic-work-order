@@ -13,6 +13,7 @@ import {
     DetailsImageLayout,
     MainDetails,
     MainActions,
+    LinkActions
 } from '../../layouts'
 
 const useStyles = makeStyles((theme) => ({
@@ -34,7 +35,6 @@ const useStyles = makeStyles((theme) => ({
             boxShadow: 'none',
             color: "#FFFFFF",
         }
-
     },
     enhancedDetails: {
         marginTop: '30px'
@@ -130,12 +130,7 @@ export const RenderNotNull = ({detailsdata}) => {
                 />
                 <MainActions />
             </Grid>
-            <Grid className={classes.linkButtonGrid}>
-                <Button variant="contained" color="primary" className={classes.linkButton} >Work Order</Button>
-                <Button variant="contained" color="primary" className={classes.linkButton} >Asset</Button>
-                <Button variant="contained" color="primary" className={classes.linkButton} >Invoice</Button>
-                <Button variant="contained" color="primary" className={classes.linkButton} >Proposal</Button>
-            </Grid>
+            <LinkActions />
             <Divider/>
             <Grid container spacing={0} className={classes.enhancedDetails}>
                 <Grid item xs={12}>

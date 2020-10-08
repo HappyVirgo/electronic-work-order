@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     paper: {
-        height: "1130px",
+        height: "auto",
         minWidth: "auto",
         width: "100%",
         display: "flex",

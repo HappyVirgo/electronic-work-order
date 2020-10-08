@@ -20,9 +20,7 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
     if(item[getDataKey]!==null||undefined) {
         checkImg = item[getDataKey][getExtraKey]!==undefined||null?item[getDataKey][getExtraKey]:[]   
         checkImg = checkImg.length>0?checkImg[0][getImgPath]:[]
-        img = checkImg.length!==0?
-            IMG_URL+checkImg:
-            PLACEHOLDER_URL
+        img = checkImg!==undefined?(checkImg.length!==0?IMG_URL+checkImg:PLACEHOLDER_URL):PLACEHOLDER_URL
     }
 
     return (
@@ -31,7 +29,7 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
                 height="100"
                 width="80"
                 alt={`img-${item['workOrderId']}`}
-                src={img}
+                src={img!==undefined?img:PLACEHOLDER_URL}
             />
         </div>
     );

@@ -4,6 +4,7 @@ import {Details} from '../layouts/detailslayout'
 import {DetailsImageLayout} from '../layouts/detailsimagelayout'     
 import {MainDetails} from '../layouts/maindetailslayout'  
 import {MainActions} from '../layouts/mainactionslayout'  
+import {LinkActions} from '../layouts/linkactionslayout'  
 
 
 export {
@@ -12,5 +13,6 @@ export {
     Details,
     MainDetails,
     DetailsImageLayout,
-    MainActions
+    MainActions,
+    LinkActions
 }
