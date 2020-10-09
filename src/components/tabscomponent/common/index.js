@@ -63,7 +63,7 @@ const useTableStyles = makeStyles(theme => ({
 
 const TableColumns = ({ classes, columns }) => {
 return (
-    <TableRow component="div" className={`${clsx(classes.row, classes.headerRow)} data-table-row`}>
+    <TableRow component="div" className={`${clsx(classes.row, classes.headerRow)} data-tab-row`}>
         {columns.map((column, colIndex) => {
         return (
             <TableCell
@@ -216,22 +216,19 @@ let columnsHistory = [
         label: "Work Order ID",
         dataKey: "workOrderId",
         extraKey: false,
-        numeric: true,
-        width: 150
+        numeric: false,
     },   
     {
         label: "Note",
         dataKey: "note",
         extraKey: false,
         numeric: false,
-        width: 150
     },
     {
         label: "Status",
         dataKey: "status",
         extraKey: "description",
         numeric: false,
-        width: 150
     } 
 ];
 
@@ -240,22 +237,19 @@ let columnsAttachments = [
         label: "Doc ID",
         dataKey: "documentId",
         extraKey: false,
-        numeric: true,
-        width: 150
+        numeric: false,
     },   
     {
         label: "Description",
         dataKey: "type",
         extraKey: "description",
         numeric: false,
-        width: 150
     },
     {
         label: "Type",
         dataKey: "type",
         extraKey: "type",
         numeric: false,
-        width: 150
     } 
 ];
 
@@ -264,22 +258,19 @@ let columnsNotes = [
         label: "WO Note ID",
         dataKey: "wonId",
         extraKey: false,
-        numeric: true,
-        width: 150
+        numeric: false,
     },   
     {
         label: "Description",
         dataKey: "wonNote",
         extraKey: false,
         numeric: false,
-        width: 150
     },
     {
         label: "Company Name",
         dataKey: "user",
         extraKey: "companyName",
         numeric: false,
-        width: 150
     } 
 ];
 

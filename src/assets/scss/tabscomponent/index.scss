@@ -1,3 +1,26 @@
+@import '../mixins.scss';
+@import '../variables.scss';
+
 .common-table.component {
     width: 100%;
+}
+.tab-panel {
+    div {
+        padding: 0px !important;
+    }
+}
+.Mui-selected {
+    background-color: $basic-blue;
+    border: 4px solid $basic-blue;
+    color: #FFF !important;
+}
+.data-tab-row {
+    div{
+        background-color: #f8f8f8;
+        font-weight: 700;
+        color: #909DA8;
+        line-height: 20px;
+        height: 20px;
+        margin-top: 10px;
+    }
 }

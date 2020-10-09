@@ -11,7 +11,6 @@ import React, {useState} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from "@material-ui/core/Paper";
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -24,15 +23,20 @@ import CommonTable from './common'
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        marginTop: "25px"
     },
-    paper: {
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        padding: "25px",
-        boxShadow: "none",
-        borderRadius: "0px"
+    tabNav: {
+        backgroundColor: "transparent",
+        color: "#444444",
+        boxShadow: "none"
     },
+    tabParent: {
+        backgroundColor: "#E8E8E8",
+        fontWeight: 800,
+        color: "#0072CE",
+        marginRight: "5px",
+        textTransform: "capitalize"
+    }  
 }));
 
 const TabPanel = (props) => {
@@ -60,7 +64,16 @@ const a11yProps = (index) => {
     };
 }
 
-const TabsComponent = ({history, attachments, notes}) => {
+const TabsComponent = ({history, attachments, notes}) => { 
+    let historyCount = history!==undefined?history.data.work_order_histories:null
+    historyCount = historyCount.length
+    let attachmentsCount = history!==undefined?attachments.data.documents:null
+    attachmentsCount = attachmentsCount.length
+    let notesCount = history!==undefined?notes.data.workOrderNotes:null
+    notesCount = notesCount.length
+
+    //attachments.data
+    //notes.data
     //Loading custom styles Material UI
     const classes = useStyles();
     //Setting values for the tabs
@@ -70,26 +83,25 @@ const TabsComponent = ({history, attachments, notes}) => {
         setValue(newValue);
     };
 
+
     return (
         <div className={`${classes.root} work-order-details-component`}>
-            <Paper className={classes.paper}>
-                <AppBar position="static">
-                    <Tabs value={value} onChange={handleChange} aria-label="simple tabs example">
-                        <Tab label="History" {...a11yProps(0)} />
-                        <Tab label="Attachments" {...a11yProps(1)} />
-                        <Tab label="Notes" {...a11yProps(2)} />
+                <AppBar position="static" className={classes.tabNav}>
+                    <Tabs value={value} onChange={handleChange} aria-label="tabs">
+                        <Tab label={`History (${historyCount})`} {...a11yProps(0)} className={classes.tabParent} />
+                        <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
+                        <Tab label={`Notes (${notesCount})`} {...a11yProps(2)}  className={classes.tabParent}/>
                     </Tabs>
                 </AppBar>
-                <TabPanel value={value} index={0}>
+                <TabPanel value={value} index={0} className={'tab-panel'}>
                     <CommonTable tmpdata={history}></CommonTable>
                 </TabPanel>
-                <TabPanel value={value} index={1}>
+                <TabPanel value={value} index={1} className={'tab-panel'}>
                     <CommonTable tmpdata={attachments}></CommonTable>
                 </TabPanel>
-                <TabPanel value={value} index={2}>
-                <CommonTable tmpdata={notes}></CommonTable>
-                </TabPanel> 
-            </Paper>      
+                <TabPanel value={value} index={2} className={'tab-panel'}>
+                    <CommonTable tmpdata={notes}></CommonTable>
+                </TabPanel>     
         </div>
     );
 };

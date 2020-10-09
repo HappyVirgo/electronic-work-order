@@ -2,7 +2,6 @@
 import React from 'react';
 
 //Material UI
-import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 
@@ -18,15 +17,13 @@ import {
     LocationDetails
 } from '../../layouts'
 
-const useStyles = makeStyles((theme) => ({
+//Components
+import { 
+    TabsComponent,
+    //ModalComponent
+} from '../../../../components'
 
-    locationDetails: {
-        marginLeft: "50%"
-    }
-}));
-
-export const RenderNotNull = ({detailsdata}) => {
-    const classes = useStyles()
+export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {   
     //In null case
     const nullVal = null;    
     //Image Section
@@ -124,7 +121,7 @@ export const RenderNotNull = ({detailsdata}) => {
             </Grid>
             <LinkActions />
             <Divider/>
-            <Grid container spacing={0} className={classes.enhancedDetails}>
+            <Grid container spacing={0}>
                 <WorkOrderDescription
                     id={id}
                     description={description}
@@ -151,8 +148,14 @@ export const RenderNotNull = ({detailsdata}) => {
                     location={location}
                     locationPhone={locationPhone}
                     nullVal={nullVal}
-                />                   
+                />
             </Grid>
+            <Divider/>
+            <TabsComponent
+                history={history}
+                attachments={attachments}
+                notes={notes}
+            />            
         </div>            
     )
 }
