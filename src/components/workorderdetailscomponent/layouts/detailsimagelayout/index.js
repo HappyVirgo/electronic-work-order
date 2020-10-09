@@ -25,7 +25,6 @@ export const DetailsImageLayout = ({image}) => {
     } else {
         img = PLACEHOLDER_URL
     }
-    console.log(image)
     return (
         <Grid item md={3} className="img-container">
             <img 
