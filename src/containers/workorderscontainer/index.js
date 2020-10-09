@@ -8,8 +8,6 @@ import {
     CTASectionComponent, 
     DataTableComponent, 
     WorkOrderDetailsComponent,
-    //TabsComponent,
-    ModalComponent
 } from '../../components'
 
 
@@ -171,14 +169,24 @@ class WorkOrdersBuilder extends Component {
             <DynamicDataTableContext.Provider value={this.dynamicData}>
                 <div className="work-orders-container">
                     <Grid className="cta-section-component">
-                        <CTASectionComponent ctadata={ctadata} changeData={this.dynamicData}></CTASectionComponent>
+                        <CTASectionComponent 
+                            ctadata={ctadata} 
+                            changeData={this.dynamicData}
+                        />
                     </Grid>            
                     <Grid container className="content-section">
                         <Grid item xs={12} md={12} lg={7}>
-                            <DataTableComponent tmpdata={tmpdata}></DataTableComponent>
+                            <DataTableComponent
+                                tmpdata={tmpdata}
+                            />
                         </Grid>        
                         <Grid item xs={12} md={12} lg={5}>
-                            <WorkOrderDetailsComponent detailsdata={detailsdata}></WorkOrderDetailsComponent>
+                            <WorkOrderDetailsComponent
+                                detailsdata={detailsdata}
+                                history={historydata} 
+                                attachments={attachmentsdata} 
+                                notes={notesdata}
+                            />
                         </Grid>  
                     </Grid>  
                 </div>  
