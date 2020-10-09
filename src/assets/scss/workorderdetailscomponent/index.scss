@@ -16,7 +16,11 @@
 }
 .link-button-grid {
     display: flex;
-}  
+} 
+
+.details-title {
+    width: 30vw;
+} 
 //Warranty Support
 .warranty_available {
     span {
@@ -59,6 +63,7 @@
 .details {
     background-color: transparent !important;
 }
+
 //Status
 .green-badge {
     color: $green-color;
@@ -166,7 +171,10 @@
     } 
     .action-button {
         width: 100% !important;
-    }              
+    }  
+    .details-title {
+        width: 100%;
+    }                  
 }
 @media only screen and (max-width: 800px) { 
     .img-container{
@@ -183,7 +191,7 @@
     }    
     .action-button-grid {
         text-align: center;
-    }                   
+    }                      
 }
 @media only screen and (max-width: 1024px) {           
     .details-container {

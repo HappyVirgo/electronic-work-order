@@ -13,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: "600",
         backgroundColor: "#e2f9ff",
         padding: "10px",
-        width: "30%",
         borderRadius: "5px",
         marginBottom: "10px"
     },
@@ -30,7 +29,7 @@ export const WorkOrderDescription = ({id, description, nullVal}) => {
     const classes = useStyles()
     return (
         <Grid item xs={12} className={classes.workOrderDescriptionContainer}>
-            <Typography variant={'h1'} className={classes.title}>Work Order: {id!==null?id:nullVal}</Typography>
+            <Typography variant={'h1'} className={`${classes.title} details-title`}>Work Order: {id!==null?id:nullVal}</Typography>
             <Typography variant={'body1'} className={classes.description}>{description!==null?description:nullVal}</Typography>                    
         </Grid>
     )
