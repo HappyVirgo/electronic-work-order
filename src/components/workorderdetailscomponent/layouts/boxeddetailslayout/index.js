@@ -56,7 +56,7 @@ export const BoxedDetails = ({currentEta, serviceProvider, proposalStatus, nullV
                 <Grid item xs={6}>
                     <Typography className={classes.text}><strong>Proposal Status: </strong></Typography>                    
                 </Grid>
-                <Grid container xs={6}>
+                <Grid container item xs={6}>
                     <Grid item xs={6}>
                         <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
                     </Grid>
@@ -69,7 +69,7 @@ export const BoxedDetails = ({currentEta, serviceProvider, proposalStatus, nullV
                 <Grid item xs={6}>
                     <Typography className={classes.text}><strong>Invoice Status: </strong></Typography>                    
                 </Grid>
-                <Grid container xs={6}>
+                <Grid container item xs={6}>
                     <Grid item xs={6}>
                         <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
                     </Grid>

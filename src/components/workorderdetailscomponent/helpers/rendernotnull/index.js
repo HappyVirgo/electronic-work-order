@@ -92,11 +92,11 @@ export const RenderNotNull = ({detailsdata}) => {
         categoryType = detailsdata.data.work_order.categoryType!==null?detailsdata.data.work_order.categoryType.name:nullVal;
         nte = detailsdata.data.work_order.nte!==null?detailsdata.data.work_order.nte:nullVal;
         if(detailsdata.data.work_order.proposal!==null){
-            let pre_proposalStatus = detailsdata.data.work_order.proposal
-            proposalStatus = pre_proposalStatus!==null?detailsdata.data.work_order.proposal.title:nullVal;
+            let pre_proposalStatus = detailsdata.data.work_order.proposal.proposalStatus
+            proposalStatus = pre_proposalStatus!==null?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
         }         
         //Bordered Section
-        serviceProvider = detailsdata.data.work_order.serviceProviderId!==null?detailsdata.data.work_order.priority.serviceProviderId:nullVal;
+        serviceProvider = detailsdata.data.work_order.serviceProviderId!==null?detailsdata.data.work_order.serviceProviderId:nullVal;
         currentEta = detailsdata.data.work_order.currentEta!==null?detailsdata.data.work_order.currentEta:nullVal;
         //Location Section
         locationAddress = detailsdata.data.work_order.location!==null?detailsdata.data.work_order.location.address1:nullVal;

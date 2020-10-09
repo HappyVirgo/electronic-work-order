@@ -179,7 +179,6 @@ class WorkOrdersBuilder extends Component {
                         </Grid>        
                         <Grid item xs={12} md={12} lg={5}>
                             <WorkOrderDetailsComponent detailsdata={detailsdata}></WorkOrderDetailsComponent>
-                            <ModalComponent></ModalComponent>
                         </Grid>  
                     </Grid>  
                 </div>  
