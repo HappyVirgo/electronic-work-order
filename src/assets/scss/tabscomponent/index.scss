@@ -4,6 +4,7 @@
 .common-table.component {
     width: 100%;
 }
+
 .tab-panel {
     div {
         padding: 0px !important;
@@ -16,10 +17,22 @@
         color: #909DA8;
         line-height: 20px !important;
         height: 20px !important;
-        margin-top: 10px;
+        margin: 10px 0px 10px 0px;
         font-size: 12px;
     }
     :first-child {
         padding-left: 10px !important;
     }
+}
+
+@media only screen and (max-width: 500px) { 
+    .tab-list{
+        >div>div{
+            display: grid;
+            button {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    }    
 }

@@ -100,21 +100,21 @@ return (
 //Set render structure for multi-item column
 const renderMultiItem = ({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId}) => {
     return (
-        <div id={getWorkOrderId}>
-        <strong>{getExtraKey!==false?checkItem:item[getDataKey]}</strong><br/>
-        <span><small>Service Provider: <b>{item[getServiceProvider_index][getServiceProvider]}</b></small></span><br/>
-        <span><small>Work Orders: <b>{item[getWorkOrderId]}</b></small></span>
-        </div>
+        <TableCell id={getWorkOrderId}>
+            <strong>{getExtraKey!==false?checkItem:item[getDataKey]}</strong><br/>
+            <span><small>Service Provider: <b>{item[getServiceProvider_index][getServiceProvider]}</b></small></span><br/>
+            <span><small>Work Orders: <b>{item[getWorkOrderId]}</b></small></span>
+        </TableCell>
     );
 }
 ///Set render structure for single-item column
 const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, getWorkOrderId}) => {
     return (
-        <div id={getWorkOrderId}>
+        <TableCell id={getWorkOrderId}>
             <span>
             {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
-        </div>
+        </TableCell>
     );
 }
 
