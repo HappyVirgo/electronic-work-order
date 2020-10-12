@@ -119,7 +119,7 @@ const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, getWorkOrde
 }
 
 //Row Size
-const ROW_SIZE = 45;
+const ROW_SIZE = 45
 
 //Building rows
 const Row = ({ index, style, data: { columns, items, classes } }) => {
@@ -135,6 +135,21 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
             let getServiceProvider_index = column.serviceprovider_index
             let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
+            //Notes Tab
+            /*
+            let getDataKeyWo = column.dataKey_wo
+            let getDataKeyWoDate =column.dataKey_wo_date
+            let getDataKeyWoUser = column.dataKey_wo_user
+            let getDataKeyWoCompany = column.dataKey_wo_company
+            let getDataKeyPrps = column.dataKey_prps
+            let getDataKeyPrpsDate= column.dataKey_prps_date
+            let getDataKeyPrpsUser = column.dataKey_prps_user
+            let getDataKeyPrpsCompany = column.dataKey_prps_company
+            let getDataKeyInvs = column.dataKey_invs
+            let getDataKeyInvsDate = column.dataKey_invs_date
+            let getDataKeyInvsUser = column.dataKey_invs_user
+            let getDataKeyInvsCompany = column.dataKey_invs_company  
+            */          
             //Check if object value are null and avoid broken loops  
             checkItem = item[getDataKey]===null?checkItem="null":item[getDataKey][getExtraKey]
             return (
@@ -253,6 +268,28 @@ let columnsAttachments = [
     } 
 ];
 
+/*
+let columnsNotes = [ 
+    {
+        label: "",
+        dataKey_wo: "wonNote",
+        dataKey_wo_date: "createdAt",
+        dataKey_wo_user: "user",
+        dataKey_wo_company: "companyName",
+        dataKey_prps: "pnote",
+        dataKey_prps_date: "createdAt",
+        dataKey_prps_user: "user",
+        dataKey_prps_company: "companyName",
+        dataKey_invs: "invNote",
+        dataKey_invs_date: "createdAt",
+        dataKey_invs_user: "user",
+        dataKey_invs_company: "companyName",                
+        extraKey: false,
+        numeric: false,
+        getMultiItem: true
+    }
+];
+*/
 let columnsNotes = [
     {
         label: "WO Note ID",

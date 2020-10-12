@@ -15,3 +15,8 @@ body {
 .MuiAvatar-root {
   border-radius: 8px !important;
 }
+.Mui-selected {
+  background-color: $basic-blue;
+  border: 4px solid $basic-blue;
+  color: #FFF !important;
+}

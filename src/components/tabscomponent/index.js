@@ -69,11 +69,11 @@ const TabsComponent = ({history, attachments, notes}) => {
     historyCount = historyCount.length
     let attachmentsCount = history!==undefined?attachments.data.documents:null
     attachmentsCount = attachmentsCount.length
-    let notesCount = history!==undefined?notes.data.workOrderNotes:null
-    notesCount = notesCount.length
+    let notesCount_Workorders = history!==undefined?notes.data.workOrderNotes:null
+    let notesCount_Proposal = history!==undefined?notes.data.proposalNotes:null
+    let notesCount_Invoices = history!==undefined?notes.data.invoiceNotes:null
+    let notesCount = notesCount_Workorders.length + notesCount_Proposal.length + notesCount_Invoices.length
 
-    //attachments.data
-    //notes.data
     //Loading custom styles Material UI
     const classes = useStyles();
     //Setting values for the tabs
@@ -87,7 +87,7 @@ const TabsComponent = ({history, attachments, notes}) => {
     return (
         <div className={`${classes.root} work-order-details-component`}>
                 <AppBar position="static" className={classes.tabNav}>
-                    <Tabs value={value} onChange={handleChange} aria-label="tabs">
+                    <Tabs value={value} onChange={handleChange} aria-label="tabs" TabIndicatorProps={{style: {background:'#0072CE'}}}>
                         <Tab label={`History (${historyCount})`} {...a11yProps(0)} className={classes.tabParent} />
                         <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
                         <Tab label={`Notes (${notesCount})`} {...a11yProps(2)}  className={classes.tabParent}/>
