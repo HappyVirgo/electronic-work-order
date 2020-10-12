@@ -119,7 +119,7 @@ const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, getWorkOrde
 }
 
 //Row Size
-const ROW_SIZE = 45
+const ROW_SIZE = 25
 
 //Building rows
 const Row = ({ index, style, data: { columns, items, classes } }) => {
