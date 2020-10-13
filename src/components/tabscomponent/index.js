@@ -65,14 +65,20 @@ const a11yProps = (index) => {
 }
 
 const TabsComponent = ({history, attachments, notes}) => { 
-    let historyCount = history!==undefined?history.data.work_order_histories:null
+    let historyCount = history?history.data.work_order_histories:[]
     historyCount = historyCount.length
-    let attachmentsCount = history!==undefined?attachments.data.documents:null
+
+    let attachmentsCount = attachments?attachments.data.documents:[]
     attachmentsCount = attachmentsCount.length
-    let notesCount_Workorders = history!==undefined?notes.data.workOrderNotes:null
-    let notesCount_Proposal = history!==undefined?notes.data.proposalNotes:null
-    let notesCount_Invoices = history!==undefined?notes.data.invoiceNotes:null
-    let notesCount = notesCount_Workorders.length + notesCount_Proposal.length + notesCount_Invoices.length
+
+    let notesCount_Workorders = notes?notes.workOrderNotes:[]
+    notesCount_Workorders = notesCount_Workorders?notesCount_Workorders.length:0
+    let notesCount_Proposal = notes?notes.proposalNotes:[]
+    notesCount_Proposal = notesCount_Proposal?notesCount_Proposal.length:0
+    let notesCount_Invoices = notes?notes.invoiceNotes:[]
+    notesCount_Invoices = notesCount_Invoices?notesCount_Invoices.length:0
+    
+    let notesCount = notesCount_Workorders + notesCount_Proposal + notesCount_Invoices
 
     //Loading custom styles Material UI
     const classes = useStyles();
@@ -90,7 +96,7 @@ const TabsComponent = ({history, attachments, notes}) => {
                     <Tabs value={value} onChange={handleChange} aria-label="tabs" className={'tab-list'} TabIndicatorProps={{style: {background:'#0072CE'}}}>
                         <Tab label={`Notes (${notesCount})`} {...a11yProps(0)}  className={classes.tabParent}/>
                         <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
-                        <Tab label={`History (${historyCount})`} {...a11yProps(2)} className={classes.tabParent} />
+                        <Tab label={`History (${historyCount})`} {...a11yProps(0)} className={classes.tabParent} />
                     </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0} className={'tab-panel'}>

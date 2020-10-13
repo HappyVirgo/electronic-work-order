@@ -1,7 +1,7 @@
 /**
  * Description: Create Data Table Component
  * Author: Carlos Blanco
- * Created: 9/2/2020
+ * Created: 9/|/2020
  * Ticket: ET-249
  */
 
@@ -98,12 +98,26 @@ return (
 * */
 
 //Set render structure for multi-item column
-const renderMultiItem = ({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId}) => {
+const renderMultiItem = ({
+    getDataKeyWo,
+    getDataKeyWoDate,
+    getDataKeyWoUser,
+    getDataKeyWoCompany,
+    getDataKeyPrps,
+    getDataKeyPrpsDate,
+    getDataKeyPrpsUser,
+    getDataKeyPrpsCompany,
+    getDataKeyInvs,
+    getDataKeyInvsDate,
+    getDataKeyInvsUser,
+    item,
+}) => {
+    
     return (
-        <TableCell id={getWorkOrderId}>
-            <strong>{getExtraKey!==false?checkItem:item[getDataKey]}</strong><br/>
-            <span><small>Service Provider: <b>{item[getServiceProvider_index][getServiceProvider]}</b></small></span><br/>
-            <span><small>Work Orders: <b>{item[getWorkOrderId]}</b></small></span>
+        <TableCell id={getDataKeyWo}>
+            <strong>{item[getDataKeyWo]}</strong><br/>
+            <span>{item[getDataKeyWoDate]}</span><br/>
+            <span>{item[getDataKeyWoUser][getDataKeyWoCompany]}</span>
         </TableCell>
     );
 }
@@ -119,7 +133,7 @@ const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, getWorkOrde
 }
 
 //Row Size
-const ROW_SIZE = 25
+const ROW_SIZE = 50
 
 //Building rows
 const Row = ({ index, style, data: { columns, items, classes } }) => {
@@ -136,7 +150,6 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
             let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
             //Notes Tab
-            /*
             let getDataKeyWo = column.dataKey_wo
             let getDataKeyWoDate =column.dataKey_wo_date
             let getDataKeyWoUser = column.dataKey_wo_user
@@ -148,13 +161,17 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
             let getDataKeyInvs = column.dataKey_invs
             let getDataKeyInvsDate = column.dataKey_invs_date
             let getDataKeyInvsUser = column.dataKey_invs_user
-            let getDataKeyInvsCompany = column.dataKey_invs_company  
-            */          
-            //Check if object value are null and avoid broken loops  
-            checkItem = item[getDataKey]===null?checkItem="null":item[getDataKey][getExtraKey]
+            let getDataKeyInvsCompany = column.dataKey_invs_company          
+            //Check if object value are null and avoid broken loops 
+            /*console.log(item[getDataKey])
+            checkItem = item[getDataKey]===null?checkItem=null:item[getDataKey]
+            checkItem = checkItem===null?checkItem="null":item[getDataKey][getExtraKey]
+            */
+            let index = item['wonId']?(item['pnId']?(item['invId']?item['invId']:null):item['pnId']):item['wonId']
+
             return (
                 <TableCell
-                    key={item['workOrderId'] + colIndex}
+                    key={index + colIndex}
                     tag="div"
                     component="div"
                     variant="body"
@@ -168,7 +185,29 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
                         height: ROW_SIZE
                     }}
                 >
-                {getMultiItem===true?renderMultiItem({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId}):renderSingleItem({getExtraKey, getDataKey, checkItem, item, getWorkOrderId})}
+                {getMultiItem===true?renderMultiItem({
+                    getDataKeyWo,
+                    getDataKeyWoDate,
+                    getDataKeyWoUser,
+                    getDataKeyWoCompany,
+                    getDataKeyPrps,
+                    getDataKeyPrpsDate,
+                    getDataKeyPrpsUser,
+                    getDataKeyPrpsCompany,
+                    getDataKeyInvs,
+                    getDataKeyInvsDate,
+                    getDataKeyInvsUser,
+                    getDataKeyInvsCompany,
+                    item,
+                    getServiceProvider,
+                    getServiceProvider_index,
+                }):renderSingleItem({
+                    getExtraKey,
+                    getDataKey,
+                    checkItem,
+                    item,
+                    getWorkOrderId
+                })}
                 </TableCell>
             );
             })}
@@ -177,7 +216,7 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
 };
 
 //Setting index as key to avoid weird behaviours on array mapping
-const itemKey = (index, data) => data.items[index].workOrderId;
+const itemKey = (index, data) => data.items[index];
 
 //Creating item to map and memoize the data to improve performance
 const createItemData = memoize((classes, columns, data) => ({
@@ -270,7 +309,7 @@ let columnsAttachments = [
     } 
 ];
 
-/*
+
 let columnsNotes = [ 
     {
         label: "",
@@ -285,32 +324,13 @@ let columnsNotes = [
         dataKey_invs: "invNote",
         dataKey_invs_date: "createdAt",
         dataKey_invs_user: "user",
-        dataKey_invs_company: "companyName",                
+        dataKey_invs_company: "companyName",  
+        dataKey: null,                     
         extraKey: false,
         numeric: false,
-        getMultiItem: true
+        multi_item: true,
+
     }
-];
-*/
-let columnsNotes = [
-    {
-        label: "WO Note ID",
-        dataKey: "wonId",
-        extraKey: false,
-        numeric: false,
-    },   
-    {
-        label: "columnsNotes",
-        dataKey: "wonNote",
-        extraKey: false,
-        numeric: false,
-    },
-    {
-        label: "Company Name",
-        dataKey: "user",
-        extraKey: "companyName",
-        numeric: false,
-    } 
 ];
 
 //First Data to dsiplay
@@ -350,18 +370,27 @@ const CommonTable = ({tmpdata}) => {
     useEffect(() => {
     //Updates data from state
     if(tmpdata!==undefined){
-        let tabId
-        if (tmpdata.data.work_order_histories!==undefined) {
-            tabId="work_order_histories"
-            columns = columnsHistory
-        } else if(tmpdata.data.documents!==undefined)         {
-            tabId="documents"
-            columns = columnsAttachments
-        } else {
-            tabId="workOrderNotes"
-            columns = columnsNotes
-        }       
-        setData(tmpdata.data[tabId]) 
+            console.log(tmpdata)
+            let dataSetup
+            if (tmpdata.data.work_order_histories!==undefined) {
+                dataSetup = tmpdata.data['work_order_histories']
+                columns = columnsHistory
+            } else if(tmpdata.data.documents!==undefined) {
+                dataSetup = tmpdata.data['documents']
+                columns = columnsAttachments
+            } else {
+                let wo_notes
+                wo_notes = !tmpdata.data['workOrderNotes']?wo_notes=[]:tmpdata.data['workOrderNotes']
+                let prp_notes
+                prp_notes = !tmpdata.data['proposalNotes']?prp_notes=[]:tmpdata.data['proposalNotes']
+                let inv_notes = tmpdata.data['invoiceNotes']
+                inv_notes = !tmpdata.data['invoiceNotes']?inv_notes=[]:tmpdata.data['invoiceNotes']
+                let pre_notes = wo_notes.concat(prp_notes)
+                let notes = pre_notes.concat(inv_notes)
+                dataSetup = notes
+                columns = columnsNotes
+            }       
+            setData(dataSetup) 
         }
         
     }, [tmpdata]);

@@ -61,7 +61,7 @@ export const EnhancedDetails = ({status, priority, tradeType, problemType, categ
             statusDisplay = <span className="proposal-approved-badge">Proposal Approved</span>
             break;
         case "RETURN_VISIT_REQUIRED":
-            statusDisplay = <span className="return-visit-required-badge">Return Visit Required</span>
+            statusDisplay = <span className="return-visit-requiered-badge">Return Visit Required</span>
             break;
         case "SUBMITTING_PROPOSAL":
             statusDisplay = <span className="submitting-proposal-badge">Submitting Proposal</span>

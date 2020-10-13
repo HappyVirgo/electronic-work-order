@@ -63,13 +63,13 @@ class WorkOrdersBuilder extends Component {
         token = await this.props.oauthFetchToken()
         ctadata = await this.props.fetchCTAsData()
         historydata = await this.props.fetchHistoryWOData()
-        notesdata = await this.props.fetchNotesWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
         tmpdata = await this.props.fetchEmergencyWOData()  
-        if(tmpdata.data.work_orders!==undefined){
+        if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
         }
-        detailsdata = await this.props.fetchDetailsWOData(dtlsID)
+        detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+        notesdata = await this.props.fetchNotesWOData(dtlsID, token)
         //Set details first item
         this.setState({detailsId: dtlsID})
     }
@@ -215,7 +215,7 @@ const mapDispatchToProps = dispatch => ({
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(token)),
-    fetchNotesWOData: ()=> dispatch(fetchNotesWOData(token)),
+    fetchNotesWOData: async ()=> await dispatch(fetchNotesWOData(dtlsID, token)),
     fetchAttachmentsWOData: ()=> dispatch(fetchAttachmentsWOData(token)),
 })
 
