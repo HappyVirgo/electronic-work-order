@@ -16,8 +16,22 @@ import {regularColumn} from './renderregularrowlayout'
 //Status Support
 import {
     statusPending,
+    statusAccepted,
     statusUnassigned,
-    statusAccepted
+    statusEnroute,
+    statusPendingSPAcceptance,
+    statusNotFixed,
+    statusRejected,
+    statusComplete,
+    statusArrived,
+    statusPendingParts,
+    statusProposalSubmitted,   
+    statusProposalApproved, 
+    statusReturnVisitRequired,
+    statusSubmittingProposal,
+    statusCancelled,
+    statusReassign,
+    statusProposalRejected
 } from './renderstatuslayout'
 
 //Priority Support
@@ -42,8 +56,22 @@ export {
     Row,
     regularColumn,
     statusPending,
-    statusUnassigned,
     statusAccepted,
+    statusUnassigned,
+    statusEnroute,
+    statusPendingSPAcceptance,
+    statusNotFixed,
+    statusRejected,
+    statusComplete,
+    statusArrived,
+    statusPendingParts,
+    statusProposalSubmitted,   
+    statusProposalApproved, 
+    statusReturnVisitRequired,
+    statusSubmittingProposal,
+    statusCancelled,
+    statusReassign,
+    statusProposalRejected,
     priorityL1Emergency,
     priorityL2SameDay,
     priorityL3_24Hours,

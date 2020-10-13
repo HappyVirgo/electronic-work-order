@@ -154,18 +154,19 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
             checkItem = item[getDataKey]===null?checkItem="null":item[getDataKey][getExtraKey]
             return (
                 <TableCell
-                key={item.id + colIndex}
-                component="div"
-                variant="body"
-                align={column.numeric || false ? "right" : "left"}
-                className={clsx(
-                    classes.cell,
-                    !column.width && classes.expandingCell
-                )}
-                style={{
-                    flexBasis: column.width || false,
-                    height: ROW_SIZE
-                }}
+                    key={item['workOrderId'] + colIndex}
+                    tag="div"
+                    component="div"
+                    variant="body"
+                    align={column.numeric || false ? "right" : "left"}
+                    className={clsx(
+                        classes.cell,
+                        !column.width && classes.expandingCell
+                    )}
+                    style={{
+                        flexBasis: column.width || false,
+                        height: ROW_SIZE
+                    }}
                 >
                 {getMultiItem===true?renderMultiItem({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId}):renderSingleItem({getExtraKey, getDataKey, checkItem, item, getWorkOrderId})}
                 </TableCell>
@@ -197,17 +198,18 @@ const ReactWindowTable = ({ data, columns }) => {
                 <TableColumns classes={classes} columns={columns} />
             </TableHead>
 
-            <TableBody component="div" className={classes.tbody}>
+            <TableBody component="div" tag="div" className={classes.tbody}>
                 <AutoSizer>
                 {({ height, width }) => (
                     <List
-                    className={classes.list}
-                    height={height}
-                    width={width}
-                    itemCount={data.length}
-                    itemSize={ROW_SIZE}
-                    itemKey={itemKey}
-                    itemData={itemData}
+                        tag="div"
+                        className={classes.list}
+                        height={height}
+                        width={width}
+                        itemCount={data.length}
+                        itemSize={ROW_SIZE}
+                        itemKey={itemKey}
+                        itemData={itemData}
                     >
                     {Row}
                     </List>
