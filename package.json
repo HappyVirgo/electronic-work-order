@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.1.2",
     "aws-amplify": "^3.0.23",
     "client-oauth2": "^4.3.3",
+    "excerpt-html": "^1.2.1",
     "file-loader": "^6.1.0",
     "material-ui-filter": "^3.1.3",
     "memoize-one": "^5.1.1",

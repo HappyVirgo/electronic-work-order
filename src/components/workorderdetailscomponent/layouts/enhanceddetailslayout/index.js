@@ -22,61 +22,61 @@ export const EnhancedDetails = ({status, priority, tradeType, problemType, categ
     let priorityDisplay
     switch (status) {
         case "PENDING":
-            statusDisplay = <span className="orange-badge">Pending</span>
+            statusDisplay = <span className="peding-badge">Pending</span>
             break;
         case "PENDING_SP_ACCEPTANCE":
-            statusDisplay = <span className="orange-badge">Pending SP Acceptance</span>
+            statusDisplay = <span className="peding-sp-acceptance-badge">Pending SP Acceptance</span>
             break;
         case "PENDING_ACCEPTANCE":
-            statusDisplay = <span className="orange-badge">Pending SP Acceptance</span>
+            statusDisplay = <span className="pending-badge">Pending SP Acceptance</span>
             break;            
         case "ACCEPTED":
-            statusDisplay = <span className="green-badge">Accepted</span>
+            statusDisplay = <span className="accepted-badge">Accepted</span>
             break;
         case "UNASSIGNED":
-            statusDisplay = <span className="red-badge">UnAssigned</span>
+            statusDisplay = <span className="unassigned-badge">UnAssigned</span>
             break;
         case "NOT_FIXED":
-            statusDisplay = <span className="red-badge">Not Fixed</span>
+            statusDisplay = <span className="not-fixed-badge">Not Fixed</span>
             break;
         case "REJECTED":
-            statusDisplay = <span className="red-badge">Rejected</span>
+            statusDisplay = <span className="rejected-badge">Rejected</span>
             break;
         case "COMPLETE":
-            statusDisplay = <span className="green-badge">Complete</span>
+            statusDisplay = <span className="complete-badge">Complete</span>
             break;
         case "ENROUTE":
-            statusDisplay = <span className="orange-badge">EnRoute</span>
+            statusDisplay = <span className="enroute-badge">EnRoute</span>
             break;
         case "ARRIVED":
-            statusDisplay = <span className="green-badge">Arrived</span>
+            statusDisplay = <span className="arrived-badge">Arrived</span>
             break;
         case "PENDING_PARTS":
-            statusDisplay = <span className="orange-badge">Pending Parts</span>
+            statusDisplay = <span className="pending-parts-badge">Pending Parts</span>
             break;
         case "PROPOSAL_SUBMITTED":
-            statusDisplay = <span className="orange-badge">Proposal Submitted</span>
+            statusDisplay = <span className="proposal-submitted-badge">Proposal Submitted</span>
             break;
         case "PROPOSAL_APPROVED":
-            statusDisplay = <span className="green-badge">Proposal Approved</span>
+            statusDisplay = <span className="proposal-approved-badge">Proposal Approved</span>
             break;
         case "RETURN_VISIT_REQUIRED":
-            statusDisplay = <span className="orange-badge">Return Visit Required</span>
+            statusDisplay = <span className="return-visit-required-badge">Return Visit Required</span>
             break;
         case "SUBMITTING_PROPOSAL":
-            statusDisplay = <span className="orange-badge">Submitting Proposal</span>
+            statusDisplay = <span className="submitting-proposal-badge">Submitting Proposal</span>
             break;
         case "CANCELLED":
-            statusDisplay = <span className="red-badge">Cancelled</span>
+            statusDisplay = <span className="complete-badge">Cancelled</span>
             break;
         case "REASSIGN":
-            statusDisplay = <span className="orange-badge">ReAssign</span>
+            statusDisplay = <span className="reassign-badge">ReAssign</span>
             break;
         case "PROPOSAL_REJECTED":
-            statusDisplay = <span className="red-badge">Proposal Rejected</span>
+            statusDisplay = <span className="proposal-rejected-badge">Proposal Rejected</span>
             break;
         default:
-            statusDisplay = <span className="gray-badge">{status}</span>
+            statusDisplay = <span className="complete-badge">{status}</span>
                 break;            
     }
     switch (priority) {
