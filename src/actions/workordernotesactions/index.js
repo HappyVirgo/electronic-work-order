@@ -12,11 +12,18 @@ export const receiveNotesWOData = (data) => {
     return {type: types.RECEIVE_NOTES_DATA, data: data};
 }
 
-export const fetchNotesWOData =  async (token) => {
+export const fetchNotesWOData =  async (dtlsID, token) => {
+    const notesURL = "/note/aggregate"
     const accessFetchToken = (tk) => {
         return tk.data
     }  
+    const accessDtlId = (id) => {
+        return id
+    }       
     let accessToken = await accessFetchToken(token)
+    let idDtls = "14059"
+    //await accessDtlId(dtlsID)
+
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,
@@ -24,7 +31,7 @@ export const fetchNotesWOData =  async (token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiNotesWO, init)
+        return fetch(apiNotesWO+idDtls+notesURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveNotesWOData(json)));
     }  
