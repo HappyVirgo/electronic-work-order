@@ -12,6 +12,20 @@ import {
     statusPending,
     statusAccepted,
     statusUnassigned,
+    statusEnroute,
+    statusPendingSPAcceptance,
+    statusNotFixed,
+    statusRejected,
+    statusComplete,
+    statusArrived,
+    statusPendingParts,
+    statusProposalSubmitted,   
+    statusProposalApproved, 
+    statusReturnVisitRequired,
+    statusSubmittingProposal,
+    statusCancelled,
+    statusReassign,
+    statusProposalRejected,
     //Priority
     priorityL1Emergency,
     priorityL2SameDay,
@@ -38,7 +52,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Pending SP Acceptance":
-            data = statusPending({
+            data = statusPendingSPAcceptance({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -65,7 +79,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Not Fixed":
-            data = statusUnassigned({
+            data = statusNotFixed({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -74,7 +88,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Rejected":
-            data = statusUnassigned({
+            data = statusRejected({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -83,7 +97,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Complete":
-            data = statusAccepted({
+            data = statusComplete({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -92,7 +106,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "EnRoute":
-            data = statusPending({
+            data = statusEnroute({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -101,7 +115,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Arrived":
-            data = statusAccepted({
+            data = statusArrived({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -110,7 +124,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Pending Parts":
-            data = statusPending({
+            data = statusPendingParts({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -119,7 +133,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Proposal Submitted":
-            data = statusAccepted({
+            data = statusProposalSubmitted({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -128,7 +142,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Proposal Approved":
-            data = statusAccepted({
+            data = statusProposalApproved({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -137,7 +151,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Return Visit Required":
-            data = statusUnassigned({
+            data = statusReturnVisitRequired({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -146,7 +160,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Submitting Proposal":
-            data = statusPending({
+            data = statusSubmittingProposal({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -155,7 +169,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Cancelled":
-            data = statusUnassigned({
+            data = statusCancelled({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -164,7 +178,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "ReAssign":
-            data = statusUnassigned({
+            data = statusReassign({
                 getExtraKey,
                 getDataKey,
                 checkItem,
@@ -173,7 +187,7 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
             })
             break;
         case "Proposal Rejected":
-            data = statusUnassigned({
+            data = statusProposalRejected({
                 getExtraKey,
                 getDataKey,
                 checkItem,

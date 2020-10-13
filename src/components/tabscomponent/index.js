@@ -87,7 +87,7 @@ const TabsComponent = ({history, attachments, notes}) => {
     return (
         <div className={`${classes.root} work-order-details-component`}>
                 <AppBar position="static" className={classes.tabNav}>
-                    <Tabs value={value} onChange={handleChange} aria-label="tabs" className={'tab-list'}TabIndicatorProps={{style: {background:'#0072CE'}}}>
+                    <Tabs value={value} onChange={handleChange} aria-label="tabs" className={'tab-list'} TabIndicatorProps={{style: {background:'#0072CE'}}}>
                         <Tab label={`History (${historyCount})`} {...a11yProps(0)} className={classes.tabParent} />
                         <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
                         <Tab label={`Notes (${notesCount})`} {...a11yProps(2)}  className={classes.tabParent}/>

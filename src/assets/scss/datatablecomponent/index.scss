@@ -39,72 +39,167 @@
 }
 
 //Status
-.pending-status {
-    span {
-        font-family: $font-family;
-        font-weight: 700;
-        color: $orange-color;
-        padding-left: 5px;
-        font-size: 16px;
-
-    }
-    &::before{
-        content: "";
-        -webkit-mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTAgNTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGQ9Ik0yNS40NCw0NC43OWMtMTEuMDMsMC0yMC04Ljk3LTIwLTIwczguOTctMjAsMjAtMjBzMjAsOC45NywyMCwyMFMzNi40Nyw0NC43OSwyNS40NCw0NC43OXogTTI1LjQ0LDE3LjY2DQoJCWMtMy45MywwLTcuMTMsMy4yLTcuMTMsNy4xM3MzLjIsNy4xMyw3LjEzLDcuMTNzNy4xMy0zLjIsNy4xMy03LjEzUzI5LjM4LDE3LjY2LDI1LjQ0LDE3LjY2eiIvPg0KPC9nPg0KPC9zdmc+DQo=') no-repeat 50% 50%;
-        mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTAgNTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGQ9Ik0yNS40NCw0NC43OWMtMTEuMDMsMC0yMC04Ljk3LTIwLTIwczguOTctMjAsMjAtMjBzMjAsOC45NywyMCwyMFMzNi40Nyw0NC43OSwyNS40NCw0NC43OXogTTI1LjQ0LDE3LjY2DQoJCWMtMy45MywwLTcuMTMsMy4yLTcuMTMsNy4xM3MzLjIsNy4xMyw3LjEzLDcuMTNzNy4xMy0zLjIsNy4xMy03LjEzUzI5LjM4LDE3LjY2LDI1LjQ0LDE3LjY2eiIvPg0KPC9nPg0KPC9zdmc+DQo=') no-repeat 50% 50%;    
-        background-color: $orange-color;     
-        display:block;
-        width: 15px;
-        height: 15px;
-        margin-top:3px;
-        float: left;        
-    }
-
-}
-
 .accepted-status {
     span {
-        font-family: $font-family;
-        font-weight: 700;
-        color: $green-color;
-        padding-left: 5px;
-        font-size: 16px;
-
+        @include status-text;
+        color: $accepted;
     }
     &::before{
-        content: "";
-        -webkit-mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTAgNTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGQ9Ik0yNS40NCw0NC43OWMtMTEuMDMsMC0yMC04Ljk3LTIwLTIwczguOTctMjAsMjAtMjBzMjAsOC45NywyMCwyMFMzNi40Nyw0NC43OSwyNS40NCw0NC43OXogTTI1LjQ0LDE3LjY2DQoJCWMtMy45MywwLTcuMTMsMy4yLTcuMTMsNy4xM3MzLjIsNy4xMyw3LjEzLDcuMTNzNy4xMy0zLjIsNy4xMy03LjEzUzI5LjM4LDE3LjY2LDI1LjQ0LDE3LjY2eiIvPg0KPC9nPg0KPC9zdmc+DQo=') no-repeat 50% 50%;
-        mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTAgNTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGQ9Ik0yNS40NCw0NC43OWMtMTEuMDMsMC0yMC04Ljk3LTIwLTIwczguOTctMjAsMjAtMjBzMjAsOC45NywyMCwyMFMzNi40Nyw0NC43OSwyNS40NCw0NC43OXogTTI1LjQ0LDE3LjY2DQoJCWMtMy45MywwLTcuMTMsMy4yLTcuMTMsNy4xM3MzLjIsNy4xMyw3LjEzLDcuMTNzNy4xMy0zLjIsNy4xMy03LjEzUzI5LjM4LDE3LjY2LDI1LjQ0LDE3LjY2eiIvPg0KPC9nPg0KPC9zdmc+DQo=') no-repeat 50% 50%;       
-        background-color: $green-color;
-        display:block;
-        width: 15px;
-        height: 15px;
-        margin-top:3px;
-        float: left;        
+        @include status-label;  
+        background-color: $accepted; 
     }
 }
-
+.arrived-status {
+    span {
+        @include status-text;
+        color: $arrived;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $arrived; 
+    }
+}
+.proposal-approved-status {
+    span {
+        @include status-text;
+        color: $proposal-approved;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $proposal-approved; 
+    }
+}
+.proposal-submitted-status {
+    span {
+        @include status-text;
+        color: $proposal-submitted;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $proposal-submitted; 
+    }
+}
+.submitting-proposal-status {
+    span {
+        @include status-text;
+        color: $submitting-proposal;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $submitting-proposal; 
+    }
+}
+.complete-status {
+    span {
+        @include status-text;
+        color: $complete;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $complete; 
+    }
+}
+.enroute-status {
+    span {
+        @include status-text;
+        color: $enroute;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $enroute; 
+    }
+}
+.reassign-status {
+    span {
+        @include status-text;
+        color: $reassign;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $reassign; 
+    }
+}
 .unassigned-status {
     span {
-        font-family: $font-family;
-        font-weight: 700;
-        color: $magenta-color;
-        padding-left: 5px;
-        font-size: 16px;
+        @include status-text;
+        color: $unassigned;
     }
     &::before{
-        content: "";
-        -webkit-mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTAgNTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGQ9Ik0yNS40NCw0NC43OWMtMTEuMDMsMC0yMC04Ljk3LTIwLTIwczguOTctMjAsMjAtMjBzMjAsOC45NywyMCwyMFMzNi40Nyw0NC43OSwyNS40NCw0NC43OXogTTI1LjQ0LDE3LjY2DQoJCWMtMy45MywwLTcuMTMsMy4yLTcuMTMsNy4xM3MzLjIsNy4xMyw3LjEzLDcuMTNzNy4xMy0zLjIsNy4xMy03LjEzUzI5LjM4LDE3LjY2LDI1LjQ0LDE3LjY2eiIvPg0KPC9nPg0KPC9zdmc+DQo=') no-repeat 50% 50%;
-        mask: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAyNC4zLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCA1MCA1MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTAgNTA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxnPg0KCTxwYXRoIGQ9Ik0yNS40NCw0NC43OWMtMTEuMDMsMC0yMC04Ljk3LTIwLTIwczguOTctMjAsMjAtMjBzMjAsOC45NywyMCwyMFMzNi40Nyw0NC43OSwyNS40NCw0NC43OXogTTI1LjQ0LDE3LjY2DQoJCWMtMy45MywwLTcuMTMsMy4yLTcuMTMsNy4xM3MzLjIsNy4xMyw3LjEzLDcuMTNzNy4xMy0zLjIsNy4xMy03LjEzUzI5LjM4LDE3LjY2LDI1LjQ0LDE3LjY2eiIvPg0KPC9nPg0KPC9zdmc+DQo=') no-repeat 50% 50%;       
-        background-color: $magenta-color;
-        display:block;
-        width: 15px;
-        height: 15px;
-        margin-top:3px;
-        float: left;        
+        @include status-label;
+        background-color: $unassigned;  
     }
-
 }
+.not-fixed-status {
+    span {
+        @include status-text;
+        color: $not-fixed;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $not-fixed; 
+    }
+}
+.pending-status {
+    span {
+        @include status-text;
+        color: $pending;
+    }
+    &::before{
+        @include status-label;
+        background-color: $pending;      
+    }
+}
+.pending-sp-acceptance-status {
+    span {
+        @include status-text;
+        color: $pending-sp-acceptance;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $pending-sp-acceptance; 
+    }
+}
+.pending-parts-status {
+    span {
+        @include status-text;
+        color: $pending-parts;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $pending-parts; 
+    }
+}
+.rejected-status {
+    span {
+        @include status-text;
+        color: $rejected;
+    }
+    &::before{
+        @include status-label;
+        background-color: $rejected;      
+    }
+}
+.proposal-rejected-status {
+    span {
+        @include status-text;
+        color: $proposal-rejected;
+    }
+    &::before{
+        @include status-label;
+        background-color: $proposal-rejected;      
+    }
+}
+.return-visit-required-status {
+    span {
+        @include status-text;
+        color: $return-visit-required;
+    }
+    &::before{
+        @include status-label;
+        background-color: $return-visit-required;      
+    }
+}
+
 
 //Priority
 .priorityL1 {
