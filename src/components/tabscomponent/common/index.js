@@ -236,7 +236,7 @@ let columnsHistory = [
         numeric: false,
     },   
     {
-        label: "Note",
+        label: "columnsHistory",
         dataKey: "note",
         extraKey: false,
         numeric: false,
@@ -257,7 +257,7 @@ let columnsAttachments = [
         numeric: false,
     },   
     {
-        label: "Description",
+        label: "columnsAttachments",
         dataKey: "type",
         extraKey: "description",
         numeric: false,
@@ -300,7 +300,7 @@ let columnsNotes = [
         numeric: false,
     },   
     {
-        label: "Description",
+        label: "columnsNotes",
         dataKey: "wonNote",
         extraKey: false,
         numeric: false,
@@ -314,7 +314,7 @@ let columnsNotes = [
 ];
 
 //First Data to dsiplay
-let columns = columnsHistory
+let columns = columnsNotes
 
 const useStyles = makeStyles(theme => ({
     root: {

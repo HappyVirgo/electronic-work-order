@@ -88,19 +88,19 @@ const TabsComponent = ({history, attachments, notes}) => {
         <div className={`${classes.root} work-order-details-component`}>
                 <AppBar position="static" className={classes.tabNav}>
                     <Tabs value={value} onChange={handleChange} aria-label="tabs" className={'tab-list'} TabIndicatorProps={{style: {background:'#0072CE'}}}>
-                        <Tab label={`History (${historyCount})`} {...a11yProps(0)} className={classes.tabParent} />
+                        <Tab label={`Notes (${notesCount})`} {...a11yProps(0)}  className={classes.tabParent}/>
                         <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
-                        <Tab label={`Notes (${notesCount})`} {...a11yProps(2)}  className={classes.tabParent}/>
+                        <Tab label={`History (${historyCount})`} {...a11yProps(2)} className={classes.tabParent} />
                     </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0} className={'tab-panel'}>
-                    <CommonTable tmpdata={history}></CommonTable>
+                    <CommonTable tmpdata={notes}></CommonTable>
                 </TabPanel>
                 <TabPanel value={value} index={1} className={'tab-panel'}>
                     <CommonTable tmpdata={attachments}></CommonTable>
                 </TabPanel>
                 <TabPanel value={value} index={2} className={'tab-panel'}>
-                    <CommonTable tmpdata={notes}></CommonTable>
+                    <CommonTable tmpdata={history}></CommonTable>
                 </TabPanel>     
         </div>
     );
