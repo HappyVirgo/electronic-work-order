@@ -21,8 +21,7 @@ export const fetchNotesWOData =  async (dtlsID, token) => {
         return id
     }       
     let accessToken = await accessFetchToken(token)
-    let idDtls = "14059"
-    //await accessDtlId(dtlsID)
+    let idDtls = await accessDtlId(dtlsID)
 
     let init = { 
         headers: {
