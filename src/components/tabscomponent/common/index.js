@@ -10,6 +10,12 @@ import React, {useState, useEffect} from "react";
 import clsx from "clsx";
 import memoize from "memoize-one";
 
+//Excerpt 
+import excerptHtml from "excerpt-html"
+
+//Date Format
+import Moment from 'react-moment';
+
 //Windowing imports
 import { FixedSizeList as List } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
@@ -98,7 +104,7 @@ return (
 * */
 
 //Set render structure for multi-item column
-const renderMultiItem = ({
+const RenderMultiItem = ({
     getDataKeyWo,
     getDataKeyWoDate,
     getDataKeyWoUser,
@@ -110,14 +116,36 @@ const renderMultiItem = ({
     getDataKeyInvs,
     getDataKeyInvsDate,
     getDataKeyInvsUser,
+    getDataKeyInvsCompany,
     item,
 }) => {
-    
+    const classes = useStyles();
+    let id
+    let describer
+    let company
+    let date
+    if (item[getDataKeyWo]) {
+        id = getDataKeyWo
+        describer = "Work Order Note"
+        company = item[getDataKeyWoUser][getDataKeyWoCompany]
+        date = item[getDataKeyWoDate]
+    } else if (item[getDataKeyPrps]) {
+        id = getDataKeyPrps
+        describer = "Proposal Note"
+        company = item[getDataKeyPrpsUser][getDataKeyPrpsCompany]
+        date = item[getDataKeyPrpsDate]
+    } else {
+        id = getDataKeyInvs
+        describer = "Invoice Note"
+        company = item[getDataKeyInvsUser][getDataKeyInvsCompany]
+        date = item[getDataKeyInvsDate]
+    }
     return (
-        <TableCell id={getDataKeyWo}>
-            <strong>{item[getDataKeyWo]}</strong><br/>
-            <span>{item[getDataKeyWoDate]}</span><br/>
-            <span>{item[getDataKeyWoUser][getDataKeyWoCompany]}</span>
+        <TableCell id={item[id]}>
+            <strong className={classes.rowTitle}>{describer} - <Moment format="MMMM D, YYYY hh:mm a">{date}</Moment> / {company}</strong><br/>
+            <span>{excerptHtml(item[id], {
+                pruneLength: 80, // Amount of characters that the excerpt should contain
+            })}</span>
         </TableCell>
     );
 }
@@ -185,23 +213,21 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
                         height: ROW_SIZE
                     }}
                 >
-                {getMultiItem===true?renderMultiItem({
-                    getDataKeyWo,
-                    getDataKeyWoDate,
-                    getDataKeyWoUser,
-                    getDataKeyWoCompany,
-                    getDataKeyPrps,
-                    getDataKeyPrpsDate,
-                    getDataKeyPrpsUser,
-                    getDataKeyPrpsCompany,
-                    getDataKeyInvs,
-                    getDataKeyInvsDate,
-                    getDataKeyInvsUser,
-                    getDataKeyInvsCompany,
-                    item,
-                    getServiceProvider,
-                    getServiceProvider_index,
-                }):renderSingleItem({
+                {getMultiItem===true?<RenderMultiItem
+                    getDataKeyWo={getDataKeyWo}
+                    getDataKeyWoDate={getDataKeyWoDate}
+                    getDataKeyWoUser={getDataKeyWoUser}
+                    getDataKeyWoCompany={getDataKeyWoCompany}
+                    getDataKeyPrps={getDataKeyPrps}
+                    getDataKeyPrpsDate={getDataKeyPrpsDate}
+                    getDataKeyPrpsUser={getDataKeyPrpsUser}
+                    getDataKeyPrpsCompany={getDataKeyPrpsCompany}
+                    getDataKeyInvs={getDataKeyInvs}
+                    getDataKeyInvsDate={getDataKeyInvsDate}
+                    getDataKeyInvsUser={getDataKeyInvsUser}
+                    getDataKeyInvsCompany={getDataKeyInvsCompany}
+                    item={item}
+                />:renderSingleItem({
                     getExtraKey,
                     getDataKey,
                     checkItem,
@@ -342,7 +368,7 @@ const useStyles = makeStyles(theme => ({
     },
     container: {
         flexGrow: 1,
-        height: 150
+        height: 180
     },
     paper: {
         height: "100%",
@@ -356,7 +382,10 @@ const useStyles = makeStyles(theme => ({
     },
     spacer: {
         flex: "1 1 100%"
-    }            
+    },
+    rowTitle: {
+        color: "#0072CE"
+    }
 }));
 
 const CommonTable = ({tmpdata}) => {
