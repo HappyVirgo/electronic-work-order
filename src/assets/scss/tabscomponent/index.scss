@@ -9,14 +9,24 @@
         padding: 0px !important;
     }
 }
+.data-tab-row-notes {
+    div {
+        display: none !important;
+    }
+}
+#simple-tabpanel-0 {
+    margin-top: 10px;
+    border: 1px solid #cccccc;
+    padding: 10px;
+}
 .data-tab-row {
-    div{
+    margin: 10px 0px 10px 0px;    
+    div {
         background-color: #f8f8f8;
         font-weight: 700;
         color: #909DA8;
         line-height: 20px !important;
         height: 20px !important;
-        margin: 10px 0px 10px 0px;
         font-size: 12px;
     }
     :first-child {

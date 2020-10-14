@@ -67,9 +67,10 @@ const useTableStyles = makeStyles(theme => ({
     column: {}
 }));
 
-const TableColumns = ({ classes, columns }) => {
+const TableColumns = ({ classes, columns, infotab }) => {
+    let notesheader = infotab!==true?"data-tab-row":"data-tab-row-notes"
 return (
-    <TableRow component="div" className={`${clsx(classes.row, classes.headerRow)} data-tab-row`}>
+    <TableRow component="div" className={`${clsx(classes.row, classes.headerRow)} ${notesheader}`}>
         {columns.map((column, colIndex) => {
         return (
             <TableCell
@@ -97,12 +98,11 @@ return (
 };
 
 /**
-* Description: Check for multi-item column 
+* Description: Check for notes column
 * Author: Carlos Blanco
-* Date: 9/8/2020
-* Ticket: ET-249 
+* Date: 10/14/2020
+* Ticket: ET-352 
 * */
-
 //Set render structure for multi-item column
 const RenderMultiItem = ({
     getDataKeyWo,
@@ -118,7 +118,7 @@ const RenderMultiItem = ({
     getDataKeyInvsUser,
     getDataKeyInvsCompany,
     item,
-}) => {
+    }) => {
     const classes = useStyles();
     let id
     let describer
@@ -149,6 +149,7 @@ const RenderMultiItem = ({
         </TableCell>
     );
 }
+
 ///Set render structure for single-item column
 const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, getWorkOrderId}) => {
     return (
@@ -170,12 +171,9 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
         <TableRow component="div" className={classes.row} style={style}>
             {columns.map((column, colIndex) => {
             //Capturing data 
-            let checkItem
             let getExtraKey = column.extraKey
             let getDataKey = column.dataKey
             let getMultiItem = column.multi_item
-            let getServiceProvider_index = column.serviceprovider_index
-            let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
             //Notes Tab
             let getDataKeyWo = column.dataKey_wo
@@ -190,13 +188,8 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
             let getDataKeyInvsDate = column.dataKey_invs_date
             let getDataKeyInvsUser = column.dataKey_invs_user
             let getDataKeyInvsCompany = column.dataKey_invs_company          
-            //Check if object value are null and avoid broken loops 
-            /*console.log(item[getDataKey])
-            checkItem = item[getDataKey]===null?checkItem=null:item[getDataKey]
-            checkItem = checkItem===null?checkItem="null":item[getDataKey][getExtraKey]
-            */
+            //Index for map
             let index = item['wonId']?(item['pnId']?(item['invId']?item['invId']:null):item['pnId']):item['wonId']
-
             return (
                 <TableCell
                     key={index + colIndex}
@@ -230,7 +223,6 @@ const Row = ({ index, style, data: { columns, items, classes } }) => {
                 />:renderSingleItem({
                     getExtraKey,
                     getDataKey,
-                    checkItem,
                     item,
                     getWorkOrderId
                 })}
@@ -252,7 +244,7 @@ const createItemData = memoize((classes, columns, data) => ({
 }));
 
 //Generating Table
-const ReactWindowTable = ({ data, columns }) => {
+const ReactWindowTable = ({ data, columns, infotab }) => {
     const classes = useTableStyles();
 
     const itemData = createItemData(classes, columns, data);
@@ -260,7 +252,7 @@ const ReactWindowTable = ({ data, columns }) => {
         <div className={classes.root}>
             <Table className={classes.table} component="div">
             <TableHead component="div" className={classes.thead}>
-                <TableColumns classes={classes} columns={columns} />
+                <TableColumns classes={classes} columns={columns} infotab={infotab} />
             </TableHead>
 
             <TableBody component="div" tag="div" className={classes.tbody}>
@@ -388,7 +380,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const CommonTable = ({tmpdata}) => {
+const CommonTable = ({tmpdata, infotab}) => {
     const classes = useStyles();
 
     //Set state with data
@@ -428,7 +420,7 @@ const CommonTable = ({tmpdata}) => {
         <div className={`${classes.root} common-table-component`}>
             <Container maxWidth="lg" className={classes.container}>
                 <Paper className={classes.paper}>
-                    <ReactWindowTable data={data} columns={columns}/>
+                    <ReactWindowTable data={data} columns={columns} infotab={infotab}/>
                 </Paper>
             </Container>
         </div>
