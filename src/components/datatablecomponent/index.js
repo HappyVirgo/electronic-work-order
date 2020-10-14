@@ -67,8 +67,13 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     flexGrow: 1,
-    height: 1130,
+    height: 1160,
     paddingBottom: "10px"
+  },
+  [`@media (max-width: 1024px)`]: {
+    container: {
+      height: 600
+    }
   },
   paper: {
     height: "100%",
