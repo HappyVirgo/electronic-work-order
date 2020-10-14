@@ -65,19 +65,18 @@ const a11yProps = (index) => {
 }
 
 const TabsComponent = ({history, attachments, notes}) => { 
+
+    //Counters
     let historyCount = history?history.data.work_order_histories:[]
     historyCount = historyCount.length
-
     let attachmentsCount = attachments?attachments.data.documents:[]
     attachmentsCount = attachmentsCount.length
-
-    let notesCount_Workorders = notes?notes.workOrderNotes:[]
+    let notesCount_Workorders = notes?notes.data.workOrderNotes:[]
     notesCount_Workorders = notesCount_Workorders?notesCount_Workorders.length:0
-    let notesCount_Proposal = notes?notes.proposalNotes:[]
+    let notesCount_Proposal = notes?notes.data.proposalNotes:[]
     notesCount_Proposal = notesCount_Proposal?notesCount_Proposal.length:0
-    let notesCount_Invoices = notes?notes.invoiceNotes:[]
-    notesCount_Invoices = notesCount_Invoices?notesCount_Invoices.length:0
-    
+    let notesCount_Invoices = notes?notes.data.invoiceNotes:[]
+    notesCount_Invoices = notesCount_Invoices?notesCount_Invoices.length:0 
     let notesCount = notesCount_Workorders + notesCount_Proposal + notesCount_Invoices
 
     //Loading custom styles Material UI

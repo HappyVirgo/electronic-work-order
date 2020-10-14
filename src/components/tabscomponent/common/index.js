@@ -370,7 +370,6 @@ const CommonTable = ({tmpdata}) => {
     useEffect(() => {
     //Updates data from state
     if(tmpdata!==undefined){
-            console.log(tmpdata)
             let dataSetup
             if (tmpdata.data.work_order_histories!==undefined) {
                 dataSetup = tmpdata.data['work_order_histories']
