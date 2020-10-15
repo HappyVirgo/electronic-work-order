@@ -1,7 +1,7 @@
 /**
- * Description: Create Data Table Component
+ * Description: Create Data Table Component for tabs
  * Author: Carlos Blanco
- * Created: 9/|/2020
+ * Created: 9/9/2020
  * Ticket: ET-249
  */
 
