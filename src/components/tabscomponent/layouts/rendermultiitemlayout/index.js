@@ -65,7 +65,7 @@ export const RenderMultiItem = ({
         date = item[getDataKeyInvsDate]
     }
     return (
-        <TableCell id={item[id]}>
+        <TableCell id={item[id]} component="div">
             <strong className={classes.rowTitle}>{describer} - <Moment format="MMMM D, YYYY hh:mm a">{date}</Moment> / {company}</strong><br/>
             <span>{excerptHtml(item[id], {
                 pruneLength: 80, // Amount of characters that the excerpt should contain
