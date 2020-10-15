@@ -110,8 +110,8 @@ export const EnhancedDetails = ({status, priority, tradeType, problemType, categ
     }    
     let stringToDivide = priority!==null?priority:nullVal
     let data = stringToDivide.split("-")    
-    const titleSize = "5"
-    const descSize = "7"
+    const titleSize = 5
+    const descSize = 7
     return (
         <Grid item xs={12} md={5}>
             <Grid container>
