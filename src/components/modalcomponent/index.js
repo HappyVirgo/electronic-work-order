@@ -59,6 +59,7 @@ const ModalComponent = ({data}) => {
     let updatedDate
     let company
     let firstName
+    let lastName
     if (data['wonNote']) {
         describer = "Work Order Note"
         description = data['wonNote']
@@ -66,13 +67,15 @@ const ModalComponent = ({data}) => {
         updatedDate = data['updatedAt']
         company = data['user']['companyName']
         firstName = data['user']['firstName']
+        lastName = data['user']['lastName'] 
     } else if (data['pnote']) {
         describer = "Proposal Note"
         description = data['pnote']
         createdDate = data['createdAt']
         updatedDate = data['updatedAt']
         company = data['user']['companyName']
-        firstName = data['user']['firstName']        
+        firstName = data['user']['firstName']
+        lastName = data['user']['lastName']         
     } else {
         describer = "Invoice Note"
         description = data['invNote']
@@ -80,6 +83,7 @@ const ModalComponent = ({data}) => {
         updatedDate = data['updatedAt']
         company = data['user']['companyName']
         firstName = data['user']['firstName']        
+        lastName = data['user']['lastName'] 
     }    
 
     const body = (
@@ -89,7 +93,7 @@ const ModalComponent = ({data}) => {
                     {description}
                 </p>
                 <p><strong>Company: </strong>{company}</p>
-                <p><strong>Name: </strong>{firstName}</p>  
+                <p><strong>Name: </strong>{firstName} {lastName}</p>  
                 <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{createdDate}</Moment></p>
                 <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{updatedDate}</Moment></p>                              
         </div>
