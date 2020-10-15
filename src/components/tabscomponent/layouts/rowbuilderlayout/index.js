@@ -21,7 +21,7 @@ const ROW_SIZE = 50;
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
     return (
-        <TableRow className={classes.row} style={style}>
+        <TableRow className={classes.row} style={style} component="div">
             {columns.map((column, colIndex) => {
             //Capturing data 
             let getExtraKey = column.extraKey
@@ -45,6 +45,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             let index = item['wonId']?(item['pnId']?(item['invId']?item['invId']:null):item['pnId']):item['wonId']
             return (
                 <TableCell
+                    component="div"
                     key={index + colIndex}
                     variant="body"
                     align={column.numeric || false ? "right" : "left"}

@@ -72,15 +72,15 @@ export const ReactWindowTable = ({ data, columns, infotab }) => {
     const itemData = createItemData(classes, columns, data);
     return (
         <div className={classes.root}>
-            <Table className={classes.table}>
-            <TableHead className={classes.thead}>
+            <Table className={classes.table} component="div" >
+            <TableHead className={classes.thead} component="div" >
                 <TableColumns classes={classes} columns={columns} infotab={infotab} />
             </TableHead>
-
-            <TableBody className={classes.tbody} id="TEEEEEEEEEEESSSSSSSSSSSSSSST">
+            <TableBody component="div" className={classes.tbody}>
                 <AutoSizer>
                 {({ height, width }) => (
                     <List
+                        key={itemKey}
                         className={classes.list}
                         height={height}
                         width={width}
