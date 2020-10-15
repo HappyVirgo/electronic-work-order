@@ -24,7 +24,7 @@ import {
 } from '../../helpers'
 
 //Constants
-const ROW_SIZE = 150;
+const ROW_SIZE = 70;
 
 const useTableStyles = makeStyles(theme => ({
     root: {
@@ -69,7 +69,6 @@ const useTableStyles = makeStyles(theme => ({
 //Generating Table
 export const ReactWindowTable = ({ data, columns, infotab }) => {
     const classes = useTableStyles();
-
     const itemData = createItemData(classes, columns, data);
     return (
         <div className={classes.root}>

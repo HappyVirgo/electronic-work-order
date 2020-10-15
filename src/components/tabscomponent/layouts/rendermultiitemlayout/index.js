@@ -18,6 +18,9 @@ import TableCell from "@material-ui/core/TableCell";
 //Excerpt 
 import excerptHtml from "excerpt-html"
 
+//Modal
+import {ModalComponent} from '../../../../components'
+
 const useStyles = makeStyles(theme => ({
     rowTitle: {
         color: "#0072CE"
@@ -67,6 +70,9 @@ export const RenderMultiItem = ({
             <span>{excerptHtml(item[id], {
                 pruneLength: 80, // Amount of characters that the excerpt should contain
             })}</span>
+            <ModalComponent
+                data={item}
+            />
         </TableCell>
     );
 }

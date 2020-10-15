@@ -15,7 +15,7 @@ import Grid from '@material-ui/core/Grid';
 
 //Layouts
 import { 
-  ReactWindowTable
+    ReactWindowTable
 } from './layouts'
 
 /**
