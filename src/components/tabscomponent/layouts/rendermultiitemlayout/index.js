@@ -15,6 +15,9 @@ import Moment from 'react-moment';
 import { makeStyles } from "@material-ui/styles";
 import TableCell from "@material-ui/core/TableCell";
 
+//Excerpt 
+import excerptHtml from "excerpt-html"
+
 const useStyles = makeStyles(theme => ({
     rowTitle: {
         color: "#0072CE"
