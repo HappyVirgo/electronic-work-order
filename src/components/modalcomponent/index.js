@@ -61,7 +61,7 @@ const ModalComponent = ({data}) => {
     }    
 
     const body = (
-        <div style={modalStyle} className={classes}>
+        <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">{describer}</h2>
                 <p id="simple-modal-description">
                     {description}
