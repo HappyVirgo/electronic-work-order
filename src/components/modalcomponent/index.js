@@ -17,11 +17,6 @@ import {
     getModalStyle
 } from './helpers'
 
-//Layouts
-import { 
-    BodyLayout
-} from './layouts';
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         position: 'absolute',
@@ -42,7 +37,7 @@ const ModalComponent = ({data}) => {
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
-
+    
     const handleOpen = () => {
         setOpen(true);
     };
@@ -51,22 +46,41 @@ const ModalComponent = ({data}) => {
         setOpen(false);
     };
 
+    let describer
+    let description
+
+    if (data['wonNote']) {
+        describer = "Work Order Note"
+        description = data['wonNote']
+    } else if (data['pnote']) {
+        describer = "Proposal Note"
+        description = data['pnote']
+    } else {
+        describer = "Invoice Note"
+        description = data['invNote']
+    }    
+
     const body = (
-        <BodyLayout modalStyle={modalStyle} classes={classes.paper} data={data}/>
-    );
+        <div style={modalStyle} className={classes}>
+            <h2 id="simple-modal-title">{describer}</h2>
+                <p id="simple-modal-description">
+                    {description}
+                </p>
+        </div>
+    )
 
     return (
     <div>
         <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
-        More details
+            More details
         </Button>        
         <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
+            aria-describedby="simple-modal-description"          
         >
-        {body}
+            {body}
         </Modal>
     </div>
     );
