@@ -21,7 +21,7 @@ const ROW_SIZE = 50;
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
     return (
-        <TableRow component="div" className={classes.row} style={style}>
+        <TableRow className={classes.row} style={style}>
             {columns.map((column, colIndex) => {
             //Capturing data 
             let getExtraKey = column.extraKey
@@ -46,8 +46,6 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             return (
                 <TableCell
                     key={index + colIndex}
-                    tag="div"
-                    component="div"
                     variant="body"
                     align={column.numeric || false ? "right" : "left"}
                     className={clsx(

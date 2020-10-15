@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const BoxedDetails = ({currentEta, serviceProvider, proposalStatus, nullVal}) => {
     const classes = useStyles()
-    const smallSize = "12"
-    const mediumSize = "6"
+    const smallSize = 12
+    const mediumSize = 6
     return (
         <Grid item xs={smallSize} md={7} className={classes.etaSection}>
             <Grid container>

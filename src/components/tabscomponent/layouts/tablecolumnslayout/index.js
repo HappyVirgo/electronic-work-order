@@ -11,12 +11,11 @@ const ROW_SIZE = 70;
 export const TableColumns = ({ classes, columns, infotab }) => {
     let notesheader = infotab!==true?"data-tab-row":"data-tab-row-notes"
     return (
-    <TableRow component="div" className={`${clsx(classes.row, classes.headerRow)} ${notesheader}`}>
+    <TableRow className={`${clsx(classes.row, classes.headerRow)} ${notesheader}`}>
         {columns.map((column, colIndex) => {
         return (
             <TableCell
             key={colIndex}
-            component="div"
             variant="head"
             align={column.numeric || false ? "right" : "left"}
             className={clsx(
