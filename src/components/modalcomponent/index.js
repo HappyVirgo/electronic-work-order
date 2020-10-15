@@ -51,8 +51,6 @@ const ModalComponent = ({data}) => {
         setOpen(false);
     };
 
-    console.log(data)
-
     let describer
     let description
     let createdDate
