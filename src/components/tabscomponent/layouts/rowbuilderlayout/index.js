@@ -1,70 +1,87 @@
 //Basic imports
-import React, { useContext } from "react";
+import React from "react";
 import clsx from "clsx";
 
 //Material UI
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
-//Context
-import { DetailsContext } from "../../../../context/detailscontext";
 
 //Layouts
 import { 
-    renderMultiItem,
+    RenderMultiItem,
     renderSingleItem,
-    renderImage
 } from '../index'
 
 //Constants
-const ROW_SIZE = 140;
+const ROW_SIZE = 50;
+
 
 //Building rows
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
-    const change = useContext(DetailsContext)
     return (
-        <TableRow component="div" className={`${classes.row} datatable-row`} style={style}>
-        {columns.map((column, colIndex) => {
-            //Check for null items 
-            let checkItem
+        <TableRow component="div" className={classes.row} style={style}>
+            {columns.map((column, colIndex) => {
             //Capturing data 
             let getExtraKey = column.extraKey
             let getDataKey = column.dataKey
             let getMultiItem = column.multi_item
-            let getImage = column.image
-            let getImgPath = column.imgPath
-            let getServiceProvider_index = column.serviceprovider_index
-            let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
-            //Check if object value are null and avoid broken loops  
-            checkItem = item[getDataKey]===null?checkItem=null:item[getDataKey][getExtraKey]
+            //Notes Tab
+            let getDataKeyWo = column.dataKey_wo
+            let getDataKeyWoDate =column.dataKey_wo_date
+            let getDataKeyWoUser = column.dataKey_wo_user
+            let getDataKeyWoCompany = column.dataKey_wo_company
+            let getDataKeyPrps = column.dataKey_prps
+            let getDataKeyPrpsDate= column.dataKey_prps_date
+            let getDataKeyPrpsUser = column.dataKey_prps_user
+            let getDataKeyPrpsCompany = column.dataKey_prps_company
+            let getDataKeyInvs = column.dataKey_invs
+            let getDataKeyInvsDate = column.dataKey_invs_date
+            let getDataKeyInvsUser = column.dataKey_invs_user
+            let getDataKeyInvsCompany = column.dataKey_invs_company          
+            //Index for map
+            let index = item['wonId']?(item['pnId']?(item['invId']?item['invId']:null):item['pnId']):item['wonId']
             return (
-            <TableCell
-                key={item['workOrderId'] * colIndex}
-                component="div"
-                variant="body"
-                align={column.numeric || false ? "right" : "left"}
-                className={clsx(
-                classes.cell,
-                !column.width && classes.expandingCell
-                )}
-                style={{
-                flexBasis: column.width || false,
-                height: ROW_SIZE
-                }}
-            >
-                {
-                    (getMultiItem===true)?
-                        renderMultiItem({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, change}):
-                    ((getImage===true)?
-                        renderImage({getImgPath, getExtraKey, getDataKey, checkItem, item, getWorkOrderId, change}):
-                        renderSingleItem({getExtraKey, getDataKey, checkItem, item, getWorkOrderId, change})
-                    )
-                }
-            </TableCell>
+                <TableCell
+                    key={index + colIndex}
+                    tag="div"
+                    component="div"
+                    variant="body"
+                    align={column.numeric || false ? "right" : "left"}
+                    className={clsx(
+                        classes.cell,
+                        !column.width && classes.expandingCell
+                    )}
+                    style={{
+                        flexBasis: column.width || false,
+                        height: ROW_SIZE
+                    }}
+                >
+                {getMultiItem===true?<RenderMultiItem
+                    getDataKeyWo={getDataKeyWo}
+                    getDataKeyWoDate={getDataKeyWoDate}
+                    getDataKeyWoUser={getDataKeyWoUser}
+                    getDataKeyWoCompany={getDataKeyWoCompany}
+                    getDataKeyPrps={getDataKeyPrps}
+                    getDataKeyPrpsDate={getDataKeyPrpsDate}
+                    getDataKeyPrpsUser={getDataKeyPrpsUser}
+                    getDataKeyPrpsCompany={getDataKeyPrpsCompany}
+                    getDataKeyInvs={getDataKeyInvs}
+                    getDataKeyInvsDate={getDataKeyInvsDate}
+                    getDataKeyInvsUser={getDataKeyInvsUser}
+                    getDataKeyInvsCompany={getDataKeyInvsCompany}
+                    item={item}
+                />:renderSingleItem({
+                    getExtraKey,
+                    getDataKey,
+                    item,
+                    getWorkOrderId
+                })}
+                </TableCell>
             );
-        })}
+            })}
         </TableRow>
     );
 };

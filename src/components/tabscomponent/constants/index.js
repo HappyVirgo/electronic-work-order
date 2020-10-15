@@ -1,2 +1,0 @@
-export const IMG_URL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
-export const PLACEHOLDER_URL = "https://via.placeholder.com/80x106"
