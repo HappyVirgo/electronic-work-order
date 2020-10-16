@@ -1,9 +1,11 @@
 //Basic imports
 import React from "react";
 import clsx from "clsx";
+
 //Material UI imports
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
+
 
 //Row Size
 let deviceWidth = window.matchMedia("(max-width: 700px)")

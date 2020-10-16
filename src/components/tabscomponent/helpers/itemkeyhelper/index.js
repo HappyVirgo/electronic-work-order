@@ -5,8 +5,12 @@ export const itemKey = (index, data) => {
         id = data.items[index].wonId
     } else if(data.items[index].pnId) {
         id = data.items[index].pnId
-    } else {
+    } else if(data.items[index].invId){
         id = data.items[index].invId
+    } else if(data.items[index].id) {
+        id = data.items[index].id
+    } else {
+        id = data.items[index].workOrderId
     }
     return id
 }
