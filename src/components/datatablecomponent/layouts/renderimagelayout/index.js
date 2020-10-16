@@ -10,17 +10,20 @@ import React from "react";
 //Constants
 import {
     IMG_URL,
-    PLACEHOLDER_URL
+    PLACEHOLDER_URL,
+    PLACEHOLDER_URL_PMs
 } from '../../constants'
 
 ///Set render structure for single-item column
 export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change}) => {
     let img
     let checkImg
+    let placeholder = item['asset']!==null?PLACEHOLDER_URL:PLACEHOLDER_URL_PMs
+    console.log(placeholder)
     if(item[getDataKey]!==null||undefined) {
         checkImg = item[getDataKey][getExtraKey]!==undefined||null?item[getDataKey][getExtraKey]:[]   
         checkImg = checkImg.length>0?checkImg[0][getImgPath]:[]
-        img = checkImg!==undefined?(checkImg.length!==0?IMG_URL+checkImg:PLACEHOLDER_URL):PLACEHOLDER_URL
+        img = checkImg!==undefined?(checkImg.length!==0?IMG_URL+checkImg:placeholder):placeholder
     }
 
     return (
@@ -28,7 +31,7 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
             <img 
                 width="80"
                 alt={`img-${item['workOrderId']}`}
-                src={img!==undefined?img:PLACEHOLDER_URL}
+                src={img!==undefined?img:placeholder}
             />
         </div>
     );
