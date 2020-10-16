@@ -1,6 +1,7 @@
 @import '../mixins.scss';
 @import '../variables.scss';
 
+
 .details-container {
     width: 100%;
     padding: 0px 15px 0px 0px;
@@ -244,7 +245,14 @@
     }  
     .details-title {
         width: 100%;
-    }                  
+    }  
+    .removable {
+        display: none !important;
+    }  
+    .full_width {
+        max-width: 100% !important;
+        flex-basis: 100% !important;
+    }
 }
 @media only screen and (max-width: 800px) { 
     .img-container{

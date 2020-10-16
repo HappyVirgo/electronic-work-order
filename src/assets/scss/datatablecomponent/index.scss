@@ -297,7 +297,11 @@
     .data-table-row {
         div {
             line-height: 28px !important;
+            text-align: center;
         }
+        :first-child {
+            padding-left: 0px !important;
+        }          
     }
     .dtableCols {
         line-height: 12px !important;

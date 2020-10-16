@@ -49,10 +49,7 @@ const useTableStyles = makeStyles(theme => ({
         width: "100%"
     },
     row: {
-        display: "flex",
-        '@media (max-width: 700px)': {
-            display: "block",
-        },        
+        display: "flex",      
         flexDirection: "row",
         flexWrap: "nowrap",
         alignItems: "center",
