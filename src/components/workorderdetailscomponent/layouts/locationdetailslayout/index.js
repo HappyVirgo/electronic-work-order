@@ -23,12 +23,12 @@ export const LocationDetails = ({locationAddress, location, locationPhone, nullV
     const classes = useStyles()
     return (
         <Grid container className={classes.locationDetails}>
-            <Grid item xs={5}>
+            <Grid item xs={5} className="removable">
             </Grid>        
-            <Grid item xs={3}>
+            <Grid item xs={3} className="full_width">
                 <Typography className={classes.text} variant={'body1'}><strong>Location Details: </strong></Typography>
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={4} className="full_width">
                 <Typography className={classes.text} variant={'body1'}>
                     {locationAddress!==null?locationAddress:nullVal}<br/>
                     {location!==null?location:nullVal}<br/>
