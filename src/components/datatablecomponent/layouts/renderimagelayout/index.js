@@ -19,7 +19,6 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
     let img
     let checkImg
     let placeholder = item['asset']!==null?PLACEHOLDER_URL:PLACEHOLDER_URL_PMs
-    console.log(placeholder)
     if(item[getDataKey]!==null||undefined) {
         checkImg = item[getDataKey][getExtraKey]!==undefined||null?item[getDataKey][getExtraKey]:[]   
         checkImg = checkImg.length>0?checkImg[0][getImgPath]:[]

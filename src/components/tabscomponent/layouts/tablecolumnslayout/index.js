@@ -17,9 +17,11 @@ const checkMediaWidth = (deviceWidth) => {
     }
 }
 const ROW_SIZE = checkMediaWidth(deviceWidth);
+const ROW_SIZE_NOT_NOTES = 40
 
 export const TableColumns = ({ classes, columns, infotab }) => {
     let notesheader = infotab!==true?"data-tab-row":"data-tab-row-notes"
+    let rowsize= infotab!==true?ROW_SIZE_NOT_NOTES:ROW_SIZE
     return (
     <TableRow className={`${clsx(classes.row, classes.headerRow)} ${notesheader}`} component="div">
         {columns.map((column, colIndex) => {
@@ -36,7 +38,7 @@ export const TableColumns = ({ classes, columns, infotab }) => {
             )}
             style={{
                 flexBasis: column.width || false,
-                height: ROW_SIZE
+                height: rowsize
             }}
             scope="col"
             >
