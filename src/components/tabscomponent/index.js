@@ -64,7 +64,6 @@ const a11yProps = (index) => {
 }
 
 const TabsComponent = ({history, attachments, notes}) => { 
-
     //Counters
     let historyCount = history?history.data.work_order_histories:[]
     historyCount = historyCount.length
