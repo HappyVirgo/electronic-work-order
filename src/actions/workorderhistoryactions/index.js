@@ -13,16 +13,19 @@ export const receiveHistoryWOData = (data) => {
 }
 
 export const fetchHistoryWOData = async (token) => {
+
     const accessFetchToken = (tk) => {
         return tk.data
     }  
+
     let accessToken = await accessFetchToken(token)
+
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,
             'Content-Type': 'application/json',
         } 
-    }  
+    } 
     return dispatch => {
         return fetch(apiHistoryWO, init)
             .then(response => response.json())

@@ -29,6 +29,7 @@ export const fetchNotesWOData =  async (dtlsID, token) => {
             'Content-Type': 'application/json',
         } 
     }  
+    
     return dispatch => {
         return fetch(apiNotesWO+idDtls+notesURL, init)
             .then(response => response.json())
