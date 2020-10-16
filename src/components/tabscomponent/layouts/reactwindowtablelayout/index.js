@@ -33,6 +33,7 @@ const checkMediaWidth = (deviceWidth) => {
     }
 }
 const ROW_SIZE = checkMediaWidth(deviceWidth);
+const ROW_SIZE_NOT_NOTES = 45
 
 const useTableStyles = makeStyles(theme => ({
     root: {
@@ -81,6 +82,7 @@ const useTableStyles = makeStyles(theme => ({
 export const ReactWindowTable = ({ data, columns, infotab }) => {
     const classes = useTableStyles();
     const itemData = createItemData(classes, columns, data);
+    let rowsize= infotab!==true?ROW_SIZE_NOT_NOTES:ROW_SIZE
     return (
         <div className={classes.root}>
             <Table className={classes.table} component="div" >
@@ -95,7 +97,7 @@ export const ReactWindowTable = ({ data, columns, infotab }) => {
                         height={height}
                         width={width}
                         itemCount={data.length}
-                        itemSize={ROW_SIZE}
+                        itemSize={rowsize}
                         itemKey={itemKey}
                         itemData={itemData}
                     >
