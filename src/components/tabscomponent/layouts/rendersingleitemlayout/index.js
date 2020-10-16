@@ -15,7 +15,7 @@ import TableCell from "@material-ui/core/TableCell";
 ///Set render structure for single-item column
 export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, getWorkOrderId}) => {
     return (
-        <TableCell id={getWorkOrderId}>
+        <TableCell id={getWorkOrderId} component="div">
             <span>
             {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>

@@ -13,6 +13,11 @@ import {
     renderSingleItem,
 } from '../index'
 
+//Helpers
+import { 
+    itemKey,
+} from '../../helpers'
+
 //Constants
 const ROW_SIZE = 50;
 
@@ -41,12 +46,11 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             let getDataKeyInvsDate = column.dataKey_invs_date
             let getDataKeyInvsUser = column.dataKey_invs_user
             let getDataKeyInvsCompany = column.dataKey_invs_company          
-            //Index for map
-            let index = item['wonId']?(item['pnId']?(item['invId']?item['invId']:null):item['pnId']):item['wonId']
+
             return (
                 <TableCell
                     component="div"
-                    key={index + colIndex}
+                    key={itemKey + colIndex}
                     variant="body"
                     align={column.numeric || false ? "right" : "left"}
                     className={clsx(
