@@ -53,10 +53,19 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
     let locationAddress
     let location
     let locationPhone
+    //Check PM
+    let ifPM
     //To be defined
     let proposalStatus    
+    
 
     if(detailsdata!==undefined){
+        //If is a PM
+        if(detailsdata.data.work_order.asset!==null) {
+            ifPM = false
+        } else {
+            ifPM = true
+        }
         //Image Section
         if(detailsdata.data.work_order.asset!==null){
             let pre_image = detailsdata.data.work_order.asset.assetImage
@@ -105,6 +114,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
             <Grid container spacing={0}>
                 <DetailsImageLayout
                     image={image}
+                    ifPM={ifPM}
                 />
                 <MainDetails 
                     workOrderId={workOrderId}

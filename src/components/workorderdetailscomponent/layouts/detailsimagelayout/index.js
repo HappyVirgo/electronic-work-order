@@ -8,7 +8,8 @@ import Grid from '@material-ui/core/Grid';
 //Constants
 import {
     IMG_URL,
-    PLACEHOLDER_URL
+    PLACEHOLDER_URL,
+    PLACEHOLDER_URL_PMs
 } from '../../constants'
 
 const useStyles = makeStyles((theme) => ({
@@ -17,13 +18,19 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const DetailsImageLayout = ({image}) => {
+export const DetailsImageLayout = ({image, ifPM}) => {
     const classes = useStyles()
     let img
-    if(image!==undefined){
-        img = image!==null?IMG_URL+image:PLACEHOLDER_URL
+    let placeholder
+    if (ifPM!==true) {
+        placeholder = PLACEHOLDER_URL
     } else {
-        img = PLACEHOLDER_URL
+        placeholder = PLACEHOLDER_URL_PMs
+    }
+    if(image!==undefined){
+        img = image!==null?IMG_URL+image:placeholder
+    } else {
+        img = placeholder
     }
     return (
         <Grid item md={3} className="img-container">
