@@ -23,8 +23,16 @@ import {
     createItemData
 } from '../../helpers'
 
-//Constants
-const ROW_SIZE = 70;
+//Row Size
+let deviceWidth = window.matchMedia("(max-width: 700px)")
+const checkMediaWidth = (deviceWidth) => {
+    if (deviceWidth.matches) { // If media query matches
+        return 120
+    } else {
+        return  80
+    }
+}
+const ROW_SIZE = checkMediaWidth(deviceWidth);
 
 const useTableStyles = makeStyles(theme => ({
     root: {
@@ -41,6 +49,9 @@ const useTableStyles = makeStyles(theme => ({
     },
     row: {
         display: "flex",
+        '@media (max-width: 700px)': {
+            display: "block",
+        },        
         flexDirection: "row",
         flexWrap: "nowrap",
         alignItems: "center",
@@ -62,7 +73,7 @@ const useTableStyles = makeStyles(theme => ({
         width: "100%",
         height: "100%"
     },
-    column: {}
+    column: {},
 }));
 
 
@@ -81,7 +92,6 @@ export const ReactWindowTable = ({ data, columns, infotab }) => {
                 {({ height, width }) => (
                     <List
                         key={itemKey}
-                        className={classes.list}
                         height={height}
                         width={width}
                         itemCount={data.length}

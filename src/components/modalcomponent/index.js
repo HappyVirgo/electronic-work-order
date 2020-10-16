@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
         position: 'absolute',
         width: "40%",
         height: "40%",
+        '@media (max-width: 600px)': {
+            width: "80%",
+            height: "80%",
+        },
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
