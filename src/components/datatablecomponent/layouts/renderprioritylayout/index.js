@@ -92,7 +92,22 @@ export const priorityL6_30Days = ({getExtraKey, getDataKey, checkItem, item, cha
     return (
         <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
             <Chip
-                className={`priorityL6`}
+                className={`priorityPM`}
+                avatar={<Avatar>{data[0]}</Avatar>}
+                label={data[1]}
+            />        
+        </div>
+    )
+}
+
+export const priorityL7_30Days = ({getExtraKey, getDataKey, checkItem, item, change}) => {
+
+    let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
+    let data = stringToDivide.split("-")
+    return (
+        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+            <Chip
+                className={`priorityPM`}
                 avatar={<Avatar>{data[0]}</Avatar>}
                 label={data[1]}
             />        

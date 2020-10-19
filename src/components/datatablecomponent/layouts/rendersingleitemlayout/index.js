@@ -33,6 +33,7 @@ import {
     priorityL4_48Hours,
     priorityL5_OneWeek,
     priorityL6_30Days,
+    priorityL7_30Days,
     priorityPM,
     priorityRFP
 } from '../index'
@@ -250,6 +251,15 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 change
             })
             break;
+        case "L7 - 30 Days":
+            data = priorityL7_30Days({
+                getExtraKey,
+                getDataKey,
+                checkItem,
+                item,
+                change
+            })
+            break;            
         case "PM":
             data = priorityPM({
                 getExtraKey,
