@@ -42,6 +42,7 @@ import {
     priorityL4_48Hours,
     priorityL5_OneWeek,
     priorityL6_30Days,
+    priorityL7_30Days,
     priorityPM,
     priorityRFP    
 } from './renderprioritylayout'
@@ -78,6 +79,7 @@ export {
     priorityL4_48Hours,
     priorityL5_OneWeek,
     priorityL6_30Days,
+    priorityL7_30Days,
     priorityPM,
     priorityRFP
 }
