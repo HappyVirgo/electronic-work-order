@@ -1,6 +1,7 @@
 //Item Support
 import {RenderMultiItem} from './rendermultiitemlayout'
-import {renderSingleItem} from './rendersingleitemlayout'
+import {RenderSingleItem} from './rendersingleitemlayout'
+import {RenderDateItem} from './renderdateitemlayout'
 
 
 //Table Support
@@ -12,7 +13,8 @@ import {Row} from './rowbuilderlayout'
 
 export {
     RenderMultiItem,
-    renderSingleItem,
+    RenderSingleItem,
+    RenderDateItem,
     TableColumns,
     ReactWindowTable,
     Row,

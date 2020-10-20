@@ -64,6 +64,7 @@ const a11yProps = (index) => {
 }
 
 const TabsComponent = ({history, attachments, notes}) => { 
+    let infotab = true
     //Counters
     let historyCount = history?history.data.work_order_histories:[]
     historyCount = historyCount.length
@@ -86,7 +87,6 @@ const TabsComponent = ({history, attachments, notes}) => {
         setValue(newValue);
     };
 
-    let infotab = true
     return (
         <div className={`${classes.root} work-order-details-component`}>
                 <AppBar position="static" className={classes.tabNav}>

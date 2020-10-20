@@ -34,7 +34,7 @@ const columns = [
     numeric: false,
     multi_item: false,
     image: true,
-    width: "20%"
+    width: "10%"
   }, 
   {
     label: "Asset Information",
@@ -45,7 +45,6 @@ const columns = [
     serviceprovider_index: "profile",
     serviceprovider: "companyName",
     workorderid: "workOrderId",
-    width: "35%"
   },   
   {
     label: "Status",
