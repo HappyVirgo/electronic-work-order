@@ -22,7 +22,7 @@ export const apiAssignedToMeWO = "https://api.ecotrak.com/stagev1/workorders/use
 export const apiUnassignedWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/unassigned"
 
 //History WorkOrders
-export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/2152/history"
+export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/"
 
 //History WorkOrders
 export const apiNotesWO = "https://api.ecotrak.com/stagev1/workorders/"
