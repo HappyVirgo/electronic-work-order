@@ -21,17 +21,26 @@ import {
 
 let columnsHistory = [
     {
-        label: "Work Order ID",
-        dataKey: "workOrderId",
+        label: "Updated Date",
+        dataKey: "updatedDate",
+        dateField: true,
+        extraKey: false,
+        numeric: false,
+    },
+    {
+        label: "Note",
+        dataKey: "note",
         extraKey: false,
         numeric: false,
     },   
     {
-        label: "columnsHistory",
-        dataKey: "note",
-        extraKey: false,
+        label: "User",
+        dataKey: "user",
+        extraKey: "firstName",
+        extraKeyLast: "lastName",
+        nameField: true,
         numeric: false,
-    },
+    },    
     {
         label: "Status",
         dataKey: "status",

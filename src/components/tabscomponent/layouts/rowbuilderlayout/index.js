@@ -10,7 +10,8 @@ import TableCell from "@material-ui/core/TableCell";
 //Layouts
 import { 
     RenderMultiItem,
-    renderSingleItem,
+    RenderSingleItem,
+    RenderDateItem
 } from '../index'
 
 //Helpers
@@ -29,8 +30,12 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
         <TableRow className={classes.row} style={style} component="div">
             {columns.map((column, colIndex) => {
             //Capturing data 
+            //General
+            let checkItem
+            let checkNameField
             let getExtraKey = column.extraKey
             let getDataKey = column.dataKey
+            let getExtraKeyLast = column.extraKeyLast
             let getMultiItem = column.multi_item
             let getWorkOrderId = column.workorderid
             //Notes Tab
@@ -45,8 +50,19 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             let getDataKeyInvs = column.dataKey_invs
             let getDataKeyInvsDate = column.dataKey_invs_date
             let getDataKeyInvsUser = column.dataKey_invs_user
-            let getDataKeyInvsCompany = column.dataKey_invs_company          
+            let getDataKeyInvsCompany = column.dataKey_invs_company   
+            //History Tab
+            let getNameField =  column.nameField
+            let getDateField = column.dateField
 
+            //Check if object value are null and avoid broken loops  
+            if(item[getDataKey]){
+                checkItem = item[getDataKey]===null?checkItem=null:item[getDataKey][getExtraKey]
+            }
+            if(item[getDataKey]){
+                checkNameField = item[getDataKey]===null?checkNameField=null:item[getDataKey][getExtraKeyLast]
+            }            
+            
             return (
                 <TableCell
                     component="div"
@@ -62,7 +78,9 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
                         height: ROW_SIZE
                     }}
                 >
-                {getMultiItem===true?<RenderMultiItem
+                {
+                    (getMultiItem===true)?
+                    <RenderMultiItem
                     getDataKeyWo={getDataKeyWo}
                     getDataKeyWoDate={getDataKeyWoDate}
                     getDataKeyWoUser={getDataKeyWoUser}
@@ -76,12 +94,26 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
                     getDataKeyInvsUser={getDataKeyInvsUser}
                     getDataKeyInvsCompany={getDataKeyInvsCompany}
                     item={item}
-                />:renderSingleItem({
-                    getExtraKey,
-                    getDataKey,
-                    item,
-                    getWorkOrderId
-                })}
+                />:
+                    ((getDateField===true)?
+                        <RenderDateItem 
+                        checkItem={checkItem}
+                        getExtraKey={getExtraKey}
+                        getDataKey={getDataKey}
+                        item={item}
+                        getWorkOrderId={getWorkOrderId}
+                        />:
+                        <RenderSingleItem 
+                        checkItem={checkItem}
+                        checkNameField={checkNameField}
+                        getExtraKeyLast={getExtraKeyLast}
+                        getExtraKey={getExtraKey}
+                        getDataKey={getDataKey}
+                        getNameField={getNameField}
+                        item={item}
+                        getWorkOrderId={getWorkOrderId}
+                    />
+                    )}
                 </TableCell>
             );
             })}
