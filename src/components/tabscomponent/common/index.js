@@ -51,19 +51,20 @@ let columnsHistory = [
 
 let columnsAttachments = [
     {
-        label: "Doc ID",
-        dataKey: "documentId",
+        label: "Date Created",
+        dataKey: "dateCreated",
+        dateField: true,
         extraKey: false,
         numeric: false,
-    },   
+    }, 
     {
-        label: "columnsAttachments",
+        label: "Description",
         dataKey: "type",
         extraKey: "description",
         numeric: false,
     },
     {
-        label: "Type",
+        label: "Document Type",
         dataKey: "type",
         extraKey: "type",
         numeric: false,

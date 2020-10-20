@@ -13,11 +13,17 @@ export const receiveAttachmentsWOData = (data) => {
     return {type: types.RECEIVE_ATTACHMENTS_WO_DATA, data: data};
 }
 
-export const fetchAttachmentsWOData = async (token) => {
+export const fetchAttachmentsWOData = async (dtlsID, token) => {
+    const attachmentsURL = "307614/document"
     const accessFetchToken = (tk) => {
         return tk.data
     }
+    const accessDtlId = (id) => {
+        return id
+    }    
     let accessToken = await accessFetchToken(token)
+    let idDtls = await accessDtlId(dtlsID)
+
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,
@@ -25,7 +31,7 @@ export const fetchAttachmentsWOData = async (token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiAttachmentsWO, init)
+        return fetch(apiAttachmentsWO+attachmentsURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveAttachmentsWOData(json)));
     }
