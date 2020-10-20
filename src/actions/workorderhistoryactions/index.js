@@ -12,13 +12,16 @@ export const receiveHistoryWOData = (data) => {
     return {type: types.RECEIVE_HISTORY_DATA, data: data};
 }
 
-export const fetchHistoryWOData = async (token) => {
-
+export const fetchHistoryWOData = async (dtlsID, token) => {
+    const HistoryURL = "/history"
     const accessFetchToken = (tk) => {
         return tk.data
     }  
-
+    const accessDtlId = (id) => {
+        return id
+    }       
     let accessToken = await accessFetchToken(token)
+    let idDtls = await accessDtlId(dtlsID)
 
     let init = { 
         headers: {
@@ -27,7 +30,7 @@ export const fetchHistoryWOData = async (token) => {
         } 
     } 
     return dispatch => {
-        return fetch(apiHistoryWO, init)
+        return fetch(apiHistoryWO+idDtls+HistoryURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveHistoryWOData(json)));
     }
