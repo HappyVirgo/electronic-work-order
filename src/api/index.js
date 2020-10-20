@@ -28,7 +28,7 @@ export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/"
 export const apiNotesWO = "https://api.ecotrak.com/stagev1/workorders/"
 
 //Attachments WorkOrders
-export const apiAttachmentsWO = "https://api.ecotrak.com/stagev1/workorders/289904/document"
+export const apiAttachmentsWO = "https://api.ecotrak.com/stagev1/workorders/"
 
 
 
