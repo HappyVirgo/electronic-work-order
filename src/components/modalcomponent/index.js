@@ -37,7 +37,8 @@ const useStyles = makeStyles((theme) => ({
     },
     button: {
         padding: "0px 5px",
-        textTransform: "capitalize"
+        textTransform: "capitalize",
+        marginTop: "5px"
     }
 }));
 
@@ -126,7 +127,7 @@ const ModalComponent = ({data, documents}) => {
             open={open}
             onClose={handleClose}
             aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"          
+            aria-describedby="simple-modal-description"         
         >
             {documents===true?bodyAttachments:bodyHistory}
         </Modal>
