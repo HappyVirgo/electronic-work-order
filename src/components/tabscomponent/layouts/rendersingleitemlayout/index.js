@@ -8,12 +8,14 @@
 //Basic imports
 import React from "react";
 
+//Modal
+import {ModalComponent} from '../../../../components'
 
 //Material UI imports
 import TableCell from "@material-ui/core/TableCell";
 
 ///Set render structure for single-item column
-export const RenderSingleItem = ({getNameField, getExtraKeyLast, getExtraKey, getDataKey, checkItem, checkNameField, item, getWorkOrderId}) => {
+export const RenderSingleItem = ({getDetailsButton, getNameField, getExtraKeyLast, getExtraKey, getDataKey, checkItem, checkNameField, item, getWorkOrderId}) => {
     let firstName
     let lastName
     let data
@@ -21,6 +23,8 @@ export const RenderSingleItem = ({getNameField, getExtraKeyLast, getExtraKey, ge
         firstName = getExtraKey!==false?checkItem:item[getDataKey]
         lastName = getExtraKeyLast!==false?checkNameField:item[getDataKey]
         data = firstName+ " " +lastName
+    } else if(getDetailsButton===true) {
+        data =  <ModalComponent data={item} documents={true} />
     } else {
         data = getExtraKey!==false?checkItem:item[getDataKey]
     }
