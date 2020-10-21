@@ -54,6 +54,8 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             //History Tab
             let getNameField =  column.nameField
             let getDateField = column.dateField
+            //Attachments Tab
+            let getDetailsButton = column.itsButton
 
             //Check if object value are null and avoid broken loops  
             if(item[getDataKey]){
@@ -104,6 +106,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
                         getWorkOrderId={getWorkOrderId}
                         />:
                         <RenderSingleItem 
+                        getDetailsButton={getDetailsButton}
                         checkItem={checkItem}
                         checkNameField={checkNameField}
                         getExtraKeyLast={getExtraKeyLast}

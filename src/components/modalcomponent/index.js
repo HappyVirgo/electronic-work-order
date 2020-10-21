@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ModalComponent = ({data}) => {
+const ModalComponent = ({data, documents}) => {
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -62,33 +62,38 @@ const ModalComponent = ({data}) => {
     let company
     let firstName
     let lastName
-    if (data['wonNote']) {
-        describer = "Work Order Note"
-        description = data['wonNote']
-        createdDate = data['createdAt']
-        updatedDate = data['updatedAt']
-        company = data['user']['companyName']
-        firstName = data['user']['firstName']
-        lastName = data['user']['lastName'] 
-    } else if (data['pnote']) {
-        describer = "Proposal Note"
-        description = data['pnote']
-        createdDate = data['createdAt']
-        updatedDate = data['updatedAt']
-        company = data['user']['companyName']
-        firstName = data['user']['firstName']
-        lastName = data['user']['lastName']         
-    } else {
-        describer = "Invoice Note"
-        description = data['invNote']
-        createdDate = data['createdAt']
-        updatedDate = data['updatedAt']
-        company = data['user']['companyName']
-        firstName = data['user']['firstName']        
-        lastName = data['user']['lastName'] 
-    }    
 
-    const body = (
+    if(documents!==true) {
+        if (data['wonNote']) {
+            describer = "Work Order Note"
+            description = data['wonNote']
+            createdDate = data['createdAt']
+            updatedDate = data['updatedAt']
+            company = data['user']['companyName']
+            firstName = data['user']['firstName']
+            lastName = data['user']['lastName'] 
+        } else if (data['pnote']) {
+            describer = "Proposal Note"
+            description = data['pnote']
+            createdDate = data['createdAt']
+            updatedDate = data['updatedAt']
+            company = data['user']['companyName']
+            firstName = data['user']['firstName']
+            lastName = data['user']['lastName']         
+        } else {
+            describer = "Invoice Note"
+            description = data['invNote']
+            createdDate = data['createdAt']
+            updatedDate = data['updatedAt']
+            company = data['user']['companyName']
+            firstName = data['user']['firstName']        
+            lastName = data['user']['lastName'] 
+        }
+    } else {
+        console.log(data)
+    } 
+
+    const bodyHistory = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">{describer}</h2>
                 <p id="simple-modal-description">
@@ -100,6 +105,17 @@ const ModalComponent = ({data}) => {
                 <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{updatedDate}</Moment></p>                              
         </div>
     )
+    const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
+    const bodyAttachments = (
+        <div style={modalStyle} className={classes.paper}>
+            <h2 id="simple-modal-title">{data['type']['description']}</h2>
+            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']}/>
+            <p><strong>Reference ID: </strong>{data['referenceId']}</p>
+            <p><strong>Type: </strong>{data['type']['type']}</p>  
+            <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']}</Moment></p>
+            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']}</Moment></p>               
+        </div>
+    )    
 
     return (
     <div>
@@ -112,7 +128,7 @@ const ModalComponent = ({data}) => {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"          
         >
-            {body}
+            {documents===true?bodyAttachments:bodyHistory}
         </Modal>
     </div>
     );

@@ -68,7 +68,12 @@ let columnsAttachments = [
         dataKey: "type",
         extraKey: "type",
         numeric: false,
-    } 
+    },
+    {
+        label: "Details",
+        itsButton: true,
+        numeric: false,
+    }    
 ];
 
 
