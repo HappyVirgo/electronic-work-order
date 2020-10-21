@@ -31,9 +31,7 @@ export const RenderSingleItem = ({getDetailsButton, getNameField, getExtraKeyLas
     
     return (
         <TableCell id={getWorkOrderId} component="div">
-            <span>
                 {data}
-            </span>
         </TableCell>
     );
 }
