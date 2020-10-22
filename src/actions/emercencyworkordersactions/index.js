@@ -13,7 +13,6 @@ export const receiveEmergencyWOData = (data) => {
     return {type: types.RECEIVE_EMERGENCY_WO_DATA, data: data};
 }
 
-
 export const fetchEmergencyWOData = async (token) => {
     const accessFetchToken = (tk) => {
         return tk.data
