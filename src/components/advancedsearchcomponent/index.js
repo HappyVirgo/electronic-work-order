@@ -6,15 +6,23 @@
  */
 //Basic imports
 import React from 'react';
-//import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles((theme) => ({
+    input: {
+        width: "100%",
+        height: "54px"
+    }
+}));
 
 const AdvancedSearchComponent = () => {
+    const classes = useStyles();
     return (
         <form>
-        <p>Advanced:</p>
         <input
             type='text'
+            className={classes.input}
+            placeholder='Search Work Orders...'
         />
         </form>
     );
