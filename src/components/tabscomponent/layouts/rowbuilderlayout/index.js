@@ -33,6 +33,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             //General
             let checkItem
             let checkNameField
+            let typeOfTab = column.typeOfTab
             let getExtraKey = column.extraKey
             let getDataKey = column.dataKey
             let getExtraKeyLast = column.extraKeyLast
@@ -106,6 +107,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
                         getWorkOrderId={getWorkOrderId}
                         />:
                         <RenderSingleItem 
+                        typeOfTab={typeOfTab}
                         getDetailsButton={getDetailsButton}
                         checkItem={checkItem}
                         checkNameField={checkNameField}

@@ -46,7 +46,13 @@ let columnsHistory = [
         dataKey: "status",
         extraKey: "description",
         numeric: false,
-    } 
+    },    
+    {
+        label: "Details",
+        itsButton: true,
+        typeOfTab: "history",
+        numeric: false,
+    }  
 ];
 
 let columnsAttachments = [
@@ -72,6 +78,7 @@ let columnsAttachments = [
     {
         label: "Details",
         itsButton: true,
+        typeOfTab: "document",
         numeric: false,
     }    
 ];

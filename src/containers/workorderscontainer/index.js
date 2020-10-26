@@ -68,7 +68,8 @@ class WorkOrdersBuilder extends Component {
         }
         historydata = await this.props.fetchHistoryWOData(dtlsID, token)
         detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-        notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        notesdata = []
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
         //Set details first item
         this.setState({detailsId: dtlsID})
@@ -146,13 +147,13 @@ class WorkOrdersBuilder extends Component {
                 dtlsID = this.state.detailsId
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                    notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                    //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 })                
             } else {
                 dtlsID = tmpdata.data.work_orders[0]['workOrderId']  
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                    notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                    //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 })                            
             }           
             //Normalize state to avoid missing data or state changes
@@ -168,7 +169,7 @@ class WorkOrdersBuilder extends Component {
                 targetId: this.state.targetId,
                 loading: true
             }, async () => {
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
             }) 
         }
     }
@@ -219,7 +220,7 @@ const mapDispatchToProps = dispatch => ({
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
-    fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
+    //fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
     fetchAttachmentsWOData: ()=> dispatch(fetchAttachmentsWOData(dtlsID, token)),
 })
 
