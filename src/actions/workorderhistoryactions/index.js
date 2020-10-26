@@ -13,7 +13,7 @@ export const receiveHistoryWOData = (data) => {
 }
 
 export const fetchHistoryWOData = async (dtlsID, token) => {
-    const HistoryURL = "/history"
+    const HistoryURL = "2152/history"
     const accessFetchToken = (tk) => {
         return tk.data
     }  
@@ -30,7 +30,7 @@ export const fetchHistoryWOData = async (dtlsID, token) => {
         } 
     } 
     return dispatch => {
-        return fetch(apiHistoryWO+idDtls+HistoryURL, init)
+        return fetch(apiHistoryWO+HistoryURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveHistoryWOData(json)));
     }

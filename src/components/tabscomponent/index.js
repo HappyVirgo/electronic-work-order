@@ -63,13 +63,14 @@ const a11yProps = (index) => {
     };
 }
 
-const TabsComponent = ({history, attachments, notes}) => { 
+const TabsComponent = ({history, attachments, /*notes*/}) => { 
     let infotab = true
     //Counters
     let historyCount = history?history.data.work_order_histories:[]
     historyCount = historyCount.length
     let attachmentsCount = attachments?attachments.data.documents:[]
     attachmentsCount = attachmentsCount.length
+    /*
     let notesCount_Workorders = notes?notes.data.workOrderNotes:[]
     notesCount_Workorders = notesCount_Workorders?notesCount_Workorders.length:0
     let notesCount_Proposal = notes?notes.data.proposalNotes:[]
@@ -77,6 +78,7 @@ const TabsComponent = ({history, attachments, notes}) => {
     let notesCount_Invoices = notes?notes.data.invoiceNotes:[]
     notesCount_Invoices = notesCount_Invoices?notesCount_Invoices.length:0 
     let notesCount = notesCount_Workorders + notesCount_Proposal + notesCount_Invoices
+    */
 
     //Loading custom styles Material UI
     const classes = useStyles();
@@ -86,18 +88,23 @@ const TabsComponent = ({history, attachments, notes}) => {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+/*
+                    <Tabs value={value} onChange={handleChange} aria-label="tabs" className={'tab-list'} TabIndicatorProps={{style: {background:'#0072CE'}}}>
+                        <Tab label={`Notes (${notesCount})`} {...a11yProps(0)} className={classes.tabParent}/>
+                        <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
+                        <Tab label={`History (${historyCount})`} {...a11yProps(0)} className={classes.tabParent} />
+                    </Tabs>*/
     return (
         <div className={`${classes.root} work-order-details-component`}>
                 <AppBar position="static" className={classes.tabNav}>
                     <Tabs value={value} onChange={handleChange} aria-label="tabs" className={'tab-list'} TabIndicatorProps={{style: {background:'#0072CE'}}}>
-                        <Tab label={`Notes (${notesCount})`} {...a11yProps(0)} className={classes.tabParent}/>
+                        <Tab label={`Notes (8)`} {...a11yProps(0)} className={classes.tabParent}/>
                         <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
                         <Tab label={`History (${historyCount})`} {...a11yProps(0)} className={classes.tabParent} />
                     </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0} className={'tab-panel'}>
-                    <CommonTable tmpdata={notes} infotab={infotab}></CommonTable>
+                    <span></span>
                 </TabPanel>
                 <TabPanel value={value} index={1} className={'tab-panel'}>
                     <CommonTable tmpdata={attachments}></CommonTable>
@@ -108,5 +115,15 @@ const TabsComponent = ({history, attachments, notes}) => {
         </div>
     );
 };
-
+/*
+                <TabPanel value={value} index={0} className={'tab-panel'}>
+                    <CommonTable tmpdata={notes} infotab={infotab}></CommonTable>
+                </TabPanel>
+                <TabPanel value={value} index={1} className={'tab-panel'}>
+                    <CommonTable tmpdata={attachments}></CommonTable>
+                </TabPanel>
+                <TabPanel value={value} index={2} className={'tab-panel'}>
+                    <CommonTable tmpdata={history}></CommonTable>
+                </TabPanel>
+*/
 export default React.memo(TabsComponent);
