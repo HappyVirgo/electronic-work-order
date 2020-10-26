@@ -18,6 +18,10 @@ import {
     CTASectionLayout
 } from './layouts'
 
+//Components
+import { 
+    AdvancedSearchComponent
+} from '../index'
 
 const CTASectionComponent = ({ctadata, changeData}) => {
 
@@ -39,6 +43,7 @@ const CTASectionComponent = ({ctadata, changeData}) => {
             <Grid container className="cta-component">
                 <Grid item xs={12} md={12} lg={5}>
                     <h1>Work Orders</h1>
+                    <AdvancedSearchComponent />
                 </Grid>
                 <Grid item xs={12} md={12} lg={7} className="cta-section">
                     <FeaturedCTALayout 
