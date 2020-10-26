@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { 
     CTASectionComponent, 
     DataTableComponent, 
-    WorkOrderDetailsComponent,
+    WorkOrderDetailsComponent, 
 } from '../../components'
 
 

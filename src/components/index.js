@@ -20,10 +20,15 @@ import TabsComponent from './tabscomponent'
 //Modal Component
 import ModalComponent from './modalcomponent'
 
+//Modal Component
+import AdvancedSearchComponent from './advancedsearchcomponent'
+
+
 export {
     DataTableComponent,
     CTASectionComponent,
     WorkOrderDetailsComponent,
     TabsComponent,
-    ModalComponent
+    ModalComponent,
+    AdvancedSearchComponent
 }
