@@ -22,7 +22,8 @@ const ROW_SIZE = 140;
 //Building rows
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
-    const change = useContext(DetailsContext)
+    let change = useContext(DetailsContext)
+    change = change.dynamicDetails
     return (
         <TableRow component="div" className={`${classes.row} datatable-row`} style={style}>
         {columns.map((column, colIndex) => {
