@@ -119,11 +119,24 @@ class WorkOrdersBuilder extends Component {
     }
     //Change data asynchronously
     async componentDidUpdate(prevProps, prevState) {
+        const search = true
         if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ) {
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "pendingWO":
-                    tmpdata = await this.props.fetchPendingWOData()
+                    if(search===true) {
+                        let tmp = await this.props.fetchPendingWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.find(term => term['description'].includes("Pest"))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchPendingWOData()
+                    }
                     break;
                 case "emergencyWO":
                     tmpdata = await this.props.fetchEmergencyWOData()
@@ -133,10 +146,12 @@ class WorkOrdersBuilder extends Component {
                     break;  
                 case "unassignedWO":
                     tmpdata = await this.props.fetchUnassignedWOData()
-                    break;  
+                    break;
+                /*      
                 case "expiredWO":
                     tmpdata = await this.props.fetchAssignedToMeWOData()
-                    break;                                                          
+                    break;  
+                */                                                        
                 default:
                     tmpdata = await this.props.fetchEmergencyWOData()
                     break;
@@ -173,8 +188,12 @@ class WorkOrdersBuilder extends Component {
         }
     }
     render() {
+        const globalFunctions = {
+            dynamicDetails: this.dynamicDetails,
+            dynamicData: this.dynamicData,
+        }
         return (
-            <DetailsContext.Provider value={this.dynamicDetails}>
+            <DetailsContext.Provider value={globalFunctions}>
             <DynamicDataTableContext.Provider value={this.dynamicData}>
                 <div className="work-orders-container">
                     <Grid className="cta-section-component">
