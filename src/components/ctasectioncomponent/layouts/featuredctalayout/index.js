@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import {Typography} from "@material-ui/core";
 
 //Context
-import { DynamicDataTableContext } from "../../../../context/dynamicdatatablecontext";
+import { GlobalContext } from "../../../../context/globalcontext";
 
 const useStyles = makeStyles((theme) => ({
     cta_emergency_text: {
@@ -25,7 +25,8 @@ const useStyles = makeStyles((theme) => ({
 
 export const FeaturedCTALayout = ({emergencyWorkOrders}) => {
     //Setting function from context
-    const change = useContext(DynamicDataTableContext)
+    let change = useContext(GlobalContext)
+    change = change.dynamicData
     //Loading custom styles Material UI
     const classes = useStyles();
     return(
