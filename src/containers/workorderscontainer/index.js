@@ -30,8 +30,7 @@ import {
 } from '../../actions';
 
 //Context
-import { DetailsContext } from '../../context/detailscontext'
-import { DynamicDataTableContext } from '../../context/dynamicdatatablecontext'
+import { GlobalContext } from '../../context/globalcontext'
 
 
 //Declaring global variables
@@ -193,8 +192,7 @@ class WorkOrdersBuilder extends Component {
             dynamicData: this.dynamicData,
         }
         return (
-            <DetailsContext.Provider value={globalFunctions}>
-            <DynamicDataTableContext.Provider value={this.dynamicData}>
+            <GlobalContext.Provider value={globalFunctions}>
                 <div className="work-orders-container">
                     <Grid className="cta-section-component">
                         <CTASectionComponent 
@@ -217,9 +215,8 @@ class WorkOrdersBuilder extends Component {
                             />
                         </Grid>  
                     </Grid>  
-                </div>  
-            </DynamicDataTableContext.Provider>   
-            </DetailsContext.Provider>                   
+                </div>   
+            </GlobalContext.Provider>                   
         );
     }
 }
