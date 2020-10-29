@@ -137,26 +137,13 @@ class WorkOrdersBuilder extends Component {
     async componentDidUpdate(prevProps, prevState) {
         if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm) {
             //Set data for DataTable Component
+            let searchTerm = this.state.searchTerm
             switch (this.state.targetId) {
-                case "pendingWO":
-                    if(this.state.searchTerm.length>0) {
-                        let tmp = await this.props.fetchPendingWOData()
-                        let datatiux = tmp.data?tmp.data.work_orders:[]
-                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
-                        tmpdata = {
-                            data: {
-                                work_orders: datos
-                            }
-                        } 
-                    }else{
-                        tmpdata = await this.props.fetchPendingWOData() 
-                    }
-                    break;
                 case "emergencyWO":
                     if(this.state.searchTerm.length>0) {
                         let tmp = await this.props.fetchEmergencyWOData()
                         let datatiux = tmp.data?tmp.data.work_orders:[]
-                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        let datos = datatiux.filter(term => term['description'].toLowerCase().includes(searchTerm.toLowerCase()))
                         tmpdata = {
                             data: {
                                 work_orders: datos
@@ -166,11 +153,25 @@ class WorkOrdersBuilder extends Component {
                         tmpdata = await this.props.fetchEmergencyWOData()
                     }                    
                     break; 
+                case "pendingWO":
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchPendingWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        tmpdata = {
+                            data: {
+                                work_orders: datos
+                            }
+                        } 
+                    }else{
+                        tmpdata = await this.props.fetchPendingWOData() 
+                    }
+                    break;                    
                 case "assignedWO":
                     if(this.state.searchTerm.length>0) {
                         let tmp = await this.props.fetchAssignedToMeWOData()
                         let datatiux = tmp.data?tmp.data.work_orders:[]
-                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        let datos = datatiux.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                         tmpdata = {
                             data: {
                                 work_orders: datos
@@ -184,7 +185,7 @@ class WorkOrdersBuilder extends Component {
                     if(this.state.searchTerm.length>0) {
                         let tmp = await this.props.fetchUnassignedWOData()
                         let datatiux = tmp.data?tmp.data.work_orders:[]
-                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        let datos = datatiux.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                         tmpdata = {
                             data: {
                                 work_orders: datos
