@@ -2,12 +2,11 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-
 //Components
 import { 
     CTASectionComponent, 
     DataTableComponent, 
-    WorkOrderDetailsComponent,
+    WorkOrderDetailsComponent, 
 } from '../../components'
 
 
@@ -30,8 +29,7 @@ import {
 } from '../../actions';
 
 //Context
-import { DetailsContext } from '../../context/detailscontext'
-import { DynamicDataTableContext } from '../../context/dynamicdatatablecontext'
+import { GlobalContext } from '../../context/globalcontext'
 
 
 //Declaring global variables
@@ -55,11 +53,27 @@ class WorkOrdersBuilder extends Component {
         this.state = {
             targetId: "emergencyWO",
             detailsId: "",
-            loading: false
+            loading: false,
+            searchTerm: "",    
         };
     }    
-
+    /**
+     * Description: Set state based on search input 
+     * depending on datatable row
+     * Author: Carlos Blanco
+     * Date: 9/24/2020
+     * Ticket: ET-351
+     * */
+    handleSearchTerm = (event) => {
+        this.setState({
+            searchTerm: event.target.value,
+            search: true
+        }, () => {
+            console.log(this.state)
+        });
+    }    
     async componentDidMount() {
+        
         token = await this.props.oauthFetchToken()
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
@@ -72,7 +86,10 @@ class WorkOrdersBuilder extends Component {
         notesdata = []
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
         //Set details first item
-        this.setState({detailsId: dtlsID})
+        this.setState({detailsId: dtlsID}, () => {
+            dtlsID = this.state.detailsId
+        })
+        console.log(this.state)
     }
     /**
      * Description: Details components click events to change
@@ -120,24 +137,69 @@ class WorkOrdersBuilder extends Component {
     }
     //Change data asynchronously
     async componentDidUpdate(prevProps, prevState) {
-        if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ) {
+        if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm) {
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "pendingWO":
-                    tmpdata = await this.props.fetchPendingWOData()
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchPendingWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchPendingWOData()
+                    }
                     break;
                 case "emergencyWO":
-                    tmpdata = await this.props.fetchEmergencyWOData()
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchEmergencyWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchEmergencyWOData()
+                    }                    
                     break; 
                 case "assignedWO":
-                    tmpdata = await this.props.fetchAssignedToMeWOData()
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchAssignedToMeWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchAssignedToMeWOData()
+                    }                     
                     break;  
                 case "unassignedWO":
-                    tmpdata = await this.props.fetchUnassignedWOData()
-                    break;  
-                case "expiredWO":
-                    tmpdata = await this.props.fetchAssignedToMeWOData()
-                    break;                                                          
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchUnassignedWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchUnassignedWOData()
+                    }                    
+                    break;                                                       
                 default:
                     tmpdata = await this.props.fetchEmergencyWOData()
                     break;
@@ -174,9 +236,13 @@ class WorkOrdersBuilder extends Component {
         }
     }
     render() {
+        const globalFunctions = {
+            dynamicDetails: this.dynamicDetails,
+            dynamicData: this.dynamicData,
+            handleSearchTerm: this.handleSearchTerm
+        }
         return (
-            <DetailsContext.Provider value={this.dynamicDetails}>
-            <DynamicDataTableContext.Provider value={this.dynamicData}>
+            <GlobalContext.Provider value={globalFunctions}>
                 <div className="work-orders-container">
                     <Grid className="cta-section-component">
                         <CTASectionComponent 
@@ -199,9 +265,8 @@ class WorkOrdersBuilder extends Component {
                             />
                         </Grid>  
                     </Grid>  
-                </div>  
-            </DynamicDataTableContext.Provider>   
-            </DetailsContext.Provider>                   
+                </div>   
+            </GlobalContext.Provider>                   
         );
     }
 }

@@ -7,7 +7,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 
 //Context
-import { DetailsContext } from "../../../../context/detailscontext";
+import { GlobalContext } from "../../../../context/globalcontext";
 
 //Layouts
 import { 
@@ -22,7 +22,8 @@ const ROW_SIZE = 140;
 //Building rows
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
-    const change = useContext(DetailsContext)
+    let change = useContext(GlobalContext)
+    change = change.dynamicDetails
     return (
         <TableRow component="div" className={`${classes.row} datatable-row`} style={style}>
         {columns.map((column, colIndex) => {
