@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid';
 import {Typography} from "@material-ui/core";
 
 //Context
-import { DynamicDataTableContext } from "../../../../context/dynamicdatatablecontext";
+import { GlobalContext } from "../../../../context/globalcontext";
 
 const useStyles = makeStyles((theme) => ({
     cta_description_text:{
@@ -35,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const CTASectionLayout = ({assignedToMeWorkOrders, pendingWorkOrders, unassignedWorkOrders}) => {
-    const change = useContext(DynamicDataTableContext)
+    let change = useContext(GlobalContext)
+    change = change.dynamicData
     //Loading custom styles Material UI
     const classes = useStyles();
     return(
