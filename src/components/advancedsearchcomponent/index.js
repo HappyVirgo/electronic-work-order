@@ -9,7 +9,7 @@ import React, {useContext} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, Input  } from '@material-ui/core';
+import { FormControl, TextField   } from '@material-ui/core';
 
 //Context
 import { GlobalContext } from "../../context/globalcontext";
@@ -28,7 +28,7 @@ const AdvancedSearchComponent = () => {
     const classes = useStyles();
     return (
         <FormControl className={classes.search}>
-            <Input id="search-input" aria-describedby="search" type="search" fullWidth={true} disableUnderline={false} onChange={searchTerm}/>
+            <TextField  id="search-input" aria-describedby="search" type="search" fullWidth={true} variant="filled" onChange={searchTerm}/>
         </FormControl>
     );
 };
