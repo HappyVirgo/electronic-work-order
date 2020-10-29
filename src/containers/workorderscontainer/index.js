@@ -67,7 +67,6 @@ class WorkOrdersBuilder extends Component {
     handleSearchTerm = (event) => {
         this.setState({
             searchTerm: event.target.value,
-            search: true
         }, () => {
             console.log(this.state)
         });
@@ -86,7 +85,7 @@ class WorkOrdersBuilder extends Component {
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
         //Set details first item
         this.setState({detailsId: dtlsID}, () => {
-            dtlsID = this.state.detailsId
+            console.log("setting detailsId: dtlsID")
         })
         console.log(this.state)
     }
@@ -146,12 +145,11 @@ class WorkOrdersBuilder extends Component {
                         let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
                         tmpdata = {
                             data: {
-                                work_orders: [datos]
+                                work_orders: datos
                             }
                         } 
-                        console.log(tmpdata)
                     }else{
-                        tmpdata = await this.props.fetchPendingWOData()
+                        tmpdata = await this.props.fetchPendingWOData() 
                     }
                     break;
                 case "emergencyWO":
@@ -161,10 +159,9 @@ class WorkOrdersBuilder extends Component {
                         let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
                         tmpdata = {
                             data: {
-                                work_orders: [datos]
+                                work_orders: datos
                             }
                         } 
-                        console.log(tmpdata)
                     }else{
                         tmpdata = await this.props.fetchEmergencyWOData()
                     }                    
@@ -176,10 +173,9 @@ class WorkOrdersBuilder extends Component {
                         let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
                         tmpdata = {
                             data: {
-                                work_orders: [datos]
+                                work_orders: datos
                             }
                         } 
-                        console.log(tmpdata)
                     }else{
                         tmpdata = await this.props.fetchAssignedToMeWOData()
                     }                     
@@ -191,10 +187,9 @@ class WorkOrdersBuilder extends Component {
                         let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
                         tmpdata = {
                             data: {
-                                work_orders: [datos]
+                                work_orders: datos
                             }
                         } 
-                        console.log(tmpdata)
                     }else{
                         tmpdata = await this.props.fetchUnassignedWOData()
                     }                    
@@ -205,13 +200,13 @@ class WorkOrdersBuilder extends Component {
             }
             //Change details data
             if(dtlsID!==prevState.detailsId){
-                dtlsID = this.state.detailsId
+                dtlsID = this.state.detailsId             
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                     notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 })                
             } else {
-                dtlsID = tmpdata.data.work_orders[0]['workOrderId']  
+                dtlsID = tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                     notesdata = await this.props.fetchNotesWOData(dtlsID, token)
