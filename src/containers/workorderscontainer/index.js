@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 
-
 //Components
 import { 
     CTASectionComponent, 
@@ -54,16 +53,32 @@ class WorkOrdersBuilder extends Component {
         this.state = {
             targetId: "emergencyWO",
             detailsId: "",
-            loading: false
+            loading: false,
+            searchTerm: "",    
         };
     }    
-
+    /**
+     * Description: Set state based on search input 
+     * depending on datatable row
+     * Author: Carlos Blanco
+     * Date: 9/24/2020
+     * Ticket: ET-351
+     * */
+    handleSearchTerm = (event) => {
+        this.setState({
+            searchTerm: event.target.value,
+            search: true
+        }, () => {
+            console.log(this.state)
+        });
+    }    
     async componentDidMount() {
+        
         token = await this.props.oauthFetchToken()
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
-            dtlsID = tmpdata.data.work_orders[0]['workOrderId']
+            dtlsID = tmpdata.data.work_orders[0]['workOrderId']?tmpdata.data.work_orders[0]['workOrderId']:null
         }
         historydata = await this.props.fetchHistoryWOData(dtlsID, token)
         detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
@@ -71,6 +86,7 @@ class WorkOrdersBuilder extends Component {
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
         //Set details first item
         this.setState({detailsId: dtlsID})
+        console.log(this.state)
     }
     /**
      * Description: Details components click events to change
@@ -118,15 +134,14 @@ class WorkOrdersBuilder extends Component {
     }
     //Change data asynchronously
     async componentDidUpdate(prevProps, prevState) {
-        const search = true
-        if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ) {
+        if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm) {
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "pendingWO":
-                    if(search===true) {
+                    if(this.state.searchTerm.length>0) {
                         let tmp = await this.props.fetchPendingWOData()
                         let datatiux = tmp.data?tmp.data.work_orders:[]
-                        let datos = datatiux.find(term => term['description'].includes("Pest"))
+                        let datos = datatiux.find(term => term['description'].includes(this.state.searchTerm))
                         tmpdata = {
                             data: {
                                 work_orders: [datos]
@@ -190,6 +205,7 @@ class WorkOrdersBuilder extends Component {
         const globalFunctions = {
             dynamicDetails: this.dynamicDetails,
             dynamicData: this.dynamicData,
+            handleSearchTerm: this.handleSearchTerm
         }
         return (
             <GlobalContext.Provider value={globalFunctions}>
