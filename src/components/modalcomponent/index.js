@@ -55,6 +55,8 @@ const ModalComponent = ({data, documents}) => {
     const handleClose = () => {
         setOpen(false);
     };
+    
+    console.log(data)
 
     let describer
     let description
@@ -109,12 +111,12 @@ const ModalComponent = ({data, documents}) => {
     const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
     const bodyAttachments = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">{data['type']['description']}</h2>
-            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']}/>
-            <p><strong>Reference ID: </strong>{data['referenceId']}</p>
-            <p><strong>Type: </strong>{data['type']['type']}</p>  
-            <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']}</Moment></p>
-            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']}</Moment></p>               
+            <h2 id="simple-modal-title">{data['type']['description']!==undefined?data['type']['description']:""}</h2>
+            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']!==undefined?data['documentId']:""}/>
+            <p><strong>Reference ID: </strong>{data['referenceId']!==undefined?data['referenceId']:""}</p>
+            <p><strong>Type: </strong>{data['type']['type']!==undefined?data['type']['type']:""}</p>  
+            <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']!==undefined?data['dateCreated']:""}</Moment></p>
+            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']!==undefined?data['dateUpdated']:""}</Moment></p>               
         </div>
     )    
 

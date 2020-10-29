@@ -5,8 +5,14 @@
  * Ticket: ET-237
  */
 //Basic imports
-import React from 'react';
+import React, {useContext} from 'react';
+
+//Material UI
 import { makeStyles } from '@material-ui/core/styles';
+import { FormControl, Input  } from '@material-ui/core';
+
+//Context
+import { GlobalContext } from "../../context/globalcontext";
 
 const useStyles = makeStyles((theme) => ({
     input: {
@@ -16,15 +22,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AdvancedSearchComponent = () => {
+    let searchTerm = useContext(GlobalContext)
+    searchTerm = searchTerm.handleSearchTerm 
+    
     const classes = useStyles();
     return (
-        <form>
-        <input
-            type='text'
-            className={classes.input}
-            placeholder='Search Work Orders...'
-        />
-        </form>
+        <FormControl>
+            <Input id="search-input" className={classes.input} aria-describedby="search" variant="outlined" onChange={searchTerm}/>
+        </FormControl>
     );
 };
 
