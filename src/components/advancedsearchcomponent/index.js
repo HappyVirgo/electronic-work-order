@@ -15,7 +15,7 @@ import { FormControl, Input  } from '@material-ui/core';
 import { GlobalContext } from "../../context/globalcontext";
 
 const useStyles = makeStyles((theme) => ({
-    input: {
+    search: {
         width: "100%",
         height: "54px"
     }
@@ -27,8 +27,8 @@ const AdvancedSearchComponent = () => {
     
     const classes = useStyles();
     return (
-        <FormControl>
-            <Input id="search-input" className={classes.input} aria-describedby="search" variant="outlined" onChange={searchTerm}/>
+        <FormControl className={classes.search}>
+            <Input id="search-input" aria-describedby="search" type="search" fullWidth={true} disableUnderline={false} onChange={searchTerm}/>
         </FormControl>
     );
 };

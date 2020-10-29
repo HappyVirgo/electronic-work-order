@@ -160,12 +160,65 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
                     nullVal={nullVal}
                 />
             </Grid>
+            <Divider/>           
+        </div>            
+    )
+}
+/*
+<div>
+            <Grid container spacing={0}>
+                <DetailsImageLayout
+                    image={image}
+                    ifPM={ifPM}
+                />
+                <MainDetails 
+                    workOrderId={workOrderId}
+                    assetName={assetName}
+                    woType={woType}
+                    manufacturer={manufacturer}
+                    model={model}
+                    serial={serial}
+                    assetType={assetType}
+                    warranty={warranty}
+                    nullVal={nullVal}
+                />
+                <MainActions />
+            </Grid>
+            <LinkActions />
+            <Divider/>
+            <Grid container spacing={0}>
+                <WorkOrderDescription
+                    id={id}
+                    description={description}
+                    nullVal={nullVal}
+                />
+                <EnhancedDetails 
+                    status={status}
+                    priority={priority}
+                    tradeType={tradeType}
+                    problemType={problemType}
+                    categoryType={categoryType}
+                    woType={woType}
+                    nte={nte}
+                    nullVal={nullVal}
+                />
+                <BoxedDetails 
+                    currentEta={currentEta}
+                    serviceProvider={serviceProvider}
+                    proposalStatus={proposalStatus}
+                    nullVal={nullVal}
+                />
+                <LocationDetails
+                    locationAddress={locationAddress}
+                    location={location}
+                    locationPhone={locationPhone}
+                    nullVal={nullVal}
+                />
+            </Grid>
             <Divider/>
             <TabsComponent
                 history={history}
                 attachments={attachments}
                 notes={notes}
             />            
-        </div>            
-    )
-}
+        </div>  */
