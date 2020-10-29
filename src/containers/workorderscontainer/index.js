@@ -78,14 +78,16 @@ class WorkOrdersBuilder extends Component {
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
-            dtlsID = tmpdata.data.work_orders[0]['workOrderId']?tmpdata.data.work_orders[0]['workOrderId']:null
+            dtlsID = tmpdata.data.work_orders[0]['workOrderId']
         }
         historydata = await this.props.fetchHistoryWOData(dtlsID, token)
         detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
         notesdata = await this.props.fetchNotesWOData(dtlsID, token)
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
         //Set details first item
-        this.setState({detailsId: dtlsID})
+        this.setState({detailsId: dtlsID}, () => {
+            dtlsID = this.state.detailsId
+        })
         console.log(this.state)
     }
     /**
@@ -141,7 +143,7 @@ class WorkOrdersBuilder extends Component {
                     if(this.state.searchTerm.length>0) {
                         let tmp = await this.props.fetchPendingWOData()
                         let datatiux = tmp.data?tmp.data.work_orders:[]
-                        let datos = datatiux.find(term => term['description'].includes(this.state.searchTerm))
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
                         tmpdata = {
                             data: {
                                 work_orders: [datos]
@@ -153,19 +155,50 @@ class WorkOrdersBuilder extends Component {
                     }
                     break;
                 case "emergencyWO":
-                    tmpdata = await this.props.fetchEmergencyWOData()
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchEmergencyWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchEmergencyWOData()
+                    }                    
                     break; 
                 case "assignedWO":
-                    tmpdata = await this.props.fetchAssignedToMeWOData()
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchAssignedToMeWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchAssignedToMeWOData()
+                    }                     
                     break;  
                 case "unassignedWO":
-                    tmpdata = await this.props.fetchUnassignedWOData()
-                    break;
-                /*      
-                case "expiredWO":
-                    tmpdata = await this.props.fetchAssignedToMeWOData()
-                    break;  
-                */                                                        
+                    if(this.state.searchTerm.length>0) {
+                        let tmp = await this.props.fetchUnassignedWOData()
+                        let datatiux = tmp.data?tmp.data.work_orders:[]
+                        let datos = datatiux.filter(term => term['description'].includes(this.state.searchTerm))
+                        tmpdata = {
+                            data: {
+                                work_orders: [datos]
+                            }
+                        } 
+                        console.log(tmpdata)
+                    }else{
+                        tmpdata = await this.props.fetchUnassignedWOData()
+                    }                    
+                    break;                                                       
                 default:
                     tmpdata = await this.props.fetchEmergencyWOData()
                     break;
