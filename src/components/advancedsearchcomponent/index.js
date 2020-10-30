@@ -9,16 +9,18 @@ import React, {useContext} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, TextField   } from '@material-ui/core';
+import { FormControl, TextField, InputLabel, Select, MenuItem } from '@material-ui/core';
 
 //Context
 import { GlobalContext } from "../../context/globalcontext";
 
 const useStyles = makeStyles((theme) => ({
+    advanced: {
+        width: "30%",
+    },
     search: {
-        width: "100%",
-        height: "54px"
-    }
+        width: "70%",
+    }    
 }));
 
 const AdvancedSearchComponent = () => {
@@ -27,9 +29,34 @@ const AdvancedSearchComponent = () => {
     
     const classes = useStyles();
     return (
-        <FormControl className={classes.search}>
-            <TextField  id="search-input" aria-describedby="search" type="search" fullWidth={true} variant="filled" onChange={searchTerm}/>
-        </FormControl>
+        <div>
+            <FormControl className={classes.advanced}>
+                <InputLabel id="advanced-select-filled-label">Advanced</InputLabel>
+                <Select
+                    labelId="advanced-select-filled-label"
+                    id="advanced-select-filled-label"
+                    variant="filled"
+                >
+                <MenuItem value="">
+                    <em>None</em>
+                </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+            </FormControl> 
+            <FormControl className={classes.search}>           
+                <TextField 
+                    label="Search"
+                    id="search-input-filled-label"
+                    aria-describedby="search" 
+                    type="search" 
+                    fullWidth={true} 
+                    variant="filled" 
+                    onChange={searchTerm}
+                />
+            </FormControl>
+        </div>
     );
 };
 
