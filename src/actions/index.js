@@ -29,6 +29,11 @@ import {
     fetchDetailsWOData,
 } from './workorderdetailsactions'
 
+//Search Component
+import {
+    fetchSearchData,
+} from './advancedsearchactions'
+
 //Tabs / History Component
 import {
     fetchHistoryWOData,
@@ -53,6 +58,7 @@ export {
     oauthFetchToken,
     fetchUsersInformation, 
     fetchCTAsData,
+    fetchSearchData,
     fetchEmergencyWOData,
     fetchPendingWOData,
     fetchDetailsWOData,

@@ -43,5 +43,8 @@ export const RECEIVE_ATTACHMENTS_WO_DATA = 'RECEIVE_ATTACHMENTS_WO_DATA';
 //Oauth token
 export const RECEIVE_TOKEN = 'RECEIVE_TOKEN';
 
+//Search
+export const RECEIVE_SEARCH_DATA = 'RECEIVE_SEARCH_DATA';
+
 
 

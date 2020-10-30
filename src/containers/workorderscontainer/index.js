@@ -18,6 +18,7 @@ import {
     oauthFetchToken,
     fetchUsersInformation,
     fetchCTAsData, 
+    fetchSearchData,
     fetchEmergencyWOData, 
     fetchPendingWOData, 
     fetchDetailsWOData,
@@ -46,6 +47,8 @@ let historydata
 let notesdata
 let attachmentsdata
 let dtlsID
+//Search
+let searchby
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -54,15 +57,15 @@ class WorkOrdersBuilder extends Component {
             targetId: "emergencyWO",
             detailsId: "",
             loading: false,
-            searchTerm: "",    
+            searchTerm: "", 
+            searchby: 0
         };
     }    
     /**
      * Description: Set state based on search input 
-     * depending on datatable row
      * Author: Carlos Blanco
-     * Date: 9/24/2020
-     * Ticket: ET-351
+     * Date: 10/29/2020
+     * Ticket: ET-237
      * */
     handleSearchTerm = (event) => {
         this.setState({
@@ -70,25 +73,21 @@ class WorkOrdersBuilder extends Component {
         }, () => {
             console.log(this.state)
         });
-    }    
-    async componentDidMount() {
-        
-        token = await this.props.oauthFetchToken()
-        ctadata = await this.props.fetchCTAsData()
-        tmpdata = await this.props.fetchEmergencyWOData()  
-        if(tmpdata.data.work_orders!==undefined) {
-            dtlsID = tmpdata.data.work_orders[0]['workOrderId']
-        }
-        historydata = await this.props.fetchHistoryWOData(dtlsID, token)
-        detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-        notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-        attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-        //Set details first item
-        this.setState({detailsId: dtlsID}, () => {
-            console.log("setting detailsId: dtlsID")
-        })
-        console.log(this.state)
-    }
+    } 
+    /**
+     * Description: Set state based on search select 
+     * Author: Carlos Blanco
+     * Date: 10/30/2020
+     * Ticket: ET-237
+     * */    
+    handleSearchBy = (event) => {
+        this.setState({
+            searchby: event.target.value,
+        }, () => {
+            console.log("EVENT")
+            console.log(event.target.value)
+        });
+    } 
     /**
      * Description: Details components click events to change
      * depending on datatable row
@@ -109,9 +108,7 @@ class WorkOrdersBuilder extends Component {
             this.setState({detailsId: target, loading: true},  () => {
                 dtlsID = this.state.detailsId
             })
-            
         }
-        
     }
     /**
      * Description: Catch id from CTA component and pass
@@ -132,8 +129,28 @@ class WorkOrdersBuilder extends Component {
             this.setState({targetId: target, loading: true})
         }
         
+    }       
+    async componentDidMount() {
+        
+        token = await this.props.oauthFetchToken()
+        ctadata = await this.props.fetchCTAsData()
+        tmpdata = await this.props.fetchEmergencyWOData()  
+        if(tmpdata.data.work_orders!==undefined) {
+            dtlsID = tmpdata.data.work_orders[0]['workOrderId']
+        }
+        historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+        detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+        notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+        //
+        searchby = this.state.searchby
+        //Set details first item
+        this.setState({
+            detailsId: dtlsID
+        })
+        console.log(searchby)
     }
-    //Change data asynchronously
+    
     async componentDidUpdate(prevProps, prevState) {
         if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm) {
             //Set data for DataTable Component
@@ -148,7 +165,7 @@ class WorkOrdersBuilder extends Component {
                             data: {
                                 work_orders: datos
                             }
-                        } 
+                        }
                     }else{
                         tmpdata = await this.props.fetchEmergencyWOData()
                     }                    
@@ -234,7 +251,8 @@ class WorkOrdersBuilder extends Component {
         const globalFunctions = {
             dynamicDetails: this.dynamicDetails,
             dynamicData: this.dynamicData,
-            handleSearchTerm: this.handleSearchTerm
+            handleSearchTerm: this.handleSearchTerm,
+            handleSearchBy: this.handleSearchBy
         }
         return (
             <GlobalContext.Provider value={globalFunctions}>
@@ -272,7 +290,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     oauthFetchToken: () => dispatch(oauthFetchToken()),
-    fetchCTAsData: () => dispatch(fetchCTAsData(token)),    
+    fetchCTAsData: () => dispatch(fetchCTAsData(token)),   
+    fetchSearchData: () => dispatch(fetchSearchData(searchby, token)),       
     fetchPendingWOData: () => dispatch(fetchPendingWOData(token)),
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
