@@ -15,6 +15,7 @@ import promiseMiddleware from 'redux-promise';
 //Reducers
 import {
     oauthTokenReducer,
+    advancedSearchDataReducer,
     emergencyWorkOrdersReducer,
     userAccountDataReducer,
     ctaSectionDataReducer,
@@ -30,6 +31,7 @@ import {
 //Combine reducers
 const reducers = combineReducers({
     oauthTokenReducer,
+    advancedSearchDataReducer,
     emergencyWorkOrdersReducer,
     userAccountDataReducer,
     ctaSectionDataReducer,

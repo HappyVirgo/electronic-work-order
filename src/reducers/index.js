@@ -15,12 +15,14 @@ import unassignedWorkOrdersReducer from './workorderunassignedreducer'
 import historyWorkOrdersReducer from './workordershistoryreducer'
 import notesWorkOrderReducer from './workordersnotesreducer'
 import attachmentsWorkOrdersReducer from './workorderattachmentsreducer'
+import advancedSearchDataReducer from './advancedsearchreducer'
 
 
 export {
     oauthTokenReducer,
     userAccountDataReducer,
     ctaSectionDataReducer,
+    advancedSearchDataReducer,
     emergencyWorkOrdersReducer,
     pendingWorkOrdersReducer,
     workOrderDetailsReducer,

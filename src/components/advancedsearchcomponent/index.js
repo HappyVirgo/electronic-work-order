@@ -24,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AdvancedSearchComponent = () => {
-    let searchTerm = useContext(GlobalContext)
-    searchTerm = searchTerm.handleSearchTerm 
+    let searchFunc = useContext(GlobalContext)
+    let searchTerm = searchFunc.handleSearchTerm 
+    let searchBy = searchFunc.handleSearchby
     
     const classes = useStyles();
     return (
@@ -36,13 +37,16 @@ const AdvancedSearchComponent = () => {
                     labelId="advanced-select-filled-label"
                     id="advanced-select-filled-label"
                     variant="filled"
+                    onChange={searchBy}
                 >
-                <MenuItem value="">
-                    <em>None</em>
-                </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    <MenuItem value="" disabled>
+                        <em>Search by</em>
+                    </MenuItem>
+                    <MenuItem value={1}>Default Search</MenuItem>
+                    <MenuItem value={2}>Service Provider</MenuItem>
+                    <MenuItem value={3}>Asset Type</MenuItem>
+                    <MenuItem value={4}>Problem Type</MenuItem>
+                    <MenuItem value={5}>Trade Type</MenuItem>
                 </Select>
             </FormControl> 
             <FormControl className={classes.search}>           
