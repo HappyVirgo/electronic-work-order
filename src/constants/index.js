@@ -45,6 +45,3 @@ export const RECEIVE_TOKEN = 'RECEIVE_TOKEN';
 
 //Search
 export const RECEIVE_SEARCH_DATA = 'RECEIVE_SEARCH_DATA';
-
-
-

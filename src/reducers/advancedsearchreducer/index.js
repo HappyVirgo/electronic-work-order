@@ -15,7 +15,7 @@ const advancedSearchDataReducer = handleActions({
             ...state,
             data: action.data
         };    
-    }    
+    }       
 }, initialState);
 
 export default advancedSearchDataReducer;

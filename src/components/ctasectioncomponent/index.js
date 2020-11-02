@@ -23,7 +23,7 @@ import {
     AdvancedSearchComponent
 } from '../index'
 
-const CTASectionComponent = ({ctadata, changeData}) => {
+const CTASectionComponent = ({ctadata}) => {
 
     //Process to retrieve user data 
     let assignedToMeWorkOrders

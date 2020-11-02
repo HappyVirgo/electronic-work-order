@@ -86,6 +86,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const DataTableComponent = ({tmpdata}) => {
+  console.log(tmpdata)
   const classes = useStyles();
   //Set state with data
   const [data, setData] = useState([]);
@@ -93,9 +94,10 @@ const DataTableComponent = ({tmpdata}) => {
   useEffect(() => {
     //Updates data from state
     if(tmpdata!==undefined){
-      setData(tmpdata.data.work_orders) 
+      setData(tmpdata.data!==undefined?tmpdata.data.work_orders:[]) 
     }
   }, [tmpdata]);
+  console.log(data)
   return (
     <div className={`${classes.root} data-table-component`}>
       <Grid className={classes.container}>
