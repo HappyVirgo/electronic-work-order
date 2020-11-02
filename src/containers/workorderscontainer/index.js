@@ -164,11 +164,10 @@ class WorkOrdersBuilder extends Component {
                             }
                         }
                     }else if(searchTerm.length>0 && searchBy>1){
-                        tmpdata = await this.props.fetchSearchData(searchTerm, searchBy, token)
+                        tmpdata = await this.props.fetchSearchData()
                     }else {
                         tmpdata = await this.props.fetchEmergencyWOData()
-                    }
-                    console.log(tmpdata)                   
+                    }                
                     break; 
                 case "pendingWO":
                     if(searchTerm.length>0) {
