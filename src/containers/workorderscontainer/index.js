@@ -59,7 +59,7 @@ class WorkOrdersBuilder extends Component {
             detailsId: "",
             loading: false,
             searchTerm: "", 
-            searchBy: 0
+            searchBy: 1
         };
     }    
     /**
