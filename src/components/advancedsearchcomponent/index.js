@@ -22,14 +22,13 @@ const useStyles = makeStyles((theme) => ({
         width: "70%",
     }    
 }));
-/*
 
-*/
 const AdvancedSearchComponent = () => {
     let searchFunc = useContext(GlobalContext)
     let searchTerm = searchFunc.handleSearchTerm 
     let searchBy = searchFunc.handleSearchBy
-    
+    let searchByState = searchFunc.searchByState
+
     const classes = useStyles();
     return (
         <div>
@@ -40,7 +39,7 @@ const AdvancedSearchComponent = () => {
                     id="advanced-select-filled-label"
                     variant="filled"
                     onChange={searchBy}
-                    value={''}
+                    value={searchByState}
                 >
                     <MenuItem value={''} aria-label="None" disabled>
                         <em>Search by</em>

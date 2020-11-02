@@ -258,7 +258,8 @@ class WorkOrdersBuilder extends Component {
             dynamicDetails: this.dynamicDetails,
             dynamicData: this.dynamicData,
             handleSearchTerm: this.handleSearchTerm,
-            handleSearchBy: this.handleSearchBy
+            handleSearchBy: this.handleSearchBy,
+            searchByState: this.state.searchBy
         }
         return (
             <GlobalContext.Provider value={globalFunctions}>
