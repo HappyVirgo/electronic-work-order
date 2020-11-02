@@ -93,7 +93,7 @@ const DataTableComponent = ({tmpdata}) => {
   useEffect(() => {
     //Updates data from state
     if(tmpdata!==undefined){
-      setData(tmpdata.data!==undefined?tmpdata.data.work_orders:[]) 
+      setData(tmpdata.data!==undefined?tmpdata.data.work_orders:{work_orders: []}) 
     }
   }, [tmpdata]);
   return (
