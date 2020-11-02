@@ -24,10 +24,7 @@ export const fetchSearchData =  async (searchTerm, searchBy, token) => {
     const accessFetchToken = (tk) => {
         return tk.data
     } 
-    console.log(searchTerm)
-    console.log(searchBy)
     let accessToken = await accessFetchToken(token)
-
     let searchParams
     switch (searchBy) {
         case 2:
