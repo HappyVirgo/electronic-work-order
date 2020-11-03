@@ -229,7 +229,7 @@ class WorkOrdersBuilder extends Component {
                     notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 })                
             } else {
-                dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId
+                dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                     notesdata = await this.props.fetchNotesWOData(dtlsID, token)
