@@ -68,19 +68,14 @@ class WorkOrdersBuilder extends Component {
      * Date: 10/29/2020
      * Ticket: ET-237
      * */
-    handleChangeState = (value) => {
-        searchTerm = value
-        console.log(searchTerm)      
+    handleChangeStateSearchTerm = (value) => {
+        searchTerm = value     
     }
     handleSearchTerm = (event) => {
         let value = event.target.value
         this.setState({
             searchTerm: value,
-        }, () => {
-            this.handleChangeState(value)
-            //searchTerm = this.state.searchTerm  
-            //console.log(searchTerm)
-        });
+        }, this.handleChangeStateSearchTerm(value));
     } 
     /**
      * Description: Set state based on search select 
@@ -88,12 +83,15 @@ class WorkOrdersBuilder extends Component {
      * Date: 10/30/2020
      * Ticket: ET-237
      * */    
+    handleChangeStateSearchBy = (value) => {
+        searchBy = value  
+        console.log(searchBy)   
+    }    
     handleSearchBy = (event) => {
+        let value = event.target.value
         this.setState({
-            searchBy: event.target.value,
-        }, () => {
-            searchBy = this.state.searchBy 
-        });
+            searchBy: value
+        }, this.handleChangeStateSearchBy(value));
     } 
     /**
      * Description: Details components click events to change
@@ -158,13 +156,8 @@ class WorkOrdersBuilder extends Component {
         let searchTermIn = this.state.searchTerm
         let searchByIn = this.state.searchBy  
 
-        if(prevState.searchBy !== this.state.searchBy){
-            this.setState({
-                searchTerm: "",
-                searchBy: this.state.searchBy
-            })
-        }                      
         if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm || prevState.searchBy !== this.state.searchBy) {
+            //Clean input if lenght is 0
             if(searchTermIn.length===0){
                 this.setState({
                     searchTerm: ""
