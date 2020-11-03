@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ModalComponent = ({data, documents}) => {
+const ModalComponent = ({data, type}) => {
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -66,7 +66,7 @@ const ModalComponent = ({data, documents}) => {
     let firstName
     let lastName
 
-    if(documents!==true) {
+    if(type==="document") {
         if (data['wonNote']) {
             describer = "Work Order Note"
             description = data['wonNote']
@@ -92,11 +92,8 @@ const ModalComponent = ({data, documents}) => {
             firstName = data['user']['firstName']        
             lastName = data['user']['lastName'] 
         }
-    } else {
-        console.log(data)
-    } 
-
-    const bodyHistory = (
+    }
+    const bodyNotes = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">{describer}</h2>
                 <p id="simple-modal-description">
@@ -109,6 +106,7 @@ const ModalComponent = ({data, documents}) => {
         </div>
     )
     const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
+
     const bodyAttachments = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">{data['type']['description']!==undefined?data['type']['description']:""}</h2>
@@ -119,7 +117,16 @@ const ModalComponent = ({data, documents}) => {
             <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']!==undefined?data['dateUpdated']:""}</Moment></p>               
         </div>
     )    
-
+    const bodyHistory = (
+        <div style={modalStyle} className={classes.paper}>
+            <h2 id="simple-modal-title">{data['type']['description']}</h2>
+            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']}/>
+            <p><strong>Reference ID: </strong>{data['referenceId']}</p>
+            <p><strong>Type: </strong>{data['type']['type']}</p>  
+            <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']}</Moment></p>
+            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']}</Moment></p>               
+        </div>
+    )
     return (
     <div>
         <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
@@ -131,7 +138,7 @@ const ModalComponent = ({data, documents}) => {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"         
         >
-            {documents===true?bodyAttachments:bodyHistory}
+            {type==="documents"?(type==="history"?bodyHistory:bodyAttachments):bodyNotes}
         </Modal>
     </div>
     );

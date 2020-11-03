@@ -87,12 +87,34 @@ class WorkOrdersBuilder extends Component {
         searchBy = value  
         console.log(searchBy)   
     }    
+<<<<<<< HEAD
     handleSearchBy = (event) => {
         let value = event.target.value
         this.setState({
             searchBy: value
         }, this.handleChangeStateSearchBy(value));
     } 
+=======
+    async componentDidMount() {
+        
+        token = await this.props.oauthFetchToken()
+        ctadata = await this.props.fetchCTAsData()
+        tmpdata = await this.props.fetchEmergencyWOData()  
+        if(tmpdata.data.work_orders!==undefined) {
+            dtlsID = tmpdata.data.work_orders[0]['workOrderId']
+        }
+        historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+        detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+        //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        notesdata = []
+        attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+        //Set details first item
+        this.setState({detailsId: dtlsID}, () => {
+            dtlsID = this.state.detailsId
+        })
+        console.log(this.state)
+    }
+>>>>>>> ticket/ET-301_History_modal
     /**
      * Description: Details components click events to change
      * depending on datatable row
@@ -237,14 +259,24 @@ class WorkOrdersBuilder extends Component {
             if(dtlsID!==prevState.detailsId){
                 dtlsID = this.state.detailsId             
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
+<<<<<<< HEAD
                     detailsdata = await this.props.fetchDetailsWOData()
                     notesdata = await this.props.fetchNotesWOData()
+=======
+                    detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+                    //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+>>>>>>> ticket/ET-301_History_modal
                 })                
             } else {
                 dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
+<<<<<<< HEAD
                     detailsdata = await this.props.fetchDetailsWOData()
                     notesdata = await this.props.fetchNotesWOData()
+=======
+                    detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+                    //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+>>>>>>> ticket/ET-301_History_modal
                 })                            
             }           
             //Normalize state to avoid missing data or state changes
@@ -260,7 +292,11 @@ class WorkOrdersBuilder extends Component {
                 targetId: this.state.targetId,
                 loading: true
             }, async () => {
+<<<<<<< HEAD
                 notesdata = await this.props.fetchNotesWOData()
+=======
+                //notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+>>>>>>> ticket/ET-301_History_modal
             }) 
         }
     }
@@ -317,7 +353,7 @@ const mapDispatchToProps = dispatch => ({
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
-    fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
+    //fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
     fetchAttachmentsWOData: ()=> dispatch(fetchAttachmentsWOData(dtlsID, token)),
 })
 
