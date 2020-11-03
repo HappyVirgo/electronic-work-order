@@ -57,7 +57,9 @@ const ModalComponent = ({data, type}) => {
     };
     
     console.log(data)
+    console.log(type)
 
+    //Notes
     let describer
     let description
     let createdDate
@@ -88,7 +90,7 @@ const ModalComponent = ({data, type}) => {
             description = data['invNote']
             createdDate = data['createdAt']
             updatedDate = data['updatedAt']
-            company = data['user']['companyName']
+            //company = data['user']['companyName']
             firstName = data['user']['firstName']        
             lastName = data['user']['lastName'] 
         }
@@ -99,30 +101,33 @@ const ModalComponent = ({data, type}) => {
                 <p id="simple-modal-description">
                     {description}
                 </p>
-                <p><strong>Company: </strong>{company}</p>
+                <p><strong>Company: </strong>{/*company*/}</p>
                 <p><strong>Name: </strong>{firstName} {lastName}</p>  
                 <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{createdDate}</Moment></p>
                 <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{updatedDate}</Moment></p>                              
         </div>
     )
+    //Attachments
     const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
 
     const bodyAttachments = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">{data['type']['description']!==undefined?data['type']['description']:""}</h2>
+    <h2 id="simple-modal-title">{/*data['type']['description']!==undefined?data['type']['description']:""*/}</h2>
             <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']!==undefined?data['documentId']:""}/>
             <p><strong>Reference ID: </strong>{data['referenceId']!==undefined?data['referenceId']:""}</p>
-            <p><strong>Type: </strong>{data['type']['type']!==undefined?data['type']['type']:""}</p>  
+            <p><strong>Type: </strong>{/*data['type']['type']!==undefined?data['type']['type']:""*/}</p>  
             <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']!==undefined?data['dateCreated']:""}</Moment></p>
             <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']!==undefined?data['dateUpdated']:""}</Moment></p>               
         </div>
-    )    
+    )  
+    
+    //History
     const bodyHistory = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">{data['type']['description']}</h2>
+            <h2 id="simple-modal-title">{/*data['type']['description']*/}</h2>
             <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']}/>
             <p><strong>Reference ID: </strong>{data['referenceId']}</p>
-            <p><strong>Type: </strong>{data['type']['type']}</p>  
+            <p><strong>Type: </strong>{/*data['type']['type']*/}</p>  
             <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']}</Moment></p>
             <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']}</Moment></p>               
         </div>
