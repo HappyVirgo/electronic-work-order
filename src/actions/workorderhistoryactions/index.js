@@ -13,7 +13,7 @@ export const receiveHistoryWOData = (data) => {
 }
 
 export const fetchHistoryWOData = async (dtlsID, token) => {
-    const HistoryURL = "2152/history"
+    const HistoryURL = "249114/history"
     const accessFetchToken = (tk) => {
         return tk.data
     }  
