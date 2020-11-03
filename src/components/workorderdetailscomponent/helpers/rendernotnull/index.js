@@ -55,8 +55,9 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
     let locationPhone
     //Check PM
     let ifPM
-    //To be defined
     let proposalStatus    
+    let invoiceStatus
+    let serviceProviderLast
     
 
     if(detailsdata!==undefined){
@@ -102,7 +103,9 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
             proposalStatus = pre_proposalStatus!==null?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
         }         
         //Bordered Section
-        serviceProvider = detailsdata.data.work_order.serviceProviderId!==null?detailsdata.data.work_order.serviceProviderId:nullVal;
+        invoiceStatus = detailsdata.data.work_order.invoice!==null?detailsdata.data.work_order.invoice.invoiceStatus:nullVal;
+        serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==null?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
+        serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==null?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
         currentEta = detailsdata.data.work_order.currentEta!==null?detailsdata.data.work_order.currentEta:nullVal;
         //Location Section
         locationAddress = detailsdata.data.work_order.location!==null?detailsdata.data.work_order.location.address1:nullVal;
@@ -150,7 +153,9 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
                 <BoxedDetails 
                     currentEta={currentEta}
                     serviceProvider={serviceProvider}
+                    serviceProviderLast={serviceProviderLast}
                     proposalStatus={proposalStatus}
+                    invoiceStatus={invoiceStatus}
                     nullVal={nullVal}
                 />
                 <LocationDetails
