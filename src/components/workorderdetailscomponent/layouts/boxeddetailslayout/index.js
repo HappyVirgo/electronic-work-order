@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }  
 }));
 
-export const BoxedDetails = ({currentEta, serviceProvider, proposalStatus, nullVal}) => {
+export const BoxedDetails = ({currentEta, serviceProvider, serviceProviderLast, proposalStatus, invoiceStatus, nullVal}) => {
     const classes = useStyles()
     const smallSize = 12
     const mediumSize = 6
@@ -43,7 +43,7 @@ export const BoxedDetails = ({currentEta, serviceProvider, proposalStatus, nullV
                     <Typography className={classes.text}><strong>Service Provider: </strong></Typography>
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
-                    <Typography className={classes.text}>{serviceProvider!==null?serviceProvider:nullVal}</Typography>
+                    <Typography className={classes.text}>{serviceProvider!==null?serviceProvider:nullVal} {serviceProviderLast!==null?serviceProviderLast:nullVal}</Typography>
                 </Grid>
             </Grid>            
             <Grid container>
@@ -58,27 +58,17 @@ export const BoxedDetails = ({currentEta, serviceProvider, proposalStatus, nullV
                 <Grid item xs={smallSize} md={mediumSize}>
                     <Typography className={classes.text}><strong>Proposal Status: </strong></Typography>                    
                 </Grid>
-                <Grid container item xs={smallSize} md={mediumSize}>
-                    <Grid item xs={mediumSize}>
+                <Grid item xs={smallSize} md={mediumSize}>
                         <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
-                    </Grid>
-                    <Grid item xs={mediumSize}>
-                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
-                    </Grid> 
                 </Grid>               
             </Grid>                    
             <Grid container>
                 <Grid item xs={smallSize} md={mediumSize}>
                     <Typography className={classes.text}><strong>Invoice Status: </strong></Typography>                    
                 </Grid>
-                <Grid container item xs={smallSize} md={mediumSize}>
-                    <Grid item xs={mediumSize}>
-                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
-                    </Grid>
-                    <Grid item xs={mediumSize}>
-                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
-                    </Grid> 
-                </Grid>               
+                <Grid item xs={smallSize} md={mediumSize}>
+                    <Typography className={classes.text}>{invoiceStatus!==null?invoiceStatus:nullVal}</Typography>
+                </Grid>                              
             </Grid>             
         </Grid>
     )
