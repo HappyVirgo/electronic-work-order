@@ -222,3 +222,4 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
                 notes={notes}
             />            
         </div>  */
+        
