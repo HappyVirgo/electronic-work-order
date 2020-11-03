@@ -9,6 +9,8 @@ export const itemKey = (index, data) => {
         id = data.items[index].invId
     } else if(data.items[index].id) {
         id = data.items[index].id
+    } else if(data.items[index].documentId) {
+        id = data.items[index].documentId
     } else {
         id = data.items[index].workOrderId
     }
