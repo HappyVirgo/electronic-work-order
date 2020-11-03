@@ -55,7 +55,7 @@ export const fetchSearchData =  async (searchTerm, searchBy, token) => {
     return dispatch => {
         return fetch(apiSearch+searchParams, init)
             .then(response => {
-                if (!response.ok){
+                if (!response.ok) {
                     return emptydata
                 }else{
                     return response.json()

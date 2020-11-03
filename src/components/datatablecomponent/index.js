@@ -93,14 +93,15 @@ const DataTableComponent = ({tmpdata}) => {
   useEffect(() => {
     //Updates data from state
     if(tmpdata!==undefined){
-      setData(tmpdata.data!==undefined?tmpdata.data.work_orders:{work_orders: []}) 
+      setData(tmpdata.data!==undefined?tmpdata.data.work_orders:[]) 
     }
   }, [tmpdata]);
+  let dataFetched = data!==null?data:[]
   return (
     <div className={`${classes.root} data-table-component`}>
       <Grid className={classes.container}>
         <Paper className={classes.paper}>
-          <ReactWindowTable data={data} columns={columns}/>
+          <ReactWindowTable data={dataFetched} columns={columns}/>
         </Paper>
       </Grid>
     </div>
