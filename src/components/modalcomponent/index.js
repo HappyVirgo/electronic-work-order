@@ -68,31 +68,36 @@ const ModalComponent = ({data, type}) => {
     let firstName
     let lastName
 
+    const Empty = ""
     if(type==="document") {
+        
+    } else if (type==="history") {
+        //description = data['type']['description']!==undefined?data['type']['description']:Empty  
+    } else {
         if (data['wonNote']) {
             describer = "Work Order Note"
-            description = data['wonNote']
-            createdDate = data['createdAt']
-            updatedDate = data['updatedAt']
-            company = data['user']['companyName']
-            firstName = data['user']['firstName']
-            lastName = data['user']['lastName'] 
+            description = data['wonNote']!==undefined?data['wonNote']:Empty
+            createdDate = data['createdAt']!==undefined?data['createdAt']:Empty
+            updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty
+            company = data['user']['companyName']!==undefined?data['user']['companyName']:Empty
+            firstName = data['user']['firstName']!==undefined?data['user']['firstName']:Empty
+            lastName = data['user']['lastName']!==undefined?data['user']['lastName']:Empty
         } else if (data['pnote']) {
             describer = "Proposal Note"
-            description = data['pnote']
-            createdDate = data['createdAt']
-            updatedDate = data['updatedAt']
-            company = data['user']['companyName']
-            firstName = data['user']['firstName']
-            lastName = data['user']['lastName']         
+            description = data['pnote']!==undefined?data['pnote']:Empty
+            createdDate = data['createdAt']!==undefined?data['createdAt']:Empty
+            updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty
+            company = data['user']['companyName']!==undefined?data['user']['companyName']:Empty
+            firstName = data['user']['firstName']!==undefined?data['user']['firstName']:Empty
+            lastName = data['user']['lastName']!==undefined?data['user']['lastName']:Empty       
         } else {
             describer = "Invoice Note"
-            description = data['invNote']
-            createdDate = data['createdAt']
-            updatedDate = data['updatedAt']
-            //company = data['user']['companyName']
-            firstName = data['user']['firstName']        
-            lastName = data['user']['lastName'] 
+            description = data['invNote']!==undefined?data['invNote']:Empty  
+            createdDate = data['createdAt']!==undefined?data['createdAt']:Empty  
+            updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty  
+            company = data['user']!==undefined?data['user']['companyName']:Empty  
+            firstName = data['user']!==undefined?data['user']['firstName']:Empty   
+            lastName = data['user']!==undefined?data['user']['lastName']:Empty  
         }
     }
     const bodyNotes = (
@@ -101,18 +106,18 @@ const ModalComponent = ({data, type}) => {
                 <p id="simple-modal-description">
                     {description}
                 </p>
-                <p><strong>Company: </strong>{/*company*/}</p>
+                <p><strong>Company: </strong>{company}</p>
                 <p><strong>Name: </strong>{firstName} {lastName}</p>  
                 <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{createdDate}</Moment></p>
                 <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{updatedDate}</Moment></p>                              
         </div>
     )
+    
     //Attachments
     const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
-
     const bodyAttachments = (
         <div style={modalStyle} className={classes.paper}>
-    <h2 id="simple-modal-title">{/*data['type']['description']!==undefined?data['type']['description']:""*/}</h2>
+            <h2 id="simple-modal-title">{data['type']!==undefined?data['type']['description']:Empty}</h2>
             <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']!==undefined?data['documentId']:""}/>
             <p><strong>Reference ID: </strong>{data['referenceId']!==undefined?data['referenceId']:""}</p>
             <p><strong>Type: </strong>{/*data['type']['type']!==undefined?data['type']['type']:""*/}</p>  
@@ -124,7 +129,7 @@ const ModalComponent = ({data, type}) => {
     //History
     const bodyHistory = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">{/*data['type']['description']*/}</h2>
+            <h2 id="simple-modal-title">History {/*description*/}</h2>
             <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']}/>
             <p><strong>Reference ID: </strong>{data['referenceId']}</p>
             <p><strong>Type: </strong>{/*data['type']['type']*/}</p>  
@@ -132,6 +137,14 @@ const ModalComponent = ({data, type}) => {
             <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']}</Moment></p>               
         </div>
     )
+    let body
+    if (type==="document") {
+        body = bodyAttachments
+    } else if (type==="history") {
+        body = bodyHistory
+    } else {
+        body = bodyNotes
+    }
     return (
     <div>
         <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
@@ -143,7 +156,7 @@ const ModalComponent = ({data, type}) => {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"         
         >
-            {type==="documents"?(type==="history"?bodyHistory:bodyAttachments):bodyNotes}
+            {body}
         </Modal>
     </div>
     );
