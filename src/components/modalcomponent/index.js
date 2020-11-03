@@ -70,9 +70,9 @@ const ModalComponent = ({data, type}) => {
 
     const Empty = ""
     if(type==="document") {
-        
+        description = data['type']!==undefined?data['type']['description']:Empty
     } else if (type==="history") {
-        //description = data['type']['description']!==undefined?data['type']['description']:Empty  
+        description = data['type']['description']!==undefined?data['type']['description']:Empty  
     } else {
         if (data['wonNote']) {
             describer = "Work Order Note"
@@ -117,22 +117,21 @@ const ModalComponent = ({data, type}) => {
     const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
     const bodyAttachments = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">{data['type']!==undefined?data['type']['description']:Empty}</h2>
-            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']!==undefined?data['documentId']:""}/>
-            <p><strong>Reference ID: </strong>{data['referenceId']!==undefined?data['referenceId']:""}</p>
-            <p><strong>Type: </strong>{/*data['type']['type']!==undefined?data['type']['type']:""*/}</p>  
-            <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']!==undefined?data['dateCreated']:""}</Moment></p>
-            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']!==undefined?data['dateUpdated']:""}</Moment></p>               
+            <h2 id="simple-modal-title">{description}</h2>
+            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']!==undefined?data['documentId']:Empty}/>
+            <p><strong>Reference ID: </strong>{data['referenceId']!==undefined?data['referenceId']:Empty}</p>
+            <p><strong>Type: </strong>{data['type']['type']!==undefined?data['type']['type']:Empty}</p>  
+            <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']!==undefined?data['dateCreated']:Empty}</Moment></p>
+            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']!==undefined?data['dateUpdated']:Empty}</Moment></p>               
         </div>
     )  
     
     //History
     const bodyHistory = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">History {/*description*/}</h2>
-            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']}/>
+            <h2 id="simple-modal-title">{description}</h2>
             <p><strong>Reference ID: </strong>{data['referenceId']}</p>
-            <p><strong>Type: </strong>{/*data['type']['type']*/}</p>  
+            <p><strong>Type: </strong>{data['type']['type']}</p>  
             <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']}</Moment></p>
             <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']}</Moment></p>               
         </div>
@@ -156,7 +155,7 @@ const ModalComponent = ({data, type}) => {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"         
         >
-            {body}
+        {body}
         </Modal>
     </div>
     );
