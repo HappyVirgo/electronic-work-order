@@ -28,6 +28,7 @@ const AdvancedSearchComponent = () => {
     let searchTerm = searchFunc.handleSearchTerm 
     let searchBy = searchFunc.handleSearchBy
     let searchByState = searchFunc.searchByState
+    let searchTermState = searchFunc.searchTermState
 
     const classes = useStyles();
     return (
@@ -58,6 +59,7 @@ const AdvancedSearchComponent = () => {
                     aria-describedby="search" 
                     type="search" 
                     fullWidth={true} 
+                    value={searchTermState}
                     variant="filled" 
                     onChange={searchTerm}
                 />

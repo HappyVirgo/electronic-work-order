@@ -68,11 +68,18 @@ class WorkOrdersBuilder extends Component {
      * Date: 10/29/2020
      * Ticket: ET-237
      * */
+    handleChangeState = (value) => {
+        searchTerm = value
+        console.log(searchTerm)      
+    }
     handleSearchTerm = (event) => {
+        let value = event.target.value
         this.setState({
-            searchTerm: event.target.value,
+            searchTerm: value,
         }, () => {
-            searchTerm = this.state.searchTerm  
+            this.handleChangeState(value)
+            //searchTerm = this.state.searchTerm  
+            //console.log(searchTerm)
         });
     } 
     /**
@@ -148,29 +155,41 @@ class WorkOrdersBuilder extends Component {
         })
     }
     async componentDidUpdate(prevProps, prevState) {
-        let searchTerm = this.state.searchTerm
-        let searchBy = this.state.searchBy        
+        let searchTermIn = this.state.searchTerm
+        let searchByIn = this.state.searchBy  
+
+        if(prevState.searchBy !== this.state.searchBy){
+            this.setState({
+                searchTerm: "",
+                searchBy: this.state.searchBy
+            })
+        }                      
         if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm || prevState.searchBy !== this.state.searchBy) {
+            if(searchTermIn.length===0){
+                this.setState({
+                    searchTerm: ""
+                })
+            }      
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "emergencyWO":
-                    if(this.state.searchTerm.length>0 && searchBy<=1) {
+                    if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
                         let dataFilter = tmp.data?tmp.data.work_orders:[]
-                        let dataFiltered = dataFilter.filter(term => term['description'].toLowerCase().includes(searchTerm.toLowerCase()))
+                        let dataFiltered = dataFilter.filter(term => term['description'].toLowerCase().includes(searchTermIn.toLowerCase()))
                         tmpdata = {
                             data: {
                                 work_orders: dataFiltered
                             }
                         }
-                    }else if(searchTerm.length>0 && searchBy>1){
+                    }else if(searchTermIn.length>0 && searchByIn>1){
                         tmpdata = await this.props.fetchSearchData()
                     }else {
                         tmpdata = await this.props.fetchEmergencyWOData()
                     }                
                     break; 
                 case "pendingWO":
-                    if(searchTerm.length>0) {
+                    if(searchTerm.length>0 && searchBy<=1) {
                         let tmp = await this.props.fetchPendingWOData()
                         let dataFilter = tmp.data?tmp.data.work_orders:[]
                         let dataFiltered = dataFilter.filter(term => term['description'].includes(searchTerm.toLowerCase()))
@@ -186,7 +205,7 @@ class WorkOrdersBuilder extends Component {
                     } 
                     break;                    
                 case "assignedWO":
-                    if(searchTerm.length>0) {
+                    if(searchTerm.length>0 && searchBy<=1) {
                         let tmp = await this.props.fetchAssignedToMeWOData()
                         let dataFilter = tmp.data?tmp.data.work_orders:[]
                         let dataFiltered = dataFilter.filter(term => term['description'].includes(searchTerm.toLowerCase()))
@@ -202,7 +221,7 @@ class WorkOrdersBuilder extends Component {
                     }                    
                     break;  
                 case "unassignedWO":
-                    if(searchTerm.length>0) {
+                    if(searchTerm.length>0 && searchBy<=1) {
                         let tmp = await this.props.fetchUnassignedWOData()
                         let dataFilter = tmp.data?tmp.data.work_orders:[]
                         let dataFiltered = dataFilter.filter(term => term['description'].includes(searchTerm.toLowerCase()))
@@ -212,7 +231,7 @@ class WorkOrdersBuilder extends Component {
                             }
                         } 
                     }else if(searchTerm.length>0 && searchBy>1){
-                        tmpdata = await this.props.fetchSearchData(searchTerm, searchBy, token)
+                        tmpdata = await this.props.fetchSearchData()
                     }else {
                         tmpdata = await this.props.fetchUnassignedWOData()
                     }                  
@@ -225,14 +244,14 @@ class WorkOrdersBuilder extends Component {
             if(dtlsID!==prevState.detailsId){
                 dtlsID = this.state.detailsId             
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
-                    detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                    notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                    detailsdata = await this.props.fetchDetailsWOData()
+                    notesdata = await this.props.fetchNotesWOData()
                 })                
             } else {
                 dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
-                    detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                    notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                    detailsdata = await this.props.fetchDetailsWOData()
+                    notesdata = await this.props.fetchNotesWOData()
                 })                            
             }           
             //Normalize state to avoid missing data or state changes
@@ -248,9 +267,8 @@ class WorkOrdersBuilder extends Component {
                 targetId: this.state.targetId,
                 loading: true
             }, async () => {
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                notesdata = await this.props.fetchNotesWOData()
             }) 
-    
         }
     }
     render() {
@@ -259,7 +277,8 @@ class WorkOrdersBuilder extends Component {
             dynamicData: this.dynamicData,
             handleSearchTerm: this.handleSearchTerm,
             handleSearchBy: this.handleSearchBy,
-            searchByState: this.state.searchBy
+            searchByState: this.state.searchBy,
+            searchTermState: this.state.searchTerm
         }
         return (
             <GlobalContext.Provider value={globalFunctions}>
