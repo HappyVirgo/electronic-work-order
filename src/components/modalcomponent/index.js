@@ -55,11 +55,8 @@ const ModalComponent = ({data, type}) => {
     const handleClose = () => {
         setOpen(false);
     };
-    
-    console.log(data)
-    console.log(type)
 
-    //Notes
+    //vars
     let describer
     let description
     let createdDate
@@ -67,12 +64,21 @@ const ModalComponent = ({data, type}) => {
     let company
     let firstName
     let lastName
+    let typeOf
+    let historyNote
+    let phone
 
     const Empty = ""
     if(type==="document") {
         description = data['type']!==undefined?data['type']['description']:Empty
+        typeOf = data['type']!==undefined?data['type']['type']:Empty
+        createdDate = data['createdAt']!==undefined?data['createdAt']:Empty  
+        updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty          
     } else if (type==="history") {
-        description = data['type']['description']!==undefined?data['type']['description']:Empty  
+        phone = data['user']!==undefined?data['user']['phoneNumber']:Empty  
+        historyNote = data['note']!==undefined?data['note']:Empty
+        updatedDate = data['updatedDate']!==undefined?data['updatedDate']:Empty
+        company = data['user']!==undefined?data['companyName']:Empty
     } else {
         if (data['wonNote']) {
             describer = "Work Order Note"
@@ -120,7 +126,7 @@ const ModalComponent = ({data, type}) => {
             <h2 id="simple-modal-title">{description}</h2>
             <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']!==undefined?data['documentId']:Empty}/>
             <p><strong>Reference ID: </strong>{data['referenceId']!==undefined?data['referenceId']:Empty}</p>
-            <p><strong>Type: </strong>{data['type']['type']!==undefined?data['type']['type']:Empty}</p>  
+            <p><strong>Type: </strong>{typeOf}</p>  
             <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']!==undefined?data['dateCreated']:Empty}</Moment></p>
             <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']!==undefined?data['dateUpdated']:Empty}</Moment></p>               
         </div>
@@ -129,11 +135,11 @@ const ModalComponent = ({data, type}) => {
     //History
     const bodyHistory = (
         <div style={modalStyle} className={classes.paper}>
-            <h2 id="simple-modal-title">{description}</h2>
-            <p><strong>Reference ID: </strong>{data['referenceId']}</p>
-            <p><strong>Type: </strong>{data['type']['type']}</p>  
-            <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']}</Moment></p>
-            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateUpdated']}</Moment></p>               
+            <h2 id="simple-modal-title">History</h2>
+            <p><strong>Phone: </strong>{phone}</p>
+            <p><strong>Note: </strong>{historyNote}</p>  
+            <p><strong>Company: </strong><Moment format="MMMM D, YYYY hh:mm a">{company}</Moment></p>
+            <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{updatedDate}</Moment></p>               
         </div>
     )
     let body

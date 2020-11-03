@@ -19,7 +19,6 @@ export const RenderSingleItem = ({ typeOfTab, getDetailsButton, getNameField, ge
     let firstName
     let lastName
     let data
-    console.log(typeOfTab)
     if(getNameField===true){
         firstName = getExtraKey!==false?checkItem:item[getDataKey]
         lastName = getExtraKeyLast!==false?checkNameField:item[getDataKey]
