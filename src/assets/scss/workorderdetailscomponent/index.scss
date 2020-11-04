@@ -43,14 +43,14 @@
         color: $red-color;
         font-weight: 700;        
     }
-    .icon_warranty {
-        color: $red-color;
-        vertical-align: text-top;
-        line-height: 16px;
-        &::before {
-            @include status-details;
-            background-color: $red-color;
-        }
+}
+.icon_warranty {
+    color: $red-color;
+    vertical-align: text-top;
+    line-height: 16px;
+    &::before {
+        @include status-details;
+        background-color: $red-color;
     }
 }
 .warranty_possible {

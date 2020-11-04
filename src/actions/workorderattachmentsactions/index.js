@@ -14,7 +14,7 @@ export const receiveAttachmentsWOData = (data) => {
 }
 
 export const fetchAttachmentsWOData = async (dtlsID, token) => {
-    const attachmentsURL = "278186/document"
+    const attachmentsURL = "/document"
     const accessFetchToken = (tk) => {
         return tk.data
     }
@@ -31,7 +31,7 @@ export const fetchAttachmentsWOData = async (dtlsID, token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiAttachmentsWO+attachmentsURL, init)
+        return fetch(apiAttachmentsWO+idDtls+attachmentsURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveAttachmentsWOData(json)));
     }
