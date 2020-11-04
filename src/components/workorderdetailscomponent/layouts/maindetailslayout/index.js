@@ -6,6 +6,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import {Typography} from "@material-ui/core";
 
+//Modal
+import {ModalComponent} from '../../../../components'
+
 const useStyles = makeStyles((theme) => ({
     typography: {
         lineHeight: "15px"
@@ -30,7 +33,7 @@ export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model
             <Typography>Model #: {model!==null?model:nullVal}</Typography>
             <Typography>Serial #: {serial!==null?serial:nullVal}</Typography>
             <Typography>Asset Type: {assetType!==null?assetType:nullVal}</Typography>
-            <Typography className={warrantyBadge}>Warranty: <span/><strong>{warrantyText}</strong></Typography>
+            <Typography className={warrantyBadge}>Warranty: <span className="icon_warranty"></span><ModalComponent  title={warrantyText} data={[]} type="warranty" /></Typography>
         </Grid>
     )
 }
