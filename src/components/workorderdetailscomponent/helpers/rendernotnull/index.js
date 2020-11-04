@@ -68,7 +68,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
             ifPM = true
         }
         //Image Section
-        if(detailsdata.data.work_order.asset!==nullVal){
+        if(detailsdata.data.work_order.asset!==nullVal) {
             let pre_image = detailsdata.data.work_order.asset.assetImage
             image = pre_image[0]!==undefined?pre_image[0]['fileName']:nullVal;
         }         

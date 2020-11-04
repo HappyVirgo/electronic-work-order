@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ModalComponent = ({data, type}) => {
+const ModalComponent = ({title, data, type}) => {
     const classes = useStyles();
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
@@ -56,6 +56,17 @@ const ModalComponent = ({data, type}) => {
         setOpen(false);
     };
 
+    const buttonWarranty = (
+        <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
+            <strong>{title}</strong>
+        </Button>        
+    ) 
+
+    const buttonRegular = (
+        <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
+            More details
+        </Button>
+    )     
     //vars
     let describer
     let description
@@ -79,6 +90,8 @@ const ModalComponent = ({data, type}) => {
         historyNote = data['note']!==undefined?data['note']:Empty
         updatedDate = data['updatedDate']!==undefined?data['updatedDate']:Empty
         company = data['user']!==undefined?data['companyName']:Empty
+    } else if (type==="warranty") { 
+
     } else {
         if (data['wonNote']) {
             describer = "Work Order Note"
@@ -106,6 +119,8 @@ const ModalComponent = ({data, type}) => {
             lastName = data['user']!==undefined?data['user']['lastName']:Empty  
         }
     }
+
+    //Notes
     const bodyNotes = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">{describer}</h2>
@@ -124,7 +139,7 @@ const ModalComponent = ({data, type}) => {
     const bodyAttachments = (
         <div style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">{description}</h2>
-            <img src={`${imageURL}${data['fileName']}`} alt={data['documentId']!==undefined?data['documentId']:Empty}/>
+            <img src={`${imageURL}${data['fileName']!==undefined?data['fileName']:Empty}`} alt={data['documentId']!==undefined?data['documentId']:Empty}/>
             <p><strong>Reference ID: </strong>{data['referenceId']!==undefined?data['referenceId']:Empty}</p>
             <p><strong>Type: </strong>{typeOf}</p>  
             <p><strong>Created At: </strong><Moment format="MMMM D, YYYY hh:mm a">{data['dateCreated']!==undefined?data['dateCreated']:Empty}</Moment></p>
@@ -142,19 +157,33 @@ const ModalComponent = ({data, type}) => {
             <p><strong>Updated At: </strong><Moment format="MMMM D, YYYY hh:mm a">{updatedDate}</Moment></p>               
         </div>
     )
+
+    //Warranty
+    const bodyWarranty = (
+        <div style={modalStyle} className={classes.paper}>
+            <h2 id="simple-modal-title">Warranty</h2>         
+        </div>
+    )
+
+    //Check for types to assign values to "body" layouts   
+    let button
     let body
-    if (type==="document") {
+    if (type==="warranty") {
+        body = bodyWarranty
+        button = buttonWarranty
+    } else if (type==="document") {
         body = bodyAttachments
+        button = buttonRegular
     } else if (type==="history") {
         body = bodyHistory
+        button = buttonRegular
     } else {
         body = bodyNotes
+        button = buttonRegular
     }
     return (
     <div>
-        <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
-            More details
-        </Button>        
+        {button}        
         <Modal
             open={open}
             onClose={handleClose}
