@@ -15,10 +15,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model, serial, assetType, warrantyLabel, nullVal}) => {
+export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model, serial, assetType, warrantyLabel, warranty, nullVal}) => {
     const classes = useStyles()
     let warrantyBadge
     let warrantyText
+    let warrantyData
     if(warrantyLabel===true) {
         warrantyBadge = "warranty_available"
         warrantyText = "Available"
@@ -26,6 +27,8 @@ export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model
         warrantyBadge = "warranty_not_available"
         warrantyText = "Not Available"
     }
+    
+    warrantyData = warranty?warranty.data:[]
     return (
         <Grid item xs={6} md={5} className="main_details">
             <Typography variant="h1" className={classes.Typography}>{assetName!==undefined?(assetName!==null?assetName:workOrderId):workOrderId} <br/><small>{woType!==null?woType:nullVal}</small></Typography>
@@ -33,7 +36,7 @@ export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model
             <Typography>Model #: {model!==null?model:nullVal}</Typography>
             <Typography>Serial #: {serial!==null?serial:nullVal}</Typography>
             <Typography>Asset Type: {assetType!==null?assetType:nullVal}</Typography>
-            <Typography className={warrantyBadge}>Warranty: </Typography><ModalComponent  title={warrantyText} data={[]} type="warranty" />
+            <Typography className={warrantyBadge}>Warranty: </Typography><ModalComponent  title={warrantyText} data={warrantyData} type={'warranty'} />
         </Grid>
     )
 }
