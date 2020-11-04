@@ -39,11 +39,16 @@ const useStyles = makeStyles((theme) => ({
         padding: "0px 5px",
         textTransform: "capitalize",
         marginTop: "5px"
+    },
+    warranty: {
+        float: "right",
+        width: "75%"
     }
 }));
 
 const ModalComponent = ({title, data, type}) => {
     const classes = useStyles();
+    let ifWarranty =  type==="warranty"?classes.warranty:""
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -56,17 +61,18 @@ const ModalComponent = ({title, data, type}) => {
         setOpen(false);
     };
 
+    //Button variations
     const buttonWarranty = (
-        <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
-            <strong>{title}</strong>
+        <Button variant="text" color="secondary" onClick={handleOpen} className={classes.button}>
+            <span className="icon_warranty"></span><strong>{title}</strong>
         </Button>        
     ) 
-
     const buttonRegular = (
         <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
             More details
         </Button>
-    )     
+    )  
+    
     //vars
     let describer
     let description
@@ -182,7 +188,7 @@ const ModalComponent = ({title, data, type}) => {
         button = buttonRegular
     }
     return (
-    <div>
+    <div className={ifWarranty}>
         {button}        
         <Modal
             open={open}

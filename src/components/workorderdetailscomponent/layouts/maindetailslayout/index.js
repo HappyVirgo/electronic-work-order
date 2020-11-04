@@ -33,7 +33,7 @@ export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model
             <Typography>Model #: {model!==null?model:nullVal}</Typography>
             <Typography>Serial #: {serial!==null?serial:nullVal}</Typography>
             <Typography>Asset Type: {assetType!==null?assetType:nullVal}</Typography>
-            <Typography className={warrantyBadge}>Warranty: <span className="icon_warranty"></span><ModalComponent  title={warrantyText} data={[]} type="warranty" /></Typography>
+            <Typography className={warrantyBadge}>Warranty: <ModalComponent  title={warrantyText} data={[]} type="warranty" /></Typography>
         </Grid>
     )
 }

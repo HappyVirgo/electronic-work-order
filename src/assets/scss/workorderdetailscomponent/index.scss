@@ -46,6 +46,7 @@
     .icon_warranty {
         color: $red-color;
         vertical-align: text-top;
+        line-height: 16px;
         &::before {
             @include status-details;
             background-color: $red-color;
