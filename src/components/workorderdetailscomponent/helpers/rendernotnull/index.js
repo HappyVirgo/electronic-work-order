@@ -24,7 +24,6 @@ import {
 } from '../../../../components'
 
 export const RenderNotNull = ({detailsdata, history, attachments, notes, warranty}) => {   
-    console.log(warranty)
     //In null case
     const nullVal = null;    
     //Image Section
@@ -129,6 +128,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     serial={serial}
                     assetType={assetType}
                     warrantyLabel={warrantyLabel}
+                    warranty={warranty}
                     nullVal={nullVal}
                 />
                 <MainActions />
