@@ -45,3 +45,7 @@ export const RECEIVE_TOKEN = 'RECEIVE_TOKEN';
 
 //Search
 export const RECEIVE_SEARCH_DATA = 'RECEIVE_SEARCH_DATA';
+
+//Warranty
+export const RECEIVE_WARRANTY_WO_DATA = 'RECEIVE_WARRANTY_WO_DATA';
+

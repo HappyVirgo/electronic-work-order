@@ -26,7 +26,8 @@ import {
     fetchUnassignedWOData,
     fetchHistoryWOData,
     fetchNotesWOData,
-    fetchAttachmentsWOData
+    fetchAttachmentsWOData,
+    fetchWarrantyWOData
 } from '../../actions';
 
 //Context
@@ -50,6 +51,8 @@ let dtlsID
 //Search
 let searchTerm
 let searchBy
+//Warranty
+let warrantydata
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -147,6 +150,7 @@ class WorkOrdersBuilder extends Component {
         historydata = await this.props.fetchHistoryWOData(dtlsID, token)
         detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
         notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
         //Set details first item
         this.setState({
@@ -295,6 +299,7 @@ class WorkOrdersBuilder extends Component {
                                 history={historydata} 
                                 attachments={attachmentsdata} 
                                 notes={notesdata}
+                                warranty={warrantydata}
                             />
                         </Grid>  
                     </Grid>  
@@ -311,7 +316,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     oauthFetchToken: () => dispatch(oauthFetchToken()),
     fetchCTAsData: () => dispatch(fetchCTAsData(token)),   
-    fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token)),       
+    fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token)),   
+    fetchWarrantyWOData: () => dispatch(fetchWarrantyWOData(dtlsID, token)),   
     fetchPendingWOData: () => dispatch(fetchPendingWOData(token)),
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),

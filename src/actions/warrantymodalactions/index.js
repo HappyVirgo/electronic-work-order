@@ -1,25 +1,27 @@
 /**
- * Description: Create History Component
+ * Description: Create Warranty Modal
  * Author: Carlos Blanco
- * Created: 9/10/2020
- * Ticket: ET-259
+ * Created: 11/4/2020
+ * Ticket: ET-266
  */
+
 //Basic imports
 import * as types from '../../constants';
-import { apiHistoryWO } from '../../api';
+import { apiWarranty } from '../../api';
 
-export const receiveHistoryWOData = (data) => {
-    return {type: types.RECEIVE_HISTORY_DATA, data: data};
+
+export const receiveWarrantyWOData = (data) => {
+    return {type: types.RECEIVE_WARRANTY_WO_DATA, data: data};
 }
 
-export const fetchHistoryWOData = async (dtlsID, token) => {
-    const HistoryURL = "/history"
+export const fetchWarrantyWOData = async (dtlsID, token) => {
+    const warrantyURL = "/warranties"
     const accessFetchToken = (tk) => {
         return tk.data
-    }  
+    }
     const accessDtlId = (id) => {
         return id
-    }       
+    }     
     let accessToken = await accessFetchToken(token)
     let idDtls = await accessDtlId(dtlsID)
 
@@ -28,10 +30,10 @@ export const fetchHistoryWOData = async (dtlsID, token) => {
             Authorization: 'Bearer ' + accessToken,
             'Content-Type': 'application/json',
         } 
-    } 
+    }  
     return dispatch => {
-        return fetch(apiHistoryWO+idDtls+HistoryURL, init)
+        return fetch(apiWarranty+idDtls+warrantyURL, init)
             .then(response => response.json())
-            .then(json => dispatch(receiveHistoryWOData(json)));
+            .then(json => dispatch(receiveWarrantyWOData(json)));
     }
 }

@@ -16,6 +16,7 @@ import historyWorkOrdersReducer from './workordershistoryreducer'
 import notesWorkOrderReducer from './workordersnotesreducer'
 import attachmentsWorkOrdersReducer from './workorderattachmentsreducer'
 import advancedSearchDataReducer from './advancedsearchreducer'
+import warrantyModalReducer from './warrantymodalreducer'
 
 
 export {
@@ -30,5 +31,6 @@ export {
     unassignedWorkOrdersReducer,
     historyWorkOrdersReducer,
     notesWorkOrderReducer,
-    attachmentsWorkOrdersReducer
+    attachmentsWorkOrdersReducer,
+    warrantyModalReducer
 }

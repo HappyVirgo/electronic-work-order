@@ -23,7 +23,8 @@ import {
     //ModalComponent
 } from '../../../../components'
 
-export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {   
+export const RenderNotNull = ({detailsdata, history, attachments, notes, warranty}) => {   
+    console.log(warranty)
     //In null case
     const nullVal = null;    
     //Image Section
@@ -36,7 +37,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
     let model
     let serial
     let assetType
-    let warranty
+    let warrantyLabel
     //Enhanced Section
     let id
     let description
@@ -88,7 +89,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
         model = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.modelNumber:nullVal;
         serial = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.serialNumber:nullVal;
         assetType = detailsdata.data.work_order.assetType!==nullVal?detailsdata.data.work_order.assetType.name:nullVal;
-        warranty = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.warrantyAvailable:nullVal;
+        warrantyLabel = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.warrantyAvailable:nullVal;
         //Enhanced Section
         id = detailsdata.data.work_order.id!==nullVal?detailsdata.data.work_order.id:nullVal;
         description = detailsdata.data.work_order.description!==nullVal?detailsdata.data.work_order.description:nullVal;
@@ -127,7 +128,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes}) => {
                     model={model}
                     serial={serial}
                     assetType={assetType}
-                    warranty={warranty}
+                    warrantyLabel={warrantyLabel}
                     nullVal={nullVal}
                 />
                 <MainActions />

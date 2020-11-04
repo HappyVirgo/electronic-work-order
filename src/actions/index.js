@@ -49,6 +49,11 @@ import {
     fetchAttachmentsWOData,
 } from './workorderattachmentsactions'
 
+//Warranty
+import {
+    fetchWarrantyWOData,
+} from './warrantymodalactions'
+
 //OAuth Token
 import {
     oauthFetchToken,
@@ -66,5 +71,6 @@ export {
     fetchUnassignedWOData,
     fetchHistoryWOData,
     fetchNotesWOData,
-    fetchAttachmentsWOData
+    fetchAttachmentsWOData,
+    fetchWarrantyWOData
 }

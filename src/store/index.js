@@ -25,7 +25,8 @@ import {
     unassignedWorkOrdersReducer,
     historyWorkOrdersReducer,
     notesWorkOrderReducer,
-    attachmentsWorkOrdersReducer
+    attachmentsWorkOrdersReducer,
+    warrantyModalReducer
 } from '../reducers';
 
 //Combine reducers
@@ -41,7 +42,8 @@ const reducers = combineReducers({
     unassignedWorkOrdersReducer,
     historyWorkOrdersReducer,
     notesWorkOrderReducer,
-    attachmentsWorkOrdersReducer
+    attachmentsWorkOrdersReducer,
+    warrantyModalReducer
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

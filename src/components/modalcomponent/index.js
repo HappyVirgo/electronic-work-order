@@ -42,7 +42,8 @@ const useStyles = makeStyles((theme) => ({
     },
     warranty: {
         float: "right",
-        width: "75%"
+        width: "75%",
+        marginTop: "-30px"
     }
 }));
 
