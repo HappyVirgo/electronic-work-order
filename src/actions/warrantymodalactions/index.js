@@ -30,10 +30,19 @@ export const fetchWarrantyWOData = async (dtlsID, token) => {
             Authorization: 'Bearer ' + accessToken,
             'Content-Type': 'application/json',
         } 
-    }  
+    }
+    const emptydata = []    
+    console.log(apiWarranty+idDtls+warrantyURL)  
     return dispatch => {
         return fetch(apiWarranty+idDtls+warrantyURL, init)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    return emptydata
+                }else{
+                    return response.json()
+                }
+                
+            })
             .then(json => dispatch(receiveWarrantyWOData(json)));
     }
 }

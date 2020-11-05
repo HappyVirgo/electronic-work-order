@@ -245,12 +245,14 @@ class WorkOrdersBuilder extends Component {
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData()
                     notesdata = await this.props.fetchNotesWOData()
+                    warrantydata = await this.props.fetchWarrantyWOData()
                 })                
             } else {
                 dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData()
                     notesdata = await this.props.fetchNotesWOData()
+                    warrantydata = await this.props.fetchWarrantyWOData()
                 })                            
             }           
             //Normalize state to avoid missing data or state changes
@@ -259,15 +261,28 @@ class WorkOrdersBuilder extends Component {
                 targetId: this.state.targetId,
                 loading: true
             }, async () => {
-                detailsdata = await this.props.fetchDetailsWOData()            
-            })  
+                detailsdata = await this.props.fetchDetailsWOData()
+                notesdata = await this.props.fetchNotesWOData()
+                warrantydata = await this.props.fetchWarrantyWOData()  
+            }) 
+            /* 
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
             }, async () => {
                 notesdata = await this.props.fetchNotesWOData()
+                
             }) 
+            this.setState({
+                detailsId: dtlsID,
+                targetId: this.state.targetId,
+                loading: true
+            }, async () => {
+                warrantydata = await this.props.fetchWarrantyWOData()
+            })  
+            */           
+                        
         }
     }
     render() {
