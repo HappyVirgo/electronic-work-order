@@ -26,17 +26,24 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         position: 'absolute',
         width: "50%",
-        height: "100%",
-        overflow:'scroll',
-        overflowX:'hidden',
         '@media (max-width: 600px)': {
             width: "80%",
-            height: "auto",
+            height: "100%",
         },
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+    },
+    warrantyPaper: {
+        height: "100%",
+        overflow:'scroll',
+        overflowX:'hidden',
+    },
+    regularPaper: {
+        height: "50%",
+        overflow:'scroll',
+        overflowX:'hidden',
     },
     button: {
         padding: "0px 5px",
@@ -61,6 +68,7 @@ const ModalComponent = ({title, data, type}) => {
     console.log(data)
     const classes = useStyles();
     let ifWarranty =  type==="warranty"?classes.warranty:""
+    let ifWarrantyPaper =  type==="warranty"?classes.warrantyPaper:classes.regularPaper
     // getModalStyle is not a pure function, we roll the style only on the first render
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -231,7 +239,7 @@ const ModalComponent = ({title, data, type}) => {
     //Converting object into array in order to use map()
     const componentWarrantiesArray = componentWarranties?Object.entries(componentWarranties):[];
     const bodyWarranty = (
-        <Grid container style={modalStyle} className={classes.paper}>
+        <Grid container style={modalStyle} className={`${classes.paper} ${ifWarrantyPaper}`}>
             <Grid item xs={12} md={12} lg={6}>
                 <h2 id="simple-modal-title">Warranty</h2> 
                 <p><strong>Asset ID: </strong>{assetID}</p>
