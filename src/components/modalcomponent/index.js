@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
 //Material UI
-import { Button } from '@material-ui/core';
+import { Button, Divider } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
 //Date format
@@ -26,7 +26,9 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         position: 'absolute',
         width: "50%",
-        height: "auto",
+        height: "100%",
+        overflow:'scroll',
+        overflowX:'hidden',
         '@media (max-width: 600px)': {
             width: "80%",
             height: "auto",
@@ -44,15 +46,19 @@ const useStyles = makeStyles((theme) => ({
     warranty: {
         float: "right",
         width: "75%",
-        marginTop: "-30px"
+        marginTop: "-30px",      
     },
     date: {
         fontWeight: "800",
         color: "#E60042"
+    },
+    pad: {
+        paddingLeft: "20px"
     }
 }));
 
 const ModalComponent = ({title, data, type}) => {
+    console.log(data)
     const classes = useStyles();
     let ifWarranty =  type==="warranty"?classes.warranty:""
     // getModalStyle is not a pure function, we roll the style only on the first render
@@ -102,10 +108,20 @@ const ModalComponent = ({title, data, type}) => {
     let warrantyStartFromDate
     let warrantyNte
     let warrantyStatusId
-    let warranty1
-    let warranty2
-    let warranty3
-    let warranty4
+    let warranty1typeId
+    let warranty2typeId
+    let warranty3typeId
+    let warranty4typeId
+    let warranty1type
+    let warranty2type
+    let warranty3type
+    let warranty4type
+    let warranty1typeStatus
+    let warranty2typeStatus
+    let warranty3typeStatus
+    let warranty4typeStatus
+    let componentWarranties
+
     const Empty = ""
     if(type==="document") {
         description = data['type']!==undefined?data['type']['description']:Empty
@@ -132,8 +148,19 @@ const ModalComponent = ({title, data, type}) => {
         warrantyStartFromDate = data['warranty']!==undefined?data['warranty']['warrantyStartFromDate']:Empty
         warrantyNte = data['warranty']!==undefined?data['warranty']['warrantyNte']:Empty
         warrantyStatusId = data['warranty']!==undefined?data['warranty']['warrantyStatusId']:Empty
-        warranty1 = data['warranty']!==undefined?data['warranty']['warranty1']:Empty
-        warranty1 = data['warranty']!==undefined?data['warranty']['warranty1']:Empty
+        warranty1typeId = data['warranty']!==undefined?(data['warranty']['warranty1']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty2typeId = data['warranty']!==undefined?(data['warranty']['warranty2']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty3typeId = data['warranty']!==undefined?(data['warranty']['warranty3']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty4typeId = data['warranty']!==undefined?(data['warranty']['warranty4']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty1type = data['warranty']!==undefined?(data['warranty']['warranty1']?data['warranty']['warranty1']['warrantyType']:Empty):Empty
+        warranty2type = data['warranty']!==undefined?(data['warranty']['warranty2']?data['warranty']['warranty2']['warrantyType']:Empty):Empty
+        warranty3type = data['warranty']!==undefined?(data['warranty']['warranty3']?data['warranty']['warranty3']['warrantyType']:Empty):Empty
+        warranty4type = data['warranty']!==undefined?(data['warranty']['warranty4']?data['warranty']['warranty4']['warrantyType']:Empty):Empty
+        warranty1typeStatus = data['warranty']!==undefined?(data['warranty']['warranty1']?data['warranty']['warranty1']['status']:Empty):Empty
+        warranty2typeStatus = data['warranty']!==undefined?(data['warranty']['warranty2']?data['warranty']['warranty2']['status']:Empty):Empty
+        warranty3typeStatus = data['warranty']!==undefined?(data['warranty']['warranty3']?data['warranty']['warranty3']['status']:Empty):Empty
+        warranty4typeStatus = data['warranty']!==undefined?(data['warranty']['warranty4']?data['warranty']['warranty4']['status']:Empty):Empty  
+        componentWarranties =  data['warranty']!==undefined?data['warranty']['componentWarranties']:Empty             
     } else {
         if (data['wonNote']) {
             describer = "Work Order Note"
@@ -201,26 +228,57 @@ const ModalComponent = ({title, data, type}) => {
     )
 
     //Warranty
+    //Converting object into array in order to use map()
+    const componentWarrantiesArray = componentWarranties?Object.entries(componentWarranties):[];
     const bodyWarranty = (
         <Grid container style={modalStyle} className={classes.paper}>
             <Grid item xs={12} md={12} lg={6}>
                 <h2 id="simple-modal-title">Warranty</h2> 
                 <p><strong>Asset ID: </strong>{assetID}</p>
-                <p><strong>Warranty Period1: </strong>{warrantyPeriod1}</p>
-                <p><strong>Warranty Period2: </strong>{warrantyPeriod2}</p>  
-                <p><strong>Warranty Period3: </strong>{warrantyPeriod3}</p>
-                <p><strong>Warranty Period4: </strong>{warrantyPeriod4}</p> 
                 <p><strong>Warranty Expiry Date: </strong><span className={classes.date}><Moment format="MMMM D, YYYY hh:mm a">{warrantyExpiryDate}</Moment></span></p>     
                 <p><strong>warranty Start from Date: </strong>{warrantyStartFromDate}</p>  
                 <p><strong>Warranty Nte: </strong>$ {warrantyNte}</p>  
-                <p><strong>Warranty Status Id: </strong>{warrantyStatusId}</p>  
+                <p><strong>Warranty Status Id: </strong>{warrantyStatusId}</p>
+                <Divider />
+                <p><strong>Warranty Period 1: </strong>{warrantyPeriod1}</p>
+                <p><strong>Warranty Type: </strong>{warranty1type}</p>
+                <p><strong>Warranty Type Id: </strong>{warranty1typeId}</p>
+                <p><strong>Warranty Status: </strong>{warranty1typeStatus}</p>
+                <Divider/>
+                <p><strong>Warranty Period 2: </strong>{warrantyPeriod2}</p> 
+                <p><strong>Warranty Type: </strong>{warranty2type}</p>
+                <p><strong>Warranty Type Id: </strong>{warranty2typeId}</p>
+                <p><strong>Warranty Status: </strong>{warranty2typeStatus}</p>                   
+                <Divider/>
+                <p><strong>Warranty Period 3: </strong>{warrantyPeriod3}</p>
+                <p><strong>Warranty Type: </strong>{warranty3type}</p>
+                <p><strong>Warranty Type Id: </strong>{warranty3typeId}</p>
+                <p><strong>Warranty Status: </strong>{warranty3typeStatus}</p>                   
+                <Divider/>
+                <p><strong>Warranty Period 4: </strong>{warrantyPeriod4}</p>
+                <p><strong>Warranty Type: </strong>{warranty4type}</p>
+                <p><strong>Warranty Type Id: </strong>{warranty4typeId}</p>
+                <p><strong>Warranty Status: </strong>{warranty4typeStatus}</p>
             </Grid>
-            <Grid item xs={12} md={12} lg={6} className="cta-section">
-                <p><strong>Asset ID: </strong>{assetID}</p>
-                <p><strong>Warranty Period1: </strong>{warrantyPeriod1}</p>
-                <p><strong>Warranty Period2: </strong>{warrantyPeriod2}</p>  
-                <p><strong>Warranty Period3: </strong>{warrantyPeriod3}</p>
-                <p><strong>Warranty Period4: </strong>{warrantyPeriod4}</p>   
+            <Grid item xs={12} md={12} lg={6} className={classes.pad}>
+                <h2 id="simple-modal-title">Component Warranties</h2>                   
+                {componentWarrantiesArray.map((item) => {
+                    return (
+                        <Grid key={item[0]}>
+                            <p><strong>Warranty Period: </strong>{item[1]['warrantyPeriodType']}</p> 
+                            <p><strong>Warranty Period Type: </strong>{item[1]['warrantyPeriodType']}</p> 
+                            <p><strong>Component Warranty Id: </strong>{item[1]['componentWarrantyId']}</p> 
+                            <p><strong>Invoice Id: </strong>{item[1]['invoiceId']}</p> 
+                            <p><strong>Asset Id: </strong>{item[1]['assetId']}</p> 
+                            <p><strong>Service Provider Id: </strong>{item[1]['serviceProviderId']}</p> 
+                            <p><strong>Asset Failure TypeId: </strong>{item[1]['assetFailureTypeId']}</p> 
+                            <p><strong>Status: </strong>{item[1]['status']}</p>
+                            <p><strong>Date Created: </strong><span className={classes.date}><Moment format="MMMM D, YYYY hh:mm a">{item[1]['dateCreated']}</Moment></span></p> 
+                            <p><strong>Date Updated: </strong><span className={classes.date}><Moment format="MMMM D, YYYY hh:mm a">{item[1]['dateUpdated']}</Moment></span></p>                        
+                            <Divider />                       
+                        </Grid>
+                    )
+                })}
             </Grid>
         </Grid>        
     )
