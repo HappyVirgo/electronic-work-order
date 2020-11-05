@@ -262,10 +262,7 @@ class WorkOrdersBuilder extends Component {
                 loading: true
             }, async () => {
                 detailsdata = await this.props.fetchDetailsWOData()
-                notesdata = await this.props.fetchNotesWOData()
-                warrantydata = await this.props.fetchWarrantyWOData()  
-            }) 
-            /* 
+            })  
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
@@ -280,8 +277,7 @@ class WorkOrdersBuilder extends Component {
                 loading: true
             }, async () => {
                 warrantydata = await this.props.fetchWarrantyWOData()
-            })  
-            */           
+            })             
                         
         }
     }
