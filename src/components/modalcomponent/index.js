@@ -65,7 +65,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ModalComponent = ({title, data, type}) => {
-    console.log(data)
     const classes = useStyles();
     let ifWarranty =  type==="warranty"?classes.warranty:""
     let ifWarrantyPaper =  type==="warranty"?classes.warrantyPaper:classes.regularPaper

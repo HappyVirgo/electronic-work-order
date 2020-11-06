@@ -53,6 +53,8 @@ let searchTerm
 let searchBy
 //Warranty
 let warrantydata
+//Filter
+let filterBy
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -62,7 +64,8 @@ class WorkOrdersBuilder extends Component {
             detailsId: "",
             loading: false,
             searchTerm: "", 
-            searchBy: 1
+            searchBy: 1,
+            filterBy: 1
         };
     }    
     /**
@@ -88,15 +91,28 @@ class WorkOrdersBuilder extends Component {
      * */    
     handleChangeStateSearchBy = (value) => {
         searchBy = value  
-        console.log(searchBy)   
     }    
     handleSearchBy = (event) => {
         let value = event.target.value
         this.setState({
             searchBy: value
         }, this.handleChangeStateSearchBy(value));
-    } 
-    
+    }
+/**
+ * Description: Create Filter Component
+ * Author: Carlos Blanco
+ * Created: 11/06/2020
+ * Ticket: ET-246
+ */  
+    handleChangeStateFilterBy = (value) => {
+        filterBy = value  
+    }    
+    handleFilterBy = (event) => {
+        let value = event.target.value
+        this.setState({
+            filterBy: value
+        }, this.handleChangeStateFilterBy(value));
+    }    
     /**
      * Description: Details components click events to change
      * depending on datatable row
@@ -173,11 +189,11 @@ class WorkOrdersBuilder extends Component {
                 case "emergencyWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
-                        let dataFilter = tmp.data?tmp.data.work_orders:[]
-                        let dataFiltered = dataFilter.filter(term => term['description'].toLowerCase().includes(searchTermIn.toLowerCase()))
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => term['description'].toLowerCase().includes(searchTermIn.toLowerCase()))
                         tmpdata = {
                             data: {
-                                work_orders: dataFiltered
+                                work_orders: dataSearched
                             }
                         }
                     }else if(searchTermIn.length>0 && searchByIn>1){
@@ -189,11 +205,11 @@ class WorkOrdersBuilder extends Component {
                 case "pendingWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchPendingWOData()
-                        let dataFilter = tmp.data?tmp.data.work_orders:[]
-                        let dataFiltered = dataFilter.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                         tmpdata = {
                             data: {
-                                work_orders: dataFiltered
+                                work_orders: dataSearched
                             }
                         } 
                     }else if(searchTermIn.length>0 && searchByIn>1){
@@ -205,11 +221,11 @@ class WorkOrdersBuilder extends Component {
                 case "assignedWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchAssignedToMeWOData()
-                        let dataFilter = tmp.data?tmp.data.work_orders:[]
-                        let dataFiltered = dataFilter.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                         tmpdata = {
                             data: {
-                                work_orders: dataFiltered
+                                work_orders: dataSearched
                             }
                         }
                     }else if(searchTermIn.length>0 && searchByIn>1){
@@ -221,11 +237,11 @@ class WorkOrdersBuilder extends Component {
                 case "unassignedWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchUnassignedWOData()
-                        let dataFilter = tmp.data?tmp.data.work_orders:[]
-                        let dataFiltered = dataFilter.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                         tmpdata = {
                             data: {
-                                work_orders: dataFiltered
+                                work_orders: dataSearched
                             }
                         } 
                     }else if(searchTermIn.length>0 && searchByIn>1){
@@ -278,7 +294,6 @@ class WorkOrdersBuilder extends Component {
             }, async () => {
                 warrantydata = await this.props.fetchWarrantyWOData()
             })             
-                        
         }
     }
     render() {
@@ -287,6 +302,8 @@ class WorkOrdersBuilder extends Component {
             dynamicData: this.dynamicData,
             handleSearchTerm: this.handleSearchTerm,
             handleSearchBy: this.handleSearchBy,
+            handleFilterBy: this.handleFilterBy,
+            filterByState: this.state.filterBy,
             searchByState: this.state.searchBy,
             searchTermState: this.state.searchTerm
         }
@@ -295,7 +312,8 @@ class WorkOrdersBuilder extends Component {
                 <div className="work-orders-container">
                     <Grid className="cta-section-component">
                         <CTASectionComponent 
-                            ctadata={ctadata} 
+                            ctadata={ctadata}
+                            tmpdata={tmpdata} 
                         />
                     </Grid>            
                     <Grid container className="content-section">

@@ -32,7 +32,6 @@ export const fetchWarrantyWOData = async (dtlsID, token) => {
         } 
     }
     const emptydata = []    
-    console.log(apiWarranty+idDtls+warrantyURL)  
     return dispatch => {
         return fetch(apiWarranty+idDtls+warrantyURL, init)
             .then(response => {
