@@ -51,10 +51,11 @@ const FilteringComponent = ({tmpdata}) => {
                         <em>Filter by</em>
                     </MenuItem>
                     {filterData.map((item, index) => {
-                        console.log(index)
-                        console.log(item)
                         return (
-                            <MenuItem value={index}>{item}</MenuItem>
+                            <MenuItem 
+                                key={index}
+                                value={index}
+                            >{item}</MenuItem>
                         )
                     })}
                     
