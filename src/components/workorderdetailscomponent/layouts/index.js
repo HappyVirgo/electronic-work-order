@@ -9,7 +9,6 @@ import {WorkOrderDescription} from '../layouts/workorderdesriptionclayout'
 import {EnhancedDetails} from '../layouts/enhanceddetailslayout'  
 import {BoxedDetails} from '../layouts/boxeddetailslayout'  
 import {LocationDetails} from '../layouts/locationdetailslayout' 
-import {FilteringComponent} from '../layouts/filteringcomponent' 
 
 
 export {
@@ -24,5 +23,4 @@ export {
     EnhancedDetails,
     BoxedDetails,
     LocationDetails,
-    FilteringComponent
 }
