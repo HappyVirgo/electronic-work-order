@@ -16,12 +16,8 @@ import { FormControl, InputLabel, Select, MenuItem, Grid } from '@material-ui/co
 //Context
 import { GlobalContext } from "../../context/globalcontext";
 
-//Layouts
-/*
-import {
-    //bla
-} from './layouts'
-*/
+//Helpers
+import { filterByAssetType } from "./helpers"
 
 const useStyles = makeStyles((theme) => ({
     filter: {
@@ -31,12 +27,15 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const FilteringComponent = () => {
+const FilteringComponent = ({tmpdata}) => {
     let filterFunc = useContext(GlobalContext)
-    let searchTerm = filterFunc.handleSearchTerm 
-    console.log(searchTerm)
-    const classes = useStyles();
+    let filterBy = filterFunc.handleFilterBy 
+    let filterByState = filterFunc.filterByState
+    
+    let data = tmpdata!==undefined?(tmpdata['data']?tmpdata['data']['work_orders']:[]):[]
+    let filterData = filterByAssetType(data)
 
+    const classes = useStyles();
     return (
         <Grid>
             <FormControl className={classes.filter}>
@@ -45,17 +44,20 @@ const FilteringComponent = () => {
                     labelId="filter-1-filled-label"
                     id="filter-1-filled-label"
                     variant="filled"
-                    //onChange={searchBy}
-                    //value={searchByState}
+                    onChange={filterBy} 
+                    value={filterByState}
                 >
                     <MenuItem value={''} aria-label="None" disabled>
                         <em>Filter by</em>
                     </MenuItem>
-                    <MenuItem value={1}>Default Search</MenuItem>
-                    <MenuItem value={2}>Service Provider</MenuItem>
-                    <MenuItem value={3}>Asset Type</MenuItem>
-                    <MenuItem value={4}>Problem Type</MenuItem>
-                    <MenuItem value={5}>Trade Type</MenuItem>
+                    {filterData.map((item, index) => {
+                        console.log(index)
+                        console.log(item)
+                        return (
+                            <MenuItem value={index}>{item}</MenuItem>
+                        )
+                    })}
+                    
                 </Select>
             </FormControl> 
             <FormControl className={classes.filter}>
@@ -64,8 +66,8 @@ const FilteringComponent = () => {
                     labelId="filter-2-filled-label"
                     id="filter-2-filled-label"
                     variant="filled"
-                    //onChange={searchBy}
-                    //value={searchByState}
+                    onChange={filterBy}
+                    value={filterByState}
                 >
                     <MenuItem value={''} aria-label="None" disabled>
                         <em>Filter by</em>
@@ -83,8 +85,8 @@ const FilteringComponent = () => {
                     labelId="filter-3-filled-label"
                     id="filter-3-filled-label"
                     variant="filled"
-                    //onChange={searchBy}
-                    //value={searchByState}
+                    onChange={filterBy}
+                    value={filterByState}
                 >
                     <MenuItem value={''} aria-label="None" disabled>
                         <em>Filter by</em>

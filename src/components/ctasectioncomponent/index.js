@@ -24,7 +24,7 @@ import {
     FilteringComponent
 } from '../index'
 
-const CTASectionComponent = ({ctadata}) => {
+const CTASectionComponent = ({ctadata, tmpdata}) => {
 
     //Process to retrieve user data 
     let assignedToMeWorkOrders
@@ -45,7 +45,9 @@ const CTASectionComponent = ({ctadata}) => {
                 <Grid item xs={12} md={12} lg={5} className="search-section">
                     <h1>Work Orders</h1>
                     <AdvancedSearchComponent />
-                    <FilteringComponent />
+                    <FilteringComponent
+                        tmpdata={tmpdata}
+                    />
                 </Grid>
                 <Grid item xs={12} md={12} lg={7} className="cta-section">
                     <FeaturedCTALayout 
