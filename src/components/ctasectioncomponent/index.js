@@ -20,7 +20,8 @@ import {
 
 //Components
 import { 
-    AdvancedSearchComponent
+    AdvancedSearchComponent,
+    FilteringComponent
 } from '../index'
 
 const CTASectionComponent = ({ctadata}) => {
@@ -41,9 +42,10 @@ const CTASectionComponent = ({ctadata}) => {
     }
     return (
             <Grid container className="cta-component">
-                <Grid item xs={12} md={12} lg={5}>
+                <Grid item xs={12} md={12} lg={5} className="search-section">
                     <h1>Work Orders</h1>
                     <AdvancedSearchComponent />
+                    <FilteringComponent />
                 </Grid>
                 <Grid item xs={12} md={12} lg={7} className="cta-section">
                     <FeaturedCTALayout 

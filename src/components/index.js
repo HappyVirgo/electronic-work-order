@@ -20,9 +20,11 @@ import TabsComponent from './tabscomponent'
 //Modal Component
 import ModalComponent from './modalcomponent'
 
-//Modal Component
+//Search Component
 import AdvancedSearchComponent from './advancedsearchcomponent'
 
+//Filter Component
+import FilteringComponent from './filteringcomponent' 
 
 export {
     DataTableComponent,
@@ -30,5 +32,6 @@ export {
     WorkOrderDetailsComponent,
     TabsComponent,
     ModalComponent,
-    AdvancedSearchComponent
+    AdvancedSearchComponent,
+    FilteringComponent
 }

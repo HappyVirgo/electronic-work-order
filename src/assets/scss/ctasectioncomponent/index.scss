@@ -7,17 +7,21 @@
     min-height: 260px;
     margin: 0 auto;
     background-color: $basic-blue;
-    padding: 55px;
     h1{
         color:#FFF;
         font-size:42px;
         font-family: $font-family;
         font-weight: 400;
+        margin-top: 0px;
+        margin-bottom: 20px;
+    }
+    .search-section {
+        padding: 55px 0px 0px 55px;
     }
     .cta-section {
         text-transform: uppercase;
         margin-top: 10px;
-        padding-left: 55px;
+        padding: 55px;
         div {
             border-radius: 15px;
         }
