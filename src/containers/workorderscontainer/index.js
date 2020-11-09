@@ -65,7 +65,7 @@ class WorkOrdersBuilder extends Component {
             loading: false,
             searchTerm: "", 
             searchBy: 1,
-            filterBy: 1
+            filterBy: ""
         };
     }    
     /**
@@ -105,7 +105,8 @@ class WorkOrdersBuilder extends Component {
  * Ticket: ET-246
  */  
     handleChangeStateFilterBy = (value) => {
-        filterBy = value  
+        filterBy = value 
+        console.log(filterBy) 
     }    
     handleFilterBy = (event) => {
         let value = event.target.value
@@ -176,6 +177,7 @@ class WorkOrdersBuilder extends Component {
     async componentDidUpdate(prevProps, prevState) {
         let searchTermIn = this.state.searchTerm
         let searchByIn = this.state.searchBy  
+        let filterByIn = this.state.filterBy
 
         if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm || prevState.searchBy !== this.state.searchBy) {
             //Clean input if lenght is 0
@@ -198,6 +200,8 @@ class WorkOrdersBuilder extends Component {
                         }
                     }else if(searchTermIn.length>0 && searchByIn>1){
                         tmpdata = await this.props.fetchSearchData()
+                    }else if(filterByIn.length>0) {
+                        console.log("More than 03")
                     }else {
                         tmpdata = await this.props.fetchEmergencyWOData()
                     }                
