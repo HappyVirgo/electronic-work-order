@@ -31,7 +31,6 @@ const FilteringComponent = ({tmpdata}) => {
     let filterFunc = useContext(GlobalContext)
     let filterBy = filterFunc.handleFilterBy 
     let filterByState = filterFunc.filterByState
-    
     let data = tmpdata!==undefined?(tmpdata['data']?tmpdata['data']['work_orders']:[]):[]
     let filterData = filterByAssetType(data)
 
@@ -54,14 +53,18 @@ const FilteringComponent = ({tmpdata}) => {
                         return (
                             <MenuItem 
                                 key={index}
-                                value={index}
+                                value={item}
                             >{item}</MenuItem>
                         )
                     })}
                     
                 </Select>
-            </FormControl> 
-            <FormControl className={classes.filter}>
+            </FormControl>  
+        </Grid>
+    );
+};
+
+/*<FormControl className={classes.filter}>
                 <InputLabel id="filter-2-filled-label">Advanced 2</InputLabel>
                 <Select
                     labelId="filter-2-filled-label"
@@ -98,9 +101,5 @@ const FilteringComponent = ({tmpdata}) => {
                     <MenuItem value={4}>Problem Type</MenuItem>
                     <MenuItem value={5}>Trade Type</MenuItem>
                 </Select>            
-            </FormControl> 
-        </Grid>
-    );
-};
-
+            </FormControl>*/
 export default React.memo(FilteringComponent);
