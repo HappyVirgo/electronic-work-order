@@ -40,6 +40,7 @@ const CTASectionComponent = ({ctadata, tmpdata}) => {
         pendingWorkOrders = ctadata.data.pendingWorkOrders
         unassignedWorkOrders = ctadata.data.unassignedWorkOrders
     }
+
     return (
             <Grid container className="cta-component">
                 <Grid item xs={12} md={12} lg={5} className="search-section">
