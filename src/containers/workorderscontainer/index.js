@@ -107,6 +107,7 @@ class WorkOrdersBuilder extends Component {
     handleChangeStateFilterBy = (value) => {
         filterBy = value 
         console.log(filterBy) 
+        console.log(filterBy.length)
     }    
     handleFilterBy = (event) => {
         let value = event.target.value
@@ -175,11 +176,17 @@ class WorkOrdersBuilder extends Component {
         })
     }
     async componentDidUpdate(prevProps, prevState) {
-        let searchTermIn = this.state.searchTerm
-        let searchByIn = this.state.searchBy  
-        let filterByIn = this.state.filterBy
+        const searchTermIn = this.state.searchTerm
+        const searchByIn = this.state.searchBy  
+        const filterByIn = this.state.filterBy
 
-        if(prevState.targetId !== this.state.targetId || prevState.detailsId !== this.state.detailsId ||  prevState.searchTerm !== this.state.searchTerm || prevState.searchBy !== this.state.searchBy) {
+        if(
+        prevState.targetId !== this.state.targetId ||
+        prevState.detailsId !== this.state.detailsId ||
+        prevState.searchTerm !== this.state.searchTerm ||
+        prevState.searchBy !== this.state.searchBy ||
+        prevState.filterBy !== this.state.filterBy
+        ) {
             //Clean input if lenght is 0
             if(searchTermIn.length===0){
                 this.setState({
@@ -201,7 +208,14 @@ class WorkOrdersBuilder extends Component {
                     }else if(searchTermIn.length>0 && searchByIn>1){
                         tmpdata = await this.props.fetchSearchData()
                     }else if(filterByIn.length>0) {
-                        console.log("More than 03")
+                        let tmp = await this.props.fetchEmergencyWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => term['description'].toLowerCase().includes(filterByIn.toLowerCase()))
+                        tmpdata = {
+                            data: {
+                                work_orders: dataSearched
+                            }
+                        }
                     }else {
                         tmpdata = await this.props.fetchEmergencyWOData()
                     }                
