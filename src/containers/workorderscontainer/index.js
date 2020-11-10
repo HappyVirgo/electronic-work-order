@@ -55,7 +55,6 @@ let searchBy
 let warrantydata
 //Filter
 let filterBy
-let filterAssetType
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -93,6 +92,7 @@ class WorkOrdersBuilder extends Component {
      * */    
     handleChangeStateSearchBy = (value) => {
         searchBy = value  
+        console.log(searchBy)
     }    
     handleSearchBy = (event) => {
         let value = event.target.value
@@ -100,42 +100,27 @@ class WorkOrdersBuilder extends Component {
             searchBy: value
         }, this.handleChangeStateSearchBy(value));
     }
-/**
- * Description: Create Filter Component
- * Author: Carlos Blanco
- * Created: 11/06/2020
- * Ticket: ET-246
- */  
+    /**
+     * Description: Create Filter Component
+     * Author: Carlos Blanco
+     * Created: 11/06/2020
+     * Ticket: ET-246
+     */  
     handleChangeStateFilterBy = (value) => {
-        filterBy = value 
+        filterBy = value       
+        console.log(filterBy)
     }    
     handleFilterBy = (event) => {
         let value = event.target.value
-        if(value!=="default") {
+        /*if(value!==" ") {
             value = event.target.value
         } else {
             value = ""
-        }
+        }*/
         this.setState({
-            filterBy: value
+            filterBy: value,
         }, this.handleChangeStateFilterBy(value))        
     } 
-/**
- * Description: Create Filter Component
- * Author: Carlos Blanco
- * Created: 11/06/2020
- * Ticket: ET-246
- */  
-    handleChangeStateFilterAssetType = (value) => {
-        filterAssetType = value 
-        console.log(filterAssetType)
-    }    
-    handleFilterAssetType = (data) => {
-        let value = data
-        this.setState({
-            filterAssetType: value
-        }, this.handleChangeStateFilterBy(value));
-    }       
     /**
      * Description: Details components click events to change
      * depending on datatable row
@@ -197,42 +182,58 @@ class WorkOrdersBuilder extends Component {
         })
     }
     async componentDidUpdate(prevProps, prevState) {
+
         const searchTermIn = this.state.searchTerm
         const searchByIn = this.state.searchBy  
         const filterByIn = this.state.filterBy
-
         if(
-        prevState.targetId !== this.state.targetId ||
-        prevState.detailsId !== this.state.detailsId ||
-        prevState.searchTerm !== this.state.searchTerm ||
-        prevState.searchBy !== this.state.searchBy ||
-        prevState.filterBy !== this.state.filterBy
+            prevState.targetId !== this.state.targetId ||
+            prevState.detailsId !== this.state.detailsId ||
+            prevState.searchTerm !== this.state.searchTerm ||
+            prevState.searchBy !== this.state.searchBy ||
+            prevState.filterBy !== this.state.filterBy
         ) {
             //Clean input if lenght is 0
             if(searchTermIn.length===0){
                 this.setState({
                     searchTerm: ""
                 })
-            }      
+            } 
+            //console.log(prevState.filterBy)
+            //console.log(this.state.filterBy)                 
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "emergencyWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        let dataSearched = dataSearch.filter(term => term['description'].toLowerCase().includes(searchTermIn.toLowerCase()))
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
+                        if(filterByIn.length>0){
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                            
+                        } else {
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            } 
                         }
                     }else if(searchTermIn.length>0 && searchByIn>1){
                         tmpdata = await this.props.fetchSearchData()
                     }else if(filterByIn.length>0) {
                         let tmp = await this.props.fetchEmergencyWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        console.log(dataSearch)
-                        let dataSearched = dataSearch.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
+                        let dataSearched = dataSearch.filter(term => {
+                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                            return notNull.toLowerCase().includes(filterByIn.toLowerCase())
+                        })
                         tmpdata = {
                             data: {
                                 work_orders: dataSearched
@@ -246,49 +247,121 @@ class WorkOrdersBuilder extends Component {
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchPendingWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        } 
+                        if(filterByIn.length>0){
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                            
+                        } else {
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            } 
+                        }
                     }else if(searchTermIn.length>0 && searchByIn>1){
                         tmpdata = await this.props.fetchSearchData()
-                    }else {
-                        tmpdata = await this.props.fetchPendingWOData()
-                    } 
-                    break;                    
-                case "assignedWO":
-                    if(searchTermIn.length>0 && searchByIn<=1) {
-                        let tmp = await this.props.fetchAssignedToMeWOData()
+                    }else if(filterByIn.length>0) {
+                        let tmp = await this.props.fetchPendingWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        let dataSearched = dataSearch.filter(term => {
+                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                            return notNull.toLowerCase().includes(filterByIn.toLowerCase())
+                        })
                         tmpdata = {
                             data: {
                                 work_orders: dataSearched
                             }
                         }
+                    }else {
+                        tmpdata = await this.props.fetchPendingWOData()
+                    }
+                    break;                    
+                case "assignedWO":
+                    if(searchTermIn.length>0 && searchByIn<=1) {
+                        let tmp = await this.props.fetchAssignedToMeWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        if(filterByIn.length>0){
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                            
+                        } else {
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            } 
+                        }
                     }else if(searchTermIn.length>0 && searchByIn>1){
                         tmpdata = await this.props.fetchSearchData()
+                    }else if(filterByIn.length>0) {
+                        let tmp = await this.props.fetchAssignedToMeWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => {
+                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                            return notNull.toLowerCase().includes(filterByIn.toLowerCase())
+                        })
+                        tmpdata = {
+                            data: {
+                                work_orders: dataSearched
+                            }
+                        }
                     }else {
                         tmpdata = await this.props.fetchAssignedToMeWOData()
-                    }                    
+                    } 
                     break;  
                 case "unassignedWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchUnassignedWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        if(filterByIn.length>0){
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                            
+                        } else {
+                            console.log(filterByIn)
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            } 
+                        }
+                    }else if(searchTermIn.length>0 && searchByIn>1){
+                        tmpdata = await this.props.fetchSearchData()
+                    }else if(filterByIn.length>0) {
+                        let tmp = await this.props.fetchUnassignedWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => {
+                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                            return notNull.toLowerCase().includes(filterByIn.toLowerCase())
+                        })
                         tmpdata = {
                             data: {
                                 work_orders: dataSearched
                             }
-                        } 
-                    }else if(searchTermIn.length>0 && searchByIn>1){
-                        tmpdata = await this.props.fetchSearchData()
+                        }
                     }else {
                         tmpdata = await this.props.fetchUnassignedWOData()
-                    }                  
+                    }
                     break;                                                       
                 default:
                     tmpdata = await this.props.fetchEmergencyWOData()
