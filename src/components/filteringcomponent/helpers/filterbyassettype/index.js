@@ -1,13 +1,23 @@
+/**
+ * Description: Create Filter Component
+ * Author: Carlos Blanco
+ * Created: 11/06/2020
+ * Ticket: ET-246
+ */ 
 export const filterByAssetType = (data) => {
     let uniqueList
-    const newArray = data.map((item) => {
-        let itemFilter = item.asset.assetType?item.asset.assetType.description:""
+    //Build new object from data
+    const newObj = data.map((item) => {
+        let itemFilter = item!==null?(item.asset!==null?item.asset.assetType.description:""):""
         return itemFilter
     })
-    uniqueList = Object.values(newArray)    
+    //Convert object into array
+    uniqueList = Object.values(newObj)    
+    //Remove duplicate data
     let result = uniqueList.filter((item,index) => {
-        return uniqueList.indexOf(item) === index;
+        return uniqueList.indexOf(item) === index
     })
-    uniqueList = result
+    //Remove empty values
+    uniqueList = result.filter(item => item);
     return uniqueList
 }

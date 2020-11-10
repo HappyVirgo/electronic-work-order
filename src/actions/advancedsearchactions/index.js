@@ -48,8 +48,6 @@ export const fetchSearchData =  async (searchTerm, searchBy, token) => {
             'Content-Type': 'application/json',
         } 
     } 
-    console.log(searchTerm)
-    console.log(apiSearch+searchParams)
     const emptydata = { 
         work_orders: []
     }

@@ -6,7 +6,7 @@
  */
 
 //Basic Imports
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext} from 'react';
 //import PropTypes from 'prop-types';
 
 //Material UI
@@ -31,17 +31,11 @@ const FilteringComponent = ({tmpdata}) => {
     const filterFunc = useContext(GlobalContext)
     const filterBy = filterFunc.handleFilterBy 
     const filterByState = filterFunc.filterByState
-    const filterAssetType = filterFunc.handleFilterAssetType
-
     let data = tmpdata!==undefined?(tmpdata['data']?tmpdata['data']['work_orders']:[]):[]
     let filterData = filterByAssetType(data)
     const classes = useStyles();
-    useEffect(() => {
-        //Updates data from state
-        filterAssetType(data)
-    }, [data, filterAssetType]);
-    
-    console.log(filterData)
+    //console.log(data)
+    console.log(filterByState)
     return (
         <Grid>
             <FormControl className={classes.filter}>
@@ -53,10 +47,7 @@ const FilteringComponent = ({tmpdata}) => {
                     onChange={filterBy} 
                     value={filterByState}
                 >
-                    <MenuItem value={null} aria-label="None" disabled>
-                        <em>Filter by</em>
-                    </MenuItem>
-                    <MenuItem value={'default'}>Clear Filter</MenuItem>                    
+                    <MenuItem value={1}>Default Filter</MenuItem>                    
                     {filterData.map((item, index) => {
                         return (
                             <MenuItem 

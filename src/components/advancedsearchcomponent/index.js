@@ -29,12 +29,11 @@ const AdvancedSearchComponent = () => {
     let searchBy = searchFunc.handleSearchBy
     let searchByState = searchFunc.searchByState
     let searchTermState = searchFunc.searchTermState
-
     const classes = useStyles();
     return (
         <div>
             <FormControl className={classes.advanced}>
-                <InputLabel id="advanced-select-filled-label">Advanced</InputLabel>
+                <InputLabel id="advanced-select-filled-label">Advanced Search</InputLabel>
                 <Select
                     labelId="advanced-select-filled-label"
                     id="advanced-select-filled-label"
@@ -42,9 +41,6 @@ const AdvancedSearchComponent = () => {
                     onChange={searchBy}
                     value={searchByState}
                 >
-                    <MenuItem value={''} aria-label="None" disabled>
-                        <em>Search by</em>
-                    </MenuItem>
                     <MenuItem value={1}>Default Search</MenuItem>
                     <MenuItem value={2}>Service Provider</MenuItem>
                     <MenuItem value={3}>Asset Type</MenuItem>
