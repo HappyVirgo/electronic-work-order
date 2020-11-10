@@ -6,7 +6,7 @@
  */
 
 //Basic Imports
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 //import PropTypes from 'prop-types';
 
 //Material UI
@@ -28,17 +28,24 @@ const useStyles = makeStyles((theme) => ({
 
 
 const FilteringComponent = ({tmpdata}) => {
-    let filterFunc = useContext(GlobalContext)
-    let filterBy = filterFunc.handleFilterBy 
-    let filterByState = filterFunc.filterByState
+    const filterFunc = useContext(GlobalContext)
+    const filterBy = filterFunc.handleFilterBy 
+    const filterByState = filterFunc.filterByState
+    const filterAssetType = filterFunc.handleFilterAssetType
+
     let data = tmpdata!==undefined?(tmpdata['data']?tmpdata['data']['work_orders']:[]):[]
     let filterData = filterByAssetType(data)
-
     const classes = useStyles();
+    useEffect(() => {
+        //Updates data from state
+        filterAssetType(data)
+    }, [data, filterAssetType]);
+    
+    console.log(filterData)
     return (
         <Grid>
             <FormControl className={classes.filter}>
-                <InputLabel id="filter-1-filled-label">Asset Type</InputLabel>
+                <InputLabel id="filter-1-filled-label">Filter by Asset Type</InputLabel>
                 <Select
                     labelId="filter-1-filled-label"
                     id="filter-1-filled-label"
@@ -49,7 +56,7 @@ const FilteringComponent = ({tmpdata}) => {
                     <MenuItem value={null} aria-label="None" disabled>
                         <em>Filter by</em>
                     </MenuItem>
-                    <MenuItem value={'default'}>Default Filter</MenuItem>                    
+                    <MenuItem value={'default'}>Clear Filter</MenuItem>                    
                     {filterData.map((item, index) => {
                         return (
                             <MenuItem 
