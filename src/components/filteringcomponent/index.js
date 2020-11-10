@@ -46,9 +46,10 @@ const FilteringComponent = ({tmpdata}) => {
                     onChange={filterBy} 
                     value={filterByState}
                 >
-                    <MenuItem value={''} aria-label="None" disabled>
+                    <MenuItem value={null} aria-label="None" disabled>
                         <em>Filter by</em>
                     </MenuItem>
+                    <MenuItem value={'default'}>Default Filter</MenuItem>                    
                     {filterData.map((item, index) => {
                         return (
                             <MenuItem 
