@@ -54,7 +54,9 @@ let searchBy
 //Warranty
 let warrantydata
 //Filter
-let filterBy
+let filterByAssetType
+let filterByStatus
+let filterByPriority
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -65,8 +67,9 @@ class WorkOrdersBuilder extends Component {
             loading: false,
             searchTerm: "", 
             searchBy: 1,
-            filterBy: "",
-            filterAssetType: []
+            filterByAssetType: "",
+            filterByStatus: "",
+            filterByPriority: "",
         };
     }    
     /**
@@ -92,7 +95,6 @@ class WorkOrdersBuilder extends Component {
      * */    
     handleChangeStateSearchBy = (value) => {
         searchBy = value  
-        console.log(searchBy)
     }    
     handleSearchBy = (event) => {
         let value = event.target.value
@@ -106,21 +108,48 @@ class WorkOrdersBuilder extends Component {
      * Created: 11/06/2020
      * Ticket: ET-246
      */  
-    handleChangeStateFilterBy = (value) => {
-        filterBy = value       
-        console.log(filterBy)
+    handleChangeStateFilterByAssetType = (value) => {
+        filterByAssetType = value       
+        console.log(filterByAssetType)
     }    
-    handleFilterBy = (event) => {
+    handleFilterByAssetType = (event) => {
         let value = event.target.value
-        /*if(value!==" ") {
-            value = event.target.value
-        } else {
-            value = ""
-        }*/
         this.setState({
-            filterBy: value,
-        }, this.handleChangeStateFilterBy(value))        
+            filterByAssetType: value,
+        }, this.handleChangeStateFilterByAssetType(value))        
     } 
+    /**
+     * Description: Create Filter Component
+     * Author: Carlos Blanco
+     * Created: 11/10/2020
+     * Ticket: ET-246
+     */  
+    handleChangeStateFilterByStatus = (value) => {
+        filterByStatus = value       
+        console.log(filterByStatus)
+    }    
+    handleFilterByStatus = (event) => {
+        let value = event.target.value
+        this.setState({
+            filterByStatus: value,
+        }, this.handleChangeStateFilterByStatus(value))        
+    } 
+    /**
+     * Description: Create Filter Component
+     * Author: Carlos Blanco
+     * Created: 11/10/2020
+     * Ticket: ET-246
+     */  
+    handleChangeStateFilterByPriority = (value) => {
+        filterByPriority = value       
+        console.log(filterByPriority)
+    }    
+    handleFilterByPriority = (event) => {
+        let value = event.target.value
+        this.setState({
+            filterByPriority: value,
+        }, this.handleChangeStateFilterByPriority(value))        
+    }         
     /**
      * Description: Details components click events to change
      * depending on datatable row
@@ -185,22 +214,20 @@ class WorkOrdersBuilder extends Component {
 
         const searchTermIn = this.state.searchTerm
         const searchByIn = this.state.searchBy  
-        const filterByIn = this.state.filterBy
+        const filterByIn = this.state.filterByAssetType
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
             prevState.searchTerm !== this.state.searchTerm ||
             prevState.searchBy !== this.state.searchBy ||
-            prevState.filterBy !== this.state.filterBy
+            prevState.filterByAssetType !== this.state.filterByAssetType
         ) {
             //Clean input if lenght is 0
             if(searchTermIn.length===0){
                 this.setState({
                     searchTerm: ""
                 })
-            } 
-            //console.log(prevState.filterBy)
-            //console.log(this.state.filterBy)                 
+            }            
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "emergencyWO":
@@ -208,7 +235,7 @@ class WorkOrdersBuilder extends Component {
                         let tmp = await this.props.fetchEmergencyWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
                         if(filterByIn.length>0){
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
                             tmpdata = {
@@ -217,7 +244,7 @@ class WorkOrdersBuilder extends Component {
                                 }
                             }                            
                         } else {
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             tmpdata = {
                                 data: {
@@ -248,7 +275,7 @@ class WorkOrdersBuilder extends Component {
                         let tmp = await this.props.fetchPendingWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
                         if(filterByIn.length>0){
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
                             tmpdata = {
@@ -257,7 +284,7 @@ class WorkOrdersBuilder extends Component {
                                 }
                             }                            
                         } else {
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             tmpdata = {
                                 data: {
@@ -288,7 +315,7 @@ class WorkOrdersBuilder extends Component {
                         let tmp = await this.props.fetchAssignedToMeWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
                         if(filterByIn.length>0){
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
                             tmpdata = {
@@ -297,7 +324,7 @@ class WorkOrdersBuilder extends Component {
                                 }
                             }                            
                         } else {
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             tmpdata = {
                                 data: {
@@ -328,7 +355,7 @@ class WorkOrdersBuilder extends Component {
                         let tmp = await this.props.fetchUnassignedWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
                         if(filterByIn.length>0){
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByIn.toLowerCase()))
                             tmpdata = {
@@ -337,7 +364,7 @@ class WorkOrdersBuilder extends Component {
                                 }
                             }                            
                         } else {
-                            console.log(filterByIn)
+                            
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             tmpdata = {
                                 data: {
@@ -415,12 +442,14 @@ class WorkOrdersBuilder extends Component {
             dynamicData: this.dynamicData,
             handleSearchTerm: this.handleSearchTerm,
             handleSearchBy: this.handleSearchBy,
-            handleFilterBy: this.handleFilterBy,
-            handleFilterAssetType: this.handleFilterAssetType,
-            filterByState: this.state.filterBy,
+            handleFilterByAssetType: this.handleFilterByAssetType,
+            handleFilterByStatus: this.handleFilterByStatus,
+            handleFilterByPriority: this.handleFilterByPriority,
+            filterByStateAssetType: this.state.filterBy,
+            filterByStateStatus: this.state.filterBy,
+            filterByStatePriority: this.state.filterBy,                        
             searchByState: this.state.searchBy,
             searchTermState: this.state.searchTerm,
-            filterAssetType: this.state.filterAssetType
         }
         return (
             <GlobalContext.Provider value={globalState}>

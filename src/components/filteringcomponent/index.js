@@ -17,7 +17,11 @@ import { FormControl, InputLabel, Select, MenuItem, Grid } from '@material-ui/co
 import { GlobalContext } from "../../context/globalcontext";
 
 //Helpers
-import { filterByAssetType } from "./helpers"
+import { 
+    filterByAssetType,
+    filterByStatus,
+    filterByPriority
+} from "./helpers"
 
 const useStyles = makeStyles((theme) => ({
     filter: {
@@ -29,13 +33,21 @@ const useStyles = makeStyles((theme) => ({
 
 const FilteringComponent = ({tmpdata}) => {
     const filterFunc = useContext(GlobalContext)
-    const filterBy = filterFunc.handleFilterBy 
-    const filterByState = filterFunc.filterByState
+    //Functions to handle state changes
+    const funcFilterByAssetType = filterFunc.handleFilterByAssetType 
+    const funcFilterByStatus = filterFunc.handleFilterByStatus
+    const funcFilterByPriority = filterFunc.handleFilterByPriority
+    //Default values for selects inputs
+    const filterByStateAssetType = filterFunc.handleFilterAssetType
+    const filterByStateStatus = filterFunc.filterByStateStatus
+    const filterByStatePriority = filterFunc.filterByStatePriority
+
     let data = tmpdata!==undefined?(tmpdata['data']?tmpdata['data']['work_orders']:[]):[]
-    let filterData = filterByAssetType(data)
+    let filterDataAssetType = filterByAssetType(data)
+    let filterDataStatus = filterByStatus(data)
+    let filterDataPriority = filterByPriority(data)
     const classes = useStyles();
     //console.log(data)
-    console.log(filterByState)
     return (
         <Grid>
             <FormControl className={classes.filter}>
@@ -44,11 +56,11 @@ const FilteringComponent = ({tmpdata}) => {
                     labelId="filter-1-filled-label"
                     id="filter-1-filled-label"
                     variant="filled"
-                    onChange={filterBy} 
-                    value={filterByState}
+                    onChange={funcFilterByAssetType} 
+                    value={filterByStateAssetType}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
-                    {filterData.map((item, index) => {
+                    {filterDataAssetType.map((item, index) => {
                         return (
                             <MenuItem 
                                 key={index}
@@ -58,47 +70,51 @@ const FilteringComponent = ({tmpdata}) => {
                     })}
                     
                 </Select>
-            </FormControl>  
-        </Grid>
-    );
-};
-
-/*<FormControl className={classes.filter}>
-                <InputLabel id="filter-2-filled-label">Advanced 2</InputLabel>
+            </FormControl> 
+            <FormControl className={classes.filter}>
+                <InputLabel id="filter-2-filled-label">Filter by Status</InputLabel>
                 <Select
                     labelId="filter-2-filled-label"
                     id="filter-2-filled-label"
                     variant="filled"
-                    onChange={filterBy}
-                    value={filterByState}
+                    onChange={funcFilterByStatus} 
+                    value={filterByStateStatus}
                 >
-                    <MenuItem value={''} aria-label="None" disabled>
-                        <em>Filter by</em>
-                    </MenuItem>
-                    <MenuItem value={1}>Default Search</MenuItem>
-                    <MenuItem value={2}>Service Provider</MenuItem>
-                    <MenuItem value={3}>Asset Type</MenuItem>
-                    <MenuItem value={4}>Problem Type</MenuItem>
-                    <MenuItem value={5}>Trade Type</MenuItem>
+                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    {filterDataStatus.map((item, index) => {
+                        return (
+                            <MenuItem 
+                                key={index}
+                                value={item}
+                            >{item}</MenuItem>
+                        )
+                    })}
+                    
                 </Select>
-                </FormControl> 
-                <FormControl className={classes.filter}>            
-                <InputLabel id="filter-3-filled-label">Advanced 3</InputLabel>
+            </FormControl> 
+            <FormControl className={classes.filter}>
+                <InputLabel id="filter-3-filled-label">Filter by Priority</InputLabel>
                 <Select
                     labelId="filter-3-filled-label"
                     id="filter-3-filled-label"
                     variant="filled"
-                    onChange={filterBy}
-                    value={filterByState}
+                    onChange={funcFilterByPriority} 
+                    value={filterByStatePriority}
                 >
-                    <MenuItem value={''} aria-label="None" disabled>
-                        <em>Filter by</em>
-                    </MenuItem>
-                    <MenuItem value={1}>Default Search</MenuItem>
-                    <MenuItem value={2}>Service Provider</MenuItem>
-                    <MenuItem value={3}>Asset Type</MenuItem>
-                    <MenuItem value={4}>Problem Type</MenuItem>
-                    <MenuItem value={5}>Trade Type</MenuItem>
-                </Select>            
-            </FormControl>*/
+                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    {filterDataPriority.map((item, index) => {
+                        return (
+                            <MenuItem 
+                                key={index}
+                                value={item}
+                            >{item}</MenuItem>
+                        )
+                    })}
+                    
+                </Select>
+            </FormControl>                         
+        </Grid>
+    );
+};
+
 export default React.memo(FilteringComponent);
