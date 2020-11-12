@@ -266,7 +266,41 @@ class WorkOrdersBuilder extends Component {
                             } 
                         }
                     }else if(searchTermIn.length>0 && searchByIn>1){
-                        tmpdata = await this.props.fetchSearchData()
+                        let tmp = await this.props.fetchSearchData()
+                        let dataSearched = tmp.data?tmp.data.work_orders:[]                        
+                        if(filterByInByPriority.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['priority']!==null?term['priority']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                            })
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                             
+                        } else if(filterByInByStatus.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['status']!==null?term['status']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
+                            })
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                                                      
+                        } else if(filterByInByAssetType.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
+                            })
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }   
+                        } else {
+                            tmpdata = await this.props.fetchSearchData()
+                        }                        
                     //Default filter by asset type without search                        
                     }else if(filterByInByAssetType.length>0) {
                         let tmp = await this.props.fetchEmergencyWOData()
