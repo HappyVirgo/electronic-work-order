@@ -38,7 +38,7 @@ const FilteringComponent = ({tmpdata}) => {
     const funcFilterByStatus = filterFunc.handleFilterByStatus
     const funcFilterByPriority = filterFunc.handleFilterByPriority
     //Default values for selects inputs
-    const filterByStateAssetType = filterFunc.handleFilterAssetType
+    const filterByStateAssetType = filterFunc.filterByStateAssetType
     const filterByStateStatus = filterFunc.filterByStateStatus
     const filterByStatePriority = filterFunc.filterByStatePriority
 
@@ -47,7 +47,6 @@ const FilteringComponent = ({tmpdata}) => {
     let filterDataStatus = filterByStatus(data)
     let filterDataPriority = filterByPriority(data)
     const classes = useStyles();
-    //console.log(data)
     return (
         <Grid>
             <FormControl className={classes.filter}>
