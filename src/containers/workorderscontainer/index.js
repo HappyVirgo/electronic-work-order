@@ -817,6 +817,8 @@ class WorkOrdersBuilder extends Component {
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData()
                     notesdata = await this.props.fetchNotesWOData()
+                    attachmentsdata = await this.props.fetchAttachmentsWOData()
+                    historydata = await this.props.fetchHistoryWOData()
                     warrantydata = await this.props.fetchWarrantyWOData()
                 })                
             } else {
@@ -824,6 +826,8 @@ class WorkOrdersBuilder extends Component {
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData()
                     notesdata = await this.props.fetchNotesWOData()
+                    attachmentsdata = await this.props.fetchAttachmentsWOData()
+                    historydata = await this.props.fetchHistoryWOData()
                     warrantydata = await this.props.fetchWarrantyWOData()
                 })                            
             }           
@@ -841,7 +845,20 @@ class WorkOrdersBuilder extends Component {
                 loading: true
             }, async () => {
                 notesdata = await this.props.fetchNotesWOData()
-                
+            }) 
+            this.setState({
+                detailsId: dtlsID,
+                targetId: this.state.targetId,
+                loading: true
+            }, async () => {
+                attachmentsdata = await this.props.fetchAttachmentsWOData()
+            }) 
+            this.setState({
+                detailsId: dtlsID,
+                targetId: this.state.targetId,
+                loading: true
+            }, async () => {
+                historydata = await this.props.fetchHistoryWOData()
             }) 
             this.setState({
                 detailsId: dtlsID,

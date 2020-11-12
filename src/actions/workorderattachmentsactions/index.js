@@ -30,6 +30,7 @@ export const fetchAttachmentsWOData = async (dtlsID, token) => {
             'Content-Type': 'application/json',
         } 
     }  
+    console.log(apiAttachmentsWO+idDtls+attachmentsURL)
     return dispatch => {
         return fetch(apiAttachmentsWO+idDtls+attachmentsURL, init)
             .then(response => response.json())
