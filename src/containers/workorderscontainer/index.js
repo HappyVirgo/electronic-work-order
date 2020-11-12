@@ -861,9 +861,9 @@ class WorkOrdersBuilder extends Component {
             handleFilterByAssetType: this.handleFilterByAssetType,
             handleFilterByStatus: this.handleFilterByStatus,
             handleFilterByPriority: this.handleFilterByPriority,
-            filterByStateAssetType: this.state.filterBy,
-            filterByStateStatus: this.state.filterBy,
-            filterByStatePriority: this.state.filterBy,                        
+            filterByStateAssetType: this.state.filterByAssetType,
+            filterByStateStatus: this.state.filterByStatus,
+            filterByStatePriority: this.state.filterByPriority,                        
             searchByState: this.state.searchBy,
             searchTermState: this.state.searchTerm,
         }

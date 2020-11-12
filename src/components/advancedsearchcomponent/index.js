@@ -24,11 +24,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AdvancedSearchComponent = () => {
-    let searchFunc = useContext(GlobalContext)
-    let searchTerm = searchFunc.handleSearchTerm 
-    let searchBy = searchFunc.handleSearchBy
-    let searchByState = searchFunc.searchByState
-    let searchTermState = searchFunc.searchTermState
+    const searchFunc = useContext(GlobalContext)
+    const searchTerm = searchFunc.handleSearchTerm 
+    const searchBy = searchFunc.handleSearchBy
+    const searchByState = searchFunc.searchByState
+    const searchTermState = searchFunc.searchTermState
     const classes = useStyles();
     return (
         <div>
