@@ -241,6 +241,17 @@ class WorkOrdersBuilder extends Component {
                         if(filterByInByAssetType.length>0){
                             let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
                             dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByInByAssetType.toLowerCase()))
+                            if(filterByInByPriority.length>0) {
+                                dataSearched = dataSearched.filter(term => {
+                                    let notNull = term['priority']!==null?term['priority']['description']:""
+                                    return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                                })
+                            } else if(filterByInByStatus.length>0) {
+                                dataSearched = dataSearched.filter(term => {
+                                    let notNull = term['status']!==null?term['status']['description']:""
+                                    return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
+                                })                         
+                            }
                             tmpdata = {
                                 data: {
                                     work_orders: dataSearched
@@ -320,7 +331,7 @@ class WorkOrdersBuilder extends Component {
                         } else if(filterByInByStatus.length>0) {
                             dataSearched = dataSearched.filter(term => {
                                 let notNull = term['status']!==null?term['status']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
                             })                         
                         }                        
                         tmpdata = {
