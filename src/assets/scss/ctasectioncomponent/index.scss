@@ -3,7 +3,6 @@
 
 .cta-component {
     width: 100%;
-    height: 260px;
     min-height: 260px;
     margin: 0 auto;
     background-color: $basic-blue;
@@ -17,6 +16,13 @@
     }
     .search-section {
         padding: 55px 0px 0px 55px;
+        .search-form {
+            background: white;
+            border-radius: 54px;
+            display: flex;
+            align-items: center;
+            margin: 20px 0px;
+        }
     }
     .cta-section {
         text-transform: uppercase;
