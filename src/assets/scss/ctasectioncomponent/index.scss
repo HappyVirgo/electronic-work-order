@@ -22,6 +22,24 @@
             display: flex;
             align-items: center;
             margin: 20px 0px;
+            &.rounded {
+                border-bottom-left-radius: unset;
+            }
+            .advanced {
+                width: 30%;
+                text-align: center;
+                padding: 18px 0px;
+                margin-right: 15px;
+                &.opened {
+                    box-shadow: 3px 0 25px -5px #999;
+                }
+                .search-box {
+                    border-right: 1px solid #aaaaaa;
+                    &.opened{
+                        border-right: unset;
+                    }
+                }
+            }
         }
     }
     .cta-section {

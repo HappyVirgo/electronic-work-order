@@ -67,9 +67,9 @@ class WorkOrdersBuilder extends Component {
             loading: false,
             searchTerm: "", 
             searchBy: 1,
-            filterByAssetType: "",
-            filterByStatus: "",
-            filterByPriority: "",
+            filterByAssetType: 1,
+            filterByStatus: 1,
+            filterByPriority: 1,
         };
     }    
     /**
@@ -852,10 +852,11 @@ class WorkOrdersBuilder extends Component {
             
             if(dtlsID!==prevState.detailsId){
                 dtlsID = this.state.detailsId             
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                
+                this.setState({detailsId: dtlsID, loading: true}, async () => {
+                    detailsdata = await this.props.fetchDetailsWOData()
+                    notesdata = await this.props.fetchNotesWOData()
+                    warrantydata = await this.props.fetchWarrantyWOData()
+                })                
             } else {
                 dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
                 this.setState({
@@ -864,7 +865,6 @@ class WorkOrdersBuilder extends Component {
                 }, handleChangePrevState(dtlsID))                            
             }         
             //Normalize state to avoid missing data or state changes
-            
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
@@ -904,8 +904,7 @@ class WorkOrdersBuilder extends Component {
             }, async () => {
                 console.log("warrantydata")
                 warrantydata = await this.props.fetchWarrantyWOData()
-            })
-                        
+            })             
         }
     }
     render() {
