@@ -807,8 +807,7 @@ class WorkOrdersBuilder extends Component {
                 }                
                 break;                                                       
                 default:
-                    tmpdata = await this.props.fetchEmergencyWOData()
-                    break;
+                    return false
             }
 
             //Change details data
