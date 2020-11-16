@@ -12,6 +12,11 @@ import {ModalComponent} from '../../../../components'
 const useStyles = makeStyles((theme) => ({
     typography: {
         lineHeight: "15px"
+    },
+    warrantyBox: {
+        display: 'flex',
+        alignItems: 'center',
+        flexWrap: 'wrap'
     }
 }));
 
@@ -36,7 +41,10 @@ export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model
             <Typography>Model #: {model!==null?model:nullVal}</Typography>
             <Typography>Serial #: {serial!==null?serial:nullVal}</Typography>
             <Typography>Asset Type: {assetType!==null?assetType:nullVal}</Typography>
-            <Typography className={warrantyBadge}>Warranty: </Typography><ModalComponent  title={warrantyText} data={warrantyData} type={'warranty'} />
+            <div className={classes.warrantyBox}>
+                <Typography className={warrantyBadge}>Warranty: </Typography>
+                <ModalComponent  title={warrantyText} data={warrantyData} type={'warranty'} />
+            </div>
         </Grid>
     )
 }

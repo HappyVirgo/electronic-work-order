@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
         width: "30%",
         textAlign: 'center',
         padding: '5px',
-        border: '2px solid #78b0dd',
+        border: '3px solid #78b0dd',
         borderRadius: '38px',
     },
     filterBox: {

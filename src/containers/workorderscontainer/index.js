@@ -67,9 +67,9 @@ class WorkOrdersBuilder extends Component {
             loading: false,
             searchTerm: "", 
             searchBy: 1,
-            filterByAssetType: "",
-            filterByStatus: "",
-            filterByPriority: "",
+            filterByAssetType: 1,
+            filterByStatus: 1,
+            filterByPriority: 1,
         };
     }    
     /**
@@ -812,32 +812,22 @@ class WorkOrdersBuilder extends Component {
             }
 
             //Change details data
-            const handleChangePrevState = (dtlsID) => {
-                const id = dtlsID
-                const handleId = async(dtlsID) => {
-                    detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                    notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-                    attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-                    historydata = await this.props.fetchHistoryWOData(dtlsID, token)
-                    warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
-                }
-                handleId(id)
-            }
             if(dtlsID!==prevState.detailsId){
                 dtlsID = this.state.detailsId             
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                
+                this.setState({detailsId: dtlsID, loading: true}, async () => {
+                    detailsdata = await this.props.fetchDetailsWOData()
+                    notesdata = await this.props.fetchNotesWOData()
+                    warrantydata = await this.props.fetchWarrantyWOData()
+                })                
             } else {
                 dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                            
+                this.setState({detailsId: dtlsID, loading: true}, async () => {
+                    detailsdata = await this.props.fetchDetailsWOData()
+                    notesdata = await this.props.fetchNotesWOData()
+                    warrantydata = await this.props.fetchWarrantyWOData()
+                })                            
             }           
             //Normalize state to avoid missing data or state changes
-            
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
@@ -851,20 +841,7 @@ class WorkOrdersBuilder extends Component {
                 loading: true
             }, async () => {
                 notesdata = await this.props.fetchNotesWOData()
-            }) 
-            this.setState({
-                detailsId: dtlsID,
-                targetId: this.state.targetId,
-                loading: true
-            }, async () => {
-                attachmentsdata = await this.props.fetchAttachmentsWOData()
-            }) 
-            this.setState({
-                detailsId: dtlsID,
-                targetId: this.state.targetId,
-                loading: true
-            }, async () => {
-                historydata = await this.props.fetchHistoryWOData()
+                
             }) 
             this.setState({
                 detailsId: dtlsID,
@@ -872,8 +849,7 @@ class WorkOrdersBuilder extends Component {
                 loading: true
             }, async () => {
                 warrantydata = await this.props.fetchWarrantyWOData()
-            })
-                        
+            })             
         }
     }
     render() {
