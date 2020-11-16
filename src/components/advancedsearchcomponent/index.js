@@ -9,7 +9,7 @@ import React, {useContext} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, TextField, InputLabel, Select, MenuItem, NativeSelect, Radio, InputAdornment } from '@material-ui/core';
+import { FormControl, TextField, Select, MenuItem, Radio, InputAdornment } from '@material-ui/core';
 import SearchIcon from "@material-ui/icons/Search";
 //Context
 import { GlobalContext } from "../../context/globalcontext";
@@ -69,7 +69,7 @@ const AdvancedSearchComponent = () => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
-                        elevation: 'none',
+                        elevation: 0,
                     }}
                     disableUnderline
                 >
@@ -90,7 +90,9 @@ const AdvancedSearchComponent = () => {
                     fullWidth={true} 
                     value={searchTermState}
                     onChange={searchTerm}
-                    InputProps={{ classes,
+                    InputProps={{ classes: {
+                                    underline: classes.underline
+                                },
                                   endAdornment: (
                                     <InputAdornment position="start">
                                         <SearchIcon />

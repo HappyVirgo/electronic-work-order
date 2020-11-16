@@ -11,7 +11,7 @@ import React, {useContext} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, InputLabel, Select, MenuItem, Grid } from '@material-ui/core';
+import { FormControl, Select, MenuItem, Grid } from '@material-ui/core';
 
 //Context
 import { GlobalContext } from "../../context/globalcontext";
@@ -86,7 +86,7 @@ const FilteringComponent = ({tmpdata}) => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
-                        elevation: 'none',
+                        elevation: 0,
                     }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
@@ -117,7 +117,7 @@ const FilteringComponent = ({tmpdata}) => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
-                        elevation: 'none',
+                        elevation: 0,
                     }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
@@ -148,7 +148,7 @@ const FilteringComponent = ({tmpdata}) => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
-                        elevation: 'none',
+                        elevation: 0,
                     }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
