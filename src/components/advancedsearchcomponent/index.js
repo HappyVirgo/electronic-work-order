@@ -9,55 +9,93 @@ import React, {useContext} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, TextField, InputLabel, Select, MenuItem } from '@material-ui/core';
-
+import { FormControl, TextField, InputLabel, Select, MenuItem, NativeSelect, Radio, InputAdornment } from '@material-ui/core';
+import SearchIcon from "@material-ui/icons/Search";
 //Context
 import { GlobalContext } from "../../context/globalcontext";
 
 const useStyles = makeStyles((theme) => ({
     advanced: {
         width: "30%",
+        textAlign: 'center',
+        padding: '18px 0px',
+    },
+    searchBox: {
+        borderRight: '1px solid #aaaaaa',
+        marginRight: '15px'
     },
     search: {
         width: "70%",
-    }    
+    },
+    menuItem: {
+        minWidth: '250px',
+        width: '100%'
+    },
+    underline: {
+        "&&&:before": {
+            borderBottom: "none"
+        },
+        "&&:after": {
+            borderBottom: "none"
+        }
+    },
+    'input': {
+        '&::placeholder': {
+            color: '#444444',
+            fontSize: '18px',
+            fontFamily: 'SfUiDisplay'
+        }
+    },
 }));
 
 const AdvancedSearchComponent = () => {
-    const searchFunc = useContext(GlobalContext)
-    const searchTerm = searchFunc.handleSearchTerm 
-    const searchBy = searchFunc.handleSearchBy
-    const searchByState = searchFunc.searchByState
-    const searchTermState = searchFunc.searchTermState
+    let searchFunc = useContext(GlobalContext)
+    let searchTerm = searchFunc.handleSearchTerm 
+    let searchBy = searchFunc.handleSearchBy
+    let searchByState = searchFunc.searchByState
+    let searchTermState = searchFunc.searchTermState
     const classes = useStyles();
     return (
-        <div>
+        <div className="search-form">
             <FormControl className={classes.advanced}>
-                <InputLabel id="advanced-select-filled-label">Advanced Search</InputLabel>
                 <Select
                     labelId="advanced-select-filled-label"
                     id="advanced-select-filled-label"
-                    variant="filled"
+                    className={classes.searchBox}
                     onChange={searchBy}
                     value={searchByState}
+                    renderValue={(value) => "Advanced"}
+                    MenuProps = {{
+                        anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                        transformOrigin: { vertical: "top",horizontal: "left" },
+                        getContentAnchorEl: null,
+                        elevation: 'none',
+                    }}
+                    disableUnderline
                 >
-                    <MenuItem value={1}>Default Search</MenuItem>
-                    <MenuItem value={2}>Service Provider</MenuItem>
-                    <MenuItem value={3}>Asset Type</MenuItem>
-                    <MenuItem value={4}>Problem Type</MenuItem>
-                    <MenuItem value={5}>Trade Type</MenuItem>
+                    <MenuItem className={classes.menuItem} value="" disabled><b>Searched by:</b></MenuItem>
+                    <MenuItem className={classes.menuItem} value={1}><Radio color="primary" checked={searchByState===1} />Default Search</MenuItem>
+                    <MenuItem className={classes.menuItem} value={2}><Radio color="primary" checked={searchByState===2} />Service Provider</MenuItem>
+                    <MenuItem className={classes.menuItem} value={3}><Radio color="primary" checked={searchByState===3} />Asset Type</MenuItem>
+                    <MenuItem className={classes.menuItem} value={4}><Radio color="primary" checked={searchByState===4} />Problem Type</MenuItem>
+                    <MenuItem className={classes.menuItem} value={5}><Radio color="primary" checked={searchByState===5} />Trade Type</MenuItem>
                 </Select>
-            </FormControl> 
+            </FormControl>
             <FormControl className={classes.search}>           
                 <TextField 
-                    label="Search"
+                    placeholder="Search Work Orders..."
                     id="search-input-filled-label"
                     aria-describedby="search" 
                     type="search" 
                     fullWidth={true} 
                     value={searchTermState}
-                    variant="filled" 
                     onChange={searchTerm}
+                    InputProps={{ classes,
+                                  endAdornment: (
+                                    <InputAdornment position="start">
+                                        <SearchIcon />
+                                    </InputAdornment>
+                    ) }}
                 />
             </FormControl>
         </div>
