@@ -5,25 +5,16 @@
  * Ticket: ET-237
  */
 //Basic imports
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, TextField, InputLabel, Select, MenuItem, NativeSelect, Radio, InputAdornment } from '@material-ui/core';
+import { FormControl, TextField, Select, MenuItem, Radio, InputAdornment } from '@material-ui/core';
 import SearchIcon from "@material-ui/icons/Search";
 //Context
 import { GlobalContext } from "../../context/globalcontext";
 
 const useStyles = makeStyles((theme) => ({
-    advanced: {
-        width: "30%",
-        textAlign: 'center',
-        padding: '18px 0px',
-    },
-    searchBox: {
-        borderRight: '1px solid #aaaaaa',
-        marginRight: '15px'
-    },
     search: {
         width: "70%",
     },
@@ -49,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AdvancedSearchComponent = () => {
+    const [searchBox, setSearchBox] = useState(false);
     let searchFunc = useContext(GlobalContext)
     let searchTerm = searchFunc.handleSearchTerm 
     let searchBy = searchFunc.handleSearchBy
@@ -56,12 +48,14 @@ const AdvancedSearchComponent = () => {
     let searchTermState = searchFunc.searchTermState
     const classes = useStyles();
     return (
-        <div className="search-form">
-            <FormControl className={classes.advanced}>
+        <div className={`search-form ${searchBox?'rounded':''}`}>
+            <FormControl className={`advanced ${searchBox?'opened':''}`}>
                 <Select
                     labelId="advanced-select-filled-label"
                     id="advanced-select-filled-label"
-                    className={classes.searchBox}
+                    className={`search-box ${searchBox?'opened':''}`}
+                    onOpen={() => setSearchBox(true)}
+                    onClose={() => setSearchBox(false)}
                     onChange={searchBy}
                     value={searchByState}
                     renderValue={(value) => "Advanced"}
@@ -69,7 +63,6 @@ const AdvancedSearchComponent = () => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
-                        elevation: 'none',
                     }}
                     disableUnderline
                 >
@@ -90,7 +83,9 @@ const AdvancedSearchComponent = () => {
                     fullWidth={true} 
                     value={searchTermState}
                     onChange={searchTerm}
-                    InputProps={{ classes,
+                    InputProps={{ classes: {
+                                    underline: classes.underline
+                                },
                                   endAdornment: (
                                     <InputAdornment position="start">
                                         <SearchIcon />
