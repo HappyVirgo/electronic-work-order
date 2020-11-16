@@ -51,9 +51,9 @@ const useStyles = makeStyles((theme) => ({
         marginTop: "5px"
     },
     warranty: {
-        float: "right",
-        width: "75%",
-        marginTop: "-30px",      
+        // float: "right",
+        // width: "75%",
+        // marginTop: "-30px",      
     },
     date: {
         fontWeight: "800",
