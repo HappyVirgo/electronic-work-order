@@ -233,7 +233,8 @@ class WorkOrdersBuilder extends Component {
         })
         */
         console.log("1**")
-        console.log(this.state)       
+        console.log(this.state) 
+        console.log(this.prevState)      
     }
     async componentDidUpdate(prevProps, prevState) {
 
