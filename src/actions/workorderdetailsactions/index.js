@@ -28,6 +28,7 @@ export const fetchDetailsWOData = async (dtlsID, token) => {
             'Content-Type': 'application/json',
         } 
     }  
+    console.log(apiDetailsWO+idDtls)
     return dispatch => {
         return fetch(apiDetailsWO+idDtls, init)
             .then(response => response.json())

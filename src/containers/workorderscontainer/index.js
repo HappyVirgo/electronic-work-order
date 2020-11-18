@@ -158,9 +158,17 @@ class WorkOrdersBuilder extends Component {
      * Date: 9/24/2020
      * Ticket: ET-351
      * */
+    handleWODetails = async (id) => {
+        dtlsID = id 
+        //detailsdata = await this.props.fetchDetailsWOData()
+    }
     handleDynamicDetails = (target) => {
         dtlsID = target 
-    }      
+        console.log("DETAILS***")
+        console.log(dtlsID)
+        console.log(this.state.detailsId)
+        this.handleWODetails(dtlsID)
+    }           
     dynamicDetails = (event) => {
         event.preventDefault();
         let target = event.target.id
@@ -220,15 +228,6 @@ class WorkOrdersBuilder extends Component {
         notesdata = await this.props.fetchNotesWOData()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
-        //Set details first item
-        /*
-        this.setState({
-            detailsId: dtlsID
-        })
-        console.log("1**")
-        console.log(this.state)           
-        */
-
     }
     async componentDidUpdate(prevProps, prevState) {
 
@@ -831,7 +830,8 @@ class WorkOrdersBuilder extends Component {
                     break;
             }
 
-            const handleId = async(dtlsID) => {
+            const handleId = async(id) => {
+                dtlsID = id
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
@@ -839,8 +839,9 @@ class WorkOrdersBuilder extends Component {
                 warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
             }
             //Change details data
-            const handleChangePrevState = (dtlsID) => {
-                const id = dtlsID
+            const handleChangePrevState = (id) => {
+                dtlsID = id
+                console.log(`handleChangePrevState: dtlsID => ${dtlsID}`)                
                 handleId(id)
             }
 
@@ -850,28 +851,43 @@ class WorkOrdersBuilder extends Component {
                                 (tmpdata.data.work_orders!==null?
                                     (tmpdata.data.work_orders[0]!==undefined?
                                         tmpdata.data.work_orders[0]['workOrderId']:
-                                        this.state.detailsId):this.state.detailsId):
-                                        this.state.detailsId
+                                        currentSteDtls):currentSteDtls):
+                                        currentSteDtls
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== currentSteDtls ) {
-
+                console.log(`IF: dtlsID => ${dtlsID}`)
+                console.log(`IF: prev => ${prevSteDtls}`)
+                console.log(`IF: state => ${currentSteDtls}`) 
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
                 }, handleChangePrevState(dtlsID))                
+            } else if( dtlsID !== currentSteDtls ) {
+                console.log(`ELSE IF: dtlsID => ${dtlsID}`)
+                console.log(`ELSE IF: prev => ${prevSteDtls}`)
+                console.log(`ELSE IF: state => ${currentSteDtls}`) 
+                this.setState({
+                    detailsId: dtlsID,
+                    loading: true
+                }, handleChangePrevState(dtlsID))      
             } else {
-                dtlsID = tmpDtls             
+                dtlsID = tmpDtls 
+                console.log(`ELSE: dtlsID => ${dtlsID}`)
+                console.log(`ELSE: prev => ${prevSteDtls}`)
+                console.log(`ELSE: state => ${currentSteDtls}`)             
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
                 }, handleChangePrevState(dtlsID))                            
             }         
             //Normalize state to avoid missing data or state changes
+            /*
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
             }, handleChangePrevState(dtlsID)) 
+            */
             
         }
     }
