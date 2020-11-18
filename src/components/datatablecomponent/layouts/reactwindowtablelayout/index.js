@@ -37,7 +37,9 @@ const useTableStyles = makeStyles(theme => ({
     },
     thead: {},
     tbody: {
-        width: "100%"
+        width: "100%",
+        maxWidth: "100%",
+        height: "80vw",
     },
     row: {
         display: "flex",
