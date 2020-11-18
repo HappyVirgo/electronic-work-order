@@ -11,7 +11,7 @@ import React, {useContext} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
-import { FormControl, InputLabel, Select, MenuItem, Grid } from '@material-ui/core';
+import { FormControl, Select, MenuItem, Grid } from '@material-ui/core';
 
 //Context
 import { GlobalContext } from "../../context/globalcontext";
@@ -26,8 +26,28 @@ import {
 const useStyles = makeStyles((theme) => ({
     filter: {
         width: "30%",
-        marginRight: "20px"
-    }
+        textAlign: 'center',
+        padding: '5px',
+        border: '3px solid #78b0dd',
+        borderRadius: '38px',
+    },
+    filterBox: {
+        margin: '20px 0px',
+        display: 'flex',
+        justifyContent: 'space-between'
+    },
+    icon: {
+        fill: 'white',
+    },
+    eachFilter: {
+        color: 'white',
+        "&&&:before": {
+            borderBottom: "none"
+        },
+        "&&:after": {
+            borderBottom: "none"
+        }
+    },
 }));
 
 
@@ -47,16 +67,26 @@ const FilteringComponent = ({tmpdata}) => {
     let filterDataStatus = filterByStatus(data)
     let filterDataPriority = filterByPriority(data)
     const classes = useStyles();
+    //console.log(data)
     return (
-        <Grid>
+        <Grid className={classes.filterBox}>
             <FormControl className={classes.filter}>
-                <InputLabel id="filter-1-filled-label">Filter by Asset Type</InputLabel>
                 <Select
                     labelId="filter-1-filled-label"
                     id="filter-1-filled-label"
-                    variant="filled"
                     onChange={funcFilterByAssetType} 
                     value={filterByStateAssetType}
+                    className={classes.eachFilter}
+                    inputProps={{
+                        classes: {
+                            icon: classes.icon,
+                        },
+                    }}
+                    MenuProps = {{
+                        anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                        transformOrigin: { vertical: "top",horizontal: "left" },
+                        getContentAnchorEl: null,
+                    }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
                     {filterDataAssetType.map((item, index) => {
@@ -71,13 +101,22 @@ const FilteringComponent = ({tmpdata}) => {
                 </Select>
             </FormControl> 
             <FormControl className={classes.filter}>
-                <InputLabel id="filter-2-filled-label">Filter by Status</InputLabel>
                 <Select
                     labelId="filter-2-filled-label"
                     id="filter-2-filled-label"
-                    variant="filled"
                     onChange={funcFilterByStatus} 
                     value={filterByStateStatus}
+                    className={classes.eachFilter}
+                    inputProps={{
+                        classes: {
+                            icon: classes.icon,
+                        },
+                    }}
+                    MenuProps = {{
+                        anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                        transformOrigin: { vertical: "top",horizontal: "left" },
+                        getContentAnchorEl: null,
+                    }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
                     {filterDataStatus.map((item, index) => {
@@ -92,13 +131,22 @@ const FilteringComponent = ({tmpdata}) => {
                 </Select>
             </FormControl> 
             <FormControl className={classes.filter}>
-                <InputLabel id="filter-3-filled-label">Filter by Priority</InputLabel>
                 <Select
                     labelId="filter-3-filled-label"
                     id="filter-3-filled-label"
-                    variant="filled"
                     onChange={funcFilterByPriority} 
                     value={filterByStatePriority}
+                    className={classes.eachFilter}
+                    inputProps={{
+                        classes: {
+                            icon: classes.icon,
+                        },
+                    }}
+                    MenuProps = {{
+                        anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                        transformOrigin: { vertical: "top",horizontal: "left" },
+                        getContentAnchorEl: null,
+                    }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
                     {filterDataPriority.map((item, index) => {
