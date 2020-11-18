@@ -48,6 +48,7 @@ let historydata
 let notesdata
 let attachmentsdata
 let dtlsID
+let trgtID
 //Search
 let searchTerm
 let searchBy
@@ -159,9 +160,6 @@ class WorkOrdersBuilder extends Component {
      * */
     handleDynamicDetails = (target) => {
         dtlsID = target 
-        console.log("Details**")
-        console.log(dtlsID)
-        console.log(this.state)
     }      
     dynamicDetails = (event) => {
         event.preventDefault();
@@ -189,11 +187,7 @@ class WorkOrdersBuilder extends Component {
      * Ticket: ET-249
      * */
     handleDynamicData = (target) => {
-        //dtlsID = target 
-        console.log("Data**")
-        console.log(target)
-        console.log(dtlsID)
-        console.log(this.state)
+        trgtID = target
     }      
     dynamicData = (event) => {
         event.preventDefault();
@@ -259,7 +253,7 @@ class WorkOrdersBuilder extends Component {
                 })
             }            
             //Set data for DataTable Component
-            switch (this.state.targetId) {
+            switch (trgtID) {
                 case "emergencyWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
@@ -850,13 +844,23 @@ class WorkOrdersBuilder extends Component {
                 handleId(id)
             }
 
-            if(prevState.detailsId!==this.state.detailsId || dtlsID!==this.state.detailsId){
+            const prevSteDtls = prevState.detailsId
+            const currentSteDtls = this.state.detailsId
+            const tmpDtls = tmpdata.data!==undefined?
+                                (tmpdata.data.work_orders!==null?
+                                    (tmpdata.data.work_orders[0]!==undefined?
+                                        tmpdata.data.work_orders[0]['workOrderId']:
+                                        this.state.detailsId):this.state.detailsId):
+                                        this.state.detailsId
+            //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
+            if( prevSteDtls !== currentSteDtls ) {
+
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
                 }, handleChangePrevState(dtlsID))                
             } else {
-                dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
+                dtlsID = tmpDtls             
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
@@ -867,37 +871,8 @@ class WorkOrdersBuilder extends Component {
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
-            }, async () => {
-                detailsdata = await this.props.fetchDetailsWOData()
-            })  
-            this.setState({
-                detailsId: dtlsID,
-                targetId: this.state.targetId,
-                loading: true
-            }, async () => {
-                notesdata = await this.props.fetchNotesWOData()
-            }) 
-            this.setState({
-                detailsId: dtlsID,
-                targetId: this.state.targetId,
-                loading: true
-            }, async () => {
-                attachmentsdata = await this.props.fetchAttachmentsWOData()
-            }) 
-            this.setState({
-                detailsId: dtlsID,
-                targetId: this.state.targetId,
-                loading: true
-            }, async () => {
-                historydata = await this.props.fetchHistoryWOData()
-            }) 
-            this.setState({
-                detailsId: dtlsID,
-                targetId: this.state.targetId,
-                loading: true
-            }, async () => {
-                warrantydata = await this.props.fetchWarrantyWOData()
-            })             
+            }, handleChangePrevState(dtlsID)) 
+            
         }
     }
     render() {
