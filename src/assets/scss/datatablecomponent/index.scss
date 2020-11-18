@@ -18,7 +18,11 @@
 .dtableCols {
     width: 100%;
     height: 100%;
-    padding: 16px;
+    margin-top: 16px;
+    img {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
 }
 .list-table {
     padding: 10px;
@@ -34,7 +38,8 @@
         border-bottom: 1px solid $basic-light-gray;
     }
     :first-child {
-        padding-left: 25px !important;
+        padding-left: 16px !important;
+        min-width: 112px;
     }    
 }
 
@@ -206,7 +211,7 @@
     background-color: $light-red;
     color: $red-color;
     font-family: $font-family;
-    font-weight: 700;    
+    font-weight: 700;
     div {
         background-color: $red-color;
         color: #FFF !important;
