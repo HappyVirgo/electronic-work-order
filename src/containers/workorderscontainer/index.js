@@ -838,7 +838,6 @@ class WorkOrdersBuilder extends Component {
             }
 
             const handleId = async(dtlsID) => {
-                console.log("handleId")
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
