@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
+import PopupComponent from '../../../popupcomponent'
 //Icons
 import {
     AddNote,
@@ -35,6 +36,11 @@ const useStyles = makeStyles((theme) => ({
         }
 
     },
+    MuiDialogTitle: {
+        root: {
+            color: 'blue'
+        }
+    }
 }));
 
 export const MainActions = () => {
@@ -42,10 +48,13 @@ export const MainActions = () => {
     return (
         <Grid item xs={12} md={4} className="action-button-grid">
             <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<AddNote/>}>Add note</Button>
-            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<NotFixed/>}>Not Fixed</Button>
+            <PopupComponent buttonLabel="NOT FIXED" modalTitle="Not Fixed" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<NotFixed/>} MuiDialogTitle={classes.MuiDialogTitle} />
+            {/* <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<NotFixed/>}>Not Fixed</Button> */}
             <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<ReAssigned/>}>Reassign</Button>
-            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Complete/>}>Complete</Button>
-            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Cancel/>}>Cancel&nbsp;&nbsp;&nbsp;&nbsp;</Button>
+            <PopupComponent buttonLabel="Complete" modalTitle="Complete" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<Complete/>} />
+            <PopupComponent buttonLabel="Cancel" modalTitle="Cancel" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<Cancel/>} />
+            {/* <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Complete/>}>Complete</Button>
+            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Cancel/>}>Cancel&nbsp;&nbsp;&nbsp;&nbsp;</Button> */}
         </Grid>
     )
 }

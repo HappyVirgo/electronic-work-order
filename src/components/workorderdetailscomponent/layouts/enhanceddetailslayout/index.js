@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: "14px",
         lineHeight: "25px"
     },
+    avatar: {
+        marginLeft: '0px !important',
+    },
 }));
 
 export const EnhancedDetails = ({status, priority, tradeType, problemType, categoryType, woType, nte, nullVal}) => {
@@ -129,7 +132,7 @@ export const EnhancedDetails = ({status, priority, tradeType, problemType, categ
                 <Grid item xs={descSize}>
                     <Chip
                         className={priorityDisplay}
-                        avatar={<Avatar>{data[0]}</Avatar>}
+                        avatar={<Avatar className={classes.avatar}>{data[0]}</Avatar>}
                         label={data[1]}
                     />                 
                 </Grid>                
