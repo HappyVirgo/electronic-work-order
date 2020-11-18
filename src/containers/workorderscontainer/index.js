@@ -233,8 +233,7 @@ class WorkOrdersBuilder extends Component {
         })
         */
         console.log("1**")
-        console.log(this.state) 
-        console.log(this.prevState)      
+        console.log(this.state)   
     }
     async componentDidUpdate(prevProps, prevState) {
 
@@ -852,7 +851,9 @@ class WorkOrdersBuilder extends Component {
             }
             
             if(dtlsID!==prevState.detailsId){
-                dtlsID = this.state.detailsId             
+                dtlsID = this.state.detailsId
+                console.log(dtlsID)
+                console.log(prevState.detailsId)             
                 this.setState({detailsId: dtlsID, loading: true}, async () => {
                     detailsdata = await this.props.fetchDetailsWOData()
                     notesdata = await this.props.fetchNotesWOData()
@@ -860,6 +861,8 @@ class WorkOrdersBuilder extends Component {
                 })                
             } else {
                 dtlsID = tmpdata.data!==undefined?(tmpdata.data.work_orders!==null?(tmpdata.data.work_orders[0]!==undefined?tmpdata.data.work_orders[0]['workOrderId']:this.state.detailsId):this.state.detailsId):this.state.detailsId
+                console.log(dtlsID)
+                console.log(prevState.detailsId)     
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
