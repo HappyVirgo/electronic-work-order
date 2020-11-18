@@ -3,7 +3,6 @@
 
 .cta-component {
     width: 100%;
-    height: 260px;
     min-height: 260px;
     margin: 0 auto;
     background-color: $basic-blue;
@@ -17,6 +16,31 @@
     }
     .search-section {
         padding: 55px 0px 0px 55px;
+        .search-form {
+            background: white;
+            border-radius: 54px;
+            display: flex;
+            align-items: center;
+            margin: 20px 0px;
+            &.rounded {
+                border-bottom-left-radius: unset;
+            }
+            .advanced {
+                width: 30%;
+                text-align: center;
+                padding: 18px 0px;
+                margin-right: 15px;
+                &.opened {
+                    box-shadow: 3px 0 25px -5px #999;
+                }
+                .search-box {
+                    border-right: 1px solid #aaaaaa;
+                    &.opened{
+                        border-right: unset;
+                    }
+                }
+            }
+        }
     }
     .cta-section {
         text-transform: uppercase;
