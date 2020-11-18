@@ -86,6 +86,7 @@ const FilteringComponent = ({tmpdata}) => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
+                        elevation: 0,
                     }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
@@ -116,6 +117,7 @@ const FilteringComponent = ({tmpdata}) => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
+                        elevation: 0,
                     }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
@@ -146,6 +148,7 @@ const FilteringComponent = ({tmpdata}) => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
+                        elevation: 0,
                     }}
                 >
                     <MenuItem value={1}>Default Filter</MenuItem>                    
