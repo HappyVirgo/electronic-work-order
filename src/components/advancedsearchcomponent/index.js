@@ -30,6 +30,16 @@ const useStyles = makeStyles((theme) => ({
             borderBottom: "none"
         }
     },
+    paper: {
+        borderRadius: '20px !important',
+        borderTopLeftRadius: 'unset !important',
+        marginTop: '17px',
+        padding: '20px',
+        boxShadow: '0px 4px 10px 1px #888888',
+        ul: {
+            padding: 'unset'
+        }
+    },
     'input': {
         '&::placeholder': {
             color: '#444444',
@@ -63,6 +73,9 @@ const AdvancedSearchComponent = () => {
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
                         getContentAnchorEl: null,
+                        classes: {
+                            paper: classes.paper
+                        }
                     }}
                     disableUnderline
                 >
