@@ -223,7 +223,7 @@ class WorkOrdersBuilder extends Component {
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
-        }
+        }         
         historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
@@ -231,7 +231,41 @@ class WorkOrdersBuilder extends Component {
         attachmentsdata = await this.props.fetchAttachmentsWOData()
         trgtID = trgtID===undefined?this.state.targetId:trgtID
     }
-    
+
+    /**
+     * handleId() => loads data changes
+     * handleAsyncId() => call async functions since cannot be pass through setState as callback
+     * handleChangePrevState() => trigger setState 
+     * 
+     * Author: Carlos Blanco
+     * Date: 11/13/2020
+     * Ticket: ET-735
+     * */
+    handleId = async(id) => {
+        dtlsID = id
+        console.log(`handleId: dtlsID => ${dtlsID}`)  
+        detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+        notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+        historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+        warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
+    }
+
+    handleAsyncId = (id) => {
+        dtlsID = id
+        console.log(`handleAsyncId: dtlsID => ${dtlsID}`)  
+        this.handleId(dtlsID)
+    }
+    //Change details data
+    handleChangePrevState = (id) => {
+        dtlsID = id
+        console.log(`handleChangePrevState: dtlsID => ${dtlsID}`)          
+        this.setState({
+            detailsId: dtlsID,
+            loading: true
+        }, this.handleAsyncId(id))        
+    }
+
     async componentDidUpdate(prevProps, prevState) {
 
         const searchTermIn = this.state.searchTerm
@@ -239,6 +273,11 @@ class WorkOrdersBuilder extends Component {
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
+        console.log("**************")
+        console.log(dtlsID)
+        console.log(this.state.detailsId)
+        console.log(prevState.detailsId)
+        console.log("**************")
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
@@ -832,22 +871,7 @@ class WorkOrdersBuilder extends Component {
                     tmpdata = await this.props.fetchEmergencyWOData()
                     break;
             }
-
-            const handleId = async(id) => {
-                dtlsID = id
-                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-                attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-                historydata = await this.props.fetchHistoryWOData(dtlsID, token)
-                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
-            }
-            //Change details data
-            const handleChangePrevState = (id) => {
-                dtlsID = id
-                console.log(`handleChangePrevState: dtlsID => ${dtlsID}`)                
-                handleId(id)
-            }
-
+            
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
             const tmpDtls = tmpdata.data!==undefined?
@@ -863,20 +887,14 @@ class WorkOrdersBuilder extends Component {
                 console.log(`IF: prev => ${prevSteDtls}`)
                 console.log(`IF: state => ${currentSteDtls}`) 
                 */
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                
+                this.handleChangePrevState(dtlsID)                
             } else if( dtlsID !== currentSteDtls ) {
                 /*
                 console.log(`ELSE IF: dtlsID => ${dtlsID}`)
                 console.log(`ELSE IF: prev => ${prevSteDtls}`)
                 console.log(`ELSE IF: state => ${currentSteDtls}`) 
                 */                
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))      
+                this.handleChangePrevState(dtlsID)      
             } else {
                 dtlsID = tmpDtls 
                 /*
@@ -884,10 +902,7 @@ class WorkOrdersBuilder extends Component {
                 console.log(`ELSE: prev => ${prevSteDtls}`)
                 console.log(`ELSE: state => ${currentSteDtls}`)     
                 */                        
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                            
+                this.handleChangePrevState(dtlsID)                            
             }         
             //Normalize state to avoid missing data or state changes
             /*
