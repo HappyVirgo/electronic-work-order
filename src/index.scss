@@ -19,6 +19,12 @@ body {
   background-color: unset !important;
 }
 
+.MuiSelect-select {
+  &:focus {
+    background-color: unset !important;
+  }
+}
+
 // .Mui-selected {
 //   background-color: $basic-blue;
 //   border: 4px solid $basic-blue;
