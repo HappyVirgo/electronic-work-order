@@ -905,13 +905,11 @@ class WorkOrdersBuilder extends Component {
                 this.handleChangePrevState(dtlsID)                            
             }         
             //Normalize state to avoid missing data or state changes
-            /*
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
             }, handleChangePrevState(dtlsID)) 
-            */
             
         }
     }
