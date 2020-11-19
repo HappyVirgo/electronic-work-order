@@ -220,6 +220,10 @@ class WorkOrdersBuilder extends Component {
         notesdata = await this.props.fetchNotesWOData()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
+
+        this.setState({
+            detailsId: dtlsID
+        })
         //Set details first item
         /*
         this.setState({
@@ -834,8 +838,6 @@ class WorkOrdersBuilder extends Component {
             const handleId = async(dtlsID) => {
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-                attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-                historydata = await this.props.fetchHistoryWOData(dtlsID, token)
                 warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
             }
             //Change details data
