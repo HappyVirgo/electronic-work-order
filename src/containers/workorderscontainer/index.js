@@ -196,6 +196,7 @@ class WorkOrdersBuilder extends Component {
      * */
     handleDynamicData = (target) => {
         trgtID = target
+        console.log(trgtID)
     }      
     dynamicData = (event) => {
         event.preventDefault();
@@ -228,6 +229,7 @@ class WorkOrdersBuilder extends Component {
         notesdata = await this.props.fetchNotesWOData()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
+        trgtID = trgtID===undefined?this.state.targetId:trgtID
     }
     
     async componentDidUpdate(prevProps, prevState) {
@@ -251,9 +253,9 @@ class WorkOrdersBuilder extends Component {
                 this.setState({
                     searchTerm: "",
                 })
-            }            
+            }        
             //Set data for DataTable Component
-            switch (this.state.targetId) {
+            switch (trgtID) {
                 case "emergencyWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
@@ -856,39 +858,45 @@ class WorkOrdersBuilder extends Component {
                                         currentSteDtls
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== currentSteDtls ) {
+                /*
                 console.log(`IF: dtlsID => ${dtlsID}`)
                 console.log(`IF: prev => ${prevSteDtls}`)
                 console.log(`IF: state => ${currentSteDtls}`) 
+                */
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
                 }, handleChangePrevState(dtlsID))                
             } else if( dtlsID !== currentSteDtls ) {
+                /*
                 console.log(`ELSE IF: dtlsID => ${dtlsID}`)
                 console.log(`ELSE IF: prev => ${prevSteDtls}`)
                 console.log(`ELSE IF: state => ${currentSteDtls}`) 
+                */                
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
                 }, handleChangePrevState(dtlsID))      
             } else {
                 dtlsID = tmpDtls 
+                /*
                 console.log(`ELSE: dtlsID => ${dtlsID}`)
                 console.log(`ELSE: prev => ${prevSteDtls}`)
-                console.log(`ELSE: state => ${currentSteDtls}`)             
+                console.log(`ELSE: state => ${currentSteDtls}`)     
+                */                        
                 this.setState({
                     detailsId: dtlsID,
                     loading: true
                 }, handleChangePrevState(dtlsID))                            
             }         
             //Normalize state to avoid missing data or state changes
-            
+            /*
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
             }, handleChangePrevState(dtlsID)) 
-            
+            */
             
         }
     }
