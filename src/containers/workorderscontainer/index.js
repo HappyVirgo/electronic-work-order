@@ -188,6 +188,7 @@ class WorkOrdersBuilder extends Component {
      * */
     handleDynamicData = (target) => {
         trgtID = target
+        console.log(trgtID)
     }      
     dynamicData = (event) => {
         event.preventDefault();
@@ -249,7 +250,7 @@ class WorkOrdersBuilder extends Component {
                 })
             }            
             //Set data for DataTable Component
-            switch (trgtID) {
+            switch (this.state.targetId) {
                 case "emergencyWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
