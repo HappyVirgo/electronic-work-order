@@ -229,6 +229,7 @@ class WorkOrdersBuilder extends Component {
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
     }
+    
     async componentDidUpdate(prevProps, prevState) {
 
         const searchTermIn = this.state.searchTerm
@@ -252,7 +253,7 @@ class WorkOrdersBuilder extends Component {
                 })
             }            
             //Set data for DataTable Component
-            switch (trgtID) {
+            switch (this.state.targetId) {
                 case "emergencyWO":
                     if(searchTermIn.length>0 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
@@ -881,13 +882,13 @@ class WorkOrdersBuilder extends Component {
                 }, handleChangePrevState(dtlsID))                            
             }         
             //Normalize state to avoid missing data or state changes
-            /*
+            
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
             }, handleChangePrevState(dtlsID)) 
-            */
+            
             
         }
     }
