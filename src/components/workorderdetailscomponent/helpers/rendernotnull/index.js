@@ -111,7 +111,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
         locationAddress = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.address1:nullVal;
         location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
         locationPhone = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.phone1:nullVal;
-    }        
+    }
     return(
         <div>
             <Grid container spacing={0}>

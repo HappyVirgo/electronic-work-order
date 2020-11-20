@@ -12,16 +12,17 @@ import Typography from '@material-ui/core/Typography';
 const styles = (theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing(2),
+    padding: theme.spacing(1),
     background: '#0072CE',
     color: 'white',
     textAlign: 'center',
+    minWidth: '400px',
   },
   closeButton: {
     position: 'absolute',
-    right: theme.spacing(1),
-    top: theme.spacing(1),
-    color: theme.palette.grey[500],
+    right: theme.spacing(0),
+    top: theme.spacing(0),
+    color: 'white',
   },
 });
 
@@ -41,7 +42,7 @@ const DialogTitle = withStyles(styles)((props) => {
 
 const DialogContent = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
   },
 }))(MuiDialogContent);
 
@@ -52,9 +53,8 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function PopupComponent({ buttonLabel, modalTitle, btnClasses, btnStartIcon }) {
+export default function PopupComponent({ buttonLabel, modalTitle, btnClasses, btnStartIcon, content, btn1Label="Yes", btn2Label="No", btn1Func, btn2Func }) {
   const [open, setOpen] = React.useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -72,26 +72,14 @@ export default function PopupComponent({ buttonLabel, modalTitle, btnClasses, bt
             {`Confirm ${modalTitle} Work Order`}
         </DialogTitle>
         <DialogContent dividers>
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </Typography>
-          <Typography gutterBottom>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-            lacus vel augue laoreet rutrum faucibus dolor auctor.
-          </Typography>
-          <Typography gutterBottom>
-            Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-            scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-            auctor fringilla.
-          </Typography>
+          {content}
         </DialogContent>
         <DialogActions>
-          <Button className={btnClasses} autoFocus onClick={handleClose} color="primary">
-            Yes
+          <Button className={btnClasses} autoFocus onClick={() => {btn1Func(); handleClose();}} color="primary">
+          {btn1Label}
           </Button>
           <Button className={btnClasses} autoFocus onClick={handleClose} color="primary">
-            No
+          {btn2Label}
           </Button>
         </DialogActions>
       </Dialog>

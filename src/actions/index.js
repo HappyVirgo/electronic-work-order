@@ -42,6 +42,7 @@ import {
 //Tabs / Notes  Component
 import {
     fetchNotesWOData,
+    createNoteWOData,
 } from './workordernotesactions'
 
 //Tabs / Notes  Component
@@ -71,6 +72,7 @@ export {
     fetchUnassignedWOData,
     fetchHistoryWOData,
     fetchNotesWOData,
+    createNoteWOData,
     fetchAttachmentsWOData,
     fetchWarrantyWOData
 }

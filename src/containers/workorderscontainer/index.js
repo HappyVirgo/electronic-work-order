@@ -27,12 +27,12 @@ import {
     fetchHistoryWOData,
     fetchNotesWOData,
     fetchAttachmentsWOData,
-    fetchWarrantyWOData
+    fetchWarrantyWOData,
+    createNoteWOData
 } from '../../actions';
 
 //Context
 import { GlobalContext } from '../../context/globalcontext'
-
 
 //Declaring global variables
 //Token
@@ -59,6 +59,12 @@ let filterByAssetType
 let filterByStatus
 let filterByPriority
 
+let newNote
+let newNoteAvailable
+let noteDescription
+
+let userId
+
 class WorkOrdersBuilder extends Component {
     constructor() {
         super()
@@ -71,6 +77,9 @@ class WorkOrdersBuilder extends Component {
             filterByAssetType: 1,
             filterByStatus: 1,
             filterByPriority: 1,
+            newNote: '',
+            newNoteAvailable: false,
+            noteDescription: '',
         };
     }    
     /**
@@ -117,7 +126,7 @@ class WorkOrdersBuilder extends Component {
         let value = event.target.value
         this.setState({
             filterByAssetType: value,
-        }, this.handleChangeStateFilterByAssetType(value))        
+        }, this.handleChangeStateFilterByAssetType(value))
     } 
     /**
      * Description: Create Filter Component
@@ -150,7 +159,30 @@ class WorkOrdersBuilder extends Component {
         this.setState({
             filterByPriority: value,
         }, this.handleChangeStateFilterByPriority(value))        
-    }         
+    }
+
+    handleChangeNoteInput = (value) => {
+        noteDescription = value;
+        console.log("description", noteDescription)
+    }
+    handleNoteInput = (event) => {
+        let value = event.target.value
+        this.setState({
+            noteDescription: value
+        }, this.handleChangeNoteInput(value))
+    }
+
+    handleAddNote = (isAvailable) => {
+        newNoteAvailable = isAvailable
+        console.log(newNoteAvailable)
+    }
+    createNoteWOData = (event) => {
+        this.setState({
+            newNoteAvailable: !newNoteAvailable,
+            loading: true
+        }, this.handleAddNote(!newNoteAvailable))
+
+    }
     /**
      * Description: Details components click events to change
      * depending on datatable row
@@ -223,7 +255,7 @@ class WorkOrdersBuilder extends Component {
         attachmentsdata = await this.props.fetchAttachmentsWOData()
         //Set details first item
         this.setState({
-            detailsId: dtlsID
+            detailsId: dtlsID,
         })
 
     }
@@ -241,7 +273,8 @@ class WorkOrdersBuilder extends Component {
             prevState.searchBy !== this.state.searchBy ||
             prevState.filterByAssetType !== this.state.filterByAssetType ||
             prevState.filterByStatus !== this.state.filterByStatus ||
-            prevState.filterByPriority !== this.state.filterByPriority
+            prevState.filterByPriority !== this.state.filterByPriority ||
+            prevState.newNoteAvailable !== this.state.newNoteAvailable
         ) {
             //Clean input if lenght is 0
             if(searchTermIn.length===0){
@@ -841,6 +874,10 @@ class WorkOrdersBuilder extends Component {
                 handleId(id)
             }
 
+            const handleChangePrevNote = async (dtlsID) => {
+                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+            }
+
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
             const tmpDtls = tmpdata.data!==undefined?
@@ -862,7 +899,19 @@ class WorkOrdersBuilder extends Component {
                     detailsId: dtlsID,
                     loading: true
                 }, handleChangePrevState(dtlsID))                            
-            }         
+            }
+            
+            const prevNoteStatus = prevState.newNoteAvailable
+            const currentNoteStatus = this.state.newNoteAvailable
+            if( prevNoteStatus !== currentNoteStatus) {
+                newNote = await this.props.createNoteWOData(noteDescription, dtlsID, token, userId)
+                this.setState({
+                    newNote: newNote.data,
+                    loading: true
+                }, async() => {
+                    return await handleChangePrevNote(dtlsID)   
+                })
+            }
             //Normalize state to avoid missing data or state changes
             this.setState({
                 detailsId: dtlsID,
@@ -881,6 +930,8 @@ class WorkOrdersBuilder extends Component {
             handleFilterByAssetType: this.handleFilterByAssetType,
             handleFilterByStatus: this.handleFilterByStatus,
             handleFilterByPriority: this.handleFilterByPriority,
+            createNoteWOData: this.createNoteWOData,
+            handleNoteInput: this.handleNoteInput,
             filterByStateAssetType: this.state.filterByAssetType,
             filterByStateStatus: this.state.filterByStatus,
             filterByStatePriority: this.state.filterByPriority,                        
@@ -935,6 +986,7 @@ const mapDispatchToProps = dispatch => ({
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
     fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
+    createNoteWOData: () => dispatch(createNoteWOData(noteDescription, dtlsID, token, userId)),
     fetchAttachmentsWOData: ()=> dispatch(fetchAttachmentsWOData(dtlsID, token)),
 })
 

@@ -36,6 +36,7 @@ export const RECEIVE_HISTORY_DATA = 'RECEIVE_HISTORY_DATA';
 
 //Notes WorkOrders
 export const RECEIVE_NOTES_DATA = 'RECEIVE_NOTES_DATA';
+export const ADD_NOTE = 'ADD_NOTE';
 
 //Attachments WorkOrders
 export const RECEIVE_ATTACHMENTS_WO_DATA = 'RECEIVE_ATTACHMENTS_WO_DATA';
