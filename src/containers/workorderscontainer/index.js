@@ -882,26 +882,20 @@ class WorkOrdersBuilder extends Component {
                                         currentSteDtls
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== currentSteDtls ) {
-                /*
                 console.log(`IF: dtlsID => ${dtlsID}`)
                 console.log(`IF: prev => ${prevSteDtls}`)
                 console.log(`IF: state => ${currentSteDtls}`) 
-                */
                 this.handleChangePrevState(dtlsID)                
             } else if( dtlsID !== currentSteDtls ) {
-                /*
                 console.log(`ELSE IF: dtlsID => ${dtlsID}`)
                 console.log(`ELSE IF: prev => ${prevSteDtls}`)
-                console.log(`ELSE IF: state => ${currentSteDtls}`) 
-                */                
+                console.log(`ELSE IF: state => ${currentSteDtls}`)             
                 this.handleChangePrevState(dtlsID)      
             } else {
                 dtlsID = tmpDtls 
-                /*
                 console.log(`ELSE: dtlsID => ${dtlsID}`)
                 console.log(`ELSE: prev => ${prevSteDtls}`)
-                console.log(`ELSE: state => ${currentSteDtls}`)     
-                */                        
+                console.log(`ELSE: state => ${currentSteDtls}`)                           
                 this.handleChangePrevState(dtlsID)                            
             }         
             //Normalize state to avoid missing data or state changes
@@ -909,7 +903,7 @@ class WorkOrdersBuilder extends Component {
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
-            }, handleChangePrevState(dtlsID)) 
+            }, this.handleChangePrevState(dtlsID)) 
             
         }
     }
