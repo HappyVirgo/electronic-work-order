@@ -75,7 +75,7 @@ export default function PopupComponent({ buttonLabel, modalTitle, btnClasses, bt
           {content}
         </DialogContent>
         <DialogActions>
-          <Button className={btnClasses} autoFocus onClick={() => {btn1Func(); handleClose();}} color="primary">
+          <Button className={btnClasses} status={buttonLabel} autoFocus onClick={(event) =>{btn1Func(event); handleClose();}} color="primary">
           {btn1Label}
           </Button>
           <Button className={btnClasses} autoFocus onClick={handleClose} color="primary">
