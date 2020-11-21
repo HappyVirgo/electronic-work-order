@@ -27,6 +27,7 @@ import {
 //Details Component
 import {
     fetchDetailsWOData,
+    updateWOStatus,
 } from './workorderdetailsactions'
 
 //Search Component
@@ -68,6 +69,7 @@ export {
     fetchEmergencyWOData,
     fetchPendingWOData,
     fetchDetailsWOData,
+    updateWOStatus,
     fetchAssignedToMeWOData,
     fetchUnassignedWOData,
     fetchHistoryWOData,

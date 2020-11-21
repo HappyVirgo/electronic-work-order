@@ -28,7 +28,8 @@ import {
     fetchNotesWOData,
     fetchAttachmentsWOData,
     fetchWarrantyWOData,
-    createNoteWOData
+    createNoteWOData,
+    updateWOStatus,
 } from '../../actions';
 
 //Context
@@ -65,6 +66,9 @@ let noteDescription
 
 let userId
 
+let workOrderUpdateResponse
+let updatedStatus
+
 class WorkOrdersBuilder extends Component {
     constructor() {
         super()
@@ -80,6 +84,8 @@ class WorkOrdersBuilder extends Component {
             newNote: '',
             newNoteAvailable: false,
             noteDescription: '',
+            workOrderUpdateResponse: '',
+            updatedStatus: '',
         };
     }    
     /**
@@ -181,7 +187,19 @@ class WorkOrdersBuilder extends Component {
             newNoteAvailable: !newNoteAvailable,
             loading: true
         }, this.handleAddNote(!newNoteAvailable))
-
+    }
+    
+    handleUpdateStatus = (target) => {
+        updatedStatus = target
+        console.log("updatedStatus", updatedStatus)
+    }
+    updateWOStatus = (event) => {
+        let target = event.target.parentElement.getAttribute("status")
+        target = target.toUpperCase().replace(' ', '_')
+        this.setState({
+            updatedStatus: target,
+            loading: true,
+        }, this.handleUpdateStatus(target))
     }
     /**
      * Description: Details components click events to change
@@ -274,7 +292,8 @@ class WorkOrdersBuilder extends Component {
             prevState.filterByAssetType !== this.state.filterByAssetType ||
             prevState.filterByStatus !== this.state.filterByStatus ||
             prevState.filterByPriority !== this.state.filterByPriority ||
-            prevState.newNoteAvailable !== this.state.newNoteAvailable
+            prevState.newNoteAvailable !== this.state.newNoteAvailable ||
+            prevState.updatedStatus !== this.state.updatedStatus
         ) {
             //Clean input if lenght is 0
             if(searchTermIn.length===0){
@@ -878,6 +897,10 @@ class WorkOrdersBuilder extends Component {
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
             }
 
+            const handleWOUpdatedStatus = async(dtlsID) => {
+                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+            }
+
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
             const tmpDtls = tmpdata.data!==undefined?
@@ -912,6 +935,18 @@ class WorkOrdersBuilder extends Component {
                     return await handleChangePrevNote(dtlsID)   
                 })
             }
+
+            const prevUpdatedStatus = prevState.updatedStatus
+            const currentUpdatedStatus = this.state.updatedStatus
+            if( prevUpdatedStatus !== currentUpdatedStatus) {
+                workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus)
+                this.setState({
+                    workOrderUpdateResponse: workOrderUpdateResponse,
+                    loading: true
+                }, async() => {
+                    return await handleWOUpdatedStatus(dtlsID)   
+                })
+            }
             //Normalize state to avoid missing data or state changes
             this.setState({
                 detailsId: dtlsID,
@@ -931,6 +966,7 @@ class WorkOrdersBuilder extends Component {
             handleFilterByStatus: this.handleFilterByStatus,
             handleFilterByPriority: this.handleFilterByPriority,
             createNoteWOData: this.createNoteWOData,
+            updateWOStatus: this.updateWOStatus,
             handleNoteInput: this.handleNoteInput,
             filterByStateAssetType: this.state.filterByAssetType,
             filterByStateStatus: this.state.filterByStatus,
@@ -982,6 +1018,7 @@ const mapDispatchToProps = dispatch => ({
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
+    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
