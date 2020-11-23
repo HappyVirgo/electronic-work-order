@@ -278,7 +278,7 @@ class WorkOrdersBuilder extends Component {
 
     }
     async componentDidUpdate(prevProps, prevState) {
-
+        
         const searchTermIn = this.state.searchTerm
         const searchByIn = this.state.searchBy  
         const filterByInByAssetType = this.state.filterByAssetType
@@ -885,7 +885,9 @@ class WorkOrdersBuilder extends Component {
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
                 historydata = await this.props.fetchHistoryWOData(dtlsID, token)
-                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                                 
+                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
+                this.setState({loading:false})
+                console.log("loading", this.state.loading)                                
             }
             //Change details data
             const handleChangePrevState = (dtlsID) => {
@@ -991,6 +993,7 @@ class WorkOrdersBuilder extends Component {
                         </Grid>        
                         <Grid item xs={12} md={12} lg={5}>
                             <WorkOrderDetailsComponent
+                                loading={this.state.loading}
                                 detailsdata={detailsdata}
                                 history={historydata} 
                                 attachments={attachmentsdata} 
