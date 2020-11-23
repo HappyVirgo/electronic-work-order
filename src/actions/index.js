@@ -27,6 +27,7 @@ import {
 //Details Component
 import {
     fetchDetailsWOData,
+    updateWOStatus,
 } from './workorderdetailsactions'
 
 //Search Component
@@ -42,6 +43,7 @@ import {
 //Tabs / Notes  Component
 import {
     fetchNotesWOData,
+    createNoteWOData,
 } from './workordernotesactions'
 
 //Tabs / Notes  Component
@@ -67,10 +69,12 @@ export {
     fetchEmergencyWOData,
     fetchPendingWOData,
     fetchDetailsWOData,
+    updateWOStatus,
     fetchAssignedToMeWOData,
     fetchUnassignedWOData,
     fetchHistoryWOData,
     fetchNotesWOData,
+    createNoteWOData,
     fetchAttachmentsWOData,
     fetchWarrantyWOData
 }
