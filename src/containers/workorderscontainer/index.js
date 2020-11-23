@@ -158,16 +158,11 @@ class WorkOrdersBuilder extends Component {
      * Date: 9/24/2020
      * Ticket: ET-351
      * */
-    handleWODetails = async (id) => {
-        dtlsID = id 
-        //detailsdata = await this.props.fetchDetailsWOData()
-    }
     handleDynamicDetails = (target) => {
         dtlsID = target 
         console.log("DETAILS***")
         console.log(dtlsID)
         console.log(this.state.detailsId)
-        this.handleWODetails(dtlsID)
     }           
     dynamicDetails = (event) => {
         event.preventDefault();
@@ -273,11 +268,13 @@ class WorkOrdersBuilder extends Component {
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
+        /*
         console.log("**************")
         console.log(dtlsID)
         console.log(this.state.detailsId)
         console.log(prevState.detailsId)
         console.log("**************")
+        */
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
@@ -288,7 +285,7 @@ class WorkOrdersBuilder extends Component {
             prevState.filterByPriority !== this.state.filterByPriority
         ) {
             //Clean input if lenght is 0
-            if(searchTermIn.length===0){
+            if(searchTermIn.length===0) {
                 this.setState({
                     searchTerm: "",
                 })
@@ -878,24 +875,15 @@ class WorkOrdersBuilder extends Component {
                                 (tmpdata.data.work_orders!==null?
                                     (tmpdata.data.work_orders[0]!==undefined?
                                         tmpdata.data.work_orders[0]['workOrderId']:
-                                        currentSteDtls):currentSteDtls):
-                                        currentSteDtls
+                                        dtlsID):dtlsID):
+                                        dtlsID
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== currentSteDtls ) {
-                console.log(`IF: dtlsID => ${dtlsID}`)
-                console.log(`IF: prev => ${prevSteDtls}`)
-                console.log(`IF: state => ${currentSteDtls}`) 
                 this.handleChangePrevState(dtlsID)                
-            } else if( dtlsID !== currentSteDtls ) {
-                console.log(`ELSE IF: dtlsID => ${dtlsID}`)
-                console.log(`ELSE IF: prev => ${prevSteDtls}`)
-                console.log(`ELSE IF: state => ${currentSteDtls}`)             
+            } else if( dtlsID !== currentSteDtls ) {  
                 this.handleChangePrevState(dtlsID)      
             } else {
-                dtlsID = tmpDtls 
-                console.log(`ELSE: dtlsID => ${dtlsID}`)
-                console.log(`ELSE: prev => ${prevSteDtls}`)
-                console.log(`ELSE: state => ${currentSteDtls}`)                           
+                dtlsID = tmpDtls                   
                 this.handleChangePrevState(dtlsID)                            
             }         
             //Normalize state to avoid missing data or state changes
@@ -904,6 +892,7 @@ class WorkOrdersBuilder extends Component {
                 targetId: this.state.targetId,
                 loading: true
             }, this.handleChangePrevState(dtlsID)) 
+            
             
         }
     }
