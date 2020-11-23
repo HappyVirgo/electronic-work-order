@@ -210,7 +210,10 @@ class WorkOrdersBuilder extends Component {
      * */
     handleDynamicDetails = (target) => {
         dtlsID = target 
-    }      
+        console.log("DETAILS***")
+        console.log(dtlsID)
+        console.log(this.state.detailsId)
+    }           
     dynamicDetails = (event) => {
         event.preventDefault();
         let target = event.target.id
@@ -265,18 +268,49 @@ class WorkOrdersBuilder extends Component {
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
-        }
+        }         
         historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
-        //Set details first item
+        trgtID = trgtID===undefined?this.state.targetId:trgtID
+    }
+
+    /**
+     * handleId() => loads data changes
+     * handleAsyncId() => call async functions since cannot be pass through setState as callback
+     * handleChangePrevState() => trigger setState 
+     * 
+     * Author: Carlos Blanco
+     * Date: 11/13/2020
+     * Ticket: ET-735
+     * */
+    handleId = async(id) => {
+        dtlsID = id
+        console.log(`handleId: dtlsID => ${dtlsID}`)  
+        detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+        notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+        historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+        warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
+    }
+
+    handleAsyncId = (id) => {
+        dtlsID = id
+        console.log(`handleAsyncId: dtlsID => ${dtlsID}`)  
+        this.handleId(dtlsID)
+    }
+    //Change details data
+    handleChangePrevState = (id) => {
+        dtlsID = id
+        console.log(`handleChangePrevState: dtlsID => ${dtlsID}`)          
         this.setState({
             detailsId: dtlsID,
-        })
-
+            loading: true
+        }, this.handleAsyncId(id))        
     }
+
     async componentDidUpdate(prevProps, prevState) {
 
         const searchTermIn = this.state.searchTerm
@@ -284,6 +318,13 @@ class WorkOrdersBuilder extends Component {
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
+        /*
+        console.log("**************")
+        console.log(dtlsID)
+        console.log(this.state.detailsId)
+        console.log(prevState.detailsId)
+        console.log("**************")
+        */
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
@@ -296,11 +337,11 @@ class WorkOrdersBuilder extends Component {
             prevState.updatedStatus !== this.state.updatedStatus
         ) {
             //Clean input if lenght is 0
-            if(searchTermIn.length===0){
+            if(searchTermIn.length===0) {
                 this.setState({
                     searchTerm: "",
                 })
-            }            
+            }        
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "emergencyWO":
@@ -879,80 +920,31 @@ class WorkOrdersBuilder extends Component {
                     tmpdata = await this.props.fetchEmergencyWOData()
                     break;
             }
-
-            const handleId = async(dtlsID) => {
-                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-                attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-                historydata = await this.props.fetchHistoryWOData(dtlsID, token)
-                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                                 
-            }
-            //Change details data
-            const handleChangePrevState = (dtlsID) => {
-                const id = dtlsID
-                handleId(id)
-            }
-
-            const handleChangePrevNote = async (dtlsID) => {
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-            }
-
-            const handleWOUpdatedStatus = async(dtlsID) => {
-                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-            }
-
+            
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
             const tmpDtls = tmpdata.data!==undefined?
                                 (tmpdata.data.work_orders!==null?
                                     (tmpdata.data.work_orders[0]!==undefined?
                                         tmpdata.data.work_orders[0]['workOrderId']:
-                                        this.state.detailsId):this.state.detailsId):
-                                        this.state.detailsId
+                                        dtlsID):dtlsID):
+                                        dtlsID
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== currentSteDtls ) {
-
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                
+                this.handleChangePrevState(dtlsID)                
+            } else if( dtlsID !== currentSteDtls ) {  
+                this.handleChangePrevState(dtlsID)      
             } else {
-                dtlsID = tmpDtls             
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                            
-            }
-            
-            const prevNoteStatus = prevState.newNoteAvailable
-            const currentNoteStatus = this.state.newNoteAvailable
-            if( prevNoteStatus !== currentNoteStatus) {
-                newNote = await this.props.createNoteWOData(noteDescription, dtlsID, token, userId)
-                this.setState({
-                    newNote: newNote.data,
-                    loading: true
-                }, async() => {
-                    return await handleChangePrevNote(dtlsID)   
-                })
-            }
-
-            const prevUpdatedStatus = prevState.updatedStatus
-            const currentUpdatedStatus = this.state.updatedStatus
-            if( prevUpdatedStatus !== currentUpdatedStatus) {
-                workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus)
-                this.setState({
-                    workOrderUpdateResponse: workOrderUpdateResponse,
-                    loading: true
-                }, async() => {
-                    return await handleWOUpdatedStatus(dtlsID)   
-                })
-            }
+                dtlsID = tmpDtls                   
+                this.handleChangePrevState(dtlsID)                            
+            }         
             //Normalize state to avoid missing data or state changes
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
-            }, handleChangePrevState(dtlsID)) 
+            }, this.handleChangePrevState(dtlsID)) 
+            
             
         }
     }
