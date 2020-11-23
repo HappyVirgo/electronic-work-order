@@ -935,9 +935,36 @@ class WorkOrdersBuilder extends Component {
             } else if( dtlsID !== currentSteDtls ) {  
                 this.handleChangePrevState(dtlsID)      
             } else {
-                dtlsID = tmpDtls                   
-                this.handleChangePrevState(dtlsID)                            
-            }         
+                dtlsID = tmpDtls             
+                this.setState({
+                    detailsId: dtlsID,
+                    loading: true
+                }, this.handleChangePrevState(dtlsID))                            
+            }
+            
+            const prevNoteStatus = prevState.newNoteAvailable
+            const currentNoteStatus = this.state.newNoteAvailable
+            if( prevNoteStatus !== currentNoteStatus) {
+                newNote = await this.props.createNoteWOData(noteDescription, dtlsID, token, userId)
+                this.setState({
+                    newNote: newNote.data,
+                    loading: true
+                }, async() => {
+                    return await this.handleChangePrevNote(dtlsID)   
+                })
+            }
+
+            const prevUpdatedStatus = prevState.updatedStatus
+            const currentUpdatedStatus = this.state.updatedStatus
+            if( prevUpdatedStatus !== currentUpdatedStatus) {
+                workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus)
+                this.setState({
+                    workOrderUpdateResponse: workOrderUpdateResponse,
+                    loading: true
+                }, async() => {
+                    return await this.handleWOUpdatedStatus(dtlsID)   
+                })
+            }
             //Normalize state to avoid missing data or state changes
             this.setState({
                 detailsId: dtlsID,
