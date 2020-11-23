@@ -15,6 +15,10 @@ const notesWorkOrderReducer = handleActions({
     [types.RECEIVE_NOTES_DATA]: (state, action) => {
         newState.data = action.data;
         return newState;    
+    },
+    [types.ADD_NOTE]: (state, action) => {
+        newState.data = action.data;
+        return newState;
     }    
 }, initialState);
 

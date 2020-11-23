@@ -1,11 +1,14 @@
 //Basic imports
-import React from 'react';
+import React, {useContext} from 'react';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField'
+import InputLabel from '@material-ui/core/InputLabel'
 
+import { GlobalContext } from "../../../../context/globalcontext";
 import PopupComponent from '../../../popupcomponent'
 //Icons
 import {
@@ -40,21 +43,26 @@ const useStyles = makeStyles((theme) => ({
         root: {
             color: 'blue'
         }
-    }
+    },
 }));
 
 export const MainActions = () => {
+    const noteFunc = useContext(GlobalContext)
+    const addNote = noteFunc.createNoteWOData
+    const chageInputNote = noteFunc.handleNoteInput
+    const updateWOStatus = noteFunc.updateWOStatus
     const classes = useStyles()
+    const addNoteContent = <div>
+                                <InputLabel>Please input the note description.</InputLabel>
+                                <TextField onChange={chageInputNote} fullWidth={true} multiline={true} />
+                            </div>
     return (
         <Grid item xs={12} md={4} className="action-button-grid">
-            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<AddNote/>}>Add note</Button>
-            <PopupComponent buttonLabel="NOT FIXED" modalTitle="Not Fixed" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<NotFixed/>} MuiDialogTitle={classes.MuiDialogTitle} />
-            {/* <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<NotFixed/>}>Not Fixed</Button> */}
+            <PopupComponent buttonLabel="ADD NOTE" modalTitle="ADD NOTE" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<AddNote/>} btn1Label="Add" btn1Func={addNote} btn2Label="Cancel" MuiDialogTitle={classes.MuiDialogTitle} content={addNoteContent} />
+            <PopupComponent buttonLabel="Not Fixed" modalTitle="Not Fixed" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<NotFixed/>} btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content="Not fixed?" />
             <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<ReAssigned/>}>Reassign</Button>
-            <PopupComponent buttonLabel="Complete" modalTitle="Complete" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<Complete/>} />
-            <PopupComponent buttonLabel="Cancel" modalTitle="Cancel" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<Cancel/>} />
-            {/* <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Complete/>}>Complete</Button>
-            <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<Cancel/>}>Cancel&nbsp;&nbsp;&nbsp;&nbsp;</Button> */}
+            <PopupComponent buttonLabel="Complete" modalTitle="Complete" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<Complete/>} btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content="Complete?" />
+            <PopupComponent buttonLabel="Cancel" modalTitle="Cancel" btnClasses={`${classes.actionButton} action-button`} btnStartIcon={<Cancel/>} btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content="Cancel?" />
         </Grid>
     )
 }

@@ -16,7 +16,13 @@ const workOrderDetailsReducer = handleActions({
             ...state,
             data: action.data
         };    
-    }     
+    }, 
+    [types.UPDATE_WO_STATUS]: (state, action) => {
+        return {
+            ...state,
+            data: action.data
+        };    
+    }    
 }, initialState);
 
 export default workOrderDetailsReducer;

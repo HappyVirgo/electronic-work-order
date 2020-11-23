@@ -24,6 +24,7 @@ export const RECEIVE_PENDING_WO_DATA = 'RECEIVE_PENDING_WO_DATA';
 
 //Details WorkOrders
 export const RECEIVE_DETAILS_WO_DATA = 'RECEIVE_DETAILS_WO_DATA';
+export const UPDATE_WO_STATUS = 'UPDATE_WO_STATUS';
 
 //Assigned To Me WorkOrders
 export const RECEIVE_ASSIGNED_TO_ME_WO_DATA = 'RECEIVE_ASSIGNED_TO_ME_WO_DATA';
@@ -36,6 +37,7 @@ export const RECEIVE_HISTORY_DATA = 'RECEIVE_HISTORY_DATA';
 
 //Notes WorkOrders
 export const RECEIVE_NOTES_DATA = 'RECEIVE_NOTES_DATA';
+export const ADD_NOTE = 'ADD_NOTE';
 
 //Attachments WorkOrders
 export const RECEIVE_ATTACHMENTS_WO_DATA = 'RECEIVE_ATTACHMENTS_WO_DATA';
