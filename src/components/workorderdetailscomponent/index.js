@@ -34,11 +34,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, loading}) => {
+const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, loadingDetails}) => {
     const classes = useStyles()
     return (
         <div className="details-container">
-            {loading && <div className="loading-container">
+            {loadingDetails && <div className="loading-container">
                 <CircularProgress />
             </div>}
             <Paper className={classes.paper}>
