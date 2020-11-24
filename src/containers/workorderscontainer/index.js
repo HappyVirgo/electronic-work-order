@@ -943,9 +943,37 @@ class WorkOrdersBuilder extends Component {
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: true
-            }, this.handleChangePrevState(dtlsID)) 
-            
-            
+            }, async() => {
+                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+            })   
+            this.setState({
+                detailsId: dtlsID,
+                targetId: this.state.targetId,
+                loading: true
+            }, async() => {
+                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+            }) 
+            this.setState({
+                detailsId: dtlsID,
+                targetId: this.state.targetId,
+                loading: true
+            }, async() => {
+                attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+            }) 
+            this.setState({
+                detailsId: dtlsID,
+                targetId: this.state.targetId,
+                loading: true
+            }, async() => {
+                historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+            }) 
+            this.setState({
+                detailsId: dtlsID,
+                targetId: this.state.targetId,
+                loading: true
+            }, async() => {
+                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token) 
+            })                                                           
         }
     }
     render() {
