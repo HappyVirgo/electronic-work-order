@@ -228,7 +228,7 @@ class WorkOrdersBuilder extends Component {
             this.setState({
                 detailsId: target,
                 loading: true
-            },  this.handleDynamicDetails(target))
+            },  this.handleDynamicDetails(target)) 
         }
     }
     /**

@@ -4,9 +4,16 @@ import clsx from "clsx";
 //Material UI imports
 import TableCell from "@material-ui/core/TableCell";
 import TableRow from "@material-ui/core/TableRow";
+import Button from '@material-ui/core/Button';
 
 //Row Size
 const ROW_SIZE = 70;
+
+const buttonSort = (
+    <Button variant="text" color="secondary">
+        <span>Sort</span>
+    </Button>  
+)
 
 export const TableColumns = ({ classes, columns }) => {
     return (
@@ -29,7 +36,8 @@ export const TableColumns = ({ classes, columns }) => {
                 }}
                 scope="col"
             >
-                {column.label}
+                {`${column.label}`}
+                {column.label!=="Image"?buttonSort:""}
             </TableCell>
             );
         })}
