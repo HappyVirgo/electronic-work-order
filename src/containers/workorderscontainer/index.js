@@ -76,6 +76,7 @@ class WorkOrdersBuilder extends Component {
             targetId: "emergencyWO",
             detailsId: "",
             loading: false,
+            loadingDetails: false,
             searchTerm: "", 
             searchBy: 1,
             filterByAssetType: 1,
@@ -185,7 +186,7 @@ class WorkOrdersBuilder extends Component {
     createNoteWOData = (event) => {
         this.setState({
             newNoteAvailable: !newNoteAvailable,
-            loading: true
+            loadingDetails: true
         }, this.handleAddNote(!newNoteAvailable))
     }
     
@@ -198,7 +199,7 @@ class WorkOrdersBuilder extends Component {
         target = target.toUpperCase().replace(' ', '_')
         this.setState({
             updatedStatus: target,
-            loading: true,
+            loadingDetails: true,
         }, this.handleUpdateStatus(target))
     }
     /**
@@ -217,14 +218,14 @@ class WorkOrdersBuilder extends Component {
         if(target.length>0){
             this.setState({
                 detailsId: target,
-                loading: true
+                loadingDetails: true
             }, this.handleDynamicDetails(target))
         }else{
             target = event.target.closest('div')
             target = target.id
             this.setState({
                 detailsId: target,
-                loading: true
+                loadingDetails: true
             },  this.handleDynamicDetails(target))
         }
     }
@@ -886,17 +887,12 @@ class WorkOrdersBuilder extends Component {
                 attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
                 historydata = await this.props.fetchHistoryWOData(dtlsID, token)
                 warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
-                this.setState({loading:false})
-                console.log("loading", this.state.loading)                                
+                this.setState({loadingDetails: false})
             }
             //Change details data
             const handleChangePrevState = (dtlsID) => {
                 const id = dtlsID
                 handleId(id)
-            }
-
-            const handleChangePrevNote = async (dtlsID) => {
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
             }
 
             const handleWOUpdatedStatus = async(dtlsID) => {
@@ -912,18 +908,20 @@ class WorkOrdersBuilder extends Component {
                                         this.state.detailsId):this.state.detailsId):
                                         this.state.detailsId
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
-            if( prevSteDtls !== currentSteDtls ) {
-
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                
-            } else {
-                dtlsID = tmpDtls             
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, handleChangePrevState(dtlsID))                            
+            if( prevSteDtls !== ''){
+                if( prevSteDtls !== currentSteDtls ) {
+    
+                    this.setState({
+                        detailsId: dtlsID,
+                        loadingDetails: true
+                    }, handleChangePrevState(dtlsID)) 
+                } else {
+                    dtlsID = tmpDtls             
+                    this.setState({
+                        detailsId: dtlsID,
+                        loadingDetails: true
+                    }, handleChangePrevState(dtlsID))    
+                }
             }
             
             const prevNoteStatus = prevState.newNoteAvailable
@@ -932,9 +930,9 @@ class WorkOrdersBuilder extends Component {
                 newNote = await this.props.createNoteWOData(noteDescription, dtlsID, token, userId)
                 this.setState({
                     newNote: newNote.data,
-                    loading: true
+                    loadingDetails: true
                 }, async() => {
-                    return await handleChangePrevNote(dtlsID)   
+                    return await handleChangePrevState(dtlsID)   
                 })
             }
 
@@ -944,7 +942,7 @@ class WorkOrdersBuilder extends Component {
                 workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus)
                 this.setState({
                     workOrderUpdateResponse: workOrderUpdateResponse,
-                    loading: true
+                    loadingDetails: true
                 }, async() => {
                     return await handleWOUpdatedStatus(dtlsID)   
                 })
@@ -953,7 +951,7 @@ class WorkOrdersBuilder extends Component {
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
-                loading: true
+                loading: false
             }, handleChangePrevState(dtlsID)) 
             
         }
@@ -989,11 +987,12 @@ class WorkOrdersBuilder extends Component {
                         <Grid item xs={12} md={12} lg={7}>
                             <DataTableComponent
                                 tmpdata={tmpdata}
+                                loading={this.state.loading}
                             />
                         </Grid>        
                         <Grid item xs={12} md={12} lg={5}>
                             <WorkOrderDetailsComponent
-                                loading={this.state.loading}
+                                loadingDetails={this.state.loadingDetails}
                                 detailsdata={detailsdata}
                                 history={historydata} 
                                 attachments={attachmentsdata} 
