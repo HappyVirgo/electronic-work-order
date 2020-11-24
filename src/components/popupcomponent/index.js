@@ -42,7 +42,7 @@ const DialogTitle = withStyles(styles)((props) => {
 
 const DialogContent = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(3),
+    padding: '30px 7vw',
   },
 }))(MuiDialogContent);
 
@@ -50,10 +50,11 @@ const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(1),
+    justifyContent: 'center'
   },
 }))(MuiDialogActions);
 
-export default function PopupComponent({ buttonLabel, modalTitle, btnClasses, btnStartIcon, content, btn1Label="Yes", btn2Label="No", btn1Func, btn2Func }) {
+export default function PopupComponent({ buttonLabel, modalTitle, btnClasses, btnStartIcon, content, btn1Label="Yes", btn2Label="No", btn1Func, btn2Func, btn1Classes, btn2Classes }) {
   const [open, setOpen] = React.useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -69,16 +70,16 @@ export default function PopupComponent({ buttonLabel, modalTitle, btnClasses, bt
       </Button>
       <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-            {`Confirm ${modalTitle} Work Order`}
+            {modalTitle}
         </DialogTitle>
         <DialogContent dividers>
           {content}
         </DialogContent>
         <DialogActions>
-          <Button className={btnClasses} status={buttonLabel} autoFocus onClick={(event) =>{btn1Func(event); handleClose();}} color="primary">
+          <Button className={btn1Classes} status={buttonLabel} autoFocus onClick={(event) =>{if(btn1Func) btn1Func(event); handleClose();}} color="primary">
           {btn1Label}
           </Button>
-          <Button className={btnClasses} autoFocus onClick={handleClose} color="primary">
+          <Button className={btn2Classes} autoFocus onClick={(event) =>{if(btn2Func) btn2Func(event); handleClose();}} color="primary">
           {btn2Label}
           </Button>
         </DialogActions>
