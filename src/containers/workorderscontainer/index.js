@@ -38,6 +38,8 @@ import { GlobalContext } from '../../context/globalcontext'
 //Declaring global variables
 //Token
 let token
+//User ID
+let userId
 //CTA component
 let ctadata
 //Datatable component
@@ -63,8 +65,6 @@ let filterByPriority
 let newNote
 let newNoteAvailable
 let noteDescription
-
-let userId
 
 let workOrderUpdateResponse
 let updatedStatus
@@ -264,6 +264,7 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
+        userId = 2152
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
@@ -1031,7 +1032,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     oauthFetchToken: () => dispatch(oauthFetchToken()),
-    fetchCTAsData: () => dispatch(fetchCTAsData(token)),   
+    fetchCTAsData: () => dispatch(fetchCTAsData(token, userId)),   
     fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token)),   
     fetchWarrantyWOData: () => dispatch(fetchWarrantyWOData(dtlsID, token)),   
     fetchPendingWOData: () => dispatch(fetchPendingWOData(token)),

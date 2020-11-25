@@ -4,7 +4,7 @@
 export const apiUsers = "http://localhost:8180/admin/Users/getCurrentUser"
 
 //CTA Data
-export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/2152/landing"
+export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Emercency WorkOrders
 export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/emergency"
