@@ -49,6 +49,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+const advancedSearchFields = ["Default Search", "Service Provider" ,"Asset Type", "Problem Type", "Trade Type"]
+
 const AdvancedSearchComponent = () => {
     const [searchBox, setSearchBox] = useState(false);
     let searchFunc = useContext(GlobalContext)
@@ -68,7 +70,7 @@ const AdvancedSearchComponent = () => {
                     onClose={() => setSearchBox(false)}
                     onChange={searchBy}
                     value={searchByState}
-                    renderValue={(value) => "Advanced"}
+                    renderValue={(value) => advancedSearchFields[value-1]}
                     MenuProps = {{
                         anchorOrigin: { vertical: "bottom", horizontal: "left" },
                         transformOrigin: { vertical: "top",horizontal: "left" },
@@ -80,11 +82,11 @@ const AdvancedSearchComponent = () => {
                     disableUnderline
                 >
                     <MenuItem className={classes.menuItem} value="" disabled><b>Searched by:</b></MenuItem>
-                    <MenuItem className={classes.menuItem} value={1}><Radio color="primary" checked={searchByState===1} />Default Search</MenuItem>
-                    <MenuItem className={classes.menuItem} value={2}><Radio color="primary" checked={searchByState===2} />Service Provider</MenuItem>
-                    <MenuItem className={classes.menuItem} value={3}><Radio color="primary" checked={searchByState===3} />Asset Type</MenuItem>
-                    <MenuItem className={classes.menuItem} value={4}><Radio color="primary" checked={searchByState===4} />Problem Type</MenuItem>
-                    <MenuItem className={classes.menuItem} value={5}><Radio color="primary" checked={searchByState===5} />Trade Type</MenuItem>
+                    <MenuItem className={classes.menuItem} value={1}><Radio color="primary" checked={searchByState===1} />{advancedSearchFields[0]}</MenuItem>
+                    <MenuItem className={classes.menuItem} value={2}><Radio color="primary" checked={searchByState===2} />{advancedSearchFields[1]}</MenuItem>
+                    <MenuItem className={classes.menuItem} value={3}><Radio color="primary" checked={searchByState===3} />{advancedSearchFields[2]}</MenuItem>
+                    <MenuItem className={classes.menuItem} value={4}><Radio color="primary" checked={searchByState===4} />{advancedSearchFields[3]}</MenuItem>
+                    <MenuItem className={classes.menuItem} value={5}><Radio color="primary" checked={searchByState===5} />{advancedSearchFields[4]}</MenuItem>
                 </Select>
             </FormControl>
             <FormControl className={classes.search}>           
