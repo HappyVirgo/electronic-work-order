@@ -62,11 +62,11 @@ let filterByAssetType
 let filterByStatus
 let filterByPriority
 
-let newNote
+//let newNote
 let newNoteAvailable
 let noteDescription
 
-let workOrderUpdateResponse
+//let workOrderUpdateResponse
 let updatedStatus
 
 class WorkOrdersBuilder extends Component {
