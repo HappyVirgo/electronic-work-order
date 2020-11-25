@@ -7,10 +7,10 @@ export const apiUsers = "http://localhost:8180/admin/Users/getCurrentUser"
 export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Emercency WorkOrders
-export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/emergency"
+export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Pending WorkOrders
-export const apiPendingWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/pending"
+export const apiPendingWO = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Details WorkOrders
 export const apiDetailsWO = "https://api.ecotrak.com/stagev1/workorders/"

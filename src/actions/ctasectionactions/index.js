@@ -15,7 +15,7 @@ export const receiveCTAsData = (data) => {
     };
 }
 
-export const fetchCTAsData =  async (token, userID) => {
+export const fetchCTAsData =  async (token, userId) => {
     const ctaURL = "/landing"
     const accessFetchToken = (tk) => {
         return tk.data
@@ -24,7 +24,7 @@ export const fetchCTAsData =  async (token, userID) => {
         return id
     }    
     let accessToken = await accessFetchToken(token)
-    let accessUserId = await accessFetchUserId(userID)
+    let accessUserId = await accessFetchUserId(userId)
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,

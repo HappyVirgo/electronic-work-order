@@ -62,11 +62,11 @@ let filterByAssetType
 let filterByStatus
 let filterByPriority
 
-//let newNote
+let newNote
 let newNoteAvailable
 let noteDescription
 
-//let workOrderUpdateResponse
+let workOrderUpdateResponse
 let updatedStatus
 
 class WorkOrdersBuilder extends Component {
@@ -264,7 +264,7 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
-        userId = 2152
+        userId = "2152"
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
@@ -1036,13 +1036,13 @@ const mapDispatchToProps = dispatch => ({
     fetchCTAsData: () => dispatch(fetchCTAsData(token, userId)),   
     fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token)),   
     fetchWarrantyWOData: () => dispatch(fetchWarrantyWOData(dtlsID, token)),   
-    fetchPendingWOData: () => dispatch(fetchPendingWOData(token)),
-    fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token)),
+    fetchPendingWOData: () => dispatch(fetchPendingWOData(token, userId)),
+    fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token, userId)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
     updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token)),
-    fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token)),
-    fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token)),
+    fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
+    fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
     fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
     createNoteWOData: () => dispatch(createNoteWOData(noteDescription, dtlsID, token, userId)),
