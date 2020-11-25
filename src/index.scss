@@ -1,22 +1,30 @@
 @import '../src/assets/scss/';
 body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
+
 //Hacks Material UI
 .MuiTableCell-root {
-  padding: 0px !important;
-  border: none !important;
+    padding: 0px !important;
+    border: none !important;
 }
+
 .MuiChip-root {
-  border-radius: 8px !important;
+    border-radius: 8px !important;
 }
+
 .MuiAvatar-root {
-  border-radius: 8px !important;
+    border-radius: 8px !important;
 }
+
 .Mui-selected {
-  background-color: unset !important;
+    background-color: unset !important;
+}
+
+.MuiDialog-paper {
+    width: 50%
 }
 
 .MuiSelect-select {
