@@ -11,6 +11,8 @@ import React from 'react';
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from "@material-ui/core/Paper";
+import CircularProgress from '@material-ui/core/CircularProgress';
+
 
 //Layouts
 import { Details } from './layouts' 
@@ -32,10 +34,13 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty}) => {
+const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, loadingDetails}) => {
     const classes = useStyles()
     return (
         <div className="details-container">
+            {loadingDetails && <div className="loading-container">
+                <CircularProgress />
+            </div>}
             <Paper className={classes.paper}>
                 <Details 
                     detailsdata={detailsdata}
