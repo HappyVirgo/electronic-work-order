@@ -989,6 +989,7 @@ class WorkOrdersBuilder extends Component {
             createNoteWOData: this.createNoteWOData,
             updateWOStatus: this.updateWOStatus,
             handleNoteInput: this.handleNoteInput,
+            noteDescription: this.state.noteDescription,
             filterByStateAssetType: this.state.filterByAssetType,
             filterByStateStatus: this.state.filterByStatus,
             filterByStatePriority: this.state.filterByPriority,                        
