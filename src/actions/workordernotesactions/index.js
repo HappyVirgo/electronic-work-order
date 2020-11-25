@@ -43,6 +43,7 @@ export const fetchNotesWOData =  async (dtlsID, token) => {
 
 export const createNoteWOData = async (noteDescription, dtlsID, token, userId="2152") => {
     console.log("token", token)
+    console.log(userId)
     const addNoteURL = "/note"
     const accessFetchToken = (tk) => {
         return tk.data
