@@ -56,7 +56,6 @@ export const fetchSearchData =  async (searchTerm, searchBy, token, userId) => {
     const emptydata = { 
         work_orders: []
     }
-    console.log(apiSearch+accessUserId+searchURL+searchParams)
     return dispatch => {
         return fetch(apiSearch+accessUserId+searchURL+searchParams, init)
             .then(response => {
