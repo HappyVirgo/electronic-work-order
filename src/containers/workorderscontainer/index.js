@@ -1057,7 +1057,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
     oauthFetchToken: () => dispatch(oauthFetchToken()),
     fetchCTAsData: () => dispatch(fetchCTAsData(token, userId)),   
-    fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token)),   
+    fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token, userId)),   
     fetchWarrantyWOData: () => dispatch(fetchWarrantyWOData(dtlsID, token)),   
     fetchPendingWOData: () => dispatch(fetchPendingWOData(token, userId)),
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token, userId)),
