@@ -72,7 +72,6 @@ const useTableStyles = makeStyles(theme => ({
 export const ReactWindowTable = ({ data, columns }) => {
     const classes = useTableStyles();
     const itemData = createItemData(classes, columns, data);
-    
     return (
         <div className={classes.root}>
         <Table className={classes.table} component="div">

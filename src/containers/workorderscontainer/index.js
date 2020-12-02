@@ -87,6 +87,7 @@ class WorkOrdersBuilder extends Component {
             noteDescription: '',
             workOrderUpdateResponse: '',
             updatedStatus: '',
+            itsActive: false
         };
     }    
     /**
@@ -211,9 +212,6 @@ class WorkOrdersBuilder extends Component {
      * */
     handleDynamicDetails = (target) => {
         dtlsID = target 
-        console.log("DETAILS***")
-        console.log(dtlsID)
-        console.log(this.state.detailsId)
     }           
     dynamicDetails = (event) => {
         event.preventDefault();

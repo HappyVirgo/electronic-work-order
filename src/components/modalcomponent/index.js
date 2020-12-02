@@ -137,68 +137,68 @@ const ModalComponent = ({title, data, type}) => {
 
     const Empty = ""
     if(type==="document") {
-        description = data['type']!==undefined?data['type']['description']:Empty
-        typeOf = data['type']!==undefined?data['type']['type']:Empty
-        createdDate = data['createdAt']!==undefined?data['createdAt']:Empty  
-        updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty  
-        imageFile = data['fileName']!==undefined?data['fileName']:Empty  
-        imageTitle = data['documentId']!==undefined?data['documentId']:Empty   
-        referenceID = data['referenceId']!==undefined?data['referenceId']:Empty   
-        createdDate = data['dateCreated']!==undefined?data['dateCreated']:Empty
-        updatedDate = data['dateUpdated']!==undefined?data['dateUpdated']:Empty
+        description = data['type']?data['type']['description']:Empty
+        typeOf = data['type']?data['type']['type']:Empty
+        createdDate = data['createdAt']?data['createdAt']:Empty  
+        updatedDate = data['updatedAt']?data['updatedAt']:Empty  
+        imageFile = data['fileName']?data['fileName']:Empty  
+        imageTitle = data['documentId']?data['documentId']:Empty   
+        referenceID = data['referenceId']?data['referenceId']:Empty   
+        createdDate = data['dateCreated']?data['dateCreated']:Empty
+        updatedDate = data['dateUpdated']?data['dateUpdated']:Empty
     } else if (type==="history") {
-        phone = data['user']!==undefined?data['user']['phoneNumber']:Empty  
-        historyNote = data['note']!==undefined?data['note']:Empty
-        updatedDate = data['updatedDate']!==undefined?data['updatedDate']:Empty
-        company = data['user']!==undefined?data['companyName']:Empty
+        phone = data['user']?data['user']['phoneNumber']:Empty  
+        historyNote = data['note']?data['note']:Empty
+        updatedDate = data['updatedDate']?data['updatedDate']:Empty
+        company = data['user']?data['companyName']:Empty
     } else if (type==="warranty") { 
-        assetID = data['warranty']!==undefined?data['warranty']['assetId']:Empty
-        warrantyPeriod1 = data['warranty']!==undefined?data['warranty']['warrantyPeriod1']:Empty
-        warrantyPeriod2 = data['warranty']!==undefined?data['warranty']['warrantyPeriod2']:Empty
-        warrantyPeriod3 = data['warranty']!==undefined?data['warranty']['warrantyPeriod3']:Empty
-        warrantyPeriod4 = data['warranty']!==undefined?data['warranty']['warrantyPeriod4']:Empty
-        warrantyExpiryDate = data['warranty']!==undefined?data['warranty']['warrantyExpiryDate']:Empty
-        warrantyStartFromDate = data['warranty']!==undefined?data['warranty']['warrantyStartFromDate']:Empty
-        warrantyNte = data['warranty']!==undefined?data['warranty']['warrantyNte']:Empty
-        warrantyStatusId = data['warranty']!==undefined?data['warranty']['warrantyStatusId']:Empty
-        warranty1typeId = data['warranty']!==undefined?(data['warranty']['warranty1']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
-        warranty2typeId = data['warranty']!==undefined?(data['warranty']['warranty2']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
-        warranty3typeId = data['warranty']!==undefined?(data['warranty']['warranty3']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
-        warranty4typeId = data['warranty']!==undefined?(data['warranty']['warranty4']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
-        warranty1type = data['warranty']!==undefined?(data['warranty']['warranty1']?data['warranty']['warranty1']['warrantyType']:Empty):Empty
-        warranty2type = data['warranty']!==undefined?(data['warranty']['warranty2']?data['warranty']['warranty2']['warrantyType']:Empty):Empty
-        warranty3type = data['warranty']!==undefined?(data['warranty']['warranty3']?data['warranty']['warranty3']['warrantyType']:Empty):Empty
-        warranty4type = data['warranty']!==undefined?(data['warranty']['warranty4']?data['warranty']['warranty4']['warrantyType']:Empty):Empty
-        warranty1typeStatus = data['warranty']!==undefined?(data['warranty']['warranty1']?data['warranty']['warranty1']['status']:Empty):Empty
-        warranty2typeStatus = data['warranty']!==undefined?(data['warranty']['warranty2']?data['warranty']['warranty2']['status']:Empty):Empty
-        warranty3typeStatus = data['warranty']!==undefined?(data['warranty']['warranty3']?data['warranty']['warranty3']['status']:Empty):Empty
-        warranty4typeStatus = data['warranty']!==undefined?(data['warranty']['warranty4']?data['warranty']['warranty4']['status']:Empty):Empty  
-        componentWarranties =  data['warranty']!==undefined?data['warranty']['componentWarranties']:Empty             
+        assetID = data['warranty']?data['warranty']['assetId']:Empty
+        warrantyPeriod1 = data['warranty']?data['warranty']['warrantyPeriod1']:Empty
+        warrantyPeriod2 = data['warranty']?data['warranty']['warrantyPeriod2']:Empty
+        warrantyPeriod3 = data['warranty']?data['warranty']['warrantyPeriod3']:Empty
+        warrantyPeriod4 = data['warranty']?data['warranty']['warrantyPeriod4']:Empty
+        warrantyExpiryDate = data['warranty']?data['warranty']['warrantyExpiryDate']:Empty
+        warrantyStartFromDate = data['warranty']?data['warranty']['warrantyStartFromDate']:Empty
+        warrantyNte = data['warranty']?data['warranty']['warrantyNte']:Empty
+        warrantyStatusId = data['warranty']?data['warranty']['warrantyStatusId']:Empty
+        warranty1typeId = data['warranty']?(data['warranty']['warranty1']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty2typeId = data['warranty']?(data['warranty']['warranty2']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty3typeId = data['warranty']?(data['warranty']['warranty3']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty4typeId = data['warranty']?(data['warranty']['warranty4']?data['warranty']['warranty1']['warrantyTypeId']:Empty):Empty
+        warranty1type = data['warranty']?(data['warranty']['warranty1']?data['warranty']['warranty1']['warrantyType']:Empty):Empty
+        warranty2type = data['warranty']?(data['warranty']['warranty2']?data['warranty']['warranty2']['warrantyType']:Empty):Empty
+        warranty3type = data['warranty']?(data['warranty']['warranty3']?data['warranty']['warranty3']['warrantyType']:Empty):Empty
+        warranty4type = data['warranty']?(data['warranty']['warranty4']?data['warranty']['warranty4']['warrantyType']:Empty):Empty
+        warranty1typeStatus = data['warranty']?(data['warranty']['warranty1']?data['warranty']['warranty1']['status']:Empty):Empty
+        warranty2typeStatus = data['warranty']?(data['warranty']['warranty2']?data['warranty']['warranty2']['status']:Empty):Empty
+        warranty3typeStatus = data['warranty']?(data['warranty']['warranty3']?data['warranty']['warranty3']['status']:Empty):Empty
+        warranty4typeStatus = data['warranty']?(data['warranty']['warranty4']?data['warranty']['warranty4']['status']:Empty):Empty  
+        componentWarranties =  data['warranty']?data['warranty']['componentWarranties']:Empty             
     } else {
         if (data['wonNote']) {
             describer = "Work Order Note"
-            description = data['wonNote']!==undefined?data['wonNote']:Empty
-            createdDate = data['createdAt']!==undefined?data['createdAt']:Empty
-            updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty
-            company = data['user']['companyName']!==undefined?data['user']['companyName']:Empty
-            firstName = data['user']['firstName']!==undefined?data['user']['firstName']:Empty
-            lastName = data['user']['lastName']!==undefined?data['user']['lastName']:Empty
+            description = data['wonNote']?data['wonNote']:Empty
+            createdDate = data['createdAt']?data['createdAt']:Empty
+            updatedDate = data['updatedAt']?data['updatedAt']:Empty
+            company = data['user']['companyName']?data['user']['companyName']:Empty
+            firstName = data['user']['firstName']?data['user']['firstName']:Empty
+            lastName = data['user']['lastName']?data['user']['lastName']:Empty
         } else if (data['pnote']) {
             describer = "Proposal Note"
-            description = data['pnote']!==undefined?data['pnote']:Empty
-            createdDate = data['createdAt']!==undefined?data['createdAt']:Empty
-            updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty
-            company = data['user']['companyName']!==undefined?data['user']['companyName']:Empty
-            firstName = data['user']['firstName']!==undefined?data['user']['firstName']:Empty
-            lastName = data['user']['lastName']!==undefined?data['user']['lastName']:Empty       
+            description = data['pnote']?data['pnote']:Empty
+            createdDate = data['createdAt']?data['createdAt']:Empty
+            updatedDate = data['updatedAt']?data['updatedAt']:Empty
+            company = data['user']['companyName']?data['user']['companyName']:Empty
+            firstName = data['user']['firstName']?data['user']['firstName']:Empty
+            lastName = data['user']['lastName']?data['user']['lastName']:Empty       
         } else {
             describer = "Invoice Note"
-            description = data['invNote']!==undefined?data['invNote']:Empty  
-            createdDate = data['createdAt']!==undefined?data['createdAt']:Empty  
-            updatedDate = data['updatedAt']!==undefined?data['updatedAt']:Empty  
-            company = data['user']!==undefined?data['user']['companyName']:Empty  
-            firstName = data['user']!==undefined?data['user']['firstName']:Empty   
-            lastName = data['user']!==undefined?data['user']['lastName']:Empty  
+            description = data['invNote']?data['invNote']:Empty  
+            createdDate = data['createdAt']?data['createdAt']:Empty  
+            updatedDate = data['updatedAt']?data['updatedAt']:Empty  
+            company = data['user']?data['user']['companyName']:Empty  
+            firstName = data['user']?data['user']['firstName']:Empty   
+            lastName = data['user']?data['user']['lastName']:Empty  
         }
     }
 

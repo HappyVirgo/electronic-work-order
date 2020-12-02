@@ -11,9 +11,9 @@
     &:hover {
         background-color: $basic-background-color;
     }
-    &:active {
-        background-color: $basic-background-color;
-    }
+}
+.active {
+    background-color: $basic-background-color;
 }
 .dtableCols {
     width: 100%;
