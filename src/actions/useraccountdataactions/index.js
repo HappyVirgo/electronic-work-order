@@ -1,8 +1,8 @@
 /**
  * Description: Display user information
  * Author: Carlos Blanco
- * Created: 8/27/2020
- * Ticket: ET-235
+ * Created: 11/02/2020
+ * Ticket: ET-292
  */
 import * as types from '../../constants';
 import { apiUsers } from '../../api/'

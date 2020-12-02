@@ -1,7 +1,5 @@
-//Once the user_id is catched should be put instead 2152(Inspire)
-
 //User information
-export const apiUsers = "http://localhost:8180/admin/Users/getCurrentUser"
+export const apiUsers = "http://localhost:8180/exampleURL"
 
 //CTA Data
 export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/"
