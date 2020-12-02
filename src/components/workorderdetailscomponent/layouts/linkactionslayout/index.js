@@ -48,19 +48,18 @@ export const LinkActions = ({workOrderId}) => {
             >
                 Work Order
             </Button>
-            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Asset</Button>
 
             <Button
                 variant="contained" 
                 color="primary" 
-                className={`${classes.linkButton} link-button`} 
+                className={`${classes.linkButton} link-button`}
                 onClick={
-
-                    () => window.open(`${api_url}Invoices/details/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Assets/view_assets/${workOrderId}`, "_blank")
                 }
             >
-                Invoice
+                Asset
             </Button>
+            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Invoice</Button>
             <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Proposal</Button>
         </Grid>
     )
