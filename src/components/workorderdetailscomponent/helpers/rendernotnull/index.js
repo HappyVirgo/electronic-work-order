@@ -133,7 +133,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 />
                 <MainActions />
             </Grid>
-            <LinkActions />
+            <LinkActions workOrderId={workOrderId} />
             <Divider/>
             <Grid container spacing={0}>
                 <WorkOrderDescription
