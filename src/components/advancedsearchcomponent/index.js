@@ -19,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
         width: "70%",
     },
     menuItem: {
-        minWidth: '250px',
+        minWidth: '200px',
+        fontSize: '14px',
+        padding: '0',
         width: '100%'
     },
     underline: {
@@ -33,7 +35,8 @@ const useStyles = makeStyles((theme) => ({
     paper: {
         borderRadius: '20px !important',
         borderTopLeftRadius: 'unset !important',
-        marginTop: '17px',
+        marginTop: '10px',
+        // marginTop: '17px',
         padding: '20px',
         boxShadow: '0px 4px 10px 1px #888888',
         ul: {
