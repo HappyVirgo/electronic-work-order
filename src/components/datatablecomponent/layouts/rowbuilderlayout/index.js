@@ -17,7 +17,7 @@ import {
 } from '../index'
 
 //Constants
-const ROW_SIZE = 140;
+// const ROW_SIZE = 140;
 
 //Building rows
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
@@ -52,7 +52,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
                 )}
                 style={{
                 flexBasis: column.width || false,
-                height: ROW_SIZE
+                // height: ROW_SIZE
                 }}
             >
                 {
