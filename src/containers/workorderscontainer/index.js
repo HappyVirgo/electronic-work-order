@@ -937,10 +937,6 @@ class WorkOrdersBuilder extends Component {
                 handleId(id)
             }
 
-            const handleWOUpdatedStatus = async(dtlsID) => {
-                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-            }
-
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
             const tmpDtls = tmpdata.data!==undefined?
@@ -973,9 +969,7 @@ class WorkOrdersBuilder extends Component {
                 this.setState({
                     newNote: newNote.data,
                     loadingDetails: true
-                }, async() => {
-                    return await handleChangePrevState(dtlsID)   
-                })
+                }, handleChangePrevState(dtlsID))
             }
 
             const prevUpdatedStatus = prevState.updatedStatus
@@ -985,9 +979,7 @@ class WorkOrdersBuilder extends Component {
                 this.setState({
                     workOrderUpdateResponse: workOrderUpdateResponse,
                     loadingDetails: true
-                }, async() => {
-                    return await handleWOUpdatedStatus(dtlsID)   
-                })
+                }, handleChangePrevState(dtlsID))
             }
             //Normalize state to avoid missing data or state changes
             this.setState({
@@ -1063,7 +1055,7 @@ const mapDispatchToProps = dispatch => ({
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token, userId)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
-    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token)),
+    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
