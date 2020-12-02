@@ -61,7 +61,7 @@ export const LinkActions = ({workOrderId}) => {
             </Button>
             <Button
                 variant="contained"
-                color="primary" 
+                color="primary"
                 className={`${classes.linkButton} link-button`} 
                 onClick={
                     () => window.open(`${api_url}Invoices/details/${workOrderId}`, "_blank")
