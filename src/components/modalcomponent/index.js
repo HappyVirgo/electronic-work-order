@@ -151,7 +151,8 @@ const ModalComponent = ({title, data, type}) => {
         historyNote = data['note']!==undefined?data['note']:Empty
         updatedDate = data['updatedDate']!==undefined?data['updatedDate']:Empty
         company = data['user']!==undefined?data['companyName']:Empty
-    } else if (type==="warranty") { 
+    } else if (type==="warranty") {
+        if(data['warranty'] === null) return Empty; 
         assetID = data['warranty']!==undefined?data['warranty']['assetId']:Empty
         warrantyPeriod1 = data['warranty']!==undefined?data['warranty']['warrantyPeriod1']:Empty
         warrantyPeriod2 = data['warranty']!==undefined?data['warranty']['warrantyPeriod2']:Empty
