@@ -30,11 +30,22 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const LinkActions = () => {
+const api_url = "https://radstuff.ecotrak.com/admin/";
+
+export const LinkActions = ({workOrderId}) => {
     const classes = useStyles()
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
-            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`}>Work Order</Button>
+            <Button
+                variant="contained" color="primary" className={`${classes.linkButton} link-button`} 
+                onClick={
+                    () => {
+                        window.open(`${api_url}WorkOrders/work_order_details/${workOrderId}`, "_blank")
+                    }
+                }
+            >
+                Work Order
+            </Button>
             <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Asset</Button>
             <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Invoice</Button>
             <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Proposal</Button>
