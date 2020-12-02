@@ -4,7 +4,7 @@
 .cta-component {
     width: 100%;
     // min-height: 260px;
-    min-height: 200px;
+    // min-height: 200px;
     margin: 0 auto;
     background-color: $basic-blue;
     h1{
@@ -14,17 +14,19 @@
         font-family: $font-family;
         font-weight: 400;
         margin-top: 0px;
-        margin-bottom: 15px;
+        // margin-bottom: 10px;
+        margin-bottom: 0px;
     }
     .search-section {
-        padding: 20px 20px 0px 55px;
+        padding: 10px 20px 0px 55px;
         // padding: 55px 0px 0px 55px;
         .search-form {
             background: white;
             border-radius: 54px;
             display: flex;
             align-items: center;
-            margin: 10px 0px;
+            // margin: 10px 0px;
+            margin: 0px 0px;
             &.rounded {
                 border-bottom-left-radius: unset;
             }
@@ -49,7 +51,7 @@
         text-transform: uppercase;
         margin-top: 10px;
         // padding: 55px;
-        padding: 20px;
+        padding: 10px;
         div {
             border-radius: 15px;
         }

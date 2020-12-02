@@ -33,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
         borderRadius: '38px',
     },
     filterBox: {
-        margin: '15px 0px',
+        // margin: '15px 0px',
+        margin: '10px 0px',
         display: 'flex',
         justifyContent: 'space-between'
     },
