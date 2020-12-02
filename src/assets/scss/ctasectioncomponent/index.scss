@@ -63,9 +63,12 @@
             }            
             .emergency-wo {
                 @include featured-box-cta;
+                display: flex;
+                align-items: center;
                 background-color: #F20050;
                 margin-bottom: $p5-margin;
-                padding: 15px 10px;
+                // padding: 15px 10px;
+                padding: 10px 10px;
                 span:first-child {
                     @include cta-first-child;
                 }
