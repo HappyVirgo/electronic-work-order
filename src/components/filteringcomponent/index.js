@@ -27,12 +27,13 @@ const useStyles = makeStyles((theme) => ({
     filter: {
         width: "30%",
         textAlign: 'center',
-        padding: '5px',
+        // padding: '5px',
+        padding: '0px',
         border: '3px solid #78b0dd',
         borderRadius: '38px',
     },
     filterBox: {
-        margin: '20px 0px',
+        margin: '15px 0px',
         display: 'flex',
         justifyContent: 'space-between'
     },
