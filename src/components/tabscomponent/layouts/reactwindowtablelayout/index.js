@@ -59,7 +59,7 @@ const useTableStyles = makeStyles(theme => ({
     },
     headerRow: {},
     cell: {
-        display: "block",
+        display: "inline-teable",
         flexGrow: 0,
         flexShrink: 0
         // flex: 1
