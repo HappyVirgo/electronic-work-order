@@ -37,7 +37,9 @@ export const LinkActions = ({workOrderId}) => {
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
             <Button
-                variant="contained" color="primary" className={`${classes.linkButton} link-button`} 
+                variant="contained"
+                color="primary" 
+                className={`${classes.linkButton} link-button`} 
                 onClick={
                     () => {
                         window.open(`${api_url}WorkOrders/work_order_details/${workOrderId}`, "_blank")
@@ -48,7 +50,16 @@ export const LinkActions = ({workOrderId}) => {
             </Button>
             <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Asset</Button>
             <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Invoice</Button>
-            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Proposal</Button>
+            <Button 
+                variant="contained" 
+                color="primary" 
+                className={`${classes.linkButton} link-button`} 
+                onClick={
+                    () => window.open(`${api_url}Proposals/proposal_details/${workOrderId}`, "_blank")
+                }
+            >
+                Proposal
+            </Button>
         </Grid>
     )
 }
