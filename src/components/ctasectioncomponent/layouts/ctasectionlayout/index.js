@@ -17,23 +17,23 @@ const useStyles = makeStyles((theme) => ({
     cta_assigned_value: {
         color: '#49b900;',
         // fontSize: '64px',
-        fontSize: '60px',
+        fontSize: '48px',
         fontWeight: 400,
-        margin: '10px'
+        // margin: '10px'
     },
     cta_pending_value: {
         color: '#FF9022;',
         // fontSize: '64px',
-        fontSize: '60px',
+        fontSize: '48px',
         fontWeight: 400,
-        margin: '10px'
+        // margin: '10px'
     },
     cta_unassigned_value: {
         color: '#F20050;',
         // fontSize: '64px',
-        fontSize: '60px',
+        fontSize: '48px',
         fontWeight: 400,
-        margin: '10px'
+        // margin: '10px'
     }
 }));
 
