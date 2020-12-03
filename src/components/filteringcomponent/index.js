@@ -25,7 +25,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     filter: {
-        width: "30%",
+        width: "32%",
         textAlign: 'center',
         // padding: '5px',
         padding: '0px',
