@@ -37,10 +37,8 @@ const useStyles = makeStyles((theme) => ({
 
 const api_url = "https://radstuff.ecotrak.com/admin/";
 
-export const LinkActions = (workOrderId, proposalStatus, invoiceStatus) => {
+export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
     const classes = useStyles()
-    console.log("proposalStatus", proposalStatus)
-    console.log("invoiceStatus", invoiceStatus)
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
             <Button
