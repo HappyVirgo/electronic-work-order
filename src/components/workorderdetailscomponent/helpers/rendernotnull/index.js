@@ -112,6 +112,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
         location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
         locationPhone = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.phone1:nullVal;
     }
+    console.log("invoiceStatus", invoiceStatus)
     return(
         <div>
             <Grid container spacing={0}>
@@ -133,7 +134,11 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 />
                 <MainActions />
             </Grid>
-            <LinkActions workOrderId={workOrderId} />
+            <LinkActions
+                workOrderId={workOrderId}
+                invoiceStatus={invoiceStatus}
+                proposalStatus={proposalStatus}
+            />
             <Divider/>
             <Grid container spacing={0}>
                 <WorkOrderDescription

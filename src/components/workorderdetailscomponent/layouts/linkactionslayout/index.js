@@ -28,12 +28,19 @@ const useStyles = makeStyles((theme) => ({
         }
 
     },
+    disabled: {
+        color: 'grey',
+        backgroundColor: '#EEEEEE',
+        pointerEvents: 'none'
+    },
 }));
 
 const api_url = "https://radstuff.ecotrak.com/admin/";
 
-export const LinkActions = ({workOrderId}) => {
+export const LinkActions = (workOrderId, proposalStatus, invoiceStatus) => {
     const classes = useStyles()
+    console.log("proposalStatus", proposalStatus)
+    console.log("invoiceStatus", invoiceStatus)
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
             <Button
@@ -42,7 +49,7 @@ export const LinkActions = ({workOrderId}) => {
                 className={`${classes.linkButton} link-button`} 
                 onClick={
                     () => {
-                        window.open(`${api_url}WorkOrders/work_order_details/${workOrderId}`, "_blank")
+                        window.open(`${api_url}WorkOrders/work_order_details/${workOrderId.workOrderId}`, "_blank")
                     }
                 }
             >
@@ -54,7 +61,7 @@ export const LinkActions = ({workOrderId}) => {
                 color="primary" 
                 className={`${classes.linkButton} link-button`}
                 onClick={
-                    () => window.open(`${api_url}Assets/view_assets/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Assets/view_assets/${workOrderId.workOrderId}`, "_blank")
                 }
             >
                 Asset
@@ -62,9 +69,9 @@ export const LinkActions = ({workOrderId}) => {
             <Button
                 variant="contained"
                 color="primary"
-                className={`${classes.linkButton} link-button`} 
+                className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
                 onClick={
-                    () => window.open(`${api_url}Invoices/details/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Invoices/details/${workOrderId.workOrderId}`, "_blank")
                 }
             >
                 Invoice
@@ -72,9 +79,9 @@ export const LinkActions = ({workOrderId}) => {
             <Button
                 variant="contained"
                 color="primary" 
-                className={`${classes.linkButton} link-button`} 
+                className={`${classes.linkButton} link-button ${proposalStatus && Object.keys(proposalStatus).length !== 0?'':classes.disabled}`} 
                 onClick={
-                    () => window.open(`${api_url}Proposals/proposal_details/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Proposals/proposal_details/${workOrderId.workOrderId}`, "_blank")
                 }
             >
                 Proposal
