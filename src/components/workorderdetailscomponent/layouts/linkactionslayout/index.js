@@ -47,7 +47,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
                 className={`${classes.linkButton} link-button`} 
                 onClick={
                     () => {
-                        window.open(`${api_url}WorkOrders/work_order_details/${workOrderId.workOrderId}`, "_blank")
+                        window.open(`${api_url}WorkOrders/work_order_details/${workOrderId}`, "_blank")
                     }
                 }
             >
@@ -59,7 +59,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
                 color="primary" 
                 className={`${classes.linkButton} link-button`}
                 onClick={
-                    () => window.open(`${api_url}Assets/view_assets/${workOrderId.workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Assets/view_assets/${workOrderId}`, "_blank")
                 }
             >
                 Asset
@@ -69,7 +69,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
                 color="primary"
                 className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
                 onClick={
-                    () => window.open(`${api_url}Invoices/details/${workOrderId.workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Invoices/details/${workOrderId}`, "_blank")
                 }
             >
                 Invoice
@@ -79,7 +79,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
                 color="primary" 
                 className={`${classes.linkButton} link-button ${proposalStatus && Object.keys(proposalStatus).length !== 0?'':classes.disabled}`} 
                 onClick={
-                    () => window.open(`${api_url}Proposals/proposal_details/${workOrderId.workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Proposals/proposal_details/${workOrderId}`, "_blank")
                 }
             >
                 Proposal
