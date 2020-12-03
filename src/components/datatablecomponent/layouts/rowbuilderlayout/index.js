@@ -24,6 +24,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
     let change = useContext(GlobalContext)
     change = change.dynamicDetails
+    console.log("item", item.invoice)
     return (
         <TableRow component="div" className={`${classes.row} datatable-row`} style={style}>
         {columns.map((column, colIndex) => {
