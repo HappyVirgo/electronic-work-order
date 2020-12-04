@@ -7,9 +7,15 @@
 }
 .datatable-row {
     cursor: pointer; 
-    border-bottom: 1px solid $basic-light-gray;
+    border-bottom: 2px solid $basic-light-gray;
+    :nth-child(2) {
+        flex: 2
+    }
     &:hover {
         background-color: $basic-background-color;
+    }
+    &.selected {
+        background-color: rgb(218, 216, 216);
     }
 }
 .active {
@@ -32,14 +38,17 @@
     div{
         font-family: $font-family;
         font-weight: 700;
-        font-size: 14px !important;
+        font-size: 16px !important;
         line-height: 70px !important;
         color: $basic-blue;
-        border-bottom: 1px solid $basic-light-gray;
+        border-bottom: 2px solid $basic-light-gray;
     }
     :first-child {
         padding-left: 16px !important;
         min-width: 112px;
+    }
+    :nth-child(2) {
+        flex: 2
     }    
 }
 

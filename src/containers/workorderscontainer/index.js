@@ -77,6 +77,7 @@ class WorkOrdersBuilder extends Component {
             detailsId: "",
             loading: false,
             loadingDetails: false,
+            loadingAll: false,
             searchTerm: "", 
             searchBy: 1,
             filterByAssetType: 1,
@@ -143,7 +144,7 @@ class WorkOrdersBuilder extends Component {
      * Ticket: ET-246
      */  
     handleChangeStateFilterByStatus = (value) => {
-        filterByStatus = value       
+        filterByStatus = value 
         console.log(filterByStatus)
     }    
     handleFilterByStatus = (event) => {
@@ -264,16 +265,23 @@ class WorkOrdersBuilder extends Component {
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
         userId = "2152"
+        this.setState({ 
+            firstLoading: true
+        })
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
-        }         
+            this.setState({
+                detailsId: dtlsID,
+            })
+        }
         historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
+        this.setState({ firstLoading: false })
         trgtID = trgtID===undefined?this.state.targetId:trgtID
     }
 
@@ -303,6 +311,7 @@ class WorkOrdersBuilder extends Component {
     }
     //Change details data
     handleChangePrevState = (id) => {
+        console.log("id", id)
         dtlsID = id
         console.log(`handleChangePrevState: dtlsID => ${dtlsID}`)          
         this.setState({
@@ -310,6 +319,18 @@ class WorkOrdersBuilder extends Component {
             loading: true
         }, this.handleAsyncId(id))        
     }
+    //move active item to the top of grid
+    array_move = (arr, old_index, new_index) => {
+        if (new_index >= arr.length) {
+            let k = new_index - arr.length + 1;
+            while (k--) {
+                arr.push(undefined);
+            }
+        }
+        arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+        return arr;
+    };
+    isCurrent = (element) => element.workOrderId.toString() === this.state.detailsId.toString();
 
     async componentDidUpdate(prevProps, prevState) {
         
@@ -934,6 +955,10 @@ class WorkOrdersBuilder extends Component {
                 const id = dtlsID
                 handleId(id)
             }
+            
+            let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
+            if(currentIndex === -1) currentIndex = 0
+            this.array_move(tmpdata.data.work_orders, currentIndex, 0)
 
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
@@ -979,6 +1004,8 @@ class WorkOrdersBuilder extends Component {
                     loadingDetails: true
                 }, handleChangePrevState(dtlsID))
             }
+
+            // console.log("dltsID", this.state.deta)
             //Normalize state to avoid missing data or state changes
             this.setState({
                 detailsId: dtlsID,
@@ -1000,6 +1027,7 @@ class WorkOrdersBuilder extends Component {
             createNoteWOData: this.createNoteWOData,
             updateWOStatus: this.updateWOStatus,
             handleNoteInput: this.handleNoteInput,
+            currentDtlsId: this.state.detailsId,
             noteDescription: this.state.noteDescription,
             filterByStateAssetType: this.state.filterByAssetType,
             filterByStateStatus: this.state.filterByStatus,
@@ -1021,6 +1049,7 @@ class WorkOrdersBuilder extends Component {
                             <DataTableComponent
                                 tmpdata={tmpdata}
                                 loading={this.state.loading}
+                                firstLoading={this.state.firstLoading}
                             />
                         </Grid>        
                         <Grid item xs={12} md={12} lg={5}>
@@ -1030,6 +1059,7 @@ class WorkOrdersBuilder extends Component {
                                 history={historydata} 
                                 attachments={attachmentsdata} 
                                 notes={notesdata}
+                                firstLoading={this.state.firstLoading}
                                 warranty={warrantydata}
                             />
                         </Grid>  

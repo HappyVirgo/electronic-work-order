@@ -9,6 +9,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { makeStyles } from "@material-ui/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
+import Skeleton from '@material-ui/lab/Skeleton';
 import TableHead from "@material-ui/core/TableHead";
 
 //Layouts
@@ -70,7 +71,7 @@ const useTableStyles = makeStyles(theme => ({
 
 
 //Generating Table
-export const ReactWindowTable = ({ data, columns }) => {
+export const ReactWindowTable = ({ data, columns, firstLoading }) => {
     const classes = useTableStyles();
     const itemData = createItemData(classes, columns, data);
     return (
@@ -80,22 +81,34 @@ export const ReactWindowTable = ({ data, columns }) => {
             <TableColumns classes={classes} columns={columns} />
             </TableHead>
             <TableBody component="div" className={classes.tbody}>
-            <AutoSizer>
-                {({ height, width }) => (
-                <List
-                    key={itemKey}
-                    className={`list-table`}
-                    height={height}
-                    width={width}
-                    itemCount={data.length}
-                    itemSize={ROW_SIZE}
-                    itemKey={itemKey}
-                    itemData={itemData}
-                >
-                    {Row}
-                </List>
-                )}
-            </AutoSizer>
+            {
+                firstLoading?(
+                    <>
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                    </>
+                    ):(
+                    <AutoSizer>
+                        {({ height, width }) => (
+                        <List
+                            key={itemKey}
+                            className={`list-table`}
+                            height={height}
+                            width={width}
+                            itemCount={data.length}
+                            itemSize={ROW_SIZE}
+                            itemKey={itemKey}
+                            itemData={itemData}
+                        >
+                            {Row}
+                        </List>
+                        )}
+                    </AutoSizer>
+                )
+            }
             </TableBody>
         </Table>
         </div>

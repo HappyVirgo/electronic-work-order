@@ -23,9 +23,10 @@ import {
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
     let change = useContext(GlobalContext)
+    const currentDtlsId = change.currentDtlsId
     change = change.dynamicDetails
     return (
-        <TableRow component="div" className={`${classes.row} datatable-row`} style={style}>
+        <TableRow component="div" className={`${classes.row} datatable-row ${item.workOrderId.toString() === currentDtlsId.toString()?'selected':''}`} style={style}>
         {columns.map((column, colIndex) => {
             //Check for null items 
             let checkItem
