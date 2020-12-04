@@ -68,20 +68,24 @@ const useTableStyles = makeStyles(theme => ({
     },
     column: {}
 }));
-// const topOfList = React.createRef();
-// const scrollToTop = (topOfList) => {
-//     if (topOfList.current) {
-//         topOfList.current.scrollIntoView();
-//     }
-// };
-// const span = (<span ref={topOfList} />)
-
+const topOfList = React.createRef();
+const scrollToTop = (topOfList) => {
+    if (topOfList.current) {
+        console.log("called")
+        topOfList.current.scrollIntoView();
+        window.scrollTo({top:0})
+    }
+};
+const span = (<span ref={topOfList} />)
+let savedData;
 
 //Generating Table
 export const ReactWindowTable = ({ data, columns, firstLoading }) => {
     const classes = useTableStyles();
-    const itemData = createItemData(classes, columns, data);
-    // scrollToTop(topOfList)
+    const itemData = createItemData(classes, columns, data, span);
+    if(!Object.is(data, savedData))
+        scrollToTop(topOfList)
+    savedData = data
     return (
         <div className={classes.root}>
         <Table className={classes.table} component="div">
