@@ -29,6 +29,7 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
         <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
             <img 
                 width="80"
+                style={{minWidth:'80px'}}
                 alt={`img-${item['workOrderId']}`}
                 src={img!==undefined?img:placeholder}
             />

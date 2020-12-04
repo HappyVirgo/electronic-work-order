@@ -87,7 +87,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const DataTableComponent = ({tmpdata, loading}) => {
+const DataTableComponent = ({tmpdata, loading, firstLoading}) => {
   const classes = useStyles();
   //Set state with data
   const [data, setData] = useState([]);
@@ -101,12 +101,12 @@ const DataTableComponent = ({tmpdata, loading}) => {
   let dataFetched = data!==null?data:[]
   return (
     <div className={`${classes.root} data-table-component`}>
-      {loading && <div className="loading-container">
+      {!firstLoading && loading && <div className="loading-container">
         <CircularProgress />
       </div>}
       <Grid className={classes.container}>
         <Paper className={classes.paper}>
-          <ReactWindowTable data={dataFetched} columns={columns}/>
+          <ReactWindowTable data={dataFetched} columns={columns} firstLoading={firstLoading}/>
         </Paper>
       </Grid>
     </div>

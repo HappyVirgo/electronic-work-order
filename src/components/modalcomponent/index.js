@@ -93,7 +93,7 @@ const ModalComponent = ({title, data, type}) => {
     )
 
     const buttonNoEffect = (
-        <Button variant="outlined" color="secondary" onClick={console.log("show more details.")} className={classes.button}>
+        <Button variant="outlined" color="secondary" onClick={() => console.log("show more details.")} className={classes.button}>
             More details
         </Button>
     )  
