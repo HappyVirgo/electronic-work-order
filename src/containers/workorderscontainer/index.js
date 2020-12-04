@@ -357,6 +357,7 @@ class WorkOrdersBuilder extends Component {
             prevState.newNoteAvailable !== this.state.newNoteAvailable ||
             prevState.updatedStatus !== this.state.updatedStatus
         ) {
+            this.setState({loading: true})
             //Clean input if lenght is 0
             if(searchTermIn.length===0) {
                 this.setState({
@@ -955,7 +956,7 @@ class WorkOrdersBuilder extends Component {
                 const id = dtlsID
                 handleId(id)
             }
-            
+
             let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
             if(currentIndex === -1) currentIndex = 0
             this.array_move(tmpdata.data.work_orders, currentIndex, 0)

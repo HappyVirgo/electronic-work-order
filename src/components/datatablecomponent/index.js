@@ -101,7 +101,7 @@ const DataTableComponent = ({tmpdata, loading, firstLoading}) => {
   let dataFetched = data!==null?data:[]
   return (
     <div className={`${classes.root} data-table-component`}>
-      {loading && <div className="loading-container">
+      {!firstLoading && loading && <div className="loading-container">
         <CircularProgress />
       </div>}
       <Grid className={classes.container}>
