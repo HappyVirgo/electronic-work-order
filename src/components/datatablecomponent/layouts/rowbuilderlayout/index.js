@@ -18,14 +18,16 @@ import {
 
 //Constants
 // const ROW_SIZE = 140;
-
 //Building rows
-export const Row = ({ index, style, data: { columns, items, classes } }) => {
+
+export const Row = ({ index, style, data: { columns, items, classes, span } }) => {
     const item = items[index];
     let change = useContext(GlobalContext)
     const currentDtlsId = change.currentDtlsId
     change = change.dynamicDetails
     return (
+        <>
+        {span}
         <TableRow component="div" className={`${classes.row} datatable-row ${item.workOrderId.toString() === currentDtlsId.toString()?'selected':''}`} style={style}>
         {columns.map((column, colIndex) => {
             //Check for null items 
@@ -68,5 +70,6 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             );
         })}
         </TableRow>
+        </>
     );
 };
