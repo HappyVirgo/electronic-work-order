@@ -14,8 +14,11 @@ import {
 const App = () => {
   const redirect = () => {
     window.top.location.href='/admin/WorkOrders'
-  }  
-  const [isLoading, setLoading] = useState(true);
+  }
+
+  //const [isLoading, setLoading] = useState(true);
+  //Next line it's to develop in local   
+  const [isLoading, setLoading] = useState(false);
   const [userRole, setUserRole] = useState();
 
   
@@ -25,6 +28,7 @@ const App = () => {
       const payloadData = res.data;
       console.log(payloadData)
       //setUserRole(payloadData.user.role_id);
+      //Next line it's to develop in local 
       setUserRole("2");
       setLoading(false);      
     })
