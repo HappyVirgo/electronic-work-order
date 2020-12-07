@@ -15,7 +15,7 @@ const App = () => {
   const redirect = () => {
     window.top.location.href='/admin/WorkOrders'
   }  
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState();
 
   
@@ -25,7 +25,7 @@ const App = () => {
       const payloadData = res.data;
       console.log(payloadData)
       //setUserRole(payloadData.user.role_id);
-      setUserRole("3");
+      setUserRole("2");
       setLoading(false);      
     })
   }, [userRole]);
