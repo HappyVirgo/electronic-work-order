@@ -35,11 +35,13 @@ import {
 //Context
 import { GlobalContext } from '../../context/globalcontext'
 
+
 //Declaring global variables
 //Token
 let token
 //User ID
 let userId
+let userData
 //CTA component
 let ctadata
 //Datatable component
@@ -264,7 +266,10 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
-        userId = "2152"
+        //userData = await this.props.fetchUsersInformation()
+        //console.log(userData.userdata.user)
+        //userId = userData.userdata.user.user_id        
+        userId = "2146"
         this.setState({ 
             firstLoading: true
         })
