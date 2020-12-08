@@ -48,6 +48,7 @@
         }
     }
     .cta-section {
+        display: flex;
         text-transform: uppercase;
         margin-top: 10px;
         // padding: 55px;
@@ -163,3 +164,11 @@
     }
 }
 
+@media only screen and (max-width: 1279px) {
+    .cta-component {
+        height: auto;  
+        .cta-section {
+            padding: 0 80px 20px 80px;
+        }           
+    }
+}
