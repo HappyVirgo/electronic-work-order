@@ -15,10 +15,9 @@ const App = () => {
   const redirect = () => {
     window.top.location.href='/admin/WorkOrders'
   }
-
   //const [isLoading, setLoading] = useState(true);
   //Next line it's to develop in local   
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState();
 
   
@@ -27,9 +26,9 @@ const App = () => {
     .then(res => {
       const payloadData = res.data;
       console.log(payloadData)
-      //setUserRole(payloadData.user.role_id);
+      setUserRole(payloadData.user.role_id);
       //Next line it's to develop in local 
-      setUserRole("2");
+      //setUserRole("2");
       setLoading(false);      
     })
   }, [userRole]);
