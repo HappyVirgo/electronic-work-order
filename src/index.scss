@@ -34,8 +34,18 @@ body {
   }
 }
 
+.MuiSelect-select.MuiSelect-select {
+    padding-left: 6px;
+}
+
 // .Mui-selected {
 //   background-color: $basic-blue;
 //   border: 4px solid $basic-blue;
 //   color: #FFF !important;
 // }
+
+@media only screen and (max-width: 1279px) {
+    .MuiTableCell-root {
+        font-size: 0.675rem !important
+    }
+}
