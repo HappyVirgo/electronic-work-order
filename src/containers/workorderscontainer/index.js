@@ -1052,14 +1052,14 @@ class WorkOrdersBuilder extends Component {
                         />
                     </Grid>            
                     <Grid container className="content-section">
-                        <Grid item xs={12} md={12} lg={7}>
+                        <Grid item xs={12} md={7} lg={7}>
                             <DataTableComponent
                                 tmpdata={tmpdata}
                                 loading={this.state.loading}
                                 firstLoading={this.state.firstLoading}
                             />
                         </Grid>        
-                        <Grid item xs={12} md={12} lg={5}>
+                        <Grid item xs={12} md={5} lg={5}>
                             <WorkOrderDetailsComponent
                                 loadingDetails={this.state.loadingDetails}
                                 detailsdata={detailsdata}
