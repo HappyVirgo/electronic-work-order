@@ -42,6 +42,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             console.log(item)
             console.log(item[getDataKey])            
             checkItem = !item[getDataKey]?checkItem=null:item[getDataKey][getExtraKey]
+            console.log(checkItem)
             return (
             <TableCell
                 key={item['workOrderId'] * colIndex}
