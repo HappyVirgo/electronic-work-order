@@ -89,17 +89,6 @@ export const MainActions = () => {
                                     <TextField onChange={chageInputNote} fullWidth={true} multiline={true} variant="outlined" InputProps={{ classes: { input: classes.textField } }}/>
                                 </FormControl>
                                 <FormControl required>
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox
-                                        // checked={state.checkedB}
-                                        // onChange={handleChange}
-                                        name="checkedB"
-                                        color="primary"
-                                    />
-                                    }
-                                    label="Mark as important note"
-                                />
                                 </FormControl>
                             </div>
     return (
