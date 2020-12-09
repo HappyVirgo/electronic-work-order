@@ -30,7 +30,7 @@ export const BoxedDetails = ({currentEta, serviceProvider, serviceProviderLast, 
     const mediumSize = 6
     //console.log(invoiceStatus)
     return (
-        <Grid item xs={smallSize} md={7} className={classes.etaSection}>
+        <Grid item xs={smallSize} md={12} lg={7} className={classes.etaSection}>
             <Grid container>
                 <Grid item xs={smallSize} md={mediumSize}>
                     <Typography className={classes.text}><strong>Current ETA: </strong></Typography>

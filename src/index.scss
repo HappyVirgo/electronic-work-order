@@ -9,6 +9,7 @@ body {
 .MuiTableCell-root {
     padding: 0px 5px 0px 0px !important;
     border: none !important;
+    font-size: 0.775rem !important
 }
 
 .MuiChip-root {
@@ -34,8 +35,37 @@ body {
   }
 }
 
+.MuiSelect-select.MuiSelect-select {
+    padding-left: 6px;
+}
+
 // .Mui-selected {
 //   background-color: $basic-blue;
 //   border: 4px solid $basic-blue;
 //   color: #FFF !important;
 // }
+
+@media only screen and (max-width: 1279px) {
+    .work-order-details-component {
+        .MuiTableCell-root {
+            font-size: 0.675rem !important
+        }
+    }
+    .MuiButton-root {
+        padding: 6px 4px !important;
+    }
+    .MuiTab-root {
+        min-width: unset !important;
+    }
+}
+
+@media only screen and (max-width: 1030px) {
+    .work-order-details-component {
+        .MuiTableCell-root {
+            font-size: 0.6rem !important
+        }
+    }
+    .MuiButton-root {
+        padding: 6px 4px !important;
+    }
+}

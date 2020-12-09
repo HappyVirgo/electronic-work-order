@@ -35,7 +35,7 @@ export const MainDetails = ({assetName, workOrderId, woType, manufacturer, model
     
     warrantyData = warranty?warranty.data:[]
     return (
-        <Grid item xs={6} md={5} className="main_details">
+        <Grid item xs={6} md={7} lg={5} className="main_details">
             <Typography variant="h1" className={classes.Typography}>{assetName!==undefined?(assetName!==null?assetName:workOrderId):workOrderId} <br/><small>{woType!==null?woType:nullVal}</small></Typography>
             <Typography >Manufacturer: {manufacturer!==null?manufacturer:nullVal}</Typography>
             <Typography>Model #: {model!==null?model:nullVal}</Typography>
