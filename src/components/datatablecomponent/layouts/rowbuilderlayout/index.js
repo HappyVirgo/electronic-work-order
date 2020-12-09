@@ -45,9 +45,10 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
             //Check if object value are null and avoid broken loops  
 
             console.log("DIVIDE")
+            console.log(item)
             console.log(getDataKey)
             console.log(getExtraKey)            
-            checkItem = !item?(!item[getDataKey]?null:item[getDataKey][getExtraKey]):item[getDataKey][getExtraKey]
+            checkItem = !item[getDataKey]?checkItem=null:item[getDataKey][getExtraKey]
             console.log(checkItem) 
             return (
             <TableCell
