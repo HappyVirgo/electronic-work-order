@@ -22,11 +22,10 @@ import {
 
 export const Row = ({ index, style, data: { columns, items, classes, span } }) => {
     const item = items[index];
-    let woitemID = item?item.workOrderId:{}
+    let woitemID = item?item.workOrderId:""
     let change = useContext(GlobalContext)
     const currentDtlsId = change.currentDtlsId
     change = change.dynamicDetails
-    //console.log("item", item)
     return (
         <>
         {span}
@@ -44,7 +43,7 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
             let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
             //Check if object value are null and avoid broken loops  
-            checkItem = item[getDataKey]===null?checkItem=null:item[getDataKey][getExtraKey]
+            checkItem = !item[getDataKey]?checkItem=null:item[getDataKey][getExtraKey]
             return (
             <TableCell
                 key={item['workOrderId'] * colIndex}
