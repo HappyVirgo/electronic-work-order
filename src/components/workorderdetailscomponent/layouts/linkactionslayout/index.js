@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         width: '23%',
         height: '30px',
-        fontSize: '11px',
+        fontSize: '14px',
         borderRadius: '15px !important',
         '&:hover': {
             backgroundColor: '#54A6DA',

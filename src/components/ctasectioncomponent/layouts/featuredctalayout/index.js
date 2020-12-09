@@ -31,7 +31,7 @@ export const FeaturedCTALayout = ({emergencyWorkOrders}) => {
     //Loading custom styles Material UI
     const classes = useStyles();
     return(
-        <Grid item xs={12} md={4} lg={4} className="featured-cta-wo">
+        <Grid item xs={4} md={4} lg={4} className="featured-cta-wo">
             <Grid item className="emergency-wo" id="emergencyWO" onClick={change}>
                 <Typography className={classes.cta_emergency_value} variant="body1">{emergencyWorkOrders}</Typography>
                 <Typography className={classes.cta_emergency_text} variant="body1">Emergency Work Orders</Typography>
