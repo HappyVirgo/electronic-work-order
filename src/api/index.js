@@ -1,25 +1,24 @@
-//Once the user_id is catched should be put instead 2152(Inspire)
-
 //User information
-export const apiUsers = "http://localhost:8180/admin/Users/getCurrentUser"
+//export const apiUsers = "http://localhost:8180/admin/Users/getCurrentUser"
+export const apiUsers = "https://stage.ecotrak.com/admin/Users/getCurrentUser"
 
 //CTA Data
-export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/2152/landing"
+export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Emercency WorkOrders
-export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/emergency"
+export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Pending WorkOrders
-export const apiPendingWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/pending"
+export const apiPendingWO = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Details WorkOrders
 export const apiDetailsWO = "https://api.ecotrak.com/stagev1/workorders/"
 
 //Assigned To Me WorkOrders
-export const apiAssignedToMeWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/assigned"
+export const apiAssignedToMeWO = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Unassigned WorkOrders
-export const apiUnassignedWO = "https://api.ecotrak.com/stagev1/workorders/user/2152/unassigned"
+export const apiUnassignedWO = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //History WorkOrders
 export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/"
@@ -31,7 +30,7 @@ export const apiNotesWO = "https://api.ecotrak.com/stagev1/workorders/"
 export const apiAttachmentsWO = "https://api.ecotrak.com/stagev1/workorders/"
 
 //Search
-export const apiSearch = "https://api.ecotrak.com/stagev1/workorders/user/2152/search"
+export const apiSearch = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Warranty
 export const apiWarranty = "https://api.ecotrak.com/stagev1/workorders/"

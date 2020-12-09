@@ -12,6 +12,7 @@ import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 //Layouts
 import { 
@@ -62,7 +63,8 @@ const columns = [
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: "flex"
+    display: "flex",
+    position: "relative",
   },
   container: {
     flexGrow: 1,
@@ -85,7 +87,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const DataTableComponent = ({tmpdata}) => {
+const DataTableComponent = ({tmpdata, loading, firstLoading}) => {
   const classes = useStyles();
   //Set state with data
   const [data, setData] = useState([]);
@@ -99,9 +101,12 @@ const DataTableComponent = ({tmpdata}) => {
   let dataFetched = data!==null?data:[]
   return (
     <div className={`${classes.root} data-table-component`}>
+      {!firstLoading && loading && <div className="loading-container">
+        <CircularProgress />
+      </div>}
       <Grid className={classes.container}>
         <Paper className={classes.paper}>
-          <ReactWindowTable data={dataFetched} columns={columns}/>
+          <ReactWindowTable data={dataFetched} columns={columns} firstLoading={firstLoading}/>
         </Paper>
       </Grid>
     </div>

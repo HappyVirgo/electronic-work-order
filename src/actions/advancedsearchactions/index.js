@@ -20,11 +20,16 @@ export const receiveSearchWOData = (data) => {
  * 5 = Trade Type
  */
 
-export const fetchSearchData =  async (searchTerm, searchBy, token) => {
+export const fetchSearchData =  async (searchTerm, searchBy, token, userId) => {
+    const searchURL = "/search"
     const accessFetchToken = (tk) => {
         return tk.data
-    } 
+    }
+    const accessFetchUserId = (id) => {
+        return id
+    }     
     let accessToken = await accessFetchToken(token)
+    let accessUserId = await accessFetchUserId(userId)
     let searchParams
     switch (searchBy) {
         case 2:
@@ -52,7 +57,7 @@ export const fetchSearchData =  async (searchTerm, searchBy, token) => {
         work_orders: []
     }
     return dispatch => {
-        return fetch(apiSearch+searchParams, init)
+        return fetch(apiSearch+accessUserId+searchURL+searchParams, init)
             .then(response => {
                 if (!response.ok) {
                     return emptydata

@@ -9,6 +9,7 @@ import AutoSizer from "react-virtualized-auto-sizer";
 import { makeStyles } from "@material-ui/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
+import Skeleton from '@material-ui/lab/Skeleton';
 import TableHead from "@material-ui/core/TableHead";
 
 //Layouts
@@ -24,7 +25,8 @@ import {
 } from '../../helpers'
 
 //Constants
-const ROW_SIZE = 150;
+// const ROW_SIZE = 150;
+const ROW_SIZE = 120;
 
 const useTableStyles = makeStyles(theme => ({
     root: {
@@ -66,14 +68,24 @@ const useTableStyles = makeStyles(theme => ({
     },
     column: {}
 }));
-
+const topOfList = React.createRef();
+const scrollToTop = (topOfList) => {
+    if (topOfList.current) {
+        console.log("called")
+        topOfList.current.scrollIntoView();
+        window.scrollTo({top:0})
+    }
+};
+const span = (<span ref={topOfList} />)
+let savedData;
 
 //Generating Table
-export const ReactWindowTable = ({ data, columns }) => {
+export const ReactWindowTable = ({ data, columns, firstLoading }) => {
     const classes = useTableStyles();
-    //console.log(data.sort((a,b) => a[1] - b[1]))
-    const itemData = createItemData(classes, columns, data);
-    console.log(data)
+    const itemData = createItemData(classes, columns, data, span);
+    if(!Object.is(data, savedData))
+        scrollToTop(topOfList)
+    savedData = data
     return (
         <div className={classes.root}>
         <Table className={classes.table} component="div">
@@ -81,22 +93,34 @@ export const ReactWindowTable = ({ data, columns }) => {
             <TableColumns classes={classes} columns={columns} />
             </TableHead>
             <TableBody component="div" className={classes.tbody}>
-            <AutoSizer>
-                {({ height, width }) => (
-                <List
-                    key={itemKey}
-                    className={`list-table`}
-                    height={height}
-                    width={width}
-                    itemCount={data.length}
-                    itemSize={ROW_SIZE}
-                    itemKey={itemKey}
-                    itemData={itemData}
-                >
-                    {Row}
-                </List>
-                )}
-            </AutoSizer>
+            {
+                firstLoading?(
+                    <>
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                    </>
+                    ):(
+                    <AutoSizer>
+                        {({ height, width }) => (
+                        <List
+                            key={itemKey}
+                            className={`list-table`}
+                            height={height}
+                            width={width}
+                            itemCount={data.length}
+                            itemSize={ROW_SIZE}
+                            itemKey={itemKey}
+                            itemData={itemData}
+                        >
+                            {Row}
+                        </List>
+                        )}
+                    </AutoSizer>
+                )
+            }
             </TableBody>
         </Table>
         </div>
