@@ -8,6 +8,7 @@ export const filterByPriority = (data) => {
     let uniqueList
     //Build new object from data
     const newObj = data.map((item) => {
+        //console.log(item)
         let itemFilter = item?(item.priority?item.priority.description:""):""
         return itemFilter
     })
