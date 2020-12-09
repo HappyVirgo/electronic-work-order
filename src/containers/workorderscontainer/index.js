@@ -6,12 +6,14 @@ import { connect } from "react-redux";
 import { 
     CTASectionComponent, 
     DataTableComponent, 
-    WorkOrderDetailsComponent, 
+    WorkOrderDetailsComponent,
+    Alert, 
 } from '../../components'
 
 
 //Material UI
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 
 //Actions
 import { 
@@ -35,9 +37,13 @@ import {
 //Context
 import { GlobalContext } from '../../context/globalcontext'
 
+
 //Declaring global variables
 //Token
 let token
+//User ID
+let userId
+let userData
 //CTA component
 let ctadata
 //Datatable component
@@ -64,8 +70,6 @@ let newNote
 let newNoteAvailable
 let noteDescription
 
-let userId
-
 let workOrderUpdateResponse
 let updatedStatus
 
@@ -76,6 +80,8 @@ class WorkOrdersBuilder extends Component {
             targetId: "emergencyWO",
             detailsId: "",
             loading: false,
+            loadingDetails: false,
+            loadingAll: false,
             searchTerm: "", 
             searchBy: 1,
             filterByAssetType: 1,
@@ -86,6 +92,7 @@ class WorkOrdersBuilder extends Component {
             noteDescription: '',
             workOrderUpdateResponse: '',
             updatedStatus: '',
+            itsActive: false
         };
     }    
     /**
@@ -141,7 +148,7 @@ class WorkOrdersBuilder extends Component {
      * Ticket: ET-246
      */  
     handleChangeStateFilterByStatus = (value) => {
-        filterByStatus = value       
+        filterByStatus = value 
         console.log(filterByStatus)
     }    
     handleFilterByStatus = (event) => {
@@ -185,7 +192,7 @@ class WorkOrdersBuilder extends Component {
     createNoteWOData = (event) => {
         this.setState({
             newNoteAvailable: !newNoteAvailable,
-            loading: true
+            loadingDetails: true
         }, this.handleAddNote(!newNoteAvailable))
     }
     
@@ -198,7 +205,7 @@ class WorkOrdersBuilder extends Component {
         target = target.toUpperCase().replace(' ', '_')
         this.setState({
             updatedStatus: target,
-            loading: true,
+            loadingDetails: true,
         }, this.handleUpdateStatus(target))
     }
     /**
@@ -217,15 +224,15 @@ class WorkOrdersBuilder extends Component {
         if(target.length>0){
             this.setState({
                 detailsId: target,
-                loading: true
+                loadingDetails: true
             }, this.handleDynamicDetails(target))
         }else{
             target = event.target.closest('div')
             target = target.id
             this.setState({
                 detailsId: target,
-                loading: true
-            },  this.handleDynamicDetails(target)) 
+                loadingDetails: true
+            },  this.handleDynamicDetails(target))
         }
     }
     /**
@@ -261,16 +268,28 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
+        //userData = await this.props.fetchUsersInformation()
+        //console.log(userData.userdata.user)
+        //userId = userData.userdata.user.user_id     
+        //Next line it's to develop in local     
+        userId = "2146"
+        this.setState({ 
+            firstLoading: true
+        })
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
-        }         
+            this.setState({
+                detailsId: dtlsID,
+            })
+        }
         historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
+        this.setState({ firstLoading: false })
         trgtID = trgtID===undefined?this.state.targetId:trgtID
     }
 
@@ -304,21 +323,27 @@ class WorkOrdersBuilder extends Component {
             loading: true
         }, this.handleAsyncId(id))        
     }
+    //move active item to the top of grid
+    array_move = (arr, old_index, new_index) => {
+        if (new_index >= arr.length) {
+            let k = new_index - arr.length + 1;
+            while (k--) {
+                arr.push(undefined);
+            }
+        }
+        arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+        return arr;
+    };
+    isCurrent = (element) => element.workOrderId.toString() === this.state.detailsId.toString();
 
     async componentDidUpdate(prevProps, prevState) {
-
+        
         const searchTermIn = this.state.searchTerm
         const searchByIn = this.state.searchBy  
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
-        /*
-        console.log("**************")
-        console.log(dtlsID)
-        console.log(this.state.detailsId)
-        console.log(prevState.detailsId)
-        console.log("**************")
-        */
+
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
@@ -330,6 +355,7 @@ class WorkOrdersBuilder extends Component {
             prevState.newNoteAvailable !== this.state.newNoteAvailable ||
             prevState.updatedStatus !== this.state.updatedStatus
         ) {
+            this.setState({loading: true})
             //Clean input if lenght is 0
             if(searchTermIn.length===0) {
                 this.setState({
@@ -914,7 +940,25 @@ class WorkOrdersBuilder extends Component {
                     tmpdata = await this.props.fetchEmergencyWOData()
                     break;
             }
-            
+
+            const handleId = async(dtlsID) => {
+                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+                historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
+                this.setState({loadingDetails: false})
+            }
+            //Change details data
+            const handleChangePrevState = (dtlsID) => {
+                const id = dtlsID
+                handleId(id)
+            }
+
+            let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
+            if(currentIndex === -1) currentIndex = 0
+            this.array_move(tmpdata.data.work_orders, currentIndex, 0)
+
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
             const tmpDtls = tmpdata.data!==undefined?
@@ -924,16 +968,20 @@ class WorkOrdersBuilder extends Component {
                                         dtlsID):dtlsID):
                                         dtlsID
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
-            if( prevSteDtls !== currentSteDtls ) {
-                this.handleChangePrevState(dtlsID)                
-            } else if( dtlsID !== currentSteDtls ) {  
-                this.handleChangePrevState(dtlsID)      
-            } else {
-                dtlsID = tmpDtls             
-                this.setState({
-                    detailsId: dtlsID,
-                    loading: true
-                }, this.handleChangePrevState(dtlsID))                            
+            if( prevSteDtls !== ''){
+                if( prevSteDtls !== currentSteDtls ) {
+    
+                    this.setState({
+                        detailsId: dtlsID,
+                        loadingDetails: true
+                    }, handleChangePrevState(dtlsID)) 
+                } else {
+                    dtlsID = tmpDtls             
+                    this.setState({
+                        detailsId: dtlsID,
+                        loadingDetails: true
+                    }, handleChangePrevState(dtlsID))    
+                }
             }
             
             const prevNoteStatus = prevState.newNoteAvailable
@@ -942,10 +990,8 @@ class WorkOrdersBuilder extends Component {
                 newNote = await this.props.createNoteWOData(noteDescription, dtlsID, token, userId)
                 this.setState({
                     newNote: newNote.data,
-                    loading: true
-                }, async() => {
-                    return await this.handleChangePrevNote(dtlsID)   
-                })
+                    loadingDetails: true
+                }, handleChangePrevState(dtlsID))
             }
 
             const prevUpdatedStatus = prevState.updatedStatus
@@ -954,18 +1000,17 @@ class WorkOrdersBuilder extends Component {
                 workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus)
                 this.setState({
                     workOrderUpdateResponse: workOrderUpdateResponse,
-                    loading: true
-                }, async() => {
-                    return await this.handleWOUpdatedStatus(dtlsID)   
-                })
+                    loadingDetails: true
+                }, handleChangePrevState(dtlsID))
             }
+
+            // console.log("dltsID", this.state.deta)
             //Normalize state to avoid missing data or state changes
             this.setState({
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
-                loading: true
-            }, this.handleChangePrevState(dtlsID)) 
-            
+                loading: false
+            }, handleChangePrevState(dtlsID)) 
             
         }
     }
@@ -981,6 +1026,8 @@ class WorkOrdersBuilder extends Component {
             createNoteWOData: this.createNoteWOData,
             updateWOStatus: this.updateWOStatus,
             handleNoteInput: this.handleNoteInput,
+            currentDtlsId: this.state.detailsId,
+            noteDescription: this.state.noteDescription,
             filterByStateAssetType: this.state.filterByAssetType,
             filterByStateStatus: this.state.filterByStatus,
             filterByStatePriority: this.state.filterByPriority,                        
@@ -990,6 +1037,11 @@ class WorkOrdersBuilder extends Component {
         return (
             <GlobalContext.Provider value={globalState}>
                 <div className="work-orders-container">
+                    <Alert severity="warning">
+                        <Link href="https://radstuff.ecotrak.com/admin/WorkOrders" target="_blank" rel="noopener" color="inherit">
+                            <i>Missing Something? Go to the Old Version</i>
+                        </Link>
+                    </Alert>
                     <Grid className="cta-section-component">
                         <CTASectionComponent 
                             ctadata={ctadata}
@@ -997,17 +1049,21 @@ class WorkOrdersBuilder extends Component {
                         />
                     </Grid>            
                     <Grid container className="content-section">
-                        <Grid item xs={12} md={12} lg={7}>
+                        <Grid item xs={12} md={7} lg={7}>
                             <DataTableComponent
                                 tmpdata={tmpdata}
+                                loading={this.state.loading}
+                                firstLoading={this.state.firstLoading}
                             />
                         </Grid>        
-                        <Grid item xs={12} md={12} lg={5}>
+                        <Grid item xs={12} md={5} lg={5}>
                             <WorkOrderDetailsComponent
+                                loadingDetails={this.state.loadingDetails}
                                 detailsdata={detailsdata}
                                 history={historydata} 
                                 attachments={attachmentsdata} 
                                 notes={notesdata}
+                                firstLoading={this.state.firstLoading}
                                 warranty={warrantydata}
                             />
                         </Grid>  
@@ -1024,16 +1080,16 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     oauthFetchToken: () => dispatch(oauthFetchToken()),
-    fetchCTAsData: () => dispatch(fetchCTAsData(token)),   
-    fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token)),   
+    fetchCTAsData: () => dispatch(fetchCTAsData(token, userId)),   
+    fetchSearchData: () => dispatch(fetchSearchData(searchTerm, searchBy, token, userId)),   
     fetchWarrantyWOData: () => dispatch(fetchWarrantyWOData(dtlsID, token)),   
-    fetchPendingWOData: () => dispatch(fetchPendingWOData(token)),
-    fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token)),
+    fetchPendingWOData: () => dispatch(fetchPendingWOData(token, userId)),
+    fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token, userId)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
-    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token)),
-    fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token)),
-    fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token)),
+    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus)),
+    fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
+    fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
     fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
     createNoteWOData: () => dispatch(createNoteWOData(noteDescription, dtlsID, token, userId)),

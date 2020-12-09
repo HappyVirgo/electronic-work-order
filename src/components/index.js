@@ -26,6 +26,9 @@ import AdvancedSearchComponent from './advancedsearchcomponent'
 //Filter Component
 import FilteringComponent from './filteringcomponent' 
 
+//Alert Component
+import Alert from './alertComponent'
+
 export {
     DataTableComponent,
     CTASectionComponent,
@@ -33,5 +36,6 @@ export {
     TabsComponent,
     ModalComponent,
     AdvancedSearchComponent,
-    FilteringComponent
+    FilteringComponent,
+    Alert,
 }

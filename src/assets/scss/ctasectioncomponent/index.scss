@@ -3,32 +3,37 @@
 
 .cta-component {
     width: 100%;
-    min-height: 260px;
+    // min-height: 260px;
+    // min-height: 200px;
     margin: 0 auto;
     background-color: $basic-blue;
     h1{
         color:#FFF;
-        font-size:42px;
+        font-size:32px;
+        // font-size:40px;
         font-family: $font-family;
         font-weight: 400;
         margin-top: 0px;
-        margin-bottom: 20px;
+        // margin-bottom: 10px;
+        margin-bottom: 0px;
     }
     .search-section {
-        padding: 55px 0px 0px 55px;
+        padding: 10px 80px 0px 80px;
+        // padding: 55px 0px 0px 55px;
         .search-form {
             background: white;
             border-radius: 54px;
             display: flex;
             align-items: center;
-            margin: 20px 0px;
+            // margin: 10px 0px;
+            margin: 0px 0px;
             &.rounded {
                 border-bottom-left-radius: unset;
             }
             .advanced {
                 width: 30%;
                 text-align: center;
-                padding: 18px 0px;
+                padding: 6px 0px;
                 margin-right: 15px;
                 &.opened {
                     box-shadow: 3px 0 25px -5px #999;
@@ -43,9 +48,11 @@
         }
     }
     .cta-section {
+        display: flex;
         text-transform: uppercase;
         margin-top: 10px;
-        padding: 55px;
+        // padding: 55px;
+        padding: 10px;
         div {
             border-radius: 15px;
         }
@@ -57,9 +64,13 @@
             }            
             .emergency-wo {
                 @include featured-box-cta;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: #F20050;
                 margin-bottom: $p5-margin;
-                padding: 15px 10px;
+                // padding: 15px 10px;
+                padding: 10px 10px;
                 span:first-child {
                     @include cta-first-child;
                 }
@@ -154,3 +165,11 @@
     }
 }
 
+@media only screen and (max-width: 1279px) {
+    .cta-component {
+        height: auto;
+        .search-section {
+            padding: 10px 10px 0 20px;
+        }         
+    }
+}

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
         fontWeight: 'bold',
         width: '23%',
         height: '30px',
-        fontSize: '11px',
+        fontSize: '14px',
         borderRadius: '15px !important',
         '&:hover': {
             backgroundColor: '#54A6DA',
@@ -28,16 +28,62 @@ const useStyles = makeStyles((theme) => ({
         }
 
     },
+    disabled: {
+        color: 'grey',
+        backgroundColor: '#EEEEEE',
+        pointerEvents: 'none'
+    },
 }));
 
-export const LinkActions = () => {
+const api_url = "https://radstuff.ecotrak.com/admin/";
+
+export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
     const classes = useStyles()
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
-            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`}>Work Order</Button>
-            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Asset</Button>
-            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Invoice</Button>
-            <Button variant="contained" color="primary" className={`${classes.linkButton} link-button`} >Proposal</Button>
+            <Button
+                variant="contained"
+                color="primary" 
+                className={`${classes.linkButton} link-button`} 
+                onClick={
+                    () => {
+                        window.open(`${api_url}WorkOrders/work_order_details/${workOrderId}`, "_blank")
+                    }
+                }
+            >
+                Work Order
+            </Button>
+
+            <Button
+                variant="contained" 
+                color="primary" 
+                className={`${classes.linkButton} link-button`}
+                onClick={
+                    () => window.open(`${api_url}Assets/view_assets/${workOrderId}`, "_blank")
+                }
+            >
+                Asset
+            </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
+                onClick={
+                    () => window.open(`${api_url}Invoices/details/${workOrderId}`, "_blank")
+                }
+            >
+                Invoice
+            </Button>
+            <Button
+                variant="contained"
+                color="primary" 
+                className={`${classes.linkButton} link-button ${proposalStatus && Object.keys(proposalStatus).length !== 0?'':classes.disabled}`} 
+                onClick={
+                    () => window.open(`${api_url}Proposals/proposal_details/${workOrderId}`, "_blank")
+                }
+            >
+                Proposal
+            </Button>
         </Grid>
     )
 }

@@ -13,11 +13,16 @@ export const receivePendingWOData = (data) => {
     return {type: types.RECEIVE_PENDING_WO_DATA, data: data};
 }
 
-export const fetchPendingWOData = async (token) => {
+export const fetchPendingWOData = async (token, userId) => {
+    const pendingURL = "/pending"
     const accessFetchToken = (tk) => {
         return tk.data
     }
+    const accessFetchUserId = (id) => {
+        return id
+    }    
     let accessToken = await accessFetchToken(token)
+    let accessUserId = await accessFetchUserId(userId)
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,
@@ -25,7 +30,7 @@ export const fetchPendingWOData = async (token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiPendingWO, init)
+        return fetch(apiPendingWO+accessUserId+pendingURL, init)
             .then(response => response.json())
             .then(json => dispatch(receivePendingWOData(json)));
     }

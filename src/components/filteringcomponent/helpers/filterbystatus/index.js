@@ -8,7 +8,8 @@ export const filterByStatus = (data) => {
     let uniqueList
     //Build new object from data
     const newObj = data.map((item) => {
-        let itemFilter = item!==null?(item.status!==null?item.status.description:""):""
+        //console.log(item)
+        let itemFilter = item?(item.status?item.status.description:""):""
         return itemFilter
     })
     //Convert object into array

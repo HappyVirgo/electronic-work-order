@@ -12,11 +12,16 @@ export const receiveUnassignedWOData = (data) => {
     return {type: types.RECEIVE_UNASSIGNED_DATA, data: data};
 }
 
-export const fetchUnassignedWOData = async (token) => {
+export const fetchUnassignedWOData = async (token, userId) => {
+    const unassignURL = "/unassigned"
     const accessFetchToken = (tk) => {
         return tk.data
     }
+    const accessFetchUserId = (id) => {
+        return id
+    }    
     let accessToken = await accessFetchToken(token)
+    let accessUserId = await accessFetchUserId(userId)
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,
@@ -24,7 +29,7 @@ export const fetchUnassignedWOData = async (token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiUnassignedWO, init)
+        return fetch(apiUnassignedWO+accessUserId+unassignURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveUnassignedWOData(json)));
     }

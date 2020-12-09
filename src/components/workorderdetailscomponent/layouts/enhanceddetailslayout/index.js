@@ -116,7 +116,7 @@ export const EnhancedDetails = ({status, priority, tradeType, problemType, categ
     const titleSize = 5
     const descSize = 7
     return (
-        <Grid item xs={12} md={5}>
+        <Grid item xs={12} md={12} lg={5} style={{padding:"10px"}}>
             <Grid container>
                 <Grid item xs={titleSize}>
                     <Typography variant={'body1'} className={classes.text}><strong>Status: </strong></Typography>

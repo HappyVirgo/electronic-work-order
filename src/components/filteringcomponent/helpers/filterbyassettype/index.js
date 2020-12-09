@@ -8,7 +8,8 @@ export const filterByAssetType = (data) => {
     let uniqueList
     //Build new object from data
     const newObj = data.map((item) => {
-        let itemFilter = item!==null?(item.asset!==null?item.asset.assetType.description:""):""
+        //console.log(item)
+        let itemFilter = item?(item.asset?item.asset.assetType.description:""):""
         return itemFilter
     })
     //Convert object into array

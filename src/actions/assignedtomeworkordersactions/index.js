@@ -13,11 +13,16 @@ export const receiveAssignedToMeWOData = (data) => {
     return {type: types.RECEIVE_ASSIGNED_TO_ME_WO_DATA, data: data};
 }
 
-export const fetchAssignedToMeWOData = async (token) => {
+export const fetchAssignedToMeWOData = async (token, userId) => {
+    const assigntomeURL = "/assigned"
     const accessFetchToken = (tk) => {
         return tk.data
     }
+    const accessFetchUserId = (id) => {
+        return id
+    }    
     let accessToken = await accessFetchToken(token)
+    let accessUserId = await accessFetchUserId(userId)
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,
@@ -25,7 +30,7 @@ export const fetchAssignedToMeWOData = async (token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiAssignedToMeWO, init)
+        return fetch(apiAssignedToMeWO+accessUserId+assigntomeURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveAssignedToMeWOData(json)));
     }
