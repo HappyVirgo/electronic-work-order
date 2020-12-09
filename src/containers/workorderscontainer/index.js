@@ -210,9 +210,6 @@ class WorkOrdersBuilder extends Component {
      * */
     handleDynamicDetails = (target) => {
         dtlsID = target 
-        console.log("DETAILS***")
-        console.log(dtlsID)
-        console.log(this.state.detailsId)
     }           
     dynamicDetails = (event) => {
         event.preventDefault();
@@ -288,7 +285,6 @@ class WorkOrdersBuilder extends Component {
      * */
     handleId = async(id) => {
         dtlsID = id
-        console.log(`handleId: dtlsID => ${dtlsID}`)  
         detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
         notesdata = await this.props.fetchNotesWOData(dtlsID, token)
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
@@ -298,13 +294,11 @@ class WorkOrdersBuilder extends Component {
 
     handleAsyncId = (id) => {
         dtlsID = id
-        console.log(`handleAsyncId: dtlsID => ${dtlsID}`)  
         this.handleId(dtlsID)
     }
     //Change details data
     handleChangePrevState = (id) => {
-        dtlsID = id
-        console.log(`handleChangePrevState: dtlsID => ${dtlsID}`)          
+        dtlsID = id     
         this.setState({
             detailsId: dtlsID,
             loading: true
