@@ -10,9 +10,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Chip from '@material-ui/core/Chip';
 
 export const priorityL1Emergency = ({getExtraKey, getDataKey, checkItem, item, change}) => {
-    console.log(getExtraKey)
-    console.log(getDataKey)
-    console.log(checkItem)
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (

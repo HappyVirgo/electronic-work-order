@@ -83,7 +83,6 @@ let savedData;
 export const ReactWindowTable = ({ data, columns, firstLoading }) => {
     const classes = useTableStyles();
     const itemData = createItemData(classes, columns, data, span);
-    console.log(data)
     if(!Object.is(data, savedData))
         scrollToTop(topOfList)
     savedData = data
