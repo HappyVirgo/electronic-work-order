@@ -6,10 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
-import Checkbox from '@material-ui/core/Checkbox';
 
 import { GlobalContext } from "../../../../context/globalcontext";
 import PopupComponent from '../../../popupcomponent'
@@ -89,17 +87,6 @@ export const MainActions = () => {
                                     <TextField onChange={chageInputNote} fullWidth={true} multiline={true} variant="outlined" InputProps={{ classes: { input: classes.textField } }}/>
                                 </FormControl>
                                 <FormControl required>
-                                <FormControlLabel
-                                    control={
-                                    <Checkbox
-                                        // checked={state.checkedB}
-                                        // onChange={handleChange}
-                                        name="checkedB"
-                                        color="primary"
-                                    />
-                                    }
-                                    label="Mark as important note"
-                                />
                                 </FormControl>
                             </div>
     return (
