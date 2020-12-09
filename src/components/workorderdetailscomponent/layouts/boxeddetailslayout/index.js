@@ -30,7 +30,7 @@ export const BoxedDetails = ({currentEta, serviceProvider, serviceProviderLast, 
     const mediumSize = 6
     const unixtest = currentEta!==null?currentEta:nullVal
     const testing = Date.parse(unixtest)
-    console.log(testing)
+    //console.log(testing)
     return (
         <Grid item xs={smallSize} md={7} className={classes.etaSection}>
             <Grid container>
