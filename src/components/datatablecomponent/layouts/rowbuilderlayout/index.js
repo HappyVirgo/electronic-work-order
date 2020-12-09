@@ -47,7 +47,7 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
             console.log("DIVIDE")
             console.log(getDataKey)
             console.log(getExtraKey)            
-            checkItem = !item?(!item[getDataKey]?[]:item[getDataKey][getExtraKey]):item[getDataKey][getExtraKey]
+            checkItem = !item?(!item[getDataKey]?null:item[getDataKey][getExtraKey]):item[getDataKey][getExtraKey]
             console.log(checkItem) 
             return (
             <TableCell
