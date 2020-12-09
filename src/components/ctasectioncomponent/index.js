@@ -43,14 +43,14 @@ const CTASectionComponent = ({ctadata, tmpdata}) => {
 
     return (
             <Grid container className="cta-component">
-                <Grid item xs={12} md={12} lg={6} className="search-section">
+                <Grid item xs={12} md={5} lg={6} className="search-section">
                     <h1>Work Orders</h1>
                     <AdvancedSearchComponent />
                     <FilteringComponent
                         tmpdata={tmpdata}
                     />
                 </Grid>
-                <Grid item xs={12} md={12} lg={6} className="cta-section">
+                <Grid item xs={12} md={7} lg={6} className="cta-section">
                     <FeaturedCTALayout 
                         emergencyWorkOrders={emergencyWorkOrders} 
                     />
