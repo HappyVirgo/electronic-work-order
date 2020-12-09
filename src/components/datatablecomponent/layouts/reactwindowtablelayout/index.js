@@ -73,7 +73,7 @@ export const ReactWindowTable = ({ data, columns }) => {
     const classes = useTableStyles();
     //console.log(data.sort((a,b) => a[1] - b[1]))
     const itemData = createItemData(classes, columns, data);
-    
+    console.log(data)
     return (
         <div className={classes.root}>
         <Table className={classes.table} component="div">
