@@ -25,7 +25,7 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
     let change = useContext(GlobalContext)
     const currentDtlsId = change.currentDtlsId
     change = change.dynamicDetails
-    console.log("item", item.invoice)
+    //console.log("item", item.invoice)
     return (
         <>
         {span}

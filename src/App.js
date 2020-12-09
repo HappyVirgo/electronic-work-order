@@ -24,7 +24,7 @@ const App = () => {
   useEffect(() => {
     axios.get(apiUsers)
     .then(res => {
-      const payloadData = res.data;
+      //const payloadData = res.data;
       //console.log(payloadData)
       //setUserRole(payloadData.user.role_id);
       //Next line it's to develop in local 

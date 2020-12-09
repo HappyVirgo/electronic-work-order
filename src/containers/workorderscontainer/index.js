@@ -345,13 +345,7 @@ class WorkOrdersBuilder extends Component {
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
-        /*
-        console.log("**************")
-        console.log(dtlsID)
-        console.log(this.state.detailsId)
-        console.log(prevState.detailsId)
-        console.log("**************")
-        */
+
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
