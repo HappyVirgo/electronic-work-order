@@ -27,9 +27,9 @@ const useStyles = makeStyles((theme) => ({
         color: "#FFFFFF",
         backgroundColor: '#0072CE',
         fontWeight: 'bold',
-        width: '150px',
+        width: '140px',
         maxWidth: '150px',
-        minWidth: '150px',
+        // minWidth: '150px',
         height: '32px',
         float: 'right',
         fontSize: '13px',
@@ -46,9 +46,9 @@ const useStyles = makeStyles((theme) => ({
         color: "#0072CE",
         border: '2px solid #0072CE',
         fontWeight: 'bold',
-        width: '150px',
+        width: '140px',
         maxWidth: '150px',
-        minWidth: '150px',
+        // minWidth: '150px',
         height: '32px',
         float: 'right',
         fontSize: '13px',
@@ -103,7 +103,7 @@ export const MainActions = () => {
                                 </FormControl>
                             </div>
     return (
-        <Grid item xs={12} md={4} className="action-button-grid">
+        <Grid item xs={12} md={12} lg={4} className="action-button-grid">
             <PopupComponent buttonLabel="ADD NOTE" modalTitle="Add Notes" btn2Classes={`${classes.actionButton} action-button`} btnClasses={`${classes.actionButton} action-button`} btn1Classes={`${classes.actionButtonOutlned} action-button`} btnStartIcon={<AddNote/>} btn1Label="Cancel" btn2Func={addNote} btn2Label="Submit" MuiDialogTitle={classes.MuiDialogTitle} content={addNoteContent} />
             <PopupComponent buttonLabel="Not Fixed" modalTitle="Not Fixed" btnClasses={`${classes.actionButton} action-button`} btn2Classes={`${classes.actionButton} action-button`} btn1Classes={`${classes.actionButton} action-button`} btnStartIcon={<NotFixed/>} btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content="Not fixed?" />
             <Button variant="contained" color="primary" className={`${classes.actionButton} action-button`} startIcon={<ReAssigned/>}>Reassign</Button>

@@ -33,7 +33,7 @@ export const DetailsImageLayout = ({image, ifPM}) => {
         img = placeholder
     }
     return (
-        <Grid item md={3} className="img-container">
+        <Grid item md={5} lg={3} className="img-container">
             <img 
                 className={classes.img}
                 src={img}
