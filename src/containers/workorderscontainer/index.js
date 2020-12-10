@@ -174,6 +174,20 @@ class WorkOrdersBuilder extends Component {
         }, this.handleChangeStateFilterByPriority(value))        
     }
 
+    handleChangeStateFilterClearAll = () => {
+        filterByPriority = 1;
+        filterByStatus = 1;
+        filterByAssetType = 1; 
+    }
+
+    handleFilterClearAll = (event) => {
+        this.setState({
+            filterByAssetType: 1,
+            filterByStatus: 1,
+            filterByPriority: 1,
+        }, this.handleChangeStateFilterClearAll()) 
+    }
+
     handleChangeNoteInput = (value) => {
         noteDescription = value;
         console.log("description", noteDescription)
@@ -1027,6 +1041,7 @@ class WorkOrdersBuilder extends Component {
             handleFilterByAssetType: this.handleFilterByAssetType,
             handleFilterByStatus: this.handleFilterByStatus,
             handleFilterByPriority: this.handleFilterByPriority,
+            handleFilterClearAll: this.handleFilterClearAll,
             createNoteWOData: this.createNoteWOData,
             updateWOStatus: this.updateWOStatus,
             handleNoteInput: this.handleNoteInput,
