@@ -20,5 +20,6 @@ export const filterByAssetType = (data) => {
     })
     //Remove empty values
     uniqueList = result.filter(item => item);
+    uniqueList.sort()
     return uniqueList
 }

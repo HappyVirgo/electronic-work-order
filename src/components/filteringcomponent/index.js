@@ -12,6 +12,8 @@ import React, {useContext} from 'react';
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, MenuItem, Grid } from '@material-ui/core';
+import ClearIcon from '@material-ui/icons/Clear';
+import IconButton from '@material-ui/core/IconButton';
 
 //Context
 import { GlobalContext } from "../../context/globalcontext";
@@ -25,7 +27,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     filter: {
-        width: "32%",
+        width: "30%",
         textAlign: 'center',
         // padding: '5px',
         padding: '0px',
@@ -59,6 +61,7 @@ const FilteringComponent = ({tmpdata}) => {
     const funcFilterByAssetType = filterFunc.handleFilterByAssetType 
     const funcFilterByStatus = filterFunc.handleFilterByStatus
     const funcFilterByPriority = filterFunc.handleFilterByPriority
+    const funcFilterClearAll = filterFunc.handleFilterClearAll
     //Default values for selects inputs
     const filterByStateAssetType = filterFunc.filterByStateAssetType
     const filterByStateStatus = filterFunc.filterByStateStatus
@@ -91,7 +94,8 @@ const FilteringComponent = ({tmpdata}) => {
                         elevation: 0,
                     }}
                 >
-                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    <MenuItem className={classes.menuItem} value="" disabled><b>Asset Type:</b></MenuItem>
+                    <MenuItem value={1}>Reset Filter</MenuItem>                    
                     {filterDataAssetType.map((item, index) => {
                         return (
                             <MenuItem 
@@ -122,7 +126,8 @@ const FilteringComponent = ({tmpdata}) => {
                         elevation: 0,
                     }}
                 >
-                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    <MenuItem className={classes.menuItem} value="" disabled><b>Status:</b></MenuItem>
+                    <MenuItem value={1}>Reset Filter</MenuItem>                    
                     {filterDataStatus.map((item, index) => {
                         return (
                             <MenuItem 
@@ -153,7 +158,8 @@ const FilteringComponent = ({tmpdata}) => {
                         elevation: 0,
                     }}
                 >
-                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    <MenuItem className={classes.menuItem} value="" disabled><b>Priority:</b></MenuItem>
+                    <MenuItem value={1}>Reset Filter</MenuItem>                    
                     {filterDataPriority.map((item, index) => {
                         return (
                             <MenuItem 
@@ -164,7 +170,10 @@ const FilteringComponent = ({tmpdata}) => {
                     })}
                     
                 </Select>
-            </FormControl>                         
+            </FormControl>
+            <IconButton color="secondary" aria-label="clear all" component="span" style={{padding:0}} onClick={funcFilterClearAll}>
+                <ClearIcon />                         
+            </IconButton>
         </Grid>
     );
 };
