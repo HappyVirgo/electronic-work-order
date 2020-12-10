@@ -26,9 +26,7 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
     let change = useContext(GlobalContext)
     const currentDtlsId = change.currentDtlsId
     change = change.dynamicDetails
-    return (
-        <>
-        {span}
+    const Body = (
         <TableRow component="div" className={`${classes.row} datatable-row ${woitemID.toString() === currentDtlsId.toString()?'selected':''}`} style={style}>
         {columns.map((column, colIndex) => {
             //Check for null items 
@@ -75,7 +73,15 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
             </TableCell>
             );
         })}
-        </TableRow>
+        </TableRow>        
+    )    
+    const BodyEmpty = (
+        <div></div>
+    )
+    return (
+        <>
+        {span}
+        {item?Body:BodyEmpty}
         </>
     );
 };
