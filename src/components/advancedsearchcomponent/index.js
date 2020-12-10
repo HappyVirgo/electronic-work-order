@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
         borderTopLeftRadius: 'unset !important',
         marginTop: '5px',
         // marginTop: '17px',
-        padding: '20px',
+        padding: '15px',
         boxShadow: '0px 4px 10px 1px #888888',
         ul: {
             padding: 'unset'
