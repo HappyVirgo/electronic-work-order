@@ -6,12 +6,14 @@ import { connect } from "react-redux";
 import { 
     CTASectionComponent, 
     DataTableComponent, 
-    WorkOrderDetailsComponent, 
+    WorkOrderDetailsComponent,
+    Alert, 
 } from '../../components'
 
 
 //Material UI
 import Grid from '@material-ui/core/Grid';
+import Link from '@material-ui/core/Link';
 
 //Actions
 import { 
@@ -270,7 +272,7 @@ class WorkOrdersBuilder extends Component {
         //console.log(userData.userdata.user)
         //userId = userData.userdata.user.user_id     
         //Next line it's to develop in local     
-        userId = "2152"
+        userId = "2146"
         this.setState({ 
             firstLoading: true
         })
@@ -341,13 +343,7 @@ class WorkOrdersBuilder extends Component {
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
-        /*
-        console.log("**************")
-        console.log(dtlsID)
-        console.log(this.state.detailsId)
-        console.log(prevState.detailsId)
-        console.log("**************")
-        */
+
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
@@ -1041,6 +1037,11 @@ class WorkOrdersBuilder extends Component {
         return (
             <GlobalContext.Provider value={globalState}>
                 <div className="work-orders-container">
+                    <Alert severity="warning">
+                        <Link href="https://radstuff.ecotrak.com/admin/WorkOrders" target="_blank" rel="noopener" color="inherit">
+                            <i>Missing Something? Go to the Old Version</i>
+                        </Link>
+                    </Alert>
                     <Grid className="cta-section-component">
                         <CTASectionComponent 
                             ctadata={ctadata}
@@ -1048,14 +1049,14 @@ class WorkOrdersBuilder extends Component {
                         />
                     </Grid>            
                     <Grid container className="content-section">
-                        <Grid item xs={12} md={12} lg={7}>
+                        <Grid item xs={12} md={7} lg={7}>
                             <DataTableComponent
                                 tmpdata={tmpdata}
                                 loading={this.state.loading}
                                 firstLoading={this.state.firstLoading}
                             />
                         </Grid>        
-                        <Grid item xs={12} md={12} lg={5}>
+                        <Grid item xs={12} md={5} lg={5}>
                             <WorkOrderDetailsComponent
                                 loadingDetails={this.state.loadingDetails}
                                 detailsdata={detailsdata}
