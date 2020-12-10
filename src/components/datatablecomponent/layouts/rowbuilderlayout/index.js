@@ -42,17 +42,16 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
             let getServiceProvider_index = column.serviceprovider_index
             let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
-            //Check if object value are null and avoid broken loops  
-
-            console.log("DIVIDE")
-            console.log(item)
-            console.log(getDataKey)
-            console.log(getExtraKey)            
-            checkItem = !item[getDataKey]?checkItem=null:item[getDataKey][getExtraKey]
-            console.log(checkItem) 
+            //Check if object value are null and avoid broken loops 
+            console.log(getDataKey)       
+            console.log(getExtraKey)    
+            console.log(item?item[getDataKey]:"NADA") 
+            let firstCheck = item?item[getDataKey]:null
+            let fullCheck = firstCheck?item[getDataKey][getExtraKey]:null
+            checkItem = !item?checkItem=null:fullCheck
             return (
             <TableCell
-                key={item['workOrderId'] * colIndex}
+                key={!item?"":item['workOrderId'] * colIndex}
                 component="div"
                 variant="body"
                 align={column.numeric || false ? "right" : "left"}

@@ -9,7 +9,7 @@ import React from "react";
 
 export const regularColumn = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
