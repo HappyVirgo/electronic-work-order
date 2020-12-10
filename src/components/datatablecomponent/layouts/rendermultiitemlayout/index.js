@@ -10,8 +10,6 @@ import React from "react";
 export const renderMultiItem = ({getExtraKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, change}) => {
     let assetWorkOrder = item?item['workOrderId']:null
     let __getServiceProvider_index = item?item[getServiceProvider_index]:null
-    console.log(item)
-    console.log(__getServiceProvider_index)
     let getServiceProviderDef = __getServiceProvider_index?__getServiceProvider_index.getServiceProvider:null
     return (
         <div id={assetWorkOrder} onClick={change} className={'dtableCols'}>
