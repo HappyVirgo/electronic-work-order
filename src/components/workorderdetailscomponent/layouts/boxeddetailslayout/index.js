@@ -28,7 +28,9 @@ export const BoxedDetails = ({currentEta, serviceProvider, serviceProviderLast, 
     const classes = useStyles()
     const smallSize = 12
     const mediumSize = 6
-    //console.log(invoiceStatus)
+    const unixtest = currentEta!==null?currentEta:nullVal
+    const testing = Date.parse(unixtest)
+    //console.log(testing)
     return (
         <Grid item xs={smallSize} md={12} lg={7} className={classes.etaSection}>
             <Grid container>
