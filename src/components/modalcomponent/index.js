@@ -186,8 +186,8 @@ const ModalComponent = ({title, data, type}) => {
         } else if (data['pnote']) {
             describer = "Proposal Note"
             description = data['pnote']?data['pnote']:Empty
-            createdDate = data['createdAt']?data['createdAt']:Empty
-            updatedDate = data['updatedAt']?data['updatedAt']:Empty
+            createdDate = data['dateCreated']?data['dateCreated']:Empty
+            updatedDate = data['dateUpdated']?data['dateUpdated']:Empty
             company = data['user']['companyName']?data['user']['companyName']:Empty
             firstName = data['user']['firstName']?data['user']['firstName']:Empty
             lastName = data['user']['lastName']?data['user']['lastName']:Empty       
