@@ -41,7 +41,8 @@ import {
 export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, change}) => {
 
     let data
-    switch (item[getDataKey][getExtraKey]) {
+    let itemData = item?item[getDataKey][getExtraKey]:""
+    switch (itemData) {
         //Status
         case "Pending":
             data = statusPending({

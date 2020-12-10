@@ -9,7 +9,7 @@ import React from "react";
 
 export const statusAccepted = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols accepted-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols accepted-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -18,7 +18,7 @@ export const statusAccepted = ({getExtraKey, getDataKey, checkItem, item, change
 }
 export const statusArrived = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols arrived-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols arrived-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -27,7 +27,7 @@ export const statusArrived = ({getExtraKey, getDataKey, checkItem, item, change}
 }
 export const statusCancelled = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols complete-status'}>           
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols complete-status'}>           
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -36,7 +36,7 @@ export const statusCancelled = ({getExtraKey, getDataKey, checkItem, item, chang
 }
 export const statusProposalApproved = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols proposal-approved-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols proposal-approved-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -45,7 +45,7 @@ export const statusProposalApproved = ({getExtraKey, getDataKey, checkItem, item
 }
 export const statusProposalSubmitted = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols proposal-submitted-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols proposal-submitted-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -54,7 +54,7 @@ export const statusProposalSubmitted = ({getExtraKey, getDataKey, checkItem, ite
 }
 export const statusSubmittingProposal = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols submitting-proposal-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols submitting-proposal-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -63,7 +63,7 @@ export const statusSubmittingProposal = ({getExtraKey, getDataKey, checkItem, it
 }
 export const statusComplete = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols complete-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols complete-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -72,7 +72,7 @@ export const statusComplete = ({getExtraKey, getDataKey, checkItem, item, change
 }
 export const statusEnroute = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols enroute-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols enroute-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -81,7 +81,7 @@ export const statusEnroute = ({getExtraKey, getDataKey, checkItem, item, change}
 }
 export const statusReassign = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols reassign-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols reassign-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -90,7 +90,7 @@ export const statusReassign = ({getExtraKey, getDataKey, checkItem, item, change
 }
 export const statusUnassigned = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols unassigned-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols unassigned-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -99,7 +99,7 @@ export const statusUnassigned = ({getExtraKey, getDataKey, checkItem, item, chan
 }
 export const statusNotFixed = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols not-fixed-status'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols not-fixed-status'}>
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -108,7 +108,7 @@ export const statusNotFixed = ({getExtraKey, getDataKey, checkItem, item, change
 }
 export const statusPending = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols pending-status'}>           
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols pending-status'}>           
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -117,7 +117,7 @@ export const statusPending = ({getExtraKey, getDataKey, checkItem, item, change}
 }
 export const statusPendingSPAcceptance = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols pending-sp-acceptance-status'}>           
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols pending-sp-acceptance-status'}>           
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -126,7 +126,7 @@ export const statusPendingSPAcceptance = ({getExtraKey, getDataKey, checkItem, i
 }
 export const statusPendingParts = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols pending-parts-status'}>           
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols pending-parts-status'}>           
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -135,7 +135,7 @@ export const statusPendingParts = ({getExtraKey, getDataKey, checkItem, item, ch
 }
 export const statusRejected = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols rejected-status'}>           
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols rejected-status'}>           
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -144,7 +144,7 @@ export const statusRejected = ({getExtraKey, getDataKey, checkItem, item, change
 }
 export const statusProposalRejected = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols proposal-rejected-status'}>           
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols proposal-rejected-status'}>           
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>
@@ -153,7 +153,7 @@ export const statusProposalRejected = ({getExtraKey, getDataKey, checkItem, item
 }
 export const statusReturnVisitRequired = ({getExtraKey, getDataKey, checkItem, item, change}) => {
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols return-visit-required-status'}>           
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols return-visit-required-status'}>           
             <span>
                 {getExtraKey!==false?checkItem:item[getDataKey]}
             </span>

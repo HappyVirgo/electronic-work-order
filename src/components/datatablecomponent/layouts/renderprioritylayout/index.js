@@ -13,7 +13,7 @@ export const priorityL1Emergency = ({getExtraKey, getDataKey, checkItem, item, c
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityL1`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -28,7 +28,7 @@ export const priorityL2SameDay = ({getExtraKey, getDataKey, checkItem, item, cha
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityL2`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -43,7 +43,7 @@ export const priorityL3_24Hours = ({getExtraKey, getDataKey, checkItem, item, ch
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityL3`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -58,7 +58,7 @@ export const priorityL4_48Hours = ({getExtraKey, getDataKey, checkItem, item, ch
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityL4`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -74,7 +74,7 @@ export const priorityL5_OneWeek = ({getExtraKey, getDataKey, checkItem, item, ch
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityL5`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -89,7 +89,7 @@ export const priorityL6_30Days = ({getExtraKey, getDataKey, checkItem, item, cha
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityPM`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -104,7 +104,7 @@ export const priorityL7_30Days = ({getExtraKey, getDataKey, checkItem, item, cha
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityPM`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -119,7 +119,7 @@ export const priorityPM = ({getExtraKey, getDataKey, checkItem, item, change}) =
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityPM`}
                 avatar={<Avatar>{data[0]}</Avatar>}
@@ -134,7 +134,7 @@ export const priorityRFP = ({getExtraKey, getDataKey, checkItem, item, change}) 
     let stringToDivide = getExtraKey!==false?checkItem:item[getDataKey];
     let data = stringToDivide.split("-")
     return (
-        <div id={item['workOrderId']} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
             <Chip
                 className={`priorityPM`}
                 avatar={<Avatar>{data[0]}</Avatar>}
