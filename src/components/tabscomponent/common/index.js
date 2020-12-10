@@ -92,7 +92,7 @@ let columnsNotes = [
         dataKey_wo_user: "user",
         dataKey_wo_company: "companyName",
         dataKey_prps: "pnote",
-        dataKey_prps_date: "createdAt",
+        dataKey_prps_date: "dateCreated",
         dataKey_prps_user: "user",
         dataKey_prps_company: "companyName",
         dataKey_invs: "invNote",
@@ -142,6 +142,20 @@ const CommonTable = ({tmpdata, infotab}) => {
     //Set state with data
     const [data, setData] = useState([]);
 
+    const sortByDate = (a, b) => {
+        if(a.createdAt)
+            a = new Date(a.createdAt)
+        else {
+            a = new Date(a.dateCreated)    
+        }
+        if(b.createdAt)
+            b = new Date(b.createdAt)
+        else {
+            b = new Date(b.dateCreated)    
+        }
+        return b - a
+    }
+
     //Getting the data
     
     useEffect(() => {
@@ -163,7 +177,9 @@ const CommonTable = ({tmpdata, infotab}) => {
                 inv_notes = !tmpdata.data['invoiceNotes']?inv_notes=[]:tmpdata.data['invoiceNotes']
                 let pre_notes = wo_notes.concat(prp_notes)
                 let notes = pre_notes.concat(inv_notes)
+                notes = notes.sort(sortByDate)
                 dataSetup = notes
+                console.log("data", dataSetup)
                 columns = columnsNotes
             }       
             setData(dataSetup) 
