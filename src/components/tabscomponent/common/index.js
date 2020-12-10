@@ -92,7 +92,7 @@ let columnsNotes = [
         dataKey_wo_user: "user",
         dataKey_wo_company: "companyName",
         dataKey_prps: "pnote",
-        dataKey_prps_date: "createdAt",
+        dataKey_prps_date: "dateCreated",
         dataKey_prps_user: "user",
         dataKey_prps_company: "companyName",
         dataKey_invs: "invNote",
@@ -179,6 +179,7 @@ const CommonTable = ({tmpdata, infotab}) => {
                 let notes = pre_notes.concat(inv_notes)
                 notes = notes.sort(sortByDate)
                 dataSetup = notes
+                console.log("data", dataSetup)
                 columns = columnsNotes
             }       
             setData(dataSetup) 
