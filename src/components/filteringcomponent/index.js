@@ -82,6 +82,7 @@ const FilteringComponent = ({tmpdata}) => {
                     onChange={funcFilterByAssetType} 
                     value={filterByStateAssetType}
                     className={classes.eachFilter}
+                    renderValue={(value) => { if(value || value != 1) { return value} else {return 'Asset Type'} }}
                     inputProps={{
                         classes: {
                             icon: classes.icon,
@@ -112,6 +113,7 @@ const FilteringComponent = ({tmpdata}) => {
                     labelId="filter-2-filled-label"
                     id="filter-2-filled-label"
                     onChange={funcFilterByStatus} 
+                    renderValue={(value) => { if(value || value != 1) { return value} else {return 'Status'} }}
                     value={filterByStateStatus}
                     className={classes.eachFilter}
                     inputProps={{
@@ -145,6 +147,7 @@ const FilteringComponent = ({tmpdata}) => {
                     id="filter-3-filled-label"
                     onChange={funcFilterByPriority} 
                     value={filterByStatePriority}
+                    renderValue={(value) => { if(value || value != 1) { return value} else {return 'Priority'} }}
                     className={classes.eachFilter}
                     inputProps={{
                         classes: {
