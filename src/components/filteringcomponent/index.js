@@ -12,7 +12,7 @@ import React, {useContext} from 'react';
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, MenuItem, Grid } from '@material-ui/core';
-import ClearIcon from '@material-ui/icons/Clear';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -177,7 +177,7 @@ const FilteringComponent = ({tmpdata}) => {
             </FormControl>
             <Tooltip title="Clear Filters" aria-label="clear">
                 <IconButton component="span" style={{padding:0}} onClick={funcFilterClearAll}>
-                    <ClearIcon fontSize="large" color="action"  />               
+                    <ClearAllIcon fontSize="large" color="action"  />               
                 </IconButton>
             </Tooltip>
         </Grid>
