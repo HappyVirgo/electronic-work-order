@@ -41,9 +41,6 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
             let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
             //Check if object value are null and avoid broken loops 
-            console.log(getDataKey)       
-            console.log(getExtraKey)    
-            console.log(item?item[getDataKey]:"NADA") 
             let firstCheck = item?item[getDataKey]:null
             let fullCheck = firstCheck?item[getDataKey][getExtraKey]:null
             checkItem = !item?checkItem=null:fullCheck
