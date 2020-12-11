@@ -11,7 +11,7 @@ const IdleTimerComponent = () => {
         <div>
             <IdleTimer 
                 ref={idleTimerRef}
-                timeout={5 * 1000}
+                timeout={20 * 1000}
                 onIdle={onIdle}
             />
         </div>
