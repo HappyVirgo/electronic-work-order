@@ -1,12 +1,16 @@
 //Basic Imports
 import React, { useEffect, useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import IdleTimer from 'react-idle-timer'
 import axios from 'axios';
 import './App.css';
 
 //Containers
 import WorkOrdersContainer from './containers/workorderscontainer'
+
+//Components
+import { 
+  IdleTimerComponent
+} from './components'
 
 import {
   apiUsers
@@ -61,8 +65,14 @@ const App = () => {
     conditionalRender = true
   }
 
+  const Body = (
+    <>
+      <IdleTimerComponent />
+      <WorkOrdersContainer />
+    </>
+  )
   return (
-    conditionalRender===true?<WorkOrdersContainer />:conditionalRedirect
+    conditionalRender===true?Body:conditionalRedirect
   );
 }
 

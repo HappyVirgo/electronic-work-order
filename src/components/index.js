@@ -5,6 +5,9 @@
  * Ticket: ET-267
  */
 
+ //Alert Component
+import IdleTimerComponent from './idletimercomponent'
+
 //CTA components
 import CTASectionComponent from './ctasectioncomponent'
 
@@ -30,6 +33,7 @@ import FilteringComponent from './filteringcomponent'
 import Alert from './alertComponent'
 
 export {
+    IdleTimerComponent,
     DataTableComponent,
     CTASectionComponent,
     WorkOrderDetailsComponent,
