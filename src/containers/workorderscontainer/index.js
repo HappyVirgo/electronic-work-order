@@ -389,7 +389,7 @@ class WorkOrdersBuilder extends Component {
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
-            prevState.searchTerm !== this.state.searchTerm ||
+            prevState.searchTerm !== this.state.searchTerm && this.state.searchTerm.length > 3 ||
             prevState.searchBy !== this.state.searchBy ||
             prevState.filterByAssetType !== this.state.filterByAssetType ||
             prevState.filterByStatus !== this.state.filterByStatus ||
