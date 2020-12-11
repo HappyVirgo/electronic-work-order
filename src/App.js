@@ -1,6 +1,7 @@
 //Basic Imports
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import IdleTimer from 'react-idle-timer'
 import axios from 'axios';
 import './App.css';
 
@@ -9,7 +10,7 @@ import WorkOrdersContainer from './containers/workorderscontainer'
 
 //Components
 import { 
-  IdleTimerComponent
+  //IdleTimerComponent
 } from './components'
 
 import {
@@ -28,7 +29,9 @@ const App = () => {
   const [isLoading, setLoading] = useState(false);
   const [userRole, setUserRole] = useState();
   const [userStatus, setUserStatus] = useState();
+  const [idleUpdate, setIdleUpdate] = useState(false);
 
+  //First check
   useEffect(() => {
     axios.get(apiUsers)
     .then(res => {
@@ -38,14 +41,45 @@ const App = () => {
       //Next line it's to develop in local 
       setUserStatus("success");
       setUserRole("3");
-      setLoading(false);  
+      setLoading(false); 
+      /*
       localStorage.setItem("session_wo", "success");    
       const test = localStorage.getItem("session_wo");
       console.log(test)
+      */
     })
-  }, [userRole]);
-  
-  
+  }, [idleUpdate]);
+
+  const IdleTimerComponent = () => {
+    const idleTimerRef = useRef(null)
+    const onIdle = () => {
+        alert("Session expired!")
+        setIdleUpdate(true)
+        axios.get(apiUsers)
+        .then(res => {
+          //const payloadData = res.data;
+          //console.log(payloadData)
+          //setUserRole(payloadData.user.role_id);
+          //Next line it's to develop in local 
+          setUserStatus("success"); 
+          /*
+          localStorage.setItem("session_wo", "success");    
+          const test = localStorage.getItem("session_wo");
+          console.log(test)
+          */
+        })        
+    }
+    return (
+        <div>
+            <IdleTimer 
+                ref={idleTimerRef}
+                timeout={10 * 1000}
+                onIdle={onIdle}
+            />
+        </div>
+    );
+  };
+
   let conditionalRender
   let conditionalRedirect
   if (isLoading) {
@@ -66,7 +100,7 @@ const App = () => {
 
   const Body = (
     <>
-      <IdleTimerComponent />
+      <IdleTimerComponent  />
       <WorkOrdersContainer />
     </>
   )
