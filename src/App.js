@@ -17,19 +17,19 @@ const App = () => {
   }
   //const [isLoading, setLoading] = useState(true);
   //Next line it's to develop in local   
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState();
 
   
   useEffect(() => {
     axios.get(apiUsers)
     .then(res => {
-      //const payloadData = res.data;
+      const payloadData = res.data;
       //console.log(payloadData)
-      //setUserRole(payloadData.user.role_id);
+      setUserRole(payloadData.user.role_id);
       //Next line it's to develop in local 
-      setUserRole("3");
-      setLoading(false);      
+      //setUserRole("3");
+      //setLoading(false);      
     })
   }, [userRole]);
   
