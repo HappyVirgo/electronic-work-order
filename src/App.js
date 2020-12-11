@@ -29,25 +29,21 @@ const App = () => {
   const [userRole, setUserRole] = useState();
   const [userStatus, setUserStatus] = useState();
 
-  const IdleRender = () => {
-    useEffect(() => {
-      axios.get(apiUsers)
-      .then(res => {
-        //const payloadData = res.data;
-        //console.log(payloadData)
-        //setUserRole(payloadData.user.role_id);
-        //Next line it's to develop in local 
-        setUserStatus("success");
-        setUserRole("3");
-        setLoading(false);  
-        localStorage.setItem("session_wo", "success");    
-        const test = localStorage.getItem("session_wo");
-        console.log(test)
-      })
-    }, [userRole]);
-  }
-  
-  
+  useEffect(() => {
+    axios.get(apiUsers)
+    .then(res => {
+      //const payloadData = res.data;
+      //console.log(payloadData)
+      //setUserRole(payloadData.user.role_id);
+      //Next line it's to develop in local 
+      setUserStatus("success");
+      setUserRole("3");
+      setLoading(false);  
+      localStorage.setItem("session_wo", "success");    
+      const test = localStorage.getItem("session_wo");
+      console.log(test)
+    })
+  }, [userRole]);
   
   
   let conditionalRender
