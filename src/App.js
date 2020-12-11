@@ -29,7 +29,7 @@ const App = () => {
       setUserRole(payloadData.user.role_id);
       //Next line it's to develop in local 
       //setUserRole("3");
-      //setLoading(false);      
+      setLoading(false);      
     })
   }, [userRole]);
   
