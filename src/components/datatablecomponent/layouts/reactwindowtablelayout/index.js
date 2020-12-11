@@ -26,7 +26,7 @@ import {
 
 //Constants
 // const ROW_SIZE = 150;
-const ROW_SIZE = 120;
+const ROW_SIZE = 140;
 
 const useTableStyles = makeStyles(theme => ({
     root: {
