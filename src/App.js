@@ -18,7 +18,7 @@ const App = () => {
   }
   const forceLogin = () => {
     window.top.location.href='/admin/Users/index_new'
-  }  
+  }   
   //const [isLoading, setLoading] = useState(true);
   //Next line it's to develop in local   
   const [isLoading, setLoading] = useState(false);
@@ -47,6 +47,9 @@ const App = () => {
 
   const IdleTimerComponent = () => {
     const idleTimerRef = useRef(null)
+    const handleOnActive = (event) => {
+      console.log('user is active', event)
+    }     
     const onIdle = () => {
         console.log("User inactive for 1000 seconds!")
         setIdleUpdate(true)
@@ -64,12 +67,14 @@ const App = () => {
           */
         })        
     }
+    
     return (
         <div>
             <IdleTimer 
                 ref={idleTimerRef}
                 timeout={1000 * 1000}
                 onIdle={onIdle}
+                onAction={handleOnActive}
             />
         </div>
     );
