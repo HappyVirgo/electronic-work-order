@@ -8,11 +8,6 @@ import './App.css';
 //Containers
 import WorkOrdersContainer from './containers/workorderscontainer'
 
-//Components
-import { 
-  //IdleTimerComponent
-} from './components'
-
 import {
   apiUsers
 } from './api'
@@ -53,7 +48,7 @@ const App = () => {
   const IdleTimerComponent = () => {
     const idleTimerRef = useRef(null)
     const onIdle = () => {
-        alert("Session expired!")
+        console.log("User inactive for 1000 seconds!")
         setIdleUpdate(true)
         axios.get(apiUsers)
         .then(res => {
@@ -73,7 +68,7 @@ const App = () => {
         <div>
             <IdleTimer 
                 ref={idleTimerRef}
-                timeout={10 * 1000}
+                timeout={1000 * 1000}
                 onIdle={onIdle}
             />
         </div>
