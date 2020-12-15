@@ -385,11 +385,10 @@ class WorkOrdersBuilder extends Component {
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
-
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
-            prevState.searchTerm !== this.state.searchTerm && this.state.searchTerm.length > 3 ||
+            prevState.searchTerm !== this.state.searchTerm ||
             prevState.searchBy !== this.state.searchBy ||
             prevState.filterByAssetType !== this.state.filterByAssetType ||
             prevState.filterByStatus !== this.state.filterByStatus ||
@@ -407,7 +406,7 @@ class WorkOrdersBuilder extends Component {
             //Set data for DataTable Component
             switch (this.state.targetId) {
                 case "emergencyWO":
-                    if(searchTermIn.length>0 && searchByIn<=1) {
+                    if(searchTermIn.length>3 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
                         let dataSearch = tmp.data?tmp.data.work_orders:[]
                         if(filterByInByAssetType.length>0){
@@ -437,7 +436,7 @@ class WorkOrdersBuilder extends Component {
                                 }
                             } 
                         }
-                    }else if(searchTermIn.length>0 && searchByIn>1){
+                    }else if(searchTermIn.length>3 && searchByIn>1){
                         let tmp = await this.props.fetchSearchData()
                         let dataSearched = tmp.data?tmp.data.work_orders:[]                        
                         if(filterByInByPriority.length>0) {
@@ -545,8 +544,9 @@ class WorkOrdersBuilder extends Component {
                                 work_orders: dataSearched
                             }
                         }                                              
-                    }else {
+                    }else if(searchTermIn.length === 0) {
                         tmpdata = await this.props.fetchEmergencyWOData()
+                        console.log("here")
                     }                
                     break; 
                 case "pendingWO":
@@ -1013,7 +1013,6 @@ class WorkOrdersBuilder extends Component {
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== ''){
                 if( prevSteDtls !== currentSteDtls ) {
-    
                     this.setState({
                         detailsId: dtlsID,
                         loadingDetails: true
@@ -1022,7 +1021,6 @@ class WorkOrdersBuilder extends Component {
                     dtlsID = tmpDtls             
                     this.setState({
                         detailsId: dtlsID,
-                        loadingDetails: true
                     }, handleChangePrevState(dtlsID))    
                 }
             }
