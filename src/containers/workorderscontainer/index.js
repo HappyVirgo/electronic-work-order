@@ -10,6 +10,10 @@ import {
     Alert, 
 } from '../../components'
 
+//Helpers
+import {
+    setSearchFilterHelper
+} from '../../helpers/setsearchfilterhelper'
 
 //Material UI
 import Grid from '@material-ui/core/Grid';
@@ -95,12 +99,6 @@ class WorkOrdersBuilder extends Component {
             itsActive: false
         };
     }    
-    /**
-     * Description: Set state based on search input 
-     * Author: Carlos Blanco
-     * Date: 10/29/2020
-     * Ticket: ET-237
-     * */
     handleChangeStateSearchTerm = (value) => {
         searchTerm = value     
     }
@@ -110,12 +108,6 @@ class WorkOrdersBuilder extends Component {
             searchTerm: value,
         }, this.handleChangeStateSearchTerm(value));
     } 
-    /**
-     * Description: Set state based on search select 
-     * Author: Carlos Blanco
-     * Date: 10/30/2020
-     * Ticket: ET-237
-     * */    
     handleChangeStateSearchBy = (value) => {
         searchBy = value  
     }    
@@ -125,12 +117,6 @@ class WorkOrdersBuilder extends Component {
             searchBy: value
         }, this.handleChangeStateSearchBy(value));
     }
-    /**
-     * Description: Create Filter Component
-     * Author: Carlos Blanco
-     * Created: 11/06/2020
-     * Ticket: ET-246
-     */  
     handleChangeStateFilterByAssetType = (value) => {
         filterByAssetType = value       
         console.log(filterByAssetType)
@@ -141,12 +127,6 @@ class WorkOrdersBuilder extends Component {
             filterByAssetType: value,
         }, this.handleChangeStateFilterByAssetType(value))
     } 
-    /**
-     * Description: Create Filter Component
-     * Author: Carlos Blanco
-     * Created: 11/10/2020
-     * Ticket: ET-246
-     */  
     handleChangeStateFilterByStatus = (value) => {
         filterByStatus = value 
         console.log(filterByStatus)
@@ -157,12 +137,6 @@ class WorkOrdersBuilder extends Component {
             filterByStatus: value,
         }, this.handleChangeStateFilterByStatus(value))        
     } 
-    /**
-     * Description: Create Filter Component
-     * Author: Carlos Blanco
-     * Created: 11/10/2020
-     * Ticket: ET-246
-     */  
     handleChangeStateFilterByPriority = (value) => {
         filterByPriority = value       
         console.log(filterByPriority)
@@ -222,13 +196,6 @@ class WorkOrdersBuilder extends Component {
             loadingDetails: true,
         }, this.handleUpdateStatus(target))
     }
-    /**
-     * Description: Details components click events to change
-     * depending on datatable row
-     * Author: Carlos Blanco
-     * Date: 9/24/2020
-     * Ticket: ET-351
-     * */
     handleDynamicDetails = (target) => {
         dtlsID = target 
     }           
@@ -249,14 +216,6 @@ class WorkOrdersBuilder extends Component {
             },  this.handleDynamicDetails(target))
         }
     }
-    /**
-     * Description: Catch id from CTA component and pass
-     * to container state in order to set 
-     * the new data for the datatable
-     * Author: Carlos Blanco
-     * Date: 9/7/2020
-     * Ticket: ET-249
-     * */
     handleDynamicData = (target) => {
         trgtID = target
         console.log(trgtID)
@@ -279,32 +238,6 @@ class WorkOrdersBuilder extends Component {
         }
         
     }
-
-    // sortByDate = (a, b) => {
-    //     a = new Date(a.createdAt)
-    //     b = new Date(b.createdAt)
-    //     return b - a
-    // }
-
-    // sortOrderNotesByDate = () => {
-    //     let data = notesdata.data;
-    //     let workOrderNotes = [];
-    //     let proposalNotes = [];
-    //     let invoiceNotes = [];
-    //     if(!!notesdata.data.workOrderNotes) {
-    //         workOrderNotes = notesdata.data.workOrderNotes.sort(this.sortByDate)
-    //         data = {...data, workOrderNotes: workOrderNotes}
-    //     }
-    //     if(!!notesdata.data.proposalNotes) {
-    //         proposalNotes = notesdata.data.proposalNotes.sort(this.sortByDate)
-    //         data = {...data, proposalNotes: proposalNotes}
-    //     }
-    //     if(!!notesdata.data.invoiceNotes) {
-    //         invoiceNotes = notesdata.data.invoiceNotes.sort(this.sortByDate);
-    //         data = {...data, invoiceNotes: invoiceNotes}
-    //     }
-    //     notesdata = {...notesdata, data}
-    // }
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
@@ -385,7 +318,8 @@ class WorkOrdersBuilder extends Component {
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
-
+        const currentState = this.state.targetId
+        const props = this.props
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
@@ -404,585 +338,24 @@ class WorkOrdersBuilder extends Component {
                     searchTerm: "",
                 })
             }        
-            //Set data for DataTable Component
-            switch (this.state.targetId) {
-                case "emergencyWO":
-                    if(searchTermIn.length>0 && searchByIn<=1) {
-                        let tmp = await this.props.fetchEmergencyWOData()
-                        let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        if(filterByInByAssetType.length>0){
-                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                            dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByInByAssetType.toLowerCase()))
-                            if(filterByInByPriority.length>0) {
-                                dataSearched = dataSearched.filter(term => {
-                                    let notNull = term['priority']!==null?term['priority']['description']:""
-                                    return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                                })
-                            } else if(filterByInByStatus.length>0) {
-                                dataSearched = dataSearched.filter(term => {
-                                    let notNull = term['status']!==null?term['status']['description']:""
-                                    return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                                })                         
-                            }
-                            tmpdata = {
-                                data: {
-                                    work_orders: dataSearched
-                                }
-                            }                            
-                        } else {
-                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                            tmpdata = {
-                                data: {
-                                    work_orders: dataSearched
-                                }
-                            } 
-                        }
-                    }else if(searchTermIn.length>0 && searchByIn>1){
-                        let tmp = await this.props.fetchSearchData()
-                        let dataSearched = tmp.data?tmp.data.work_orders:[]                        
-                        if(filterByInByPriority.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['priority']!==null?term['priority']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                            })
-                            tmpdata = {
-                                data: {
-                                    work_orders: dataSearched
-                                }
-                            }                             
-                        } else if(filterByInByStatus.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['status']!==null?term['status']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                            })
-                            tmpdata = {
-                                data: {
-                                    work_orders: dataSearched
-                                }
-                            }                                                      
-                        } else if(filterByInByAssetType.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                            })
-                            tmpdata = {
-                                data: {
-                                    work_orders: dataSearched
-                                }
-                            }   
-                        } else {
-                            tmpdata = await this.props.fetchSearchData()
-                        }                        
-                    //Default filter by asset type without search                        
-                    }else if(filterByInByAssetType.length>0) {
-                        let tmp = await this.props.fetchEmergencyWOData()
-                        let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        let dataSearched = dataSearch.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                        if(filterByInByPriority.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['priority']!==null?term['priority']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                            })
-                        } else if(filterByInByStatus.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['status']!==null?term['status']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                            })                         
-                        }                        
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }
-                    //Default filter by status without search   
-                    }else if(filterByInByStatus.length>0) {
-                        let tmp = await this.props.fetchEmergencyWOData()
-                        let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        let dataSearched = dataSearch.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })
-                        if(filterByInByAssetType.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                            })
-                        } else if(filterByInByPriority.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['priority']!==null?term['priority']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                            })                         
-                        }                        
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }  
-                    //Default filter by priority without search   
-                    }else if(filterByInByPriority.length>0) {
-                        let tmp = await this.props.fetchEmergencyWOData()
-                        let dataSearch = tmp.data?tmp.data.work_orders:[]
-                        let dataSearched = dataSearch.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })
-                        if(filterByInByAssetType.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                            })
-                        } else if(filterByInByStatus.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['status']!==null?term['status']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                            })                         
-                        }                        
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                                              
-                    }else {
-                        tmpdata = await this.props.fetchEmergencyWOData()
-                    }                
-                    break; 
-                case "pendingWO":
-                if(searchTermIn.length>0 && searchByIn<=1) {
-                    let tmp = await this.props.fetchPendingWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    if(filterByInByAssetType.length>0){
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                        dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByInByAssetType.toLowerCase()))
-                        if(filterByInByPriority.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['priority']!==null?term['priority']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                            })
-                        } else if(filterByInByStatus.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['status']!==null?term['status']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                            })                         
-                        }
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                            
-                    } else {
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        } 
-                    }
-                }else if(searchTermIn.length>0 && searchByIn>1){
-                    let tmp = await this.props.fetchSearchData()
-                    let dataSearched = tmp.data?tmp.data.work_orders:[]                        
-                    if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                             
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                                                      
-                    } else if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }   
-                    } else {
-                        tmpdata = await this.props.fetchSearchData()
-                    }                        
-                //Default filter by asset type without search                        
-                }else if(filterByInByAssetType.length>0) {
-                    let tmp = await this.props.fetchPendingWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                    })
-                    if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }
-                //Default filter by status without search   
-                }else if(filterByInByStatus.length>0) {
-                    let tmp = await this.props.fetchPendingWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['status']!==null?term['status']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                    })
-                    if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                    } else if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }  
-                //Default filter by priority without search   
-                }else if(filterByInByPriority.length>0) {
-                    let tmp = await this.props.fetchPendingWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['priority']!==null?term['priority']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                    })
-                    if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }                                              
-                }else {
-                    tmpdata = await this.props.fetchPendingWOData()
-                }                
-                break;                   
-                case "assignedWO":
-                if(searchTermIn.length>0 && searchByIn<=1) {
-                    let tmp = await this.props.fetchAssignedToMeWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    if(filterByInByAssetType.length>0){
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                        dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByInByAssetType.toLowerCase()))
-                        if(filterByInByPriority.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['priority']!==null?term['priority']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                            })
-                        } else if(filterByInByStatus.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['status']!==null?term['status']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                            })                         
-                        }
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                            
-                    } else {
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        } 
-                    }
-                }else if(searchTermIn.length>0 && searchByIn>1){
-                    let tmp = await this.props.fetchSearchData()
-                    let dataSearched = tmp.data?tmp.data.work_orders:[]                        
-                    if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                             
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                                                      
-                    } else if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }   
-                    } else {
-                        tmpdata = await this.props.fetchSearchData()
-                    }                        
-                //Default filter by asset type without search                        
-                }else if(filterByInByAssetType.length>0) {
-                    let tmp = await this.props.fetchAssignedToMeWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                    })
-                    if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }
-                //Default filter by status without search   
-                }else if(filterByInByStatus.length>0) {
-                    let tmp = await this.props.fetchAssignedToMeWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['status']!==null?term['status']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                    })
-                    if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                    } else if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }  
-                //Default filter by priority without search   
-                }else if(filterByInByPriority.length>0) {
-                    let tmp = await this.props.fetchAssignedToMeWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['priority']!==null?term['priority']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                    })
-                    if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }                                              
-                }else {
-                    tmpdata = await this.props.fetchAssignedToMeWOData()
-                }                
-                break; 
-                case "unassignedWO":
-                if(searchTermIn.length>0 && searchByIn<=1) {
-                    let tmp = await this.props.fetchUnassignedWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    if(filterByInByAssetType.length>0){
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                        dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByInByAssetType.toLowerCase()))
-                        if(filterByInByPriority.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['priority']!==null?term['priority']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                            })
-                        } else if(filterByInByStatus.length>0) {
-                            dataSearched = dataSearched.filter(term => {
-                                let notNull = term['status']!==null?term['status']['description']:""
-                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                            })                         
-                        }
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                            
-                    } else {
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        } 
-                    }
-                }else if(searchTermIn.length>0 && searchByIn>1){
-                    let tmp = await this.props.fetchSearchData()
-                    let dataSearched = tmp.data?tmp.data.work_orders:[]                        
-                    if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                             
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }                                                      
-                    } else if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                        tmpdata = {
-                            data: {
-                                work_orders: dataSearched
-                            }
-                        }   
-                    } else {
-                        tmpdata = await this.props.fetchSearchData()
-                    }                        
-                //Default filter by asset type without search                        
-                }else if(filterByInByAssetType.length>0) {
-                    let tmp = await this.props.fetchUnassignedWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                    })
-                    if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }
-                //Default filter by status without search   
-                }else if(filterByInByStatus.length>0) {
-                    let tmp = await this.props.fetchUnassignedWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['status']!==null?term['status']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                    })
-                    if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                    } else if(filterByInByPriority.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['priority']!==null?term['priority']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }  
-                //Default filter by priority without search   
-                }else if(filterByInByPriority.length>0) {
-                    let tmp = await this.props.fetchUnassignedWOData()
-                    let dataSearch = tmp.data?tmp.data.work_orders:[]
-                    let dataSearched = dataSearch.filter(term => {
-                        let notNull = term['priority']!==null?term['priority']['description']:""
-                        return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
-                    })
-                    if(filterByInByAssetType.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
-                        })
-                    } else if(filterByInByStatus.length>0) {
-                        dataSearched = dataSearched.filter(term => {
-                            let notNull = term['status']!==null?term['status']['description']:""
-                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
-                        })                         
-                    }                        
-                    tmpdata = {
-                        data: {
-                            work_orders: dataSearched
-                        }
-                    }                                              
-                }else {
-                    tmpdata = await this.props.fetchUnassignedWOData()
-                }                
-                break;                                                       
-                default:
-                    tmpdata = await this.props.fetchEmergencyWOData()
-                    break;
-            }
-
+            //Set/Search/Filter data for DataTable Component
+            console.log(tmpdata)
+            let testing = setSearchFilterHelper({
+                tmpdata,
+                searchTerm,
+                searchTermIn,
+                searchByIn,
+                filterByInByAssetType,
+                filterByInByStatus,
+                filterByInByPriority,
+                currentState,
+                props
+            })
+            let datostest
+            testing.then(res => {
+                datostest = res
+            })
+            console.log(datostest)
             const handleId = async(dtlsID) => {
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
