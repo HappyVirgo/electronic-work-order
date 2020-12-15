@@ -1,7 +1,5 @@
 
 export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, searchByIn, filterByInByAssetType, filterByInByStatus, filterByInByPriority, currentState, props}) => {
-    console.log(tmpdata)
-    console.log(searchTerm)
     switch (currentState) {
         case "emergencyWO":
             if(searchTermIn.length>0 && searchByIn<=1) {

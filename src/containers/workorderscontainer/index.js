@@ -245,7 +245,7 @@ class WorkOrdersBuilder extends Component {
         //console.log(userData.userdata.user)
         //userId = userData.userdata.user.user_id     
         //Next line it's to develop in local     
-        userId = "2146"
+        userId = "2152"
         this.setState({ 
             firstLoading: true
         })
@@ -351,11 +351,11 @@ class WorkOrdersBuilder extends Component {
                 currentState,
                 props
             })
-            let datostest
             testing.then(res => {
-                datostest = res
+                console.log(res)
+                tmpdata = res
             })
-            console.log(datostest)
+            console.log(tmpdata)
             const handleId = async(dtlsID) => {
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
