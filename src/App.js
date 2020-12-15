@@ -47,8 +47,14 @@ const App = () => {
 
   const IdleTimerComponent = () => {
     const idleTimerRef = useRef(null)
+    //let wo_session
     const handleOnActive = (event) => {
       console.log('user is active', event)
+      //wo_session = localStorage.getItem("session_wo");
+      //console.log("handleOnActive", wo_session)
+      if(idleUpdate !== false){
+        onIdle()
+      }
     }     
     const onIdle = () => {
         console.log("User inactive for 1000 seconds!")
@@ -60,11 +66,9 @@ const App = () => {
           //setUserRole(payloadData.user.role_id);
           //Next line it's to develop in local 
           setUserStatus("success"); 
-          /*
-          localStorage.setItem("session_wo", "success");    
-          const test = localStorage.getItem("session_wo");
-          console.log(test)
-          */
+          //localStorage.setItem("session_wo", "success");    
+          //wo_session = localStorage.getItem("session_wo");
+          //console.log("onIdle", wo_session)
         })        
     }
     
