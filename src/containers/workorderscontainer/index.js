@@ -174,6 +174,20 @@ class WorkOrdersBuilder extends Component {
         }, this.handleChangeStateFilterByPriority(value))        
     }
 
+    handleChangeStateFilterClearAll = () => {
+        filterByPriority = 1;
+        filterByStatus = 1;
+        filterByAssetType = 1; 
+    }
+
+    handleFilterClearAll = (event) => {
+        this.setState({
+            filterByAssetType: 1,
+            filterByStatus: 1,
+            filterByPriority: 1,
+        }, this.handleChangeStateFilterClearAll()) 
+    }
+
     handleChangeNoteInput = (value) => {
         noteDescription = value;
         console.log("description", noteDescription)
@@ -265,6 +279,32 @@ class WorkOrdersBuilder extends Component {
         }
         
     }
+
+    // sortByDate = (a, b) => {
+    //     a = new Date(a.createdAt)
+    //     b = new Date(b.createdAt)
+    //     return b - a
+    // }
+
+    // sortOrderNotesByDate = () => {
+    //     let data = notesdata.data;
+    //     let workOrderNotes = [];
+    //     let proposalNotes = [];
+    //     let invoiceNotes = [];
+    //     if(!!notesdata.data.workOrderNotes) {
+    //         workOrderNotes = notesdata.data.workOrderNotes.sort(this.sortByDate)
+    //         data = {...data, workOrderNotes: workOrderNotes}
+    //     }
+    //     if(!!notesdata.data.proposalNotes) {
+    //         proposalNotes = notesdata.data.proposalNotes.sort(this.sortByDate)
+    //         data = {...data, proposalNotes: proposalNotes}
+    //     }
+    //     if(!!notesdata.data.invoiceNotes) {
+    //         invoiceNotes = notesdata.data.invoiceNotes.sort(this.sortByDate);
+    //         data = {...data, invoiceNotes: invoiceNotes}
+    //     }
+    //     notesdata = {...notesdata, data}
+    // }
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
@@ -287,6 +327,7 @@ class WorkOrdersBuilder extends Component {
         historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
+        // this.sortOrderNotesByDate()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
         this.setState({ firstLoading: false })
@@ -306,6 +347,7 @@ class WorkOrdersBuilder extends Component {
         dtlsID = id
         detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
         notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+        // this.sortOrderNotesByDate()
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
         historydata = await this.props.fetchHistoryWOData(dtlsID, token)
         warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
@@ -347,7 +389,7 @@ class WorkOrdersBuilder extends Component {
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
-            prevState.searchTerm !== this.state.searchTerm ||
+            prevState.searchTerm !== this.state.searchTerm && this.state.searchTerm.length > 3 ||
             prevState.searchBy !== this.state.searchBy ||
             prevState.filterByAssetType !== this.state.filterByAssetType ||
             prevState.filterByStatus !== this.state.filterByStatus ||
@@ -944,6 +986,7 @@ class WorkOrdersBuilder extends Component {
             const handleId = async(dtlsID) => {
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                // this.sortOrderNotesByDate()
                 attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
                 historydata = await this.props.fetchHistoryWOData(dtlsID, token)
                 warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
@@ -1023,6 +1066,7 @@ class WorkOrdersBuilder extends Component {
             handleFilterByAssetType: this.handleFilterByAssetType,
             handleFilterByStatus: this.handleFilterByStatus,
             handleFilterByPriority: this.handleFilterByPriority,
+            handleFilterClearAll: this.handleFilterClearAll,
             createNoteWOData: this.createNoteWOData,
             updateWOStatus: this.updateWOStatus,
             handleNoteInput: this.handleNoteInput,

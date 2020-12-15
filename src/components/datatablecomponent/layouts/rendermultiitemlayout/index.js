@@ -10,7 +10,7 @@ import React from "react";
 export const renderMultiItem = ({getExtraKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, change}) => {
     let assetWorkOrder = item?item['workOrderId']:null
     let __getServiceProvider_index = item?item[getServiceProvider_index]:null
-    let getServiceProviderDef = __getServiceProvider_index?__getServiceProvider_index.getServiceProvider:null
+    let getServiceProviderDef = __getServiceProvider_index?__getServiceProvider_index[getServiceProvider]:null
     return (
         <div id={assetWorkOrder} onClick={change} className={'dtableCols'}>
             <strong>{getExtraKey!==false?(checkItem!==null?checkItem:assetWorkOrder):null}</strong><br/>

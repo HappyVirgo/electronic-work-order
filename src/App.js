@@ -21,7 +21,7 @@ const App = () => {
   }   
   //const [isLoading, setLoading] = useState(true);
   //Next line it's to develop in local   
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState();
   const [userStatus, setUserStatus] = useState();
   const [idleUpdate, setIdleUpdate] = useState(false);

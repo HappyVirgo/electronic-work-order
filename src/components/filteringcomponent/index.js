@@ -12,6 +12,9 @@ import React, {useContext} from 'react';
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, MenuItem, Grid } from '@material-ui/core';
+import ClearAllIcon from '@material-ui/icons/ClearAll';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 
 //Context
 import { GlobalContext } from "../../context/globalcontext";
@@ -25,7 +28,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     filter: {
-        width: "32%",
+        width: "30%",
         textAlign: 'center',
         // padding: '5px',
         padding: '0px',
@@ -59,6 +62,7 @@ const FilteringComponent = ({tmpdata}) => {
     const funcFilterByAssetType = filterFunc.handleFilterByAssetType 
     const funcFilterByStatus = filterFunc.handleFilterByStatus
     const funcFilterByPriority = filterFunc.handleFilterByPriority
+    const funcFilterClearAll = filterFunc.handleFilterClearAll
     //Default values for selects inputs
     const filterByStateAssetType = filterFunc.filterByStateAssetType
     const filterByStateStatus = filterFunc.filterByStateStatus
@@ -79,6 +83,7 @@ const FilteringComponent = ({tmpdata}) => {
                     onChange={funcFilterByAssetType} 
                     value={filterByStateAssetType}
                     className={classes.eachFilter}
+                    renderValue={(value) => { if(value && value !== 1) { return value} else {return 'Filter: Asset Type'} }}
                     inputProps={{
                         classes: {
                             icon: classes.icon,
@@ -91,7 +96,8 @@ const FilteringComponent = ({tmpdata}) => {
                         elevation: 0,
                     }}
                 >
-                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    <MenuItem className={classes.menuItem} value="" disabled><b>Asset Type:</b></MenuItem>
+                    <MenuItem value={1}>Reset Filter</MenuItem>                    
                     {filterDataAssetType.map((item, index) => {
                         return (
                             <MenuItem 
@@ -108,6 +114,7 @@ const FilteringComponent = ({tmpdata}) => {
                     labelId="filter-2-filled-label"
                     id="filter-2-filled-label"
                     onChange={funcFilterByStatus} 
+                    renderValue={(value) => { if(value && value !== 1) { return value} else {return 'Filter: Status'} }}
                     value={filterByStateStatus}
                     className={classes.eachFilter}
                     inputProps={{
@@ -122,7 +129,8 @@ const FilteringComponent = ({tmpdata}) => {
                         elevation: 0,
                     }}
                 >
-                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    <MenuItem className={classes.menuItem} value="" disabled><b>Status:</b></MenuItem>
+                    <MenuItem value={1}>Reset Filter</MenuItem>                    
                     {filterDataStatus.map((item, index) => {
                         return (
                             <MenuItem 
@@ -140,6 +148,7 @@ const FilteringComponent = ({tmpdata}) => {
                     id="filter-3-filled-label"
                     onChange={funcFilterByPriority} 
                     value={filterByStatePriority}
+                    renderValue={(value) => { if(value && value !== 1) { return value} else {return 'Filter: Priority'} }}
                     className={classes.eachFilter}
                     inputProps={{
                         classes: {
@@ -153,7 +162,8 @@ const FilteringComponent = ({tmpdata}) => {
                         elevation: 0,
                     }}
                 >
-                    <MenuItem value={1}>Default Filter</MenuItem>                    
+                    <MenuItem className={classes.menuItem} value="" disabled><b>Priority:</b></MenuItem>
+                    <MenuItem value={1}>Reset Filter</MenuItem>                    
                     {filterDataPriority.map((item, index) => {
                         return (
                             <MenuItem 
@@ -164,7 +174,12 @@ const FilteringComponent = ({tmpdata}) => {
                     })}
                     
                 </Select>
-            </FormControl>                         
+            </FormControl>
+            <Tooltip title="Clear Filters" aria-label="clear">
+                <IconButton component="span" style={{padding:0}} onClick={funcFilterClearAll}>
+                    <ClearAllIcon fontSize="large" color="action"  />               
+                </IconButton>
+            </Tooltip>
         </Grid>
     );
 };
