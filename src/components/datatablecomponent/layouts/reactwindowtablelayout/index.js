@@ -26,7 +26,7 @@ import {
 
 //Constants
 // const ROW_SIZE = 150;
-const ROW_SIZE = 120;
+const ROW_SIZE = 140;
 
 const useTableStyles = makeStyles(theme => ({
     root: {
@@ -41,7 +41,7 @@ const useTableStyles = makeStyles(theme => ({
     tbody: {
         width: "100%",
         maxWidth: "100%",
-        height: "80vw",
+        height: "100%",
     },
     row: {
         display: "flex",
@@ -96,11 +96,11 @@ export const ReactWindowTable = ({ data, columns, firstLoading }) => {
             {
                 firstLoading?(
                     <>
-                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
-                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
-                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
-                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
-                        <Skeleton variant="rect" height="18%" style={{margin: '20px'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
+                        <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
                     </>
                     ):(
                     <AutoSizer>
