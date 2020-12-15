@@ -28,7 +28,10 @@ const App = () => {
 
   //First check
   useEffect(() => {
-    axios.get(apiUsers)
+    setUserStatus("success");
+    setUserRole("3");
+    setLoading(false); 
+    /*axios.get(apiUsers)
     .then(res => {
       //const payloadData = res.data;
       //console.log(payloadData)
@@ -37,19 +40,19 @@ const App = () => {
       setUserStatus("success");
       setUserRole("3");
       setLoading(false); 
-      /*
-      localStorage.setItem("session_wo", "success");    
-      const test = localStorage.getItem("session_wo");
-      console.log(test)
-      */
-    })
+      
+      //localStorage.setItem("session_wo", "success");    
+      //const test = localStorage.getItem("session_wo");
+      //console.log(test)
+      
+    })*/
   }, [idleUpdate]);
 
   const IdleTimerComponent = () => {
     const idleTimerRef = useRef(null)
     //let wo_session
     const handleOnActive = (event) => {
-      console.log('user is active', event)
+      //console.log('user is active', event)
       //wo_session = localStorage.getItem("session_wo");
       //console.log("handleOnActive", wo_session)
       if(idleUpdate !== false){
