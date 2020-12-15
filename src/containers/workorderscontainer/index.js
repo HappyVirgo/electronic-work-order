@@ -546,11 +546,10 @@ class WorkOrdersBuilder extends Component {
                         }                                              
                     }else if(searchTermIn.length === 0) {
                         tmpdata = await this.props.fetchEmergencyWOData()
-                        console.log("here")
                     }                
                     break; 
                 case "pendingWO":
-                if(searchTermIn.length>0 && searchByIn<=1) {
+                if(searchTermIn.length>3 && searchByIn<=1) {
                     let tmp = await this.props.fetchPendingWOData()
                     let dataSearch = tmp.data?tmp.data.work_orders:[]
                     if(filterByInByAssetType.length>0){
@@ -580,7 +579,7 @@ class WorkOrdersBuilder extends Component {
                             }
                         } 
                     }
-                }else if(searchTermIn.length>0 && searchByIn>1){
+                }else if(searchTermIn.length>3 && searchByIn>1){
                     let tmp = await this.props.fetchSearchData()
                     let dataSearched = tmp.data?tmp.data.work_orders:[]                        
                     if(filterByInByPriority.length>0) {
@@ -693,7 +692,7 @@ class WorkOrdersBuilder extends Component {
                 }                
                 break;                   
                 case "assignedWO":
-                if(searchTermIn.length>0 && searchByIn<=1) {
+                if(searchTermIn.length>3 && searchByIn<=1) {
                     let tmp = await this.props.fetchAssignedToMeWOData()
                     let dataSearch = tmp.data?tmp.data.work_orders:[]
                     if(filterByInByAssetType.length>0){
@@ -723,7 +722,7 @@ class WorkOrdersBuilder extends Component {
                             }
                         } 
                     }
-                }else if(searchTermIn.length>0 && searchByIn>1){
+                }else if(searchTermIn.length>3 && searchByIn>1){
                     let tmp = await this.props.fetchSearchData()
                     let dataSearched = tmp.data?tmp.data.work_orders:[]                        
                     if(filterByInByPriority.length>0) {
@@ -836,7 +835,7 @@ class WorkOrdersBuilder extends Component {
                 }                
                 break; 
                 case "unassignedWO":
-                if(searchTermIn.length>0 && searchByIn<=1) {
+                if(searchTermIn.length>3 && searchByIn<=1) {
                     let tmp = await this.props.fetchUnassignedWOData()
                     let dataSearch = tmp.data?tmp.data.work_orders:[]
                     if(filterByInByAssetType.length>0){
@@ -866,7 +865,7 @@ class WorkOrdersBuilder extends Component {
                             }
                         } 
                     }
-                }else if(searchTermIn.length>0 && searchByIn>1){
+                }else if(searchTermIn.length>3 && searchByIn>1){
                     let tmp = await this.props.fetchSearchData()
                     let dataSearched = tmp.data?tmp.data.work_orders:[]                        
                     if(filterByInByPriority.length>0) {
