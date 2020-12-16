@@ -89,6 +89,7 @@ const useStyles = makeStyles(theme => ({
 
 
 const DataTableComponent = ({tmpdata, loading, firstLoading}) => {
+  //const loading = true
   console.log("loading:", loading)
   console.log("firstLoading:", firstLoading)
   const classes = useStyles();
