@@ -20,7 +20,7 @@ import {
 // const ROW_SIZE = 140;
 //Building rows
 
-export const Row = ({ index, style, data: { columns, items, classes, span } }) => {
+export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
     let woitemID = item?item.workOrderId:""
     let change = useContext(GlobalContext)
@@ -77,7 +77,7 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
     )
     return (
         <>
-        {span}
+        {/* {span} */}
         {item?Body:BodyEmpty}
         </>
     );
