@@ -340,7 +340,7 @@ class WorkOrdersBuilder extends Component {
             }        
             //Set/Search/Filter data for DataTable Component
             console.log(tmpdata)
-            let testing = setSearchFilterHelper({
+            let incomingData = setSearchFilterHelper({
                 tmpdata,
                 searchTerm,
                 searchTermIn,
@@ -351,7 +351,7 @@ class WorkOrdersBuilder extends Component {
                 currentState,
                 props
             })
-            testing.then(res => {
+            incomingData.then(res => {
                 console.log(res)
                 tmpdata = res
             })

@@ -1,6 +1,11 @@
 
 export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, searchByIn, filterByInByAssetType, filterByInByStatus, filterByInByPriority, currentState, props}) => {
     switch (currentState) {
+        /**
+         * All "term" arrays elements should be modified in order
+         * to work with the new APIs
+         */
+        //Each case should be the CTA id
         case "emergencyWO":
             if(searchTermIn.length>0 && searchByIn<=1) {
                 let tmp = await props.fetchEmergencyWOData()
