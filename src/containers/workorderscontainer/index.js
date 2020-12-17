@@ -38,6 +38,11 @@ import {
     updateWOStatus,
 } from '../../actions';
 
+//Faker.js data
+import {
+    fetchAssignedToMeWODataTEST
+} from '../../faker'
+
 //Context
 import { GlobalContext } from '../../context/globalcontext'
 
@@ -241,6 +246,8 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
+        let dataTest = fetchAssignedToMeWODataTEST()
+        console.log(dataTest)
         //userData = await this.props.fetchUsersInformation()
         //console.log(userData.userdata.user)
         //userId = userData.userdata.user.user_id     
