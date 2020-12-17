@@ -429,7 +429,8 @@ class WorkOrdersBuilder extends Component {
                                 }
                             }                            
                         } else {
-                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
+                            console.log(dataSearched)
                             tmpdata = {
                                 data: {
                                     work_orders: dataSearched
@@ -572,7 +573,7 @@ class WorkOrdersBuilder extends Component {
                             }
                         }                            
                     } else {
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                         tmpdata = {
                             data: {
                                 work_orders: dataSearched
@@ -715,7 +716,7 @@ class WorkOrdersBuilder extends Component {
                             }
                         }                            
                     } else {
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                         tmpdata = {
                             data: {
                                 work_orders: dataSearched
@@ -858,7 +859,7 @@ class WorkOrdersBuilder extends Component {
                             }
                         }                            
                     } else {
-                        let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                        let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                         tmpdata = {
                             data: {
                                 work_orders: dataSearched
