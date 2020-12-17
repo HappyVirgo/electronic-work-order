@@ -6,7 +6,7 @@ export const fetchEmergencyWODataTEST = () => {
             work_orders: []
         }
 
-    for (let id=1; id <= 10; id++) {
+    for (let id=1; id <= 100; id++) {
 
     let description = faker.lorem.paragraph();
     let number = faker.random.number();

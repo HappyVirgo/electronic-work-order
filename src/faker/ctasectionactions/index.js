@@ -1,39 +1,13 @@
-/**
- * Description: Create CTA components
- * Author: Carlos Blanco
- * Created: 8/31/2020
- * Ticket: ET-242
- */
-//Basic imports
-import * as types from '../../constants';
-import { apiCTA } from '../../api/';
+export const fetchCTAsDataTEST = () => {
 
-export const receiveCTAsData = (data) => {
-    return {
-        type: types.RECEIVE_CTA_DATA,
-        data: data
-    };
-}
-
-export const fetchCTAsData =  async (token, userId) => {
-    const ctaURL = "/landing"
-    const accessFetchToken = (tk) => {
-        return tk.data
+    let data = {
+        assignedToMeWorkOrders: 10,
+        emergencyWorkOrders: 10,
+        expiredWorkOrders: 10,
+        pendingWorkOrders: 10,
+        unassignedWorkOrders: 10
     }
-    const accessFetchUserId = (id) => {
-        return id
-    }    
-    let accessToken = await accessFetchToken(token)
-    let accessUserId = await accessFetchUserId(userId)
-    let init = { 
-        headers: {
-            Authorization: 'Bearer ' + accessToken,
-            'Content-Type': 'application/json',
-        } 
-    }  
-    return dispatch => {
-        return fetch(apiCTA+accessUserId+ctaURL, init)
-            .then(response => response.json())
-            .then(json => dispatch(receiveCTAsData(json)));
-    };   
+
+
+return { "data": data }
 }

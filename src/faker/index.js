@@ -5,7 +5,7 @@ import {
 
 //CTAs Components
 import {
-    fetchCTAsData,
+    fetchCTAsDataTEST,
 } from './ctasectionactions'
 
 import {
@@ -64,7 +64,7 @@ import {
 export {
     oauthFetchToken,
     fetchUsersInformation, 
-    fetchCTAsData,
+    fetchCTAsDataTEST,
     fetchSearchData,
     fetchEmergencyWODataTEST,
     fetchPendingWOData,

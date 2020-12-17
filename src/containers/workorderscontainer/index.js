@@ -40,7 +40,7 @@ import {
 
 //Faker.js data
 import {
-    fetchAssignedToMeWODataTEST,
+    fetchCTAsDataTEST,
     fetchEmergencyWODataTEST
 } from '../../faker'
 
@@ -255,7 +255,9 @@ class WorkOrdersBuilder extends Component {
         this.setState({ 
             firstLoading: true
         })
-        ctadata = await this.props.fetchCTAsData()
+        //ctadata = await this.props.fetchCTAsData()
+        ctadata = fetchCTAsDataTEST()
+        console.log(ctadata)
         //tmpdata = await this.props.fetchEmergencyWOData()  
         tmpdata = fetchEmergencyWODataTEST()
         console.log(tmpdata)
