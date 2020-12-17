@@ -1080,7 +1080,7 @@ class WorkOrdersBuilder extends Component {
             <GlobalContext.Provider value={globalState}>
                 <div className="work-orders-container">
                     <Alert severity="warning">
-                        <Link href="https://radstuff.ecotrak.com/admin/WorkOrders" target="_blank" rel="noopener" color="inherit">
+                        <Link href="/admin/WorkOrders" target="_blank" rel="noopener" color="inherit">
                             <i>Missing Something? Go to the Old Version</i>
                         </Link>
                     </Alert>
