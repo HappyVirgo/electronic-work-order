@@ -1,7 +1,7 @@
 //Faker.js data
 import {
     fetchAssignedToMeWODataTEST,
-    fetchEmergencyWODataTEST
+    fetchEmergencyWODataTEST,
 } from '../../faker'
 
 export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, searchByIn, filterByInByAssetType, filterByInByStatus, filterByInByPriority, currentState, props}) => {
