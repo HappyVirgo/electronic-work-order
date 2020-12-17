@@ -1,3 +1,8 @@
+//Faker.js data
+import {
+    fetchAssignedToMeWODataTEST,
+    fetchEmergencyWODataTEST
+} from '../../faker'
 
 export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, searchByIn, filterByInByAssetType, filterByInByStatus, filterByInByPriority, currentState, props}) => {
     switch (currentState) {
@@ -8,7 +13,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
         //Each case should be the CTA id
         case "emergencyWO":
             if(searchTermIn.length>0 && searchByIn<=1) {
-                let tmp = await props.fetchEmergencyWOData()
+                let tmp = fetchEmergencyWODataTEST()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 if(filterByInByAssetType.length>0){
                     let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
@@ -75,7 +80,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }                        
             //Default filter by asset type without search                        
             }else if(filterByInByAssetType.length>0) {
-                let tmp = await props.fetchEmergencyWOData()
+                let tmp = fetchEmergencyWODataTEST()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 let dataSearched = dataSearch.filter(term => {
                     let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
@@ -99,7 +104,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }
             //Default filter by status without search   
             }else if(filterByInByStatus.length>0) {
-                let tmp = await props.fetchEmergencyWOData()
+                let tmp = fetchEmergencyWODataTEST()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 let dataSearched = dataSearch.filter(term => {
                     let notNull = term['status']!==null?term['status']['description']:""
@@ -123,7 +128,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }  
             //Default filter by priority without search   
             }else if(filterByInByPriority.length>0) {
-                let tmp = await props.fetchEmergencyWOData()
+                let tmp = fetchEmergencyWODataTEST()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 let dataSearched = dataSearch.filter(term => {
                     let notNull = term['priority']!==null?term['priority']['description']:""
@@ -146,7 +151,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                     }
                 }                                              
             }else {
-                tmpdata = await props.fetchEmergencyWOData()
+                tmpdata = fetchEmergencyWODataTEST()
             }                
             break; 
         case "pendingWO":
@@ -294,7 +299,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
         break;                   
         case "assignedWO":
         if(searchTermIn.length>0 && searchByIn<=1) {
-            let tmp = await props.fetchAssignedToMeWOData()
+            let tmp = fetchAssignedToMeWODataTEST()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             if(filterByInByAssetType.length>0){
                 let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
@@ -361,7 +366,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
             }                        
         //Default filter by asset type without search                        
         }else if(filterByInByAssetType.length>0) {
-            let tmp = await props.fetchAssignedToMeWOData()
+            let tmp = fetchAssignedToMeWODataTEST()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             let dataSearched = dataSearch.filter(term => {
                 let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
@@ -385,7 +390,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
             }
         //Default filter by status without search   
         }else if(filterByInByStatus.length>0) {
-            let tmp = await props.fetchAssignedToMeWOData()
+            let tmp = fetchAssignedToMeWODataTEST()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             let dataSearched = dataSearch.filter(term => {
                 let notNull = term['status']!==null?term['status']['description']:""
@@ -409,7 +414,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
             }  
         //Default filter by priority without search   
         }else if(filterByInByPriority.length>0) {
-            let tmp = await props.fetchAssignedToMeWOData()
+            let tmp = fetchAssignedToMeWODataTEST()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             let dataSearched = dataSearch.filter(term => {
                 let notNull = term['priority']!==null?term['priority']['description']:""
@@ -432,7 +437,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }
             }                                              
         }else {
-            tmpdata = await props.fetchAssignedToMeWOData()
+            tmpdata = fetchAssignedToMeWODataTEST()
         }                
         break; 
         case "unassignedWO":
@@ -579,7 +584,8 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
         }                
         break;                                                       
         default:
-            tmpdata = await props.fetchEmergencyWOData()
+            //tmpdata = fetchEmergencyWODataTEST()
+            tmpdata = fetchEmergencyWODataTEST()
         break;
     }
     return tmpdata;

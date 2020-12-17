@@ -40,7 +40,8 @@ import {
 
 //Faker.js data
 import {
-    fetchAssignedToMeWODataTEST
+    fetchAssignedToMeWODataTEST,
+    fetchEmergencyWODataTEST
 } from '../../faker'
 
 //Context
@@ -246,8 +247,6 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
-        let dataTest = fetchAssignedToMeWODataTEST()
-        console.log(dataTest)
         //userData = await this.props.fetchUsersInformation()
         //console.log(userData.userdata.user)
         //userId = userData.userdata.user.user_id     
@@ -257,7 +256,9 @@ class WorkOrdersBuilder extends Component {
             firstLoading: true
         })
         ctadata = await this.props.fetchCTAsData()
-        tmpdata = await this.props.fetchEmergencyWOData()  
+        //tmpdata = await this.props.fetchEmergencyWOData()  
+        tmpdata = fetchEmergencyWODataTEST()
+        console.log(tmpdata)
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
             this.setState({
@@ -346,7 +347,6 @@ class WorkOrdersBuilder extends Component {
                 })
             }        
             //Set/Search/Filter data for DataTable Component
-            console.log(tmpdata)
             let incomingData = setSearchFilterHelper({
                 tmpdata,
                 searchTerm,
@@ -362,7 +362,6 @@ class WorkOrdersBuilder extends Component {
                 console.log(res)
                 tmpdata = res
             })
-            console.log(tmpdata)
             const handleId = async(dtlsID) => {
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)

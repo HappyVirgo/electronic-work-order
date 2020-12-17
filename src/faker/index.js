@@ -9,7 +9,7 @@ import {
 } from './ctasectionactions'
 
 import {
-    fetchEmergencyWOData,
+    fetchEmergencyWODataTEST,
 } from './emercencyworkordersactions'
 
 import {
@@ -66,7 +66,7 @@ export {
     fetchUsersInformation, 
     fetchCTAsData,
     fetchSearchData,
-    fetchEmergencyWOData,
+    fetchEmergencyWODataTEST,
     fetchPendingWOData,
     fetchDetailsWOData,
     updateWOStatus,
