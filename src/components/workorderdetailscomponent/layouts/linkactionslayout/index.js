@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const api_url = "https://radstuff.ecotrak.com/admin/";
+const api_url = "/admin/";
 
 export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
     const classes = useStyles()
