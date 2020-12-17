@@ -308,11 +308,11 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
-        //userData = await this.props.fetchUsersInformation()
-        //console.log(userData.userdata.user)
-        //userId = userData.userdata.user.user_id     
+        userData = await this.props.fetchUsersInformation()
+        console.log(userData.userdata.user)
+        userId = userData.userdata.user.user_id     
         //Next line it's to develop in local     
-        userId = "2152"
+        //userId = "2152"
         this.setState({ 
             firstLoading: true
         })
