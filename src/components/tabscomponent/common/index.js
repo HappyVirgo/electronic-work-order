@@ -179,7 +179,7 @@ const CommonTable = ({tmpdata, infotab}) => {
                 let notes = pre_notes.concat(inv_notes)
                 notes = notes.sort(sortByDate)
                 dataSetup = notes
-                console.log("data", dataSetup)
+                //console.log("data", dataSetup)
                 columns = columnsNotes
             }       
             setData(dataSetup) 
