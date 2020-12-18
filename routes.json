@@ -2,5 +2,6 @@
     "/workorders/user/2152/pending": "/pending",
     "/workorders/user/2152/emergency": "/emergency",
     "/workorders/user/2152/assigned": "/assigned",
-    "/workorders/user/2152/unassigned": "/unassigned"
+    "/workorders/user/2152/unassigned": "/unassigned",
+    "/workorders/320496/": "/320496"
 }
