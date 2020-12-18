@@ -30,7 +30,6 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                     }                            
                 } else {
                     let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
-                    console.log(dataSearched)
                     tmpdata = {
                         data: {
                             work_orders: dataSearched
