@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const advancedSearchFields = ["Default Search", "Service Provider" ,"Asset Type", "Problem Type", "Trade Type"]
+const advancedSearchFields = ["Work Order ID", "Service Provider" ,"Asset Type", "Problem Type", "Trade Type"]
 
 const AdvancedSearchComponent = () => {
     const [searchBox, setSearchBox] = useState(false);
@@ -94,7 +94,7 @@ const AdvancedSearchComponent = () => {
             </FormControl>
             <FormControl className={classes.search}>           
                 <TextField 
-                    placeholder="Search Work Orders..."
+                    placeholder={`Search by ${advancedSearchFields[searchByState-1]}...`}
                     id="search-input-filled-label"
                     aria-describedby="search" 
                     type="search" 

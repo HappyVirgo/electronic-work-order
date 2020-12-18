@@ -89,7 +89,9 @@ const useStyles = makeStyles(theme => ({
 
 
 const DataTableComponent = ({tmpdata, loading, firstLoading}) => {
+  
   const classes = useStyles();
+  console.log(classes)
   //Set state with data
   const [data, setData] = useState([]);
     //Getting the data

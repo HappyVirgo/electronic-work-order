@@ -28,24 +28,28 @@ const App = () => {
 
   //First check
   useEffect(() => {
-    setUserStatus("success");
-    setUserRole("3");
-    setLoading(false); 
-    /*axios.get(apiUsers)
+    //setUserStatus("success");
+    //setUserRole("3");
+    //setLoading(false); 
+    axios.get(apiUsers)
     .then(res => {
       //const payloadData = res.data;
       //console.log(payloadData)
-      //setUserRole(payloadData.user.role_id);
-      //Next line it's to develop in local 
-      setUserStatus("success");
+      /*
+      setUserRole(payloadData.user.role_id);
+      setUserStatus(payloadData.status);
+      setLoading(false);
+      */ 
+
       setUserRole("3");
-      setLoading(false); 
+      setUserStatus("success");
+      setLoading(false);      
       
       //localStorage.setItem("session_wo", "success");    
       //const test = localStorage.getItem("session_wo");
       //console.log(test)
       
-    })*/
+    })
   }, [idleUpdate]);
 
   const IdleTimerComponent = () => {
@@ -60,7 +64,7 @@ const App = () => {
       }
     }     
     const onIdle = () => {
-        console.log("User inactive for 1000 seconds!")
+        console.log("User idle!")
         setIdleUpdate(true)
         axios.get(apiUsers)
         .then(res => {
@@ -68,7 +72,7 @@ const App = () => {
           //console.log(payloadData)
           //setUserRole(payloadData.user.role_id);
           //Next line it's to develop in local 
-          setUserStatus("success"); 
+          //setUserStatus("success"); 
           //localStorage.setItem("session_wo", "success");    
           //wo_session = localStorage.getItem("session_wo");
           //console.log("onIdle", wo_session)
@@ -79,7 +83,7 @@ const App = () => {
         <div>
             <IdleTimer 
                 ref={idleTimerRef}
-                timeout={1000 * 1000}
+                timeout={10000 * 1000}
                 onIdle={onIdle}
                 onAction={handleOnActive}
             />
