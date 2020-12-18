@@ -35,9 +35,15 @@ const App = () => {
     .then(res => {
       const payloadData = res.data;
       //console.log(payloadData)
+      /*
       setUserRole(payloadData.user.role_id);
       setUserStatus(payloadData.status);
-      setLoading(false); 
+      setLoading(false);
+      */ 
+
+      setUserRole("3");
+      setUserStatus("success");
+      setLoading(false);      
       
       //localStorage.setItem("session_wo", "success");    
       //const test = localStorage.getItem("session_wo");
