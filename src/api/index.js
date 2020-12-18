@@ -9,7 +9,8 @@ export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/"
 export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Pending WorkOrders
-export const apiPendingWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+//export const apiPendingWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+export const apiPendingWO = "https://localhost:3000/workorders/user/"
 
 //Details WorkOrders
 export const apiDetailsWO = "https://api.ecotrak.com/stagev1/workorders/"
