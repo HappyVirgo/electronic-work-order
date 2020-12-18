@@ -1,4 +1,1067 @@
 {
+    "121563": {
+        "work_order": {
+            "id": 121563,
+            "title": null,
+            "customerId": "2146",
+            "description": "The ice maker is not making ice ",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-01-15T19:38:41.000+0000",
+            "requestedBy": "Tawfic Chakkou",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 4028,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Refrigeration - Ice Machine",
+            "assetTypeName": "Ice Machines",
+            "requestedInvoice": false,
+            "dateCreated": "2020-01-15T15:38:41.000+0000",
+            "dateUpdated": "2020-01-30T21:45:24.000+0000",
+            "updatedBy": "4028",
+            "createdBy": "9038",
+            "completedBy": 4028,
+            "spToken": "3534ed9379b6caf5e100a3cf7beef238",
+            "spTokenTime": "2020-01-30T21:45:24.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 2778,
+                "name": "BWW 0308 - Cerritos, CA",
+                "store_number": "0308",
+                "phone1": "5628659464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "11255 E 183rd St",
+                "address2": "",
+                "address3": "",
+                "city": "Cerritos",
+                "state": "California",
+                "zip": "90703"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 252985,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 120946,
+                        "fileName": "120946_1558547282image1.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": {
+                    "userProfileId": 323,
+                    "userId": 340,
+                    "companyName": "Ice-O-Matic",
+                    "firstName": "Ice-O-Matic",
+                    "lastName": ""
+                },
+                "id": 120946,
+                "name": "  Ice Machine  **Scheduled for 2021 PMO Replacement**",
+                "description": null,
+                "description2": null,
+                "customerId": 2146,
+                "modelNumber": "VRC5061B",
+                "serialNumber": "11071280010037",
+                "assetTypeId": 29,
+                "locationId": 2778,
+                "warrantyExpiryDate": "2016-10-01T00:00:00.000+0000",
+                "warrantyAvailable": false
+            },
+            "assetType": {
+                "id": 29,
+                "name": "Ice Machines"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 106,
+                "name": "No Ice"
+            },
+            "priority": {
+                "id": 2,
+                "name": "L1 - Emergency",
+                "eta": {
+                    "etaId": 5,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 4,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:38:00.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "ACCEPTED",
+            "notes": [
+                {
+                    "id": 73282,
+                    "userId": 2146,
+                    "description": "Hi Jeff, \r\nThey said we need a new ice machine. Please approve\r\n",
+                    "type": 1,
+                    "workOrderId": 121563,
+                    "customerIds": "2152",
+                    "serviceProviderIds": null,
+                    "createdBy": 9038,
+                    "createdDate": "2020-01-17T00:13:37.000+0000",
+                    "updatedDate": "2020-01-17T00:13:37.000+0000"
+                }
+            ],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 4004,
+                "userId": 4028,
+                "companyName": "Pro Refrigeration Inc.",
+                "firstName": "Jesus",
+                "lastName": "Anaya",
+                "phoneNumber": "909-620-1724"
+            },
+            "assignTo": {
+                "id": 1543,
+                "moduleId": 1,
+                "referenceId": 121563,
+                "assignTo": 2152,
+                "status": "1",
+                "roleId": "5",
+                "dateCreated": "2020-01-17T00:13:37.000+0000",
+                "dateUpdated": "2020-01-17T00:13:37.000+0000",
+                "user": {
+                    "userProfileId": 2129,
+                    "userId": 2152,
+                    "companyName": "Inspire Brands",
+                    "firstName": "Jeffrey",
+                    "lastName": "Seymour",
+                    "phoneNumber": ""
+                }
+            }
+        }
+    },
+    "153476": {
+        "work_order": {
+            "id": 153476,
+            "title": null,
+            "customerId": "2146",
+            "description": "Feb/May/Aug/Nov",
+            "nte": 463.15,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-02-01T07:00:00.000+0000",
+            "requestedBy": "Administrator",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "PMS",
+            "serviceProviderId": 0,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Kitchen Exhaust/Hood Cleaning, KEC",
+            "assetTypeName": "Hoods / Exhaust / Grease Duct",
+            "requestedInvoice": false,
+            "dateCreated": "2020-01-17T00:22:54.000+0000",
+            "dateUpdated": "2020-09-18T04:26:54.000+0000",
+            "updatedBy": "8818",
+            "createdBy": "2146",
+            "completedBy": null,
+            "spToken": "",
+            "spTokenTime": null,
+            "pmsId": 1805,
+            "location": {
+                "id": 2726,
+                "name": "BWW 0026 - Overland Park, KS - 105th & Metcalf",
+                "store_number": "0026",
+                "phone1": "9133419464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "7030 W 105th St",
+                "address2": "",
+                "address3": "",
+                "city": "Overland Park",
+                "state": "Kansas",
+                "zip": "66212"
+            },
+            "asset": null,
+            "assetType": {
+                "id": 27,
+                "name": "Hoods / Exhaust / Grease Duct"
+            },
+            "categoryType": {
+                "id": 2,
+                "name": "Maintenance"
+            },
+            "problemType": {
+                "id": 9412,
+                "name": "PM_ID 1805 - Kitchen Exhaust Cleaning (KEC)"
+            },
+            "priority": {
+                "id": 9,
+                "name": "L7 - 30 Days",
+                "eta": {
+                    "etaId": 7,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 1,
+                    "timePeriods": "Month",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:43:59.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "UNASSIGNED",
+            "notes": [
+                {
+                    "id": 124296,
+                    "userId": 6038,
+                    "description": "Other old , we have newer PO's to use",
+                    "type": 0,
+                    "workOrderId": 153476,
+                    "customerIds": null,
+                    "serviceProviderIds": null,
+                    "createdBy": 6038,
+                    "createdDate": "2020-05-20T16:04:14.000+0000",
+                    "updatedDate": "2020-05-20T16:04:14.000+0000"
+                },
+                {
+                    "id": 185911,
+                    "userId": 2146,
+                    "description": "Can we get this ticket closed out please?",
+                    "type": 1,
+                    "workOrderId": 153476,
+                    "customerIds": "[\"2152\"]",
+                    "serviceProviderIds": "",
+                    "createdBy": 8818,
+                    "createdDate": "2020-09-18T04:26:54.000+0000",
+                    "updatedDate": "2020-09-18T04:26:54.000+0000"
+                }
+            ],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 15036,
+                "userId": 0,
+                "companyName": null,
+                "firstName": "",
+                "lastName": "",
+                "phoneNumber": null
+            },
+            "assignTo": null
+        }
+    },
+    "168624": {
+        "work_order": {
+            "id": 168624,
+            "title": null,
+            "customerId": "2146",
+            "description": "not cooling",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": "android",
+            "deviceHistory": "46951f3667b655d88cfd22fa3ecf165c3d01bcc4",
+            "updatedEta": "",
+            "previousEta": "",
+            "currentEta": "2020-02-10T22:06:03.000+0000",
+            "requestedBy": "Beverly ",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 1481,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "HVAC",
+            "assetTypeName": "HVAC",
+            "requestedInvoice": false,
+            "dateCreated": "2020-02-10T18:21:40.000+0000",
+            "dateUpdated": "2020-03-02T23:52:30.000+0000",
+            "updatedBy": "2152",
+            "createdBy": "9138",
+            "completedBy": 17087,
+            "spToken": "92b492ce7b6334dcefd44a252b8311bd",
+            "spTokenTime": "2020-02-10T18:21:40.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 2903,
+                "name": "BWW 0420 - Sacramento, CA - Natomas",
+                "store_number": "0420",
+                "phone1": "9169285748",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "3600 N Freeway Blvd",
+                "address2": "",
+                "address3": "",
+                "city": "Sacramento",
+                "state": "California",
+                "zip": "95834"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 234169,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 112444,
+                        "fileName": "112444_1557869440image1.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": {
+                    "userProfileId": 340,
+                    "userId": 357,
+                    "companyName": "Lennox",
+                    "firstName": "Lennox",
+                    "lastName": ""
+                },
+                "id": 112444,
+                "name": "RTU 1 - Kitchen",
+                "description": null,
+                "description2": null,
+                "customerId": 2146,
+                "modelNumber": "LGH180H4MS3Y",
+                "serialNumber": "5617D04868",
+                "assetTypeId": 28,
+                "locationId": 2903,
+                "warrantyExpiryDate": "2027-03-30T00:00:00.000+0000",
+                "warrantyAvailable": true
+            },
+            "assetType": {
+                "id": 28,
+                "name": "HVAC"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 112,
+                "name": "Not Cooling"
+            },
+            "priority": {
+                "id": 1,
+                "name": "L2 - Same Day",
+                "eta": {
+                    "etaId": 4,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 8,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:37:59.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [
+                {
+                    "invoiceId": 94222,
+                    "workOrderId": 168624,
+                    "invoiceNo": "199446",
+                    "invoiceSerial": 55209,
+                    "parts": null,
+                    "incurredCost": null,
+                    "labor": "298.50",
+                    "material": "0.00",
+                    "tax": null,
+                    "freight": null,
+                    "other": 75,
+                    "additionalNote": "nspected RTU #1 ( BOH )\r\nFound unit off due to not correct voltage to unit\r\nChecked wiring and components \r\nFound L2 Leg of power has a substantial drop in power @ RTU\r\nWent to Electrical panel checked voltage @ breaker - all 3 legs have 120v coming out - \r\nWas notified that a Electrical company came out already & tried tracing wire & unable to find the drop in voltage or bad wire - \r\nWire is ran under unit & not excess able unless you have unit craned up. \r\nI recommend to have Electrician run new wires from Panel thru roof line to a box on the outside of RTU then run flex line to unit to provide power to ensure all wiring is good & abandon old wiring due to not being able to pin point issue in wiring \r\nNotified Beverly of situation",
+                    "totalAmount": 373.5,
+                    "invoiceStatus": 18,
+                    "flagDeactive": "0",
+                    "document": null,
+                    "originator": 17087,
+                    "invoiceType": "I",
+                    "createdBy": "17087",
+                    "createdAt": "2020-02-21T17:50:46.000+0000",
+                    "approvedAt": null,
+                    "paidDate": null,
+                    "invoiceDate": "2020-02-21",
+                    "updatedAt": "2020-02-21T17:50:46.000+0000",
+                    "invoiceStatusDesc": {
+                        "statusId": 18,
+                        "description": "Rejected"
+                    }
+                }
+            ],
+            "workOrderStatus": "NOT_FIXED",
+            "notes": [
+                {
+                    "id": 94334,
+                    "userId": 2146,
+                    "description": "Team,\r\nAfter much back and forth MAS is aware of the exact issue and what needs to be done to make it right.  Mike at MAS and their team have agreed that it was a deficiency from the install of the unit 18 months ago and will repair it even though the warranty period from the install has expired.  They will communicate with you in the next day or so when they will get it taken care of.",
+                    "type": 2,
+                    "workOrderId": 168624,
+                    "customerIds": "[\"9138\",\"9449\",\"3611\"]",
+                    "serviceProviderIds": "[\"1481\"]",
+                    "createdBy": 2152,
+                    "createdDate": "2020-03-02T23:52:30.000+0000",
+                    "updatedDate": "2020-03-02T23:52:30.000+0000"
+                },
+                {
+                    "id": 93876,
+                    "userId": 2146,
+                    "description": "HELP! \n\nthis is now a life safty concern, my pregnant server said she almost fainted because of how hot it is in the kitchen.\nTwo months with a non operational AC unit is not acceptable.",
+                    "type": 2,
+                    "workOrderId": 168624,
+                    "customerIds": "[\"2152\",\"3611\",\"9138\",\"9449\"]",
+                    "serviceProviderIds": null,
+                    "createdBy": 9138,
+                    "createdDate": "2020-03-02T15:30:41.000+0000",
+                    "updatedDate": "2020-03-02T15:30:41.000+0000"
+                },
+                {
+                    "id": 85272,
+                    "userId": 2146,
+                    "description": "Burgarello Alarm has now been out to inspect there end of things, they said everything is fine on there end, just like SMUD (local electric company) and just like the electrician said. MAS doesn't think we need new wiring to the RTU 1. Please advise/help with the next steps from here. \nI informed MAS that while the electrician was here the heater was working but the AC will not cool to under 78 degrees even when set at 66 degrees.\nAt this point we have had MAS, SMUD, an electrician  and a fire alarm guy out here to look at an AC unit? HELP,\nThank you for your time,\nDan",
+                    "type": 2,
+                    "workOrderId": 168624,
+                    "customerIds": "[\"2152\",\"9449\"]",
+                    "serviceProviderIds": null,
+                    "createdBy": 9138,
+                    "createdDate": "2020-02-12T00:34:51.000+0000",
+                    "updatedDate": "2020-02-12T00:34:51.000+0000"
+                },
+                {
+                    "id": 234859,
+                    "userId": 2146,
+                    "description": "INVOICE REJECTED, ACTION REQUIRED   The invoice associated with this work order was rejected.  Please review the notes for an indication as to why the invoice was rejected, then work to resolve the issue in question.  IN ORDER TO RE-INVOICE you will need to:  1) navigate to the invoice, 2) click the edit button, 3) Revise the invoice in some way, 4) Click submit.  Thanks for your help, --Inspire Facilities System Admin",
+                    "type": 0,
+                    "workOrderId": 168624,
+                    "customerIds": null,
+                    "serviceProviderIds": null,
+                    "createdBy": 2146,
+                    "createdDate": "2020-12-10T22:36:53.000+0000",
+                    "updatedDate": "2020-12-10T22:36:53.000+0000"
+                },
+                {
+                    "id": 93508,
+                    "userId": 2146,
+                    "description": "any idea on when this will be fixed its 90 degrees  in the kitchen ",
+                    "type": 1,
+                    "workOrderId": 168624,
+                    "customerIds": "2152",
+                    "serviceProviderIds": null,
+                    "createdBy": 9138,
+                    "createdDate": "2020-02-29T05:43:10.000+0000",
+                    "updatedDate": "2020-02-29T05:43:10.000+0000"
+                },
+                {
+                    "id": 90433,
+                    "userId": 2146,
+                    "description": "Mark from MAS said we need to Have the Electrician run a new wire to the Roof on the outside of the unit it will be faster and cost less but this has been over 2 months now and its extremely hot in the kitchen   Marks Number 1-925-980-5687",
+                    "type": 1,
+                    "workOrderId": 168624,
+                    "customerIds": "[\"9449\",\"2152\"]",
+                    "serviceProviderIds": "",
+                    "createdBy": 9138,
+                    "createdDate": "2020-02-21T23:57:32.000+0000",
+                    "updatedDate": "2020-02-21T23:57:32.000+0000"
+                },
+                {
+                    "id": 93509,
+                    "userId": 2146,
+                    "description": "the original ticket for this was December 22nd   its been over 2 months  ",
+                    "type": 1,
+                    "workOrderId": 168624,
+                    "customerIds": "[\"2152\"]",
+                    "serviceProviderIds": "",
+                    "createdBy": 9138,
+                    "createdDate": "2020-02-29T05:47:31.000+0000",
+                    "updatedDate": "2020-02-29T05:47:31.000+0000"
+                }
+            ],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 1459,
+                "userId": 1481,
+                "companyName": "MAS Service",
+                "firstName": "Service Team",
+                "lastName": "",
+                "phoneNumber": "925-294-9000"
+            },
+            "assignTo": {
+                "id": 1709,
+                "moduleId": 1,
+                "referenceId": 168624,
+                "assignTo": 2152,
+                "status": "1",
+                "roleId": "5",
+                "dateCreated": "2020-02-29T05:43:10.000+0000",
+                "dateUpdated": "2020-02-29T05:43:10.000+0000",
+                "user": {
+                    "userProfileId": 2129,
+                    "userId": 2152,
+                    "companyName": "Inspire Brands",
+                    "firstName": "Jeffrey",
+                    "lastName": "Seymour",
+                    "phoneNumber": ""
+                }
+            }
+        }
+    },
+    "190951": {
+        "work_order": {
+            "id": 190951,
+            "title": null,
+            "customerId": "2146",
+            "description": "Grease Trap 1: Scheduled Pumping Service",
+            "nte": 950,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-03-16T07:00:00.000+0000",
+            "requestedBy": "Administrator",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "PMS",
+            "serviceProviderId": 2643,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Grease Trap Pumper",
+            "assetTypeName": "Grease Traps",
+            "requestedInvoice": false,
+            "dateCreated": "2020-03-16T00:02:48.000+0000",
+            "dateUpdated": "2020-03-19T21:03:24.000+0000",
+            "updatedBy": "2152",
+            "createdBy": "2146",
+            "completedBy": null,
+            "spToken": "",
+            "spTokenTime": null,
+            "pmsId": 1760,
+            "location": {
+                "id": 2907,
+                "name": "BWW 0424 - Daly City, CA",
+                "store_number": "0424",
+                "phone1": "6509973021",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "5B Serramonte Center",
+                "address2": "",
+                "address3": "",
+                "city": "Daly City",
+                "state": "California",
+                "zip": "94015"
+            },
+            "asset": null,
+            "assetType": {
+                "id": 26,
+                "name": "Grease Traps"
+            },
+            "categoryType": {
+                "id": 2,
+                "name": "Maintenance"
+            },
+            "problemType": {
+                "id": 9391,
+                "name": "PM_ID 1760 - Grease Trap 1: Scheduled Pumping"
+            },
+            "priority": {
+                "id": 9,
+                "name": "L7 - 30 Days",
+                "eta": {
+                    "etaId": 7,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 1,
+                    "timePeriods": "Month",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:43:59.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "ACCEPTED",
+            "notes": [
+                {
+                    "id": 103178,
+                    "userId": 2146,
+                    "description": "Jeff we have been trying to get them out for several weeks now. MAS came out and told us they can not service. The issue is that the reclamation system is not working. It will not shuttle the oil to the storage locker. We are having issues with filtering and changing our fryer oil due to this. What do we need to do on our end to get them out.  ",
+                    "type": 1,
+                    "workOrderId": 190951,
+                    "customerIds": "2152",
+                    "serviceProviderIds": null,
+                    "createdBy": 9444,
+                    "createdDate": "2020-03-19T20:54:16.000+0000",
+                    "updatedDate": "2020-03-19T20:54:16.000+0000"
+                },
+                {
+                    "id": 103190,
+                    "userId": 2146,
+                    "description": "Ray,\r\nThe SB needs to open a WO for the \"grease extraction/used cooking oil\" asset and it will be dispatched to Mahoney for service.  Right now this note is in the PM dispatch for the underground grease trap pumping.\r\n\r\nCool?",
+                    "type": 2,
+                    "workOrderId": 190951,
+                    "customerIds": "[\"9142\",\"9444\"]",
+                    "serviceProviderIds": "",
+                    "createdBy": 2152,
+                    "createdDate": "2020-03-19T21:03:24.000+0000",
+                    "updatedDate": "2020-03-19T21:03:24.000+0000"
+                }
+            ],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 2619,
+                "userId": 2643,
+                "companyName": "Mahoney Environmental - Grease Trap",
+                "firstName": "Bonnie",
+                "lastName": "Wilson",
+                "phoneNumber": "800-892-9392"
+            },
+            "assignTo": {
+                "id": 1772,
+                "moduleId": 1,
+                "referenceId": 190951,
+                "assignTo": 2152,
+                "status": "1",
+                "roleId": "5",
+                "dateCreated": "2020-03-19T20:54:16.000+0000",
+                "dateUpdated": "2020-03-19T20:54:16.000+0000",
+                "user": {
+                    "userProfileId": 2129,
+                    "userId": 2152,
+                    "companyName": "Inspire Brands",
+                    "firstName": "Jeffrey",
+                    "lastName": "Seymour",
+                    "phoneNumber": ""
+                }
+            }
+        }
+    },
+    "237228": {
+        "work_order": {
+            "id": 237228,
+            "title": null,
+            "customerId": "2146",
+            "description": "Our new evporator is showing an alarm on it reading high box temo.  The unit is saying it is pushing air at about 42 degrees but the cooler is temping at 50",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-06-07T01:51:02.000+0000",
+            "requestedBy": "Dustin Hoffman",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 1092,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Refrigeration",
+            "assetTypeName": "Walk-in Cooler",
+            "requestedInvoice": false,
+            "dateCreated": "2020-06-06T21:51:02.000+0000",
+            "dateUpdated": "2020-06-08T12:18:25.000+0000",
+            "updatedBy": "4074",
+            "createdBy": "8830",
+            "completedBy": 4074,
+            "spToken": "ba1c82af6dbb360d84b6f6778c606753",
+            "spTokenTime": "2020-06-08T12:18:25.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 3230,
+                "name": "BWW 0058 - Wichita, KS - N Rock Rd",
+                "store_number": "0058",
+                "phone1": "3166369464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "3236 N Rock Rd",
+                "address2": "",
+                "address3": "",
+                "city": "Wichita",
+                "state": "Kansas",
+                "zip": "67226"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 107075,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 55524,
+                        "fileName": "55524_1549578876image1.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": null,
+                "id": 55524,
+                "name": "Walk-In Cooler - Wing",
+                "description": "",
+                "description2": "re-verd",
+                "customerId": 2146,
+                "modelNumber": null,
+                "serialNumber": null,
+                "assetTypeId": 60,
+                "locationId": 3230,
+                "warrantyExpiryDate": "1999-12-31T00:00:00.000+0000",
+                "warrantyAvailable": false
+            },
+            "assetType": {
+                "id": 60,
+                "name": "Walk-in Cooler"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 154,
+                "name": "Too Warm"
+            },
+            "priority": {
+                "id": 2,
+                "name": "L1 - Emergency",
+                "eta": {
+                    "etaId": 5,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 4,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:38:00.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "ACCEPTED",
+            "notes": [],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 1073,
+                "userId": 1092,
+                "companyName": "General Parts Corporate Dispatch",
+                "firstName": "General Parts",
+                "lastName": "Corporate Dispatch Admin",
+                "phoneNumber": "888-498-1238"
+            },
+            "assignTo": null
+        }
+    },
+    "272542": {
+        "work_order": {
+            "id": 272542,
+            "title": null,
+            "customerId": "2146",
+            "description": "Our drains are clogged and overflowing with grease. Needs jetted. Thanks! ",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-07-28T00:38:27.000+0000",
+            "requestedBy": "Momoko Anderson",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 3167,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Plumber",
+            "assetTypeName": "Plumbing",
+            "requestedInvoice": false,
+            "dateCreated": "2020-07-27T20:38:27.000+0000",
+            "dateUpdated": "2020-07-28T14:58:26.000+0000",
+            "updatedBy": "3167",
+            "createdBy": "8830",
+            "completedBy": 3167,
+            "spToken": "751192808a48933a45fa1a2428db64f8",
+            "spTokenTime": "2020-07-27T21:40:34.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 3230,
+                "name": "BWW 0058 - Wichita, KS - N Rock Rd",
+                "store_number": "0058",
+                "phone1": "3166369464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "3236 N Rock Rd",
+                "address2": "",
+                "address3": "",
+                "city": "Wichita",
+                "state": "Kansas",
+                "zip": "67226"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 839432,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 337697,
+                        "fileName": "ecotrak_1589846070_2146_new.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": null,
+                "id": 337697,
+                "name": "Plumbing - Drains, Pipes, Other",
+                "description": "",
+                "description2": "",
+                "customerId": 2146,
+                "modelNumber": "",
+                "serialNumber": "",
+                "assetTypeId": 38,
+                "locationId": 0,
+                "warrantyExpiryDate": null,
+                "warrantyAvailable": false
+            },
+            "assetType": {
+                "id": 38,
+                "name": "Plumbing"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 976,
+                "name": "Clogged or Overflowing"
+            },
+            "priority": {
+                "id": 2,
+                "name": "L1 - Emergency",
+                "eta": {
+                    "etaId": 5,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 4,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:38:00.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": {
+                "proposalId": 38850,
+                "srId": 272542,
+                "title": "Hydro-Jetting Service",
+                "serviceProviderId": 3167,
+                "customerId": 2146,
+                "workDescription": "Reddi Industries will provide Hydro-Jetting service. This service is time (port to port) and material. Estimated time is 2-4 hours. \r\nFee for this service is $245.00/HR two hour minimum.\r\n",
+                "completionTime": "1 days",
+                "parts": 0,
+                "incurredCost": 0,
+                "labor": 980,
+                "freight": null,
+                "tax": 73.5,
+                "other": null,
+                "totalAmount": 1053.5,
+                "proposalApprovedDate": null,
+                "dateCreated": "2020-07-28T14:54:57.000+0000",
+                "dateUpdated": "2020-07-28T14:54:57.000+0000",
+                "status": 1,
+                "proposalStatus": {
+                    "statusId": 20,
+                    "description": "Pending Client Approval"
+                }
+            },
+            "invoice": [],
+            "workOrderStatus": "PROPOSAL_SUBMITTED",
+            "notes": [],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 3143,
+                "userId": 3167,
+                "companyName": "Reddi Industries ",
+                "firstName": "Deana",
+                "lastName": "Bushell",
+                "phoneNumber": "316-491-5111"
+            },
+            "assignTo": null
+        }
+    },
+    "317694": {
+        "work_order": {
+            "id": 317694,
+            "title": null,
+            "customerId": "2146",
+            "description": "We have received an email from Cintas from when they cleaned the hoods.  The way our system is designed, they cannot access all the duct work to properly clean the ducts of grease.  They have requested to have an access panel added to the hood system so they can access the duct work to ensure it is free of grease.",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-09-24T18:23:17.000+0000",
+            "requestedBy": "Dustin Hoffman",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 0,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Multiple Trades#HVAC#Kitchen Exhaust/Hood Cleaning, KEC",
+            "assetTypeName": "Hoods / Exhaust / Grease Duct",
+            "requestedInvoice": false,
+            "dateCreated": "2020-09-23T18:23:17.000+0000",
+            "dateUpdated": "2020-09-23T18:24:51.000+0000",
+            "updatedBy": null,
+            "createdBy": "8830",
+            "completedBy": null,
+            "spToken": "c9013d68c0bc828f46d50f1e7a6e1a22",
+            "spTokenTime": "2020-09-23T18:23:17.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 3230,
+                "name": "BWW 0058 - Wichita, KS - N Rock Rd",
+                "store_number": "0058",
+                "phone1": "3166369464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "3236 N Rock Rd",
+                "address2": "",
+                "address3": "",
+                "city": "Wichita",
+                "state": "Kansas",
+                "zip": "67226"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 107096,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 55536,
+                        "fileName": "55536_1549579501image1.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": null,
+                "id": 55536,
+                "name": "Kitchen Exhaust System",
+                "description": null,
+                "description2": null,
+                "customerId": 2146,
+                "modelNumber": "",
+                "serialNumber": "",
+                "assetTypeId": 27,
+                "locationId": 3230,
+                "warrantyExpiryDate": null,
+                "warrantyAvailable": false
+            },
+            "assetType": {
+                "id": 27,
+                "name": "Hoods / Exhaust / Grease Duct"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 1380,
+                "name": "Violation / Inspection Notice Received from City"
+            },
+            "priority": {
+                "id": 4,
+                "name": "L3 - 24 Hours",
+                "eta": {
+                    "etaId": 6,
+                    "defaultAdded": 0,
+                    "userId": 2,
+                    "timeValue": 24,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:38:02.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "UNASSIGNED",
+            "notes": [
+                {
+                    "id": 188563,
+                    "userId": 3167,
+                    "description": "Other outside our scope",
+                    "type": 0,
+                    "workOrderId": 317694,
+                    "customerIds": null,
+                    "serviceProviderIds": null,
+                    "createdBy": 3167,
+                    "createdDate": "2020-09-23T18:24:49.000+0000",
+                    "updatedDate": "2020-09-23T18:24:49.000+0000"
+                }
+            ],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 15036,
+                "userId": 0,
+                "companyName": null,
+                "firstName": "",
+                "lastName": "",
+                "phoneNumber": null
+            },
+            "assignTo": null
+        }
+    },
     "320496": {
         "work_order": {
             "id": 320496,
@@ -139,415 +1202,540 @@
     },
     "323463": {
         "work_order": {
-          "id": 323463,
-          "title": null,
-          "customerId": "2146",
-          "description": "Compressor not making nitrogen",
-          "nte": 500.0,
-          "purchaseOrder": null,
-          "deviceType": "iOS",
-          "deviceHistory": "c15cd918d8e77d8ed47d46444bbcb54ff575b428",
-          "updatedEta": "0",
-          "previousEta": null,
-          "currentEta": "1970-01-01T00:00:00.000+0000",
-          "requestedBy": "Edward Bauer",
-          "proposalId": null,
-          "requestForPricingId": 0,
-          "requestType": "SR",
-          "serviceProviderId": 15949,
-          "serviceProviderWorkOrderId": null,
-          "woCompletedDate": null,
-          "status": 1,
-          "woType": "Internal",
-          "tradeType": "Draft Beer - Beer Blast (nitrogen generator)",
-          "assetTypeName": "Beer Blast - Nitrogen Generator",
-          "requestedInvoice": false,
-          "dateCreated": "2020-10-02T00:07:56.000+0000",
-          "dateUpdated": "2020-10-02T00:08:02.000+0000",
-          "updatedBy": null,
-          "createdBy": "8823",
-          "completedBy": null,
-          "spToken": "d78ac42ccec44eb814b33ab72e1a488a",
-          "spTokenTime": "2020-10-02T00:07:56.000+0000",
-          "pmsId": 0,
-          "location": {
-            "id": 2878,
-            "name": "BWW 0039 - Omaha, NE - 76th St",
-            "store_number": "0039",
-            "phone1": "4023439464",
-            "ext1": "",
-            "phone2": "",
-            "ext2": "",
-            "address1": "205 N 76th St",
-            "address2": "",
-            "address3": "",
-            "city": "Omaha",
-            "state": "Nebraska",
-            "zip": "68114"
-          },
-          "asset": {
-            "assetImage": [
-              {
-                "documentId": 105214,
-                "documentType": "photo",
-                "moduleTypeId": 3,
-                "documentTypeId": 12,
-                "referenceId": 54712,
-                "fileName": "54712_1549467035image1.jpg",
-                "status": 1
-              }
-            ],
-            "manufacturer": null,
-            "id": 54712,
-            "name": "Beer Blast - Nitrogen Generator",
-            "description": null,
-            "description2": null,
-            "customerId": 2146,
-            "modelNumber": "",
-            "serialNumber": "",
-            "assetTypeId": 523,
-            "locationId": 2878,
-            "warrantyExpiryDate": null,
-            "warrantyAvailable": false
-          },
-          "assetType": {
-            "id": 523,
-            "name": "Beer Blast - Nitrogen Generator"
-          },
-          "categoryType": {
-            "id": 1,
-            "name": "Repair"
-          },
-          "problemType": {
-            "id": 119,
-            "name": "Not Working"
-          },
-          "priority": {
-            "id": 2,
-            "name": "L1 - Emergency",
-            "eta": {
-              "etaId": 5,
-              "defaultAdded": 1,
-              "userId": 2,
-              "timeValue": 4,
-              "timePeriods": "Hour",
-              "statusChanger": "0",
-              "dateCreated": null,
-              "dateUpdated": "2020-09-29T22:38:00.000+0000",
-              "status": 1,
-              "createdBy": 2,
-              "updatedBy": null
-            }
-          },
-          "customer": null,
-          "proposal": null,
-          "invoice": [],
-          "workOrderStatus": "ACCEPTED",
-          "notes": [],
-          "credentials": null,
-          "serviceProviderProfile": {
-            "userProfileId": 15926,
-            "userId": 15949,
-            "companyName": "NUCO2 Beer Blast System, call direct@ 800-472-2855 ext. 3028",
-            "firstName": "NUCO2",
-            "lastName": "",
-            "phoneNumber": "800-472-2855"
-          },
-          "assignTo": null
-        }
-      },
-      "237228": {
-        "work_order": {
-          "id": 237228,
-          "title": null,
-          "customerId": "2146",
-          "description": "Our new evporator is showing an alarm on it reading high box temo.  The unit is saying it is pushing air at about 42 degrees but the cooler is temping at 50",
-          "nte": 500.0,
-          "purchaseOrder": null,
-          "deviceType": null,
-          "deviceHistory": null,
-          "updatedEta": "0",
-          "previousEta": null,
-          "currentEta": "2020-06-07T01:51:02.000+0000",
-          "requestedBy": "Dustin Hoffman",
-          "proposalId": null,
-          "requestForPricingId": 0,
-          "requestType": "SR",
-          "serviceProviderId": 1092,
-          "serviceProviderWorkOrderId": null,
-          "woCompletedDate": null,
-          "status": 1,
-          "woType": "External",
-          "tradeType": "Refrigeration",
-          "assetTypeName": "Walk-in Cooler",
-          "requestedInvoice": false,
-          "dateCreated": "2020-06-06T21:51:02.000+0000",
-          "dateUpdated": "2020-06-08T12:18:25.000+0000",
-          "updatedBy": "4074",
-          "createdBy": "8830",
-          "completedBy": 4074,
-          "spToken": "ba1c82af6dbb360d84b6f6778c606753",
-          "spTokenTime": "2020-06-08T12:18:25.000+0000",
-          "pmsId": 0,
-          "location": {
-            "id": 3230,
-            "name": "BWW 0058 - Wichita, KS - N Rock Rd",
-            "store_number": "0058",
-            "phone1": "3166369464",
-            "ext1": "",
-            "phone2": "",
-            "ext2": "",
-            "address1": "3236 N Rock Rd",
-            "address2": "",
-            "address3": "",
-            "city": "Wichita",
-            "state": "Kansas",
-            "zip": "67226"
-          },
-          "asset": {
-            "assetImage": [
-              {
-                "documentId": 107075,
-                "documentType": "photo",
-                "moduleTypeId": 3,
-                "documentTypeId": 12,
-                "referenceId": 55524,
-                "fileName": "55524_1549578876image1.jpg",
-                "status": 1
-              }
-            ],
-            "manufacturer": null,
-            "id": 55524,
-            "name": "Walk-In Cooler - Wing",
-            "description": "",
-            "description2": "re-verd",
-            "customerId": 2146,
-            "modelNumber": null,
-            "serialNumber": null,
-            "assetTypeId": 60,
-            "locationId": 3230,
-            "warrantyExpiryDate": "1999-12-31T00:00:00.000+0000",
-            "warrantyAvailable": false
-          },
-          "assetType": {
-            "id": 60,
-            "name": "Walk-in Cooler"
-          },
-          "categoryType": {
-            "id": 1,
-            "name": "Repair"
-          },
-          "problemType": {
-            "id": 154,
-            "name": "Too Warm"
-          },
-          "priority": {
-            "id": 2,
-            "name": "L1 - Emergency",
-            "eta": {
-              "etaId": 5,
-              "defaultAdded": 1,
-              "userId": 2,
-              "timeValue": 4,
-              "timePeriods": "Hour",
-              "statusChanger": "0",
-              "dateCreated": null,
-              "dateUpdated": "2020-09-29T22:38:00.000+0000",
-              "status": 1,
-              "createdBy": 2,
-              "updatedBy": null
-            }
-          },
-          "customer": null,
-          "proposal": null,
-          "invoice": [],
-          "workOrderStatus": "ACCEPTED",
-          "notes": [],
-          "credentials": null,
-          "serviceProviderProfile": {
-            "userProfileId": 1073,
-            "userId": 1092,
-            "companyName": "General Parts Corporate Dispatch",
-            "firstName": "General Parts",
-            "lastName": "Corporate Dispatch Admin",
-            "phoneNumber": "888-498-1238"
-          },
-          "assignTo": null
-        }
-      }, 
-      "272542": {
-        "work_order": {
-          "id": 272542,
-          "title": null,
-          "customerId": "2146",
-          "description": "Our drains are clogged and overflowing with grease. Needs jetted. Thanks! ",
-          "nte": 500.0,
-          "purchaseOrder": null,
-          "deviceType": null,
-          "deviceHistory": null,
-          "updatedEta": "0",
-          "previousEta": null,
-          "currentEta": "2020-07-28T00:38:27.000+0000",
-          "requestedBy": "Momoko Anderson",
-          "proposalId": null,
-          "requestForPricingId": 0,
-          "requestType": "SR",
-          "serviceProviderId": 3167,
-          "serviceProviderWorkOrderId": null,
-          "woCompletedDate": null,
-          "status": 1,
-          "woType": "External",
-          "tradeType": "Plumber",
-          "assetTypeName": "Plumbing",
-          "requestedInvoice": false,
-          "dateCreated": "2020-07-27T20:38:27.000+0000",
-          "dateUpdated": "2020-07-28T14:58:26.000+0000",
-          "updatedBy": "3167",
-          "createdBy": "8830",
-          "completedBy": 3167,
-          "spToken": "751192808a48933a45fa1a2428db64f8",
-          "spTokenTime": "2020-07-27T21:40:34.000+0000",
-          "pmsId": 0,
-          "location": {
-            "id": 3230,
-            "name": "BWW 0058 - Wichita, KS - N Rock Rd",
-            "store_number": "0058",
-            "phone1": "3166369464",
-            "ext1": "",
-            "phone2": "",
-            "ext2": "",
-            "address1": "3236 N Rock Rd",
-            "address2": "",
-            "address3": "",
-            "city": "Wichita",
-            "state": "Kansas",
-            "zip": "67226"
-          },
-          "asset": {
-            "assetImage": [
-              {
-                "documentId": 839432,
-                "documentType": "photo",
-                "moduleTypeId": 3,
-                "documentTypeId": 12,
-                "referenceId": 337697,
-                "fileName": "ecotrak_1589846070_2146_new.jpg",
-                "status": 1
-              }
-            ],
-            "manufacturer": null,
-            "id": 337697,
-            "name": "Plumbing - Drains, Pipes, Other",
-            "description": "",
-            "description2": "",
-            "customerId": 2146,
-            "modelNumber": "",
-            "serialNumber": "",
-            "assetTypeId": 38,
-            "locationId": 0,
-            "warrantyExpiryDate": null,
-            "warrantyAvailable": false
-          },
-          "assetType": {
-            "id": 38,
-            "name": "Plumbing"
-          },
-          "categoryType": {
-            "id": 1,
-            "name": "Repair"
-          },
-          "problemType": {
-            "id": 976,
-            "name": "Clogged or Overflowing"
-          },
-          "priority": {
-            "id": 2,
-            "name": "L1 - Emergency",
-            "eta": {
-              "etaId": 5,
-              "defaultAdded": 1,
-              "userId": 2,
-              "timeValue": 4,
-              "timePeriods": "Hour",
-              "statusChanger": "0",
-              "dateCreated": null,
-              "dateUpdated": "2020-09-29T22:38:00.000+0000",
-              "status": 1,
-              "createdBy": 2,
-              "updatedBy": null
-            }
-          },
-          "customer": null,
-          "proposal": {
-            "proposalId": 38850,
-            "srId": 272542,
-            "title": "Hydro-Jetting Service",
-            "serviceProviderId": 3167,
-            "customerId": 2146,
-            "workDescription": "Reddi Industries will provide Hydro-Jetting service. This service is time (port to port) and material. Estimated time is 2-4 hours. \r\nFee for this service is $245.00/HR two hour minimum.\r\n",
-            "completionTime": "1 days",
-            "parts": 0.0,
-            "incurredCost": 0.0,
-            "labor": 980.0,
-            "freight": null,
-            "tax": 73.5,
-            "other": null,
-            "totalAmount": 1053.5,
-            "proposalApprovedDate": null,
-            "dateCreated": "2020-07-28T14:54:57.000+0000",
-            "dateUpdated": "2020-07-28T14:54:57.000+0000",
+            "id": 323463,
+            "title": null,
+            "customerId": "2146",
+            "description": "Compressor not making nitrogen",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": "iOS",
+            "deviceHistory": "c15cd918d8e77d8ed47d46444bbcb54ff575b428",
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "1970-01-01T00:00:00.000+0000",
+            "requestedBy": "Edward Bauer",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 15949,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
             "status": 1,
-            "proposalStatus": {
-              "statusId": 20,
-              "description": "Pending Client Approval"
-            }
-          },
-          "invoice": [],
-          "workOrderStatus": "PROPOSAL_SUBMITTED",
-          "notes": [],
-          "credentials": null,
-          "serviceProviderProfile": {
-            "userProfileId": 3143,
-            "userId": 3167,
-            "companyName": "Reddi Industries ",
-            "firstName": "Deana",
-            "lastName": "Bushell",
-            "phoneNumber": "316-491-5111"
-          },
-          "assignTo": null
+            "woType": "Internal",
+            "tradeType": "Draft Beer - Beer Blast (nitrogen generator)",
+            "assetTypeName": "Beer Blast - Nitrogen Generator",
+            "requestedInvoice": false,
+            "dateCreated": "2020-10-02T00:07:56.000+0000",
+            "dateUpdated": "2020-10-02T00:08:02.000+0000",
+            "updatedBy": null,
+            "createdBy": "8823",
+            "completedBy": null,
+            "spToken": "d78ac42ccec44eb814b33ab72e1a488a",
+            "spTokenTime": "2020-10-02T00:07:56.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 2878,
+                "name": "BWW 0039 - Omaha, NE - 76th St",
+                "store_number": "0039",
+                "phone1": "4023439464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "205 N 76th St",
+                "address2": "",
+                "address3": "",
+                "city": "Omaha",
+                "state": "Nebraska",
+                "zip": "68114"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 105214,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 54712,
+                        "fileName": "54712_1549467035image1.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": null,
+                "id": 54712,
+                "name": "Beer Blast - Nitrogen Generator",
+                "description": null,
+                "description2": null,
+                "customerId": 2146,
+                "modelNumber": "",
+                "serialNumber": "",
+                "assetTypeId": 523,
+                "locationId": 2878,
+                "warrantyExpiryDate": null,
+                "warrantyAvailable": false
+            },
+            "assetType": {
+                "id": 523,
+                "name": "Beer Blast - Nitrogen Generator"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 119,
+                "name": "Not Working"
+            },
+            "priority": {
+                "id": 2,
+                "name": "L1 - Emergency",
+                "eta": {
+                    "etaId": 5,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 4,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:38:00.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "ACCEPTED",
+            "notes": [],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 15926,
+                "userId": 15949,
+                "companyName": "NUCO2 Beer Blast System, call direct@ 800-472-2855 ext. 3028",
+                "firstName": "NUCO2",
+                "lastName": "",
+                "phoneNumber": "800-472-2855"
+            },
+            "assignTo": null
         }
-      },               
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    },
+    "337786": {
+        "work_order": {
+            "id": 337786,
+            "title": null,
+            "customerId": "2146",
+            "description": "torn booth need replacement,  not a duplicate request need 2",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": "android",
+            "deviceHistory": "32332b37c1366f819dc2daf75da1a45be220265f",
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "1970-01-01T00:00:00.000+0000",
+            "requestedBy": "Damien ",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 0,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Furniture - Supplier",
+            "assetTypeName": "Furniture - Tables & Seating",
+            "requestedInvoice": false,
+            "dateCreated": "2020-10-18T19:11:37.000+0000",
+            "dateUpdated": "2020-10-19T21:29:25.000+0000",
+            "updatedBy": null,
+            "createdBy": "8836",
+            "completedBy": null,
+            "spToken": "afa3c45a932821481a4f69021bb2cc69",
+            "spTokenTime": "2020-10-18T19:11:37.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 3491,
+                "name": "BWW 0067 - Bellevue, NE",
+                "store_number": "0067",
+                "phone1": "4029919464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "10525 S 15th St",
+                "address2": "",
+                "address3": "",
+                "city": "Bellevue",
+                "state": "Nebraska",
+                "zip": "68123"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 496139,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 181406,
+                        "fileName": "181406_793420017_1572448301image1.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": null,
+                "id": 181406,
+                "name": "Furniture - Tables & Seating (Chairs / Stools / Booths)",
+                "description": "",
+                "description2": "",
+                "customerId": 2146,
+                "modelNumber": "",
+                "serialNumber": "",
+                "assetTypeId": 557,
+                "locationId": 0,
+                "warrantyExpiryDate": null,
+                "warrantyAvailable": false
+            },
+            "assetType": {
+                "id": 557,
+                "name": "Furniture - Tables & Seating"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 1414,
+                "name": "Replacement Bench or Booth Seat"
+            },
+            "priority": {
+                "id": 4,
+                "name": "L3 - 24 Hours",
+                "eta": {
+                    "etaId": 6,
+                    "defaultAdded": 0,
+                    "userId": 2,
+                    "timeValue": 24,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:38:02.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "UNASSIGNED",
+            "notes": [
+                {
+                    "id": 202719,
+                    "userId": 2934,
+                    "description": "Other This booth seat request was added to WO 337785 to save on freight costs.",
+                    "type": 0,
+                    "workOrderId": 337786,
+                    "customerIds": null,
+                    "serviceProviderIds": null,
+                    "createdBy": 2934,
+                    "createdDate": "2020-10-19T21:29:10.000+0000",
+                    "updatedDate": "2020-10-19T21:29:10.000+0000"
+                }
+            ],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 15036,
+                "userId": 0,
+                "companyName": null,
+                "firstName": "",
+                "lastName": "",
+                "phoneNumber": null
+            },
+            "assignTo": null
+        }
+    },
+    "357025": {
+        "work_order": {
+            "id": 357025,
+            "title": null,
+            "customerId": "2146",
+            "description": "Fire Prevention - Fire Suppression Inspection",
+            "nte": 600,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-12-28T00:00:00.000+0000",
+            "requestedBy": "Administrator",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "PMS",
+            "serviceProviderId": 2714,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Fire / Life / Safety Company",
+            "assetTypeName": "Fire / Life / Safety / Security / Alarm",
+            "requestedInvoice": false,
+            "dateCreated": "2020-11-16T00:03:15.000+0000",
+            "dateUpdated": "2020-11-16T00:03:15.000+0000",
+            "updatedBy": null,
+            "createdBy": "2146",
+            "completedBy": null,
+            "spToken": "",
+            "spTokenTime": "2020-11-16T00:03:15.000+0000",
+            "pmsId": 1770,
+            "location": {
+                "id": 2726,
+                "name": "BWW 0026 - Overland Park, KS - 105th & Metcalf",
+                "store_number": "0026",
+                "phone1": "9133419464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "7030 W 105th St",
+                "address2": "",
+                "address3": "",
+                "city": "Overland Park",
+                "state": "Kansas",
+                "zip": "66212"
+            },
+            "asset": null,
+            "assetType": {
+                "id": 361,
+                "name": "Fire / Life / Safety / Security / Alarm"
+            },
+            "categoryType": {
+                "id": 2,
+                "name": "Maintenance"
+            },
+            "problemType": {
+                "id": 9402,
+                "name": "PM_ID 1770 - Fire Prevention - Fire Suppressn Insp"
+            },
+            "priority": {
+                "id": 9,
+                "name": "L7 - 30 Days",
+                "eta": {
+                    "etaId": 7,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 1,
+                    "timePeriods": "Month",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:43:59.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "PENDING_ACCEPTANCE",
+            "notes": [],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 2690,
+                "userId": 2714,
+                "companyName": "Cintas Corporation No. 2 - Fire/Kec",
+                "firstName": "Cintas",
+                "lastName": "Fire",
+                "phoneNumber": "866-774-1100"
+            },
+            "assignTo": null
+        }
+    },
+    "357923": {
+        "work_order": {
+            "id": 357923,
+            "title": null,
+            "customerId": "2146",
+            "description": "March/June/Sept/Dec",
+            "nte": 463.15,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-12-28T00:00:00.000+0000",
+            "requestedBy": "Administrator",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "PMS",
+            "serviceProviderId": 6038,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Kitchen Exhaust/Hood Cleaning, KEC",
+            "assetTypeName": "Hoods / Exhaust / Grease Duct",
+            "requestedInvoice": false,
+            "dateCreated": "2020-11-16T00:03:23.000+0000",
+            "dateUpdated": "2020-11-16T00:03:23.000+0000",
+            "updatedBy": null,
+            "createdBy": "2146",
+            "completedBy": null,
+            "spToken": "",
+            "spTokenTime": "2020-11-16T00:03:23.000+0000",
+            "pmsId": 1805,
+            "location": {
+                "id": 2726,
+                "name": "BWW 0026 - Overland Park, KS - 105th & Metcalf",
+                "store_number": "0026",
+                "phone1": "9133419464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "7030 W 105th St",
+                "address2": "",
+                "address3": "",
+                "city": "Overland Park",
+                "state": "Kansas",
+                "zip": "66212"
+            },
+            "asset": null,
+            "assetType": {
+                "id": 27,
+                "name": "Hoods / Exhaust / Grease Duct"
+            },
+            "categoryType": {
+                "id": 2,
+                "name": "Maintenance"
+            },
+            "problemType": {
+                "id": 9412,
+                "name": "PM_ID 1805 - Kitchen Exhaust Cleaning (KEC)"
+            },
+            "priority": {
+                "id": 9,
+                "name": "L7 - 30 Days",
+                "eta": {
+                    "etaId": 7,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 1,
+                    "timePeriods": "Month",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:43:59.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "PENDING_ACCEPTANCE",
+            "notes": [],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 6014,
+                "userId": 6038,
+                "companyName": "Averus Fire Services",
+                "firstName": "Jen",
+                "lastName": "Rivera",
+                "phoneNumber": "800-393-8287"
+            },
+            "assignTo": null
+        }
+    },
+    "358814": {
+        "work_order": {
+            "id": 358814,
+            "title": null,
+            "customerId": "2146",
+            "description": "LX - Monthly charges for out-of-warranty LX Dish Machines (under counter). Monthly cost is  ~$75 based on the age of the unit. Any demand dispatches generated will be closed out to $0 except in extreme cases of neglect or abuse.  Dish Machine Model: LXIC,",
+            "nte": 88,
+            "purchaseOrder": null,
+            "deviceType": null,
+            "deviceHistory": null,
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "2020-12-28T00:00:00.000+0000",
+            "requestedBy": "Administrator",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "PMS",
+            "serviceProviderId": 3051,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Dish Machine",
+            "assetTypeName": "Dish Machine",
+            "requestedInvoice": false,
+            "dateCreated": "2020-11-16T00:03:30.000+0000",
+            "dateUpdated": "2020-11-16T00:03:30.000+0000",
+            "updatedBy": null,
+            "createdBy": "2146",
+            "completedBy": null,
+            "spToken": "",
+            "spTokenTime": "2020-11-16T00:03:30.000+0000",
+            "pmsId": 2525,
+            "location": {
+                "id": 2740,
+                "name": "BWW 0027 - Omaha, NE - Southwest Plaza",
+                "store_number": "0027",
+                "phone1": "4028619464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "4287 S 144th St",
+                "address2": "",
+                "address3": "",
+                "city": "Omaha",
+                "state": "Nebraska",
+                "zip": "68137"
+            },
+            "asset": null,
+            "assetType": {
+                "id": 348,
+                "name": "Dish Machine"
+            },
+            "categoryType": {
+                "id": 2,
+                "name": "Maintenance"
+            },
+            "problemType": {
+                "id": 10307,
+                "name": "LX Dish Machine Program - Hobart"
+            },
+            "priority": {
+                "id": 9,
+                "name": "L7 - 30 Days",
+                "eta": {
+                    "etaId": 7,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 1,
+                    "timePeriods": "Month",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:43:59.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "PENDING_ACCEPTANCE",
+            "notes": [],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 3027,
+                "userId": 3051,
+                "companyName": "Hobart Service",
+                "firstName": "Hobart Service",
+                "lastName": "",
+                "phoneNumber": "888-446-2278"
+            },
+            "assignTo": null
+        }
+    },
     "emergency": {
         "work_orders": [
             {
