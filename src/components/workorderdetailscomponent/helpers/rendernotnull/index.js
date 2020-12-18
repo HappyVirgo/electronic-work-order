@@ -103,7 +103,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
         }         
         //Bordered Section
-        invoiceStatus = detailsdata.data.work_order.invoice!==nullVal?detailsdata.data.work_order.invoice.invoiceStatus:nullVal;
+        invoiceStatus = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice.reduce((acc, crr, idx)=> acc+(idx===0?'':', ')+crr.invoiceStatusDesc.description, ''):nullVal;
         serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
         serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
         currentEta = detailsdata.data.work_order.currentEta!==nullVal?detailsdata.data.work_order.currentEta:nullVal;
