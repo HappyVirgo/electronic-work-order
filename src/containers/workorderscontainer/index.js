@@ -41,7 +41,7 @@ import {
 //Faker.js data
 import {
     fetchCTAsDataTEST,
-    fetchEmergencyWODataTEST
+    fetchEmergencyWODataTEST,
 } from '../../faker'
 
 //Context
