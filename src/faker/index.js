@@ -13,7 +13,7 @@ import {
 } from './emercencyworkordersactions'
 
 import {
-    fetchPendingWOData,
+    fetchPendingWODataTEST,
 } from './pendingworkordersactions'
 
 import {
@@ -21,7 +21,7 @@ import {
 } from './assignedtomeworkordersactions'
 
 import {
-    fetchUnassignedWOData,
+    fetchUnassignedWODataTEST,
 } from './unassignedworkordersactions'
 
 //Details Component
@@ -67,11 +67,11 @@ export {
     fetchCTAsDataTEST,
     fetchSearchData,
     fetchEmergencyWODataTEST,
-    fetchPendingWOData,
+    fetchPendingWODataTEST,
     fetchDetailsWOData,
     updateWOStatus,
     fetchAssignedToMeWODataTEST,
-    fetchUnassignedWOData,
+    fetchUnassignedWODataTEST,
     fetchHistoryWOData,
     fetchNotesWOData,
     createNoteWOData,
