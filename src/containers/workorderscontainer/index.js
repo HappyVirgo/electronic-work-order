@@ -305,17 +305,17 @@ class WorkOrdersBuilder extends Component {
         }, this.handleAsyncId(id))        
     }
     //move active item to the top of grid
-    array_move = (arr, old_index, new_index) => {
-        if (new_index >= arr.length) {
-            let k = new_index - arr.length + 1;
-            while (k--) {
-                arr.push(undefined);
-            }
-        }
-        arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-        return arr;
-    };
-    isCurrent = (element) => element.workOrderId.toString() === this.state.detailsId.toString();
+    // array_move = (arr, old_index, new_index) => {
+    //     if (new_index >= arr.length) {
+    //         let k = new_index - arr.length + 1;
+    //         while (k--) {
+    //             arr.push(undefined);
+    //         }
+    //     }
+    //     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    //     return arr;
+    // };
+    // isCurrent = (element) => element.workOrderId.toString() === this.state.detailsId.toString();
 
     async componentDidUpdate(prevProps, prevState) {
 
@@ -961,9 +961,9 @@ class WorkOrdersBuilder extends Component {
                 handleId(id)
             }
 
-            let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
-            if(currentIndex === -1) currentIndex = 0
-            this.array_move(tmpdata.data.work_orders, currentIndex, 0)
+            // let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
+            // if(currentIndex === -1) currentIndex = 0
+            // this.array_move(tmpdata.data.work_orders, currentIndex, 0)
 
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
@@ -976,7 +976,6 @@ class WorkOrdersBuilder extends Component {
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== ''){
                 if( prevSteDtls !== currentSteDtls ) {
-    
                     this.setState({
                         detailsId: dtlsID,
                         loadingDetails: true
@@ -985,7 +984,6 @@ class WorkOrdersBuilder extends Component {
                     dtlsID = tmpDtls             
                     this.setState({
                         detailsId: dtlsID,
-                        loadingDetails: true
                     }, handleChangePrevState(dtlsID))    
                 }
             }
