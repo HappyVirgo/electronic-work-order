@@ -2268,5 +2268,51 @@
                 }
             }
         ]
-    }
+    },
+    "320496notes": {
+        "workOrderNotes": [
+          {
+            "wonId": 103178,
+            "wonUserId": 2146,
+            "wonWorkOrderId": 190951,
+            "wonNote": "Jeff we have been trying to get them out for several weeks now. MAS came out and told us they can not service. The issue is that the reclamation system is not working. It will not shuttle the oil to the storage locker. We are having issues with filtering and changing our fryer oil due to this. What do we need to do on our end to get them out.  ",
+            "createdBy": 9444,
+            "customerIds": "2152",
+            "serviceProviderIds": null,
+            "user": {
+              "userProfileId": 9422,
+              "userId": 9444,
+              "companyName": "Inspire Brands",
+              "firstName": "Ray",
+              "lastName": "Romero",
+              "phoneNumber": "720-840-3478"
+            },
+            "noteType": 1,
+            "createdAt": "2020-03-19T20:54:16.000+0000",
+            "updatedAt": "2020-03-19T20:54:16.000+0000"
+          },
+          {
+            "wonId": 103190,
+            "wonUserId": 2146,
+            "wonWorkOrderId": 190951,
+            "wonNote": "Ray,\r\nThe SB needs to open a WO for the \"grease extraction/used cooking oil\" asset and it will be dispatched to Mahoney for service.  Right now this note is in the PM dispatch for the underground grease trap pumping.\r\n\r\nCool?",
+            "createdBy": 2152,
+            "customerIds": "[\"9142\",\"9444\"]",
+            "serviceProviderIds": "",
+            "user": {
+              "userProfileId": 2129,
+              "userId": 2152,
+              "companyName": "Inspire Brands",
+              "firstName": "Jeffrey",
+              "lastName": "Seymour",
+              "phoneNumber": ""
+            },
+            "noteType": 2,
+            "createdAt": "2020-03-19T21:03:24.000+0000",
+            "updatedAt": "2020-03-19T21:03:24.000+0000"
+          }
+        ],
+        "proposalNotes": null,
+        "invoiceNotes": null
+      }
 }
