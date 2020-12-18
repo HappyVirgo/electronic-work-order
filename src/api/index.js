@@ -14,7 +14,8 @@ export const apiEmergencyWO = "http://localhost:3000/workorders/user/"
 export const apiPendingWO = "http://localhost:3000/workorders/user/"
 
 //Details WorkOrders
-export const apiDetailsWO = "https://api.ecotrak.com/stagev1/workorders/"
+//export const apiDetailsWO = "https://api.ecotrak.com/stagev1/workorders/"
+export const apiDetailsWO = "http://localhost:3000/workorders/"
 
 //Assigned To Me WorkOrders
 //export const apiAssignedToMeWO = "https://api.ecotrak.com/stagev1/workorders/user/"

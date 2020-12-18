@@ -1,4 +1,553 @@
 {
+    "320496": {
+        "work_order": {
+            "id": 320496,
+            "title": null,
+            "customerId": "2146",
+            "description": "I have no power to wing fryers. they are plugged in tried changing outlets and breakers are good. need someone here asap",
+            "nte": 500,
+            "purchaseOrder": null,
+            "deviceType": "android",
+            "deviceHistory": "d469a35ed3a8027ff085f51f89b954bd2073b19c",
+            "updatedEta": "0",
+            "previousEta": null,
+            "currentEta": "1970-01-01T00:00:00.000+0000",
+            "requestedBy": "Laticia Kirk",
+            "proposalId": null,
+            "requestForPricingId": 0,
+            "requestType": "SR",
+            "serviceProviderId": 0,
+            "serviceProviderWorkOrderId": null,
+            "woCompletedDate": null,
+            "status": 1,
+            "woType": "External",
+            "tradeType": "Cooking Equipment - Fryers",
+            "assetTypeName": "Cooking Equipment - Fryers",
+            "requestedInvoice": false,
+            "dateCreated": "2020-09-29T13:59:17.000+0000",
+            "dateUpdated": "2020-09-29T14:04:50.000+0000",
+            "updatedBy": null,
+            "createdBy": "8819",
+            "completedBy": null,
+            "spToken": "3614d1ea8d0eed254380515c28e31c16",
+            "spTokenTime": "2020-09-29T13:59:17.000+0000",
+            "pmsId": 0,
+            "location": {
+                "id": 2740,
+                "name": "BWW 0027 - Omaha, NE - Southwest Plaza",
+                "store_number": "0027",
+                "phone1": "4028619464",
+                "ext1": "",
+                "phone2": "",
+                "ext2": "",
+                "address1": "4287 S 144th St",
+                "address2": "",
+                "address3": "",
+                "city": "Omaha",
+                "state": "Nebraska",
+                "zip": "68137"
+            },
+            "asset": {
+                "assetImage": [
+                    {
+                        "documentId": 105670,
+                        "documentType": "photo",
+                        "moduleTypeId": 3,
+                        "documentTypeId": 12,
+                        "referenceId": 54921,
+                        "fileName": "54921_1549473769image1.jpg",
+                        "status": 1
+                    }
+                ],
+                "manufacturer": {
+                    "userProfileId": 367,
+                    "userId": 384,
+                    "companyName": "Pitco",
+                    "firstName": "Pitco",
+                    "lastName": ""
+                },
+                "id": 54921,
+                "name": "Fryer - Wing",
+                "description": null,
+                "description2": "",
+                "customerId": 2146,
+                "modelNumber": "SSH60",
+                "serialNumber": "G15LC093418",
+                "assetTypeId": 23,
+                "locationId": 2740,
+                "warrantyExpiryDate": "2020-07-06T12:00:00.000+0000",
+                "warrantyAvailable": false
+            },
+            "assetType": {
+                "id": 23,
+                "name": "Cooking Equipment - Fryers"
+            },
+            "categoryType": {
+                "id": 1,
+                "name": "Repair"
+            },
+            "problemType": {
+                "id": 108,
+                "name": "No Power"
+            },
+            "priority": {
+                "id": 2,
+                "name": "L1 - Emergency",
+                "eta": {
+                    "etaId": 5,
+                    "defaultAdded": 1,
+                    "userId": 2,
+                    "timeValue": 4,
+                    "timePeriods": "Hour",
+                    "statusChanger": "0",
+                    "dateCreated": null,
+                    "dateUpdated": "2020-09-29T22:38:00.000+0000",
+                    "status": 1,
+                    "createdBy": 2,
+                    "updatedBy": null
+                }
+            },
+            "customer": null,
+            "proposal": null,
+            "invoice": [],
+            "workOrderStatus": "UNASSIGNED",
+            "notes": [
+                {
+                    "id": 191372,
+                    "userId": 16640,
+                    "description": "Other there is already a work order for this same thing",
+                    "type": 0,
+                    "workOrderId": 320496,
+                    "customerIds": null,
+                    "serviceProviderIds": null,
+                    "createdBy": 16640,
+                    "createdDate": "2020-09-29T14:04:45.000+0000",
+                    "updatedDate": "2020-09-29T14:04:45.000+0000"
+                }
+            ],
+            "credentials": null,
+            "serviceProviderProfile": {
+                "userProfileId": 15036,
+                "userId": 0,
+                "companyName": null,
+                "firstName": "",
+                "lastName": "",
+                "phoneNumber": null
+            },
+            "assignTo": null
+        }
+    },
+    "323463": {
+        "work_order": {
+          "id": 323463,
+          "title": null,
+          "customerId": "2146",
+          "description": "Compressor not making nitrogen",
+          "nte": 500.0,
+          "purchaseOrder": null,
+          "deviceType": "iOS",
+          "deviceHistory": "c15cd918d8e77d8ed47d46444bbcb54ff575b428",
+          "updatedEta": "0",
+          "previousEta": null,
+          "currentEta": "1970-01-01T00:00:00.000+0000",
+          "requestedBy": "Edward Bauer",
+          "proposalId": null,
+          "requestForPricingId": 0,
+          "requestType": "SR",
+          "serviceProviderId": 15949,
+          "serviceProviderWorkOrderId": null,
+          "woCompletedDate": null,
+          "status": 1,
+          "woType": "Internal",
+          "tradeType": "Draft Beer - Beer Blast (nitrogen generator)",
+          "assetTypeName": "Beer Blast - Nitrogen Generator",
+          "requestedInvoice": false,
+          "dateCreated": "2020-10-02T00:07:56.000+0000",
+          "dateUpdated": "2020-10-02T00:08:02.000+0000",
+          "updatedBy": null,
+          "createdBy": "8823",
+          "completedBy": null,
+          "spToken": "d78ac42ccec44eb814b33ab72e1a488a",
+          "spTokenTime": "2020-10-02T00:07:56.000+0000",
+          "pmsId": 0,
+          "location": {
+            "id": 2878,
+            "name": "BWW 0039 - Omaha, NE - 76th St",
+            "store_number": "0039",
+            "phone1": "4023439464",
+            "ext1": "",
+            "phone2": "",
+            "ext2": "",
+            "address1": "205 N 76th St",
+            "address2": "",
+            "address3": "",
+            "city": "Omaha",
+            "state": "Nebraska",
+            "zip": "68114"
+          },
+          "asset": {
+            "assetImage": [
+              {
+                "documentId": 105214,
+                "documentType": "photo",
+                "moduleTypeId": 3,
+                "documentTypeId": 12,
+                "referenceId": 54712,
+                "fileName": "54712_1549467035image1.jpg",
+                "status": 1
+              }
+            ],
+            "manufacturer": null,
+            "id": 54712,
+            "name": "Beer Blast - Nitrogen Generator",
+            "description": null,
+            "description2": null,
+            "customerId": 2146,
+            "modelNumber": "",
+            "serialNumber": "",
+            "assetTypeId": 523,
+            "locationId": 2878,
+            "warrantyExpiryDate": null,
+            "warrantyAvailable": false
+          },
+          "assetType": {
+            "id": 523,
+            "name": "Beer Blast - Nitrogen Generator"
+          },
+          "categoryType": {
+            "id": 1,
+            "name": "Repair"
+          },
+          "problemType": {
+            "id": 119,
+            "name": "Not Working"
+          },
+          "priority": {
+            "id": 2,
+            "name": "L1 - Emergency",
+            "eta": {
+              "etaId": 5,
+              "defaultAdded": 1,
+              "userId": 2,
+              "timeValue": 4,
+              "timePeriods": "Hour",
+              "statusChanger": "0",
+              "dateCreated": null,
+              "dateUpdated": "2020-09-29T22:38:00.000+0000",
+              "status": 1,
+              "createdBy": 2,
+              "updatedBy": null
+            }
+          },
+          "customer": null,
+          "proposal": null,
+          "invoice": [],
+          "workOrderStatus": "ACCEPTED",
+          "notes": [],
+          "credentials": null,
+          "serviceProviderProfile": {
+            "userProfileId": 15926,
+            "userId": 15949,
+            "companyName": "NUCO2 Beer Blast System, call direct@ 800-472-2855 ext. 3028",
+            "firstName": "NUCO2",
+            "lastName": "",
+            "phoneNumber": "800-472-2855"
+          },
+          "assignTo": null
+        }
+      },
+      "237228": {
+        "work_order": {
+          "id": 237228,
+          "title": null,
+          "customerId": "2146",
+          "description": "Our new evporator is showing an alarm on it reading high box temo.  The unit is saying it is pushing air at about 42 degrees but the cooler is temping at 50",
+          "nte": 500.0,
+          "purchaseOrder": null,
+          "deviceType": null,
+          "deviceHistory": null,
+          "updatedEta": "0",
+          "previousEta": null,
+          "currentEta": "2020-06-07T01:51:02.000+0000",
+          "requestedBy": "Dustin Hoffman",
+          "proposalId": null,
+          "requestForPricingId": 0,
+          "requestType": "SR",
+          "serviceProviderId": 1092,
+          "serviceProviderWorkOrderId": null,
+          "woCompletedDate": null,
+          "status": 1,
+          "woType": "External",
+          "tradeType": "Refrigeration",
+          "assetTypeName": "Walk-in Cooler",
+          "requestedInvoice": false,
+          "dateCreated": "2020-06-06T21:51:02.000+0000",
+          "dateUpdated": "2020-06-08T12:18:25.000+0000",
+          "updatedBy": "4074",
+          "createdBy": "8830",
+          "completedBy": 4074,
+          "spToken": "ba1c82af6dbb360d84b6f6778c606753",
+          "spTokenTime": "2020-06-08T12:18:25.000+0000",
+          "pmsId": 0,
+          "location": {
+            "id": 3230,
+            "name": "BWW 0058 - Wichita, KS - N Rock Rd",
+            "store_number": "0058",
+            "phone1": "3166369464",
+            "ext1": "",
+            "phone2": "",
+            "ext2": "",
+            "address1": "3236 N Rock Rd",
+            "address2": "",
+            "address3": "",
+            "city": "Wichita",
+            "state": "Kansas",
+            "zip": "67226"
+          },
+          "asset": {
+            "assetImage": [
+              {
+                "documentId": 107075,
+                "documentType": "photo",
+                "moduleTypeId": 3,
+                "documentTypeId": 12,
+                "referenceId": 55524,
+                "fileName": "55524_1549578876image1.jpg",
+                "status": 1
+              }
+            ],
+            "manufacturer": null,
+            "id": 55524,
+            "name": "Walk-In Cooler - Wing",
+            "description": "",
+            "description2": "re-verd",
+            "customerId": 2146,
+            "modelNumber": null,
+            "serialNumber": null,
+            "assetTypeId": 60,
+            "locationId": 3230,
+            "warrantyExpiryDate": "1999-12-31T00:00:00.000+0000",
+            "warrantyAvailable": false
+          },
+          "assetType": {
+            "id": 60,
+            "name": "Walk-in Cooler"
+          },
+          "categoryType": {
+            "id": 1,
+            "name": "Repair"
+          },
+          "problemType": {
+            "id": 154,
+            "name": "Too Warm"
+          },
+          "priority": {
+            "id": 2,
+            "name": "L1 - Emergency",
+            "eta": {
+              "etaId": 5,
+              "defaultAdded": 1,
+              "userId": 2,
+              "timeValue": 4,
+              "timePeriods": "Hour",
+              "statusChanger": "0",
+              "dateCreated": null,
+              "dateUpdated": "2020-09-29T22:38:00.000+0000",
+              "status": 1,
+              "createdBy": 2,
+              "updatedBy": null
+            }
+          },
+          "customer": null,
+          "proposal": null,
+          "invoice": [],
+          "workOrderStatus": "ACCEPTED",
+          "notes": [],
+          "credentials": null,
+          "serviceProviderProfile": {
+            "userProfileId": 1073,
+            "userId": 1092,
+            "companyName": "General Parts Corporate Dispatch",
+            "firstName": "General Parts",
+            "lastName": "Corporate Dispatch Admin",
+            "phoneNumber": "888-498-1238"
+          },
+          "assignTo": null
+        }
+      }, 
+      "272542": {
+        "work_order": {
+          "id": 272542,
+          "title": null,
+          "customerId": "2146",
+          "description": "Our drains are clogged and overflowing with grease. Needs jetted. Thanks! ",
+          "nte": 500.0,
+          "purchaseOrder": null,
+          "deviceType": null,
+          "deviceHistory": null,
+          "updatedEta": "0",
+          "previousEta": null,
+          "currentEta": "2020-07-28T00:38:27.000+0000",
+          "requestedBy": "Momoko Anderson",
+          "proposalId": null,
+          "requestForPricingId": 0,
+          "requestType": "SR",
+          "serviceProviderId": 3167,
+          "serviceProviderWorkOrderId": null,
+          "woCompletedDate": null,
+          "status": 1,
+          "woType": "External",
+          "tradeType": "Plumber",
+          "assetTypeName": "Plumbing",
+          "requestedInvoice": false,
+          "dateCreated": "2020-07-27T20:38:27.000+0000",
+          "dateUpdated": "2020-07-28T14:58:26.000+0000",
+          "updatedBy": "3167",
+          "createdBy": "8830",
+          "completedBy": 3167,
+          "spToken": "751192808a48933a45fa1a2428db64f8",
+          "spTokenTime": "2020-07-27T21:40:34.000+0000",
+          "pmsId": 0,
+          "location": {
+            "id": 3230,
+            "name": "BWW 0058 - Wichita, KS - N Rock Rd",
+            "store_number": "0058",
+            "phone1": "3166369464",
+            "ext1": "",
+            "phone2": "",
+            "ext2": "",
+            "address1": "3236 N Rock Rd",
+            "address2": "",
+            "address3": "",
+            "city": "Wichita",
+            "state": "Kansas",
+            "zip": "67226"
+          },
+          "asset": {
+            "assetImage": [
+              {
+                "documentId": 839432,
+                "documentType": "photo",
+                "moduleTypeId": 3,
+                "documentTypeId": 12,
+                "referenceId": 337697,
+                "fileName": "ecotrak_1589846070_2146_new.jpg",
+                "status": 1
+              }
+            ],
+            "manufacturer": null,
+            "id": 337697,
+            "name": "Plumbing - Drains, Pipes, Other",
+            "description": "",
+            "description2": "",
+            "customerId": 2146,
+            "modelNumber": "",
+            "serialNumber": "",
+            "assetTypeId": 38,
+            "locationId": 0,
+            "warrantyExpiryDate": null,
+            "warrantyAvailable": false
+          },
+          "assetType": {
+            "id": 38,
+            "name": "Plumbing"
+          },
+          "categoryType": {
+            "id": 1,
+            "name": "Repair"
+          },
+          "problemType": {
+            "id": 976,
+            "name": "Clogged or Overflowing"
+          },
+          "priority": {
+            "id": 2,
+            "name": "L1 - Emergency",
+            "eta": {
+              "etaId": 5,
+              "defaultAdded": 1,
+              "userId": 2,
+              "timeValue": 4,
+              "timePeriods": "Hour",
+              "statusChanger": "0",
+              "dateCreated": null,
+              "dateUpdated": "2020-09-29T22:38:00.000+0000",
+              "status": 1,
+              "createdBy": 2,
+              "updatedBy": null
+            }
+          },
+          "customer": null,
+          "proposal": {
+            "proposalId": 38850,
+            "srId": 272542,
+            "title": "Hydro-Jetting Service",
+            "serviceProviderId": 3167,
+            "customerId": 2146,
+            "workDescription": "Reddi Industries will provide Hydro-Jetting service. This service is time (port to port) and material. Estimated time is 2-4 hours. \r\nFee for this service is $245.00/HR two hour minimum.\r\n",
+            "completionTime": "1 days",
+            "parts": 0.0,
+            "incurredCost": 0.0,
+            "labor": 980.0,
+            "freight": null,
+            "tax": 73.5,
+            "other": null,
+            "totalAmount": 1053.5,
+            "proposalApprovedDate": null,
+            "dateCreated": "2020-07-28T14:54:57.000+0000",
+            "dateUpdated": "2020-07-28T14:54:57.000+0000",
+            "status": 1,
+            "proposalStatus": {
+              "statusId": 20,
+              "description": "Pending Client Approval"
+            }
+          },
+          "invoice": [],
+          "workOrderStatus": "PROPOSAL_SUBMITTED",
+          "notes": [],
+          "credentials": null,
+          "serviceProviderProfile": {
+            "userProfileId": 3143,
+            "userId": 3167,
+            "companyName": "Reddi Industries ",
+            "firstName": "Deana",
+            "lastName": "Bushell",
+            "phoneNumber": "316-491-5111"
+          },
+          "assignTo": null
+        }
+      },               
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     "emergency": {
         "work_orders": [
             {
