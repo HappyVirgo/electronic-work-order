@@ -19,8 +19,7 @@ const App = () => {
   const forceLogin = () => {
     window.top.location.href='/admin/Users/index_new'
   }   
-  //const [isLoading, setLoading] = useState(true);
-  //Next line it's to develop in local   
+
   const [isLoading, setLoading] = useState(true);
   const [userRole, setUserRole] = useState();
   const [userStatus, setUserStatus] = useState();
@@ -28,23 +27,18 @@ const App = () => {
 
   //First check
   useEffect(() => {
-    //setUserStatus("success");
-    //setUserRole("3");
-    //setLoading(false); 
     axios.get(apiUsers)
     .then(res => {
+      /*
       const payloadData = res.data;
       //console.log(payloadData)
-      /*
       setUserRole(payloadData.user.role_id);
       setUserStatus(payloadData.status);
       setLoading(false);
-      */ 
-
+      */
       setUserRole("3");
       setUserStatus("success");
-      setLoading(false);      
-      
+      setLoading(false);        
       //localStorage.setItem("session_wo", "success");    
       //const test = localStorage.getItem("session_wo");
       //console.log(test)
