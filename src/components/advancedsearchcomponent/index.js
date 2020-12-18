@@ -94,7 +94,7 @@ const AdvancedSearchComponent = () => {
             </FormControl>
             <FormControl className={classes.search}>           
                 <TextField 
-                    placeholder="Search Work Orders..."
+                    placeholder={`Search by ${advancedSearchFields[searchByState-1]}...`}
                     id="search-input-filled-label"
                     aria-describedby="search" 
                     type="search" 
