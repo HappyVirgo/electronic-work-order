@@ -6,8 +6,8 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
          */
         //Each case should be the CTA id
         case "emergencyWO":
-            if(searchTermIn.length>0 && searchByIn<=1) {
-                let tmp = await this.props.fetchEmergencyWOData()
+            if(searchTermIn.length>3 && searchByIn<=1) {
+                let tmp = await props.fetchEmergencyWOData()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 if(filterByInByAssetType.length>0){
                     let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
@@ -29,14 +29,15 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                         }
                     }                            
                 } else {
-                    let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                    let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
+                    console.log(dataSearched)
                     tmpdata = {
                         data: {
                             work_orders: dataSearched
                         }
                     } 
                 }
-            }else if(searchTermIn.length>0 && searchByIn>1){
+            }else if(searchTermIn.length>3 && searchByIn>1){
                 let tmp = await props.fetchSearchData()
                 let dataSearched = tmp.data?tmp.data.work_orders:[]                        
                 if(filterByInByPriority.length>0) {
@@ -74,7 +75,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }                        
             //Default filter by asset type without search                        
             }else if(filterByInByAssetType.length>0) {
-                let tmp = await this.props.fetchEmergencyWOData()
+                let tmp = await props.fetchEmergencyWOData()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 let dataSearched = dataSearch.filter(term => {
                     let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
@@ -98,7 +99,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }
             //Default filter by status without search   
             }else if(filterByInByStatus.length>0) {
-                let tmp = await this.props.fetchEmergencyWOData()
+                let tmp = await props.fetchEmergencyWOData()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 let dataSearched = dataSearch.filter(term => {
                     let notNull = term['status']!==null?term['status']['description']:""
@@ -122,7 +123,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }  
             //Default filter by priority without search   
             }else if(filterByInByPriority.length>0) {
-                let tmp = await this.props.fetchEmergencyWOData()
+                let tmp = await props.fetchEmergencyWOData()
                 let dataSearch = tmp.data?tmp.data.work_orders:[]
                 let dataSearched = dataSearch.filter(term => {
                     let notNull = term['priority']!==null?term['priority']['description']:""
@@ -144,12 +145,12 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                         work_orders: dataSearched
                     }
                 }                                              
-            }else {
-                tmpdata = await props.fetchSearchData()
+            }else if(searchTermIn.length === 0) {
+                tmpdata = await props.fetchEmergencyWOData()
             }                
             break; 
         case "pendingWO":
-        if(searchTermIn.length>0 && searchByIn<=1) {
+        if(searchTermIn.length>3 && searchByIn<=1) {
             let tmp = await props.fetchPendingWOData()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             if(filterByInByAssetType.length>0){
@@ -172,14 +173,14 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                     }
                 }                            
             } else {
-                let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                 tmpdata = {
                     data: {
                         work_orders: dataSearched
                     }
                 } 
             }
-        }else if(searchTermIn.length>0 && searchByIn>1){
+        }else if(searchTermIn.length>3 && searchByIn>1){
             let tmp = await props.fetchSearchData()
             let dataSearched = tmp.data?tmp.data.work_orders:[]                        
             if(filterByInByPriority.length>0) {
@@ -292,8 +293,8 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
         }                
         break;                   
         case "assignedWO":
-        if(searchTermIn.length>0 && searchByIn<=1) {
-            let tmp = await this.props.fetchAssignedToMeWOData()()
+        if(searchTermIn.length>3 && searchByIn<=1) {
+            let tmp = await props.fetchAssignedToMeWOData()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             if(filterByInByAssetType.length>0){
                 let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
@@ -315,14 +316,14 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                     }
                 }                            
             } else {
-                let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                 tmpdata = {
                     data: {
                         work_orders: dataSearched
                     }
                 } 
             }
-        }else if(searchTermIn.length>0 && searchByIn>1){
+        }else if(searchTermIn.length>3 && searchByIn>1){
             let tmp = await props.fetchSearchData()
             let dataSearched = tmp.data?tmp.data.work_orders:[]                        
             if(filterByInByPriority.length>0) {
@@ -360,7 +361,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
             }                        
         //Default filter by asset type without search                        
         }else if(filterByInByAssetType.length>0) {
-            let tmp = await this.props.fetchAssignedToMeWOData()()
+            let tmp = await props.fetchAssignedToMeWOData()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             let dataSearched = dataSearch.filter(term => {
                 let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
@@ -384,7 +385,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
             }
         //Default filter by status without search   
         }else if(filterByInByStatus.length>0) {
-            let tmp = await this.props.fetchAssignedToMeWOData()()
+            let tmp = await props.fetchAssignedToMeWOData()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             let dataSearched = dataSearch.filter(term => {
                 let notNull = term['status']!==null?term['status']['description']:""
@@ -408,7 +409,7 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
             }  
         //Default filter by priority without search   
         }else if(filterByInByPriority.length>0) {
-            let tmp = await this.props.fetchAssignedToMeWOData()()
+            let tmp = await props.fetchAssignedToMeWOData()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             let dataSearched = dataSearch.filter(term => {
                 let notNull = term['priority']!==null?term['priority']['description']:""
@@ -431,11 +432,11 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                 }
             }                                              
         }else {
-            tmpdata = await props.fetchSearchData()
+            tmpdata = await props.fetchAssignedToMeWOData()
         }                
         break; 
         case "unassignedWO":
-        if(searchTermIn.length>0 && searchByIn<=1) {
+        if(searchTermIn.length>3 && searchByIn<=1) {
             let tmp = await props.fetchUnassignedWOData()
             let dataSearch = tmp.data?tmp.data.work_orders:[]
             if(filterByInByAssetType.length>0){
@@ -458,14 +459,14 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
                     }
                 }                            
             } else {
-                let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                 tmpdata = {
                     data: {
                         work_orders: dataSearched
                     }
                 } 
             }
-        }else if(searchTermIn.length>0 && searchByIn>1){
+        }else if(searchTermIn.length>3 && searchByIn>1){
             let tmp = await props.fetchSearchData()
             let dataSearched = tmp.data?tmp.data.work_orders:[]                        
             if(filterByInByPriority.length>0) {
@@ -578,9 +579,8 @@ export const setSearchFilterHelper = async({tmpdata, searchTerm, searchTermIn, s
         }                
         break;                                                       
         default:
-            //tmpdata = await this.props.fetchEmergencyWOData()
-            tmpdata = await this.props.fetchEmergencyWOData()
-        break;
+            tmpdata = await props.fetchEmergencyWOData()
+            break;
     }
     return tmpdata;
 };

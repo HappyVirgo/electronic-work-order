@@ -6,20 +6,23 @@ export const apiUsers = "https://stage.ecotrak.com/admin/Users/getCurrentUser"
 export const apiCTA = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Emercency WorkOrders
-export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+//export const apiEmergencyWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+export const apiEmergencyWO = "http://localhost:3000/workorders/user/"
 
 //Pending WorkOrders
 //export const apiPendingWO = "https://api.ecotrak.com/stagev1/workorders/user/"
-export const apiPendingWO = "https://localhost:3000/workorders/user/"
+export const apiPendingWO = "http://localhost:3000/workorders/user/"
 
 //Details WorkOrders
 export const apiDetailsWO = "https://api.ecotrak.com/stagev1/workorders/"
 
 //Assigned To Me WorkOrders
-export const apiAssignedToMeWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+//export const apiAssignedToMeWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+export const apiAssignedToMeWO = "http://localhost:3000/workorders/user/"
 
 //Unassigned WorkOrders
-export const apiUnassignedWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+//export const apiUnassignedWO = "https://api.ecotrak.com/stagev1/workorders/user/"
+export const apiUnassignedWO = "http://localhost:3000/workorders/user/"
 
 //History WorkOrders
 export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/"

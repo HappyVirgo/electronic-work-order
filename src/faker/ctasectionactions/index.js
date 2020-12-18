@@ -2,9 +2,8 @@ export const fetchCTAsDataTEST = () => {
 
     let data = {
         assignedToMeWorkOrders: 5,
-        emergencyWorkOrders: 5,
-        expiredWorkOrders: 5,
-        pendingWorkOrders: 5,
+        emergencyWorkOrders: 4,
+        pendingWorkOrders: 3,
         unassignedWorkOrders: 5
     }
 

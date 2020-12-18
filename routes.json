@@ -1,4 +1,6 @@
 {
     "/workorders/user/2152/pending": "/pending",
-    "/api/v1/item/:itemId": "/items?itemId=:itemId"
+    "/workorders/user/2152/emergency": "/emergency",
+    "/workorders/user/2152/assigned": "/assigned",
+    "/workorders/user/2152/unassigned": "/unassigned"
 }

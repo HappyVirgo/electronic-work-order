@@ -39,10 +39,10 @@ import {
 } from '../../actions';
 
 //Json Server API
-//To start the api server => json-server db.json --routes routes.json
+//To start the api server => json-server db.json --routes routes.json (Server running on localhost:3000)
+//Then run npm start / yarn start (Server running on localhost:3001)
 import {
     fetchCTAsDataTEST,
-    fetchEmergencyWODataTEST,
 } from '../../faker'
 
 //Context
@@ -259,8 +259,7 @@ class WorkOrdersBuilder extends Component {
         //ctadata = await this.props.fetchCTAsData()
         ctadata = fetchCTAsDataTEST()
         console.log(ctadata)
-        //tmpdata = await this.props.fetchEmergencyWOData()  
-        tmpdata = fetchEmergencyWODataTEST()
+        tmpdata = await this.props.fetchEmergencyWOData()  
         console.log(tmpdata)
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
@@ -323,18 +322,18 @@ class WorkOrdersBuilder extends Component {
     isCurrent = (element) => element.workOrderId.toString() === this.state.detailsId.toString();
 
     async componentDidUpdate(prevProps, prevState) {
-        
+
+        const currentState = this.state.targetId
+        const props = this.props
         const searchTermIn = this.state.searchTerm
         const searchByIn = this.state.searchBy  
         const filterByInByAssetType = this.state.filterByAssetType
         const filterByInByStatus = this.state.filterByStatus
         const filterByInByPriority = this.state.filterByPriority
-        const currentState = this.state.targetId
-        const props = this.props
         if(
             prevState.targetId !== this.state.targetId ||
             prevState.detailsId !== this.state.detailsId ||
-            prevState.searchTerm !== this.state.searchTerm && this.state.searchTerm.length > 3 ||
+            prevState.searchTerm !== this.state.searchTerm ||
             prevState.searchBy !== this.state.searchBy ||
             prevState.filterByAssetType !== this.state.filterByAssetType ||
             prevState.filterByStatus !== this.state.filterByStatus ||
@@ -348,7 +347,7 @@ class WorkOrdersBuilder extends Component {
                 this.setState({
                     searchTerm: "",
                 })
-            }        
+            }       
             //Set/Search/Filter data for DataTable Component
             let incomingData = setSearchFilterHelper({
                 tmpdata,
