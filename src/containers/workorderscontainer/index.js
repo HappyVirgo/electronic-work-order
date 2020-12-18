@@ -38,7 +38,8 @@ import {
     updateWOStatus,
 } from '../../actions';
 
-//Faker.js data
+//Json Server API
+//To start the api server => json-server db.json --routes routes.json
 import {
     fetchCTAsDataTEST,
     fetchEmergencyWODataTEST,

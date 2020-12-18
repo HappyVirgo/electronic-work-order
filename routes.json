@@ -1,0 +1,4 @@
+{
+    "/workorders/user/2152/pending": "/pending",
+    "/api/v1/item/:itemId": "/items?itemId=:itemId"
+}
