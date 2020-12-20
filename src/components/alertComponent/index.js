@@ -22,7 +22,6 @@ export default function Alert(props) {
                     </IconButton>
                 }
                 elevation={6}
-                variant="filled"
                 {...props}
             />
         </Collapse>
