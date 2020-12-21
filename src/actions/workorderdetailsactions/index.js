@@ -39,15 +39,21 @@ export const changeWOStatus = (data) => {
     return {type: types.UPDATE_WO_STATUS, data: data};
 }
 
-export const updateWOStatus = async (dtlsID, token, updatedStatus) => {
+export const updateWOStatus = async (dtlsID, token, updatedStatus, reassignToVal) => {
     const updateStatusURL = "/status"
     let accessToken = await accessFetchToken(token)
     let idDtls = await accessDtlId(dtlsID)
-
-    let data = {
-        status: updatedStatus
+    let data
+    if(reassignToVal === undefined) {
+        data = {
+            status: updatedStatus
+        }
+    } else {
+        data = {
+            status: updatedStatus,
+            serviceProvider: reassignToVal
+        }
     }
-
     const requestOptions = {
         method: 'PUT',
         headers: {
@@ -59,7 +65,8 @@ export const updateWOStatus = async (dtlsID, token, updatedStatus) => {
 
     return dispatch => {
         return fetch(apiDetailsWO+idDtls+updateStatusURL, requestOptions)
-            .then(response => response.json())
-            .then(json => dispatch(changeWOStatus(json)));
+            .then(response => {console.log(response);response.json()})
+            .then(json => dispatch(changeWOStatus(json)))
+            .catch(error => console.log(error))
     }
 }
