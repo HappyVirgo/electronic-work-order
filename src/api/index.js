@@ -26,7 +26,8 @@ export const apiAssignedToMeWO = "http://localhost:3000/workorders/user/"
 export const apiUnassignedWO = "http://localhost:3000/workorders/user/"
 
 //History WorkOrders
-export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/"
+//export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/"
+export const apiHistoryWO = "http://localhost:3000/workorders/"
 
 //History WorkOrders
 //export const apiNotesWO = "https://api.ecotrak.com/stagev1/workorders/"
@@ -40,4 +41,5 @@ export const apiAttachmentsWO = "http://localhost:3000/workorders/"
 export const apiSearch = "https://api.ecotrak.com/stagev1/workorders/user/"
 
 //Warranty
-export const apiWarranty = "https://api.ecotrak.com/stagev1/workorders/"
+//export const apiWarranty = "https://api.ecotrak.com/stagev1/workorders/"
+export const apiWarranty = "http://localhost:3000/workorders/"
