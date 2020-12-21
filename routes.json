@@ -46,6 +46,20 @@
     "/workorders/317694/document": "/317694documents",
     "/workorders/337786/document": "/337786documents",
 
+    "/workorders/320496/history": "/320496history",    
+    "/workorders/323463/history": "/323463history",
+    "/workorders/237228/history": "/237228history",
+    "/workorders/272542/history": "/272542history",
+    "/workorders/357025/history": "/357025history",
+    "/workorders/357923/history": "/357923history",
+    "/workorders/358814/history": "/358814history",
+    "/workorders/121563/history": "/121563history",
+    "/workorders/168624/history": "/168624history",
+    "/workorders/190951/history": "/190951history",
+    "/workorders/153476/history": "/153476history",
+    "/workorders/317694/history": "/317694history",
+    "/workorders/337786/history": "/337786history",
+    
     "/workorders/320496/warranties": "/320496warranties",    
     "/workorders/323463/warranties": "/323463warranties",
     "/workorders/237228/warranties": "/237228warranties",
@@ -60,12 +74,3 @@
     "/workorders/317694/warranties": "/317694warranties",
     "/workorders/337786/warranties": "/337786warranties"    
 }
-
-
-
-
-
-
-
-
-

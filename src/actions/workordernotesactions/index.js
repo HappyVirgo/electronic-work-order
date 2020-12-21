@@ -93,7 +93,7 @@ export const createNoteWOData = async(noteDescription, dtlsID, token, userId = "
         },
         body: JSON.stringify(data)
     };
-    console.log("ADD NOTES: ", apiNotesWO + idDtls + addNoteURL)    
+    console.log("NOTES: ", apiNotesWO + idDtls + addNoteURL)    
     return dispatch => {
         return fetch(apiNotesWO + idDtls + addNoteURL, requestOptions)
             .then(response => response.json())
