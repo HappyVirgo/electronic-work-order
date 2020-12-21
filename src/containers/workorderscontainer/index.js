@@ -72,6 +72,7 @@ let noteDescription
 
 let workOrderUpdateResponse
 let updatedStatus
+let reassignToVal
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -92,6 +93,8 @@ class WorkOrdersBuilder extends Component {
             noteDescription: '',
             workOrderUpdateResponse: '',
             updatedStatus: '',
+            reassignToVal: 1,
+            reassignToAvailable: false,
             itsActive: false
         };
     }    
@@ -209,18 +212,38 @@ class WorkOrdersBuilder extends Component {
             loadingDetails: true
         }, this.handleAddNote(!newNoteAvailable))
     }
-    
+
+    handleChangeReassignToSelect = (value) => {
+        reassignToVal = value
+        console.log('reassignToVal', reassignToVal)
+    }
+    handleReassignToSelect = (event) => {
+        let value = event.target.value
+        this.setState({
+            reassignToVal: value
+        }, this.handleChangeReassignToSelect(value))
+    }
+
     handleUpdateStatus = (target) => {
         updatedStatus = target
         console.log("updatedStatus", updatedStatus)
     }
     updateWOStatus = (event) => {
         let target = event.target.parentElement.getAttribute("status")
-        target = target.toUpperCase().replace(' ', '_')
-        this.setState({
-            updatedStatus: target,
-            loadingDetails: true,
-        }, this.handleUpdateStatus(target))
+        if(target !== 'Reassign') {
+            target = target.toUpperCase().replace(' ', '_')
+            this.setState({
+                updatedStatus: target,
+                loadingDetails: true,
+            }, this.handleUpdateStatus(target))
+        } else {
+            target = target.toUpperCase().replace(' ', '_')
+            this.setState({
+                updatedStatus: target,
+                reassignToAvailable: !this.state.reassignToAvailable,
+                loadingDetails: true,
+            }, this.handleUpdateStatus(target))
+        }
     }
     /**
      * Description: Details components click events to change
@@ -395,7 +418,8 @@ class WorkOrdersBuilder extends Component {
             prevState.filterByStatus !== this.state.filterByStatus ||
             prevState.filterByPriority !== this.state.filterByPriority ||
             prevState.newNoteAvailable !== this.state.newNoteAvailable ||
-            prevState.updatedStatus !== this.state.updatedStatus
+            prevState.updatedStatus !== this.state.updatedStatus ||
+            prevState.reassignToAvailable !== this.state.reassignToAvailable
         ) {
             this.setState({loading: true})
             //Clean input if lenght is 0
@@ -1039,11 +1063,15 @@ class WorkOrdersBuilder extends Component {
             const prevUpdatedStatus = prevState.updatedStatus
             const currentUpdatedStatus = this.state.updatedStatus
             if( prevUpdatedStatus !== currentUpdatedStatus) {
-                workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus)
-                this.setState({
-                    workOrderUpdateResponse: workOrderUpdateResponse,
-                    loadingDetails: true
-                }, handleChangePrevState(dtlsID))
+                workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus, reassignToVal)
+                if(workOrderUpdateResponse) {
+                    this.setState({
+                        workOrderUpdateResponse: workOrderUpdateResponse,
+                        loadingDetails: true
+                    }, handleChangePrevState(dtlsID))
+                } else {
+                    alert("Server Error Occured")
+                }
             }
 
             // console.log("dltsID", this.state.deta)
@@ -1057,6 +1085,7 @@ class WorkOrdersBuilder extends Component {
         }
     }
     render() {
+
         const globalState = {
             dynamicDetails: this.dynamicDetails,
             dynamicData: this.dynamicData,
@@ -1069,6 +1098,8 @@ class WorkOrdersBuilder extends Component {
             createNoteWOData: this.createNoteWOData,
             updateWOStatus: this.updateWOStatus,
             handleNoteInput: this.handleNoteInput,
+            handleReassignToSelect: this.handleReassignToSelect,
+            reassignToVal: this.state.reassignToVal,
             currentDtlsId: this.state.detailsId,
             noteDescription: this.state.noteDescription,
             filterByStateAssetType: this.state.filterByAssetType,
@@ -1080,7 +1111,7 @@ class WorkOrdersBuilder extends Component {
         return (
             <GlobalContext.Provider value={globalState}>
                 <div className="work-orders-container">
-                    <Alert severity="warning">
+                    <Alert severity="warning" variant="filled">
                         <Link href="/admin/WorkOrders" target="_blank" rel="noopener" color="inherit">
                             <i>Missing Something? Go to the Old Version</i>
                         </Link>
@@ -1130,7 +1161,7 @@ const mapDispatchToProps = dispatch => ({
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token, userId)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
-    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus)),
+    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus, reassignToVal)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
