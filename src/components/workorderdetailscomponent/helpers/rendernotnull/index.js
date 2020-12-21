@@ -90,7 +90,6 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 let pre_manufacturer = detailsdata.data.work_order.asset.manufacturer
                 manufacturer = pre_manufacturer!==nullVal?detailsdata.data.work_order.asset.manufacturer.companyName:nullVal;
             }
-          /*
             model = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.modelNumber:nullVal;
             serial = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.serialNumber:nullVal;
             assetType = detailsdata.data.work_order.assetType!==nullVal?detailsdata.data.work_order.assetType.name:nullVal;
@@ -109,7 +108,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
             }         
             //Bordered Section
-            invoiceStatus = detailsdata.data.work_order.invoice!==nullVal?detailsdata.data.work_order.invoice.invoiceStatus:nullVal;
+            invoiceStatus = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice.reduce((acc, crr, idx)=> acc+(idx===0?'':', ')+crr.invoiceStatusDesc.description, ''):nullVal;
             serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
             serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
             currentEta = detailsdata.data.work_order.currentEta!==nullVal?detailsdata.data.work_order.currentEta:nullVal;
@@ -117,34 +116,6 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             locationAddress = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.address1:nullVal;
             location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
             locationPhone = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.phone1:nullVal;
-        }
-        */
-        model = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.modelNumber:nullVal;
-        serial = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.serialNumber:nullVal;
-        assetType = detailsdata.data.work_order.assetType!==nullVal?detailsdata.data.work_order.assetType.name:nullVal;
-        warrantyLabel = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.warrantyAvailable:nullVal;
-        //Enhanced Section
-        id = detailsdata.data.work_order.id!==nullVal?detailsdata.data.work_order.id:nullVal;
-        description = detailsdata.data.work_order.description!==nullVal?detailsdata.data.work_order.description:nullVal;
-        status = detailsdata.data.work_order.workOrderStatus!==nullVal?detailsdata.data.work_order.workOrderStatus:nullVal;
-        priority = detailsdata.data.work_order.priority!==nullVal?detailsdata.data.work_order.priority.name:nullVal;
-        tradeType = detailsdata.data.work_order.tradeType!==nullVal?detailsdata.data.work_order.tradeType:nullVal;
-        problemType = detailsdata.data.work_order.problemType!==nullVal?detailsdata.data.work_order.problemType.name:nullVal;
-        categoryType = detailsdata.data.work_order.categoryType!==nullVal?detailsdata.data.work_order.categoryType.name:nullVal;
-        nte = detailsdata.data.work_order.nte!==nullVal?detailsdata.data.work_order.nte:nullVal;
-        if(detailsdata.data.work_order.proposal!==nullVal){
-            let pre_proposalStatus = detailsdata.data.work_order.proposal.proposalStatus
-            proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
-        }         
-        //Bordered Section
-        invoiceStatus = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice.reduce((acc, crr, idx)=> acc+(idx===0?'':', ')+crr.invoiceStatusDesc.description, ''):nullVal;
-        serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
-        serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
-        currentEta = detailsdata.data.work_order.currentEta!==nullVal?detailsdata.data.work_order.currentEta:nullVal;
-        //Location Section
-        locationAddress = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.address1:nullVal;
-        location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
-        locationPhone = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.phone1:nullVal;
 
     }
     return(
@@ -214,6 +185,6 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 notes={notes}
             /></>}                      
         </div>            
-    )
+    )}
 }
         
