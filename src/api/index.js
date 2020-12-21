@@ -29,10 +29,12 @@ export const apiUnassignedWO = "http://localhost:3000/workorders/user/"
 export const apiHistoryWO = "https://api.ecotrak.com/stagev1/workorders/"
 
 //History WorkOrders
-export const apiNotesWO = "https://api.ecotrak.com/stagev1/workorders/"
+//export const apiNotesWO = "https://api.ecotrak.com/stagev1/workorders/"
+export const apiNotesWO = "http://localhost:3000/workorders/"
 
 //Attachments WorkOrders
-export const apiAttachmentsWO = "https://api.ecotrak.com/stagev1/workorders/"
+//export const apiAttachmentsWO = "https://api.ecotrak.com/stagev1/workorders/"
+export const apiAttachmentsWO = "http://localhost:3000/workorders/"
 
 //Search
 export const apiSearch = "https://api.ecotrak.com/stagev1/workorders/user/"
