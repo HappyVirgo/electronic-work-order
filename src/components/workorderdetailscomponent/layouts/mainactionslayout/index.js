@@ -111,7 +111,7 @@ export const MainActions = () => {
                                 </FormControl>
                             </div>
     const reassignContent = <div>
-                        <FormControl component="fieldset" className={classes.reassignForm} style={{width: '100%', display:'flex'}}>
+                        <FormControl component="fieldset" variant="outlined" className={classes.reassignForm} style={{width: '100%', display:'flex'}}>
                             <FormLabel className={classes.inputLabel}>Select Service Provider:</FormLabel>
                             <Select
                                 labelId="assigned-to-label"
