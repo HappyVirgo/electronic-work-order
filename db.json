@@ -2271,48 +2271,486 @@
     },
     "320496notes": {
         "workOrderNotes": [
-          {
-            "wonId": 103178,
-            "wonUserId": 2146,
-            "wonWorkOrderId": 190951,
-            "wonNote": "Jeff we have been trying to get them out for several weeks now. MAS came out and told us they can not service. The issue is that the reclamation system is not working. It will not shuttle the oil to the storage locker. We are having issues with filtering and changing our fryer oil due to this. What do we need to do on our end to get them out.  ",
-            "createdBy": 9444,
-            "customerIds": "2152",
-            "serviceProviderIds": null,
-            "user": {
-              "userProfileId": 9422,
-              "userId": 9444,
-              "companyName": "Inspire Brands",
-              "firstName": "Ray",
-              "lastName": "Romero",
-              "phoneNumber": "720-840-3478"
-            },
-            "noteType": 1,
-            "createdAt": "2020-03-19T20:54:16.000+0000",
-            "updatedAt": "2020-03-19T20:54:16.000+0000"
-          },
-          {
-            "wonId": 103190,
-            "wonUserId": 2146,
-            "wonWorkOrderId": 190951,
-            "wonNote": "Ray,\r\nThe SB needs to open a WO for the \"grease extraction/used cooking oil\" asset and it will be dispatched to Mahoney for service.  Right now this note is in the PM dispatch for the underground grease trap pumping.\r\n\r\nCool?",
-            "createdBy": 2152,
-            "customerIds": "[\"9142\",\"9444\"]",
-            "serviceProviderIds": "",
-            "user": {
-              "userProfileId": 2129,
-              "userId": 2152,
-              "companyName": "Inspire Brands",
-              "firstName": "Jeffrey",
-              "lastName": "Seymour",
-              "phoneNumber": ""
-            },
-            "noteType": 2,
-            "createdAt": "2020-03-19T21:03:24.000+0000",
-            "updatedAt": "2020-03-19T21:03:24.000+0000"
-          }
+            {
+                "wonId": 191372,
+                "wonUserId": 16640,
+                "wonWorkOrderId": 320496,
+                "wonNote": "Other there is already a work order for this same thing",
+                "createdBy": 16640,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 16617,
+                    "userId": 16640,
+                    "companyName": "RSM Service Group",
+                    "firstName": "RSM Dispatch",
+                    "lastName": "",
+                    "phoneNumber": "402-731-7635"
+                },
+                "noteType": 0,
+                "createdAt": "2020-09-29T14:04:45.000+0000",
+                "updatedAt": "2020-09-29T14:04:45.000+0000"
+            }
         ],
         "proposalNotes": null,
         "invoiceNotes": null
-      }
+    },
+    "237228notes": {
+        "workOrderNotes": [],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "272542notes": {
+        "workOrderNotes": [],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "357025notes": {
+        "workOrderNotes": [],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "357923notes": {
+        "workOrderNotes": [],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "358814notes": {
+        "workOrderNotes": [
+            {
+                "wonId": 124296,
+                "wonUserId": 6038,
+                "wonWorkOrderId": 153476,
+                "wonNote": "Other old , we have newer PO's to use",
+                "createdBy": 6038,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 6014,
+                    "userId": 6038,
+                    "companyName": "Averus Fire Services",
+                    "firstName": "Jen",
+                    "lastName": "Rivera",
+                    "phoneNumber": "800-393-8287"
+                },
+                "noteType": 0,
+                "createdAt": "2020-05-20T16:04:14.000+0000",
+                "updatedAt": "2020-05-20T16:04:14.000+0000"
+            },
+            {
+                "wonId": 185911,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 153476,
+                "wonNote": "Can we get this ticket closed out please?",
+                "createdBy": 8818,
+                "customerIds": "[\"2152\"]",
+                "serviceProviderIds": "",
+                "user": {
+                    "userProfileId": 8796,
+                    "userId": 8818,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 1,
+                "createdAt": "2020-09-18T04:26:54.000+0000",
+                "updatedAt": "2020-09-18T04:26:54.000+0000"
+            }
+        ],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "121563notes": {
+        "workOrderNotes": [
+            {
+                "wonId": 73282,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 121563,
+                "wonNote": "Hi Jeff, \r\nThey said we need a new ice machine. Please approve\r\n",
+                "createdBy": 9038,
+                "customerIds": "2152",
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 9016,
+                    "userId": 9038,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 1,
+                "createdAt": "2020-01-17T00:13:37.000+0000",
+                "updatedAt": "2020-01-17T00:13:37.000+0000"
+            }
+        ],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "168624notes": {
+        "workOrderNotes": [
+            {
+                "wonId": 85272,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 168624,
+                "wonNote": "Burgarello Alarm has now been out to inspect there end of things, they said everything is fine on there end, just like SMUD (local electric company) and just like the electrician said. MAS doesn't think we need new wiring to the RTU 1. Please advise/help with the next steps from here. \nI informed MAS that while the electrician was here the heater was working but the AC will not cool to under 78 degrees even when set at 66 degrees.\nAt this point we have had MAS, SMUD, an electrician  and a fire alarm guy out here to look at an AC unit? HELP,\nThank you for your time,\nDan",
+                "createdBy": 9138,
+                "customerIds": "[\"2152\",\"9449\"]",
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 9116,
+                    "userId": 9138,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 2,
+                "createdAt": "2020-02-12T00:34:51.000+0000",
+                "updatedAt": "2020-02-12T00:34:51.000+0000"
+            },
+            {
+                "wonId": 90433,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 168624,
+                "wonNote": "Mark from MAS said we need to Have the Electrician run a new wire to the Roof on the outside of the unit it will be faster and cost less but this has been over 2 months now and its extremely hot in the kitchen   Marks Number 1-925-980-5687",
+                "createdBy": 9138,
+                "customerIds": "[\"9449\",\"2152\"]",
+                "serviceProviderIds": "",
+                "user": {
+                    "userProfileId": 9116,
+                    "userId": 9138,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 1,
+                "createdAt": "2020-02-21T23:57:32.000+0000",
+                "updatedAt": "2020-02-21T23:57:32.000+0000"
+            },
+            {
+                "wonId": 93508,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 168624,
+                "wonNote": "any idea on when this will be fixed its 90 degrees  in the kitchen ",
+                "createdBy": 9138,
+                "customerIds": "2152",
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 9116,
+                    "userId": 9138,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 1,
+                "createdAt": "2020-02-29T05:43:10.000+0000",
+                "updatedAt": "2020-02-29T05:43:10.000+0000"
+            },
+            {
+                "wonId": 93509,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 168624,
+                "wonNote": "the original ticket for this was December 22nd   its been over 2 months  ",
+                "createdBy": 9138,
+                "customerIds": "[\"2152\"]",
+                "serviceProviderIds": "",
+                "user": {
+                    "userProfileId": 9116,
+                    "userId": 9138,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 1,
+                "createdAt": "2020-02-29T05:47:31.000+0000",
+                "updatedAt": "2020-02-29T05:47:31.000+0000"
+            },
+            {
+                "wonId": 93876,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 168624,
+                "wonNote": "HELP! \n\nthis is now a life safty concern, my pregnant server said she almost fainted because of how hot it is in the kitchen.\nTwo months with a non operational AC unit is not acceptable.",
+                "createdBy": 9138,
+                "customerIds": "[\"2152\",\"3611\",\"9138\",\"9449\"]",
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 9116,
+                    "userId": 9138,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 2,
+                "createdAt": "2020-03-02T15:30:41.000+0000",
+                "updatedAt": "2020-03-02T15:30:41.000+0000"
+            },
+            {
+                "wonId": 94334,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 168624,
+                "wonNote": "Team,\r\nAfter much back and forth MAS is aware of the exact issue and what needs to be done to make it right.  Mike at MAS and their team have agreed that it was a deficiency from the install of the unit 18 months ago and will repair it even though the warranty period from the install has expired.  They will communicate with you in the next day or so when they will get it taken care of.",
+                "createdBy": 2152,
+                "customerIds": "[\"9138\",\"9449\",\"3611\"]",
+                "serviceProviderIds": "[\"1481\"]",
+                "user": {
+                    "userProfileId": 2129,
+                    "userId": 2152,
+                    "companyName": "Inspire Brands",
+                    "firstName": "Jeffrey",
+                    "lastName": "Seymour",
+                    "phoneNumber": ""
+                },
+                "noteType": 2,
+                "createdAt": "2020-03-02T23:52:30.000+0000",
+                "updatedAt": "2020-03-02T23:52:30.000+0000"
+            },
+            {
+                "wonId": 234859,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 168624,
+                "wonNote": "INVOICE REJECTED, ACTION REQUIRED   The invoice associated with this work order was rejected.  Please review the notes for an indication as to why the invoice was rejected, then work to resolve the issue in question.  IN ORDER TO RE-INVOICE you will need to:  1) navigate to the invoice, 2) click the edit button, 3) Revise the invoice in some way, 4) Click submit.  Thanks for your help, --Inspire Facilities System Admin",
+                "createdBy": 2146,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 2123,
+                    "userId": 2146,
+                    "companyName": "Inspire Brands",
+                    "firstName": "Inspire Brands",
+                    "lastName": " Site Admin",
+                    "phoneNumber": "877-299-8366"
+                },
+                "noteType": 0,
+                "createdAt": "2020-12-10T22:36:53.000+0000",
+                "updatedAt": "2020-12-10T22:36:53.000+0000"
+            }
+        ],
+        "proposalNotes": null,
+        "invoiceNotes": [
+            {
+                "invId": 53978,
+                "invUserId": 1481,
+                "invoiceId": 94222,
+                "invWorkOrderId": 0,
+                "invNote": "nspected RTU #1 ( BOH )\r\nFound unit off due to not correct voltage to unit\r\nChecked wiring and components \r\nFound L2 Leg of power has a substantial drop in power @ RTU\r\nWent to Electrical panel checked voltage @ breaker - all 3 legs have 120v coming out - \r\nWas notified that a Electrical company came out already & tried tracing wire & unable to find the drop in voltage or bad wire - \r\nWire is ran under unit & not excess able unless you have unit craned up. \r\nI recommend to have Electrician run new wires from Panel thru roof line to a box on the outside of RTU then run flex line to unit to provide power to ensure all wiring is good & abandon old wiring due to not being able to pin point issue in wiring \r\nNotified Beverly of situation",
+                "createdBy": 17087,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "noteType": 0,
+                "createdAt": "2020-02-21T17:50:47.000+0000",
+                "updatedAt": "2020-02-21T17:50:47.000+0000",
+                "user": {
+                    "userProfileId": 17064,
+                    "userId": 17087,
+                    "companyName": "MAS Service",
+                    "firstName": "Ellen",
+                    "lastName": "",
+                    "phoneNumber": ""
+                }
+            },
+            {
+                "invId": 53983,
+                "invUserId": 9138,
+                "invoiceId": 94222,
+                "invWorkOrderId": 0,
+                "invNote": "still not fixed and the electrician has submitted his invoice for $1450 saying eveything is fine on his end (so lost on a solution) \n\nHELP",
+                "createdBy": 9138,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "noteType": 0,
+                "createdAt": "2020-02-21T17:58:07.000+0000",
+                "updatedAt": "2020-02-21T17:58:07.000+0000",
+                "user": {
+                    "userProfileId": 9116,
+                    "userId": 9138,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                }
+            }
+        ]
+    },
+    "190951notes": {
+        "workOrderNotes": [
+            {
+                "wonId": 103178,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 190951,
+                "wonNote": "Jeff we have been trying to get them out for several weeks now. MAS came out and told us they can not service. The issue is that the reclamation system is not working. It will not shuttle the oil to the storage locker. We are having issues with filtering and changing our fryer oil due to this. What do we need to do on our end to get them out.  ",
+                "createdBy": 9444,
+                "customerIds": "2152",
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 9422,
+                    "userId": 9444,
+                    "companyName": "Inspire Brands",
+                    "firstName": "Ray",
+                    "lastName": "Romero",
+                    "phoneNumber": "720-840-3478"
+                },
+                "noteType": 1,
+                "createdAt": "2020-03-19T20:54:16.000+0000",
+                "updatedAt": "2020-03-19T20:54:16.000+0000"
+            },
+            {
+                "wonId": 103190,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 190951,
+                "wonNote": "Ray,\r\nThe SB needs to open a WO for the \"grease extraction/used cooking oil\" asset and it will be dispatched to Mahoney for service.  Right now this note is in the PM dispatch for the underground grease trap pumping.\r\n\r\nCool?",
+                "createdBy": 2152,
+                "customerIds": "[\"9142\",\"9444\"]",
+                "serviceProviderIds": "",
+                "user": {
+                    "userProfileId": 2129,
+                    "userId": 2152,
+                    "companyName": "Inspire Brands",
+                    "firstName": "Jeffrey",
+                    "lastName": "Seymour",
+                    "phoneNumber": ""
+                },
+                "noteType": 2,
+                "createdAt": "2020-03-19T21:03:24.000+0000",
+                "updatedAt": "2020-03-19T21:03:24.000+0000"
+            }
+        ],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "153476notes": {
+        "workOrderNotes": [],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "317694notes": {
+        "workOrderNotes": [
+            {
+                "wonId": 188563,
+                "wonUserId": 3167,
+                "wonWorkOrderId": 317694,
+                "wonNote": "Other outside our scope",
+                "createdBy": 3167,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 3143,
+                    "userId": 3167,
+                    "companyName": "Reddi Industries ",
+                    "firstName": "Deana",
+                    "lastName": "Bushell",
+                    "phoneNumber": "316-491-5111"
+                },
+                "noteType": 0,
+                "createdAt": "2020-09-23T18:24:49.000+0000",
+                "updatedAt": "2020-09-23T18:24:49.000+0000"
+            }
+        ],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "337786notes": {
+        "workOrderNotes": [
+            {
+                "wonId": 202719,
+                "wonUserId": 2934,
+                "wonWorkOrderId": 337786,
+                "wonNote": "Other This booth seat request was added to WO 337785 to save on freight costs.",
+                "createdBy": 2934,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 2910,
+                    "userId": 2934,
+                    "companyName": "Foldcraft Co. - Plymold",
+                    "firstName": "Judy",
+                    "lastName": "Ryan",
+                    "phoneNumber": "507-789-8337"
+                },
+                "noteType": 0,
+                "createdAt": "2020-10-19T21:29:10.000+0000",
+                "updatedAt": "2020-10-19T21:29:10.000+0000"
+            }
+        ],
+        "proposalNotes": null,
+        "invoiceNotes": null
+    },
+    "320496documents": {
+        "documents": []
+    },
+    "323463documents": {
+        "documents": []
+    },
+    "237228documents": {
+        "documents": []
+    },
+    "272542documents": {
+        "documents": []
+    },
+    "357025documents": {
+        "documents": []
+    },
+    "357923documents": {
+        "documents": []
+    },
+    "358814documents": {
+        "documents": []
+    },
+    "121563documents": {
+        "documents": []
+    },
+    "168624documents": {
+        "documents": []
+    },
+    "190951documents": {
+        "documents": []
+    },
+    "153476documents": {
+        "documents": []
+    },
+    "317694documents": {
+        "documents": [
+            {
+                "documentId": 1073134,
+                "documentType": "photo",
+                "moduleTypeId": 1,
+                "referenceId": 317694,
+                "userId": 2146,
+                "description": "Uploaded by Service Request",
+                "fileName": "ecotrak_1600885397_8830_sr_317694.jpg",
+                "spSample": 0,
+                "secure": "Public",
+                "copyWithWo": 0,
+                "expireOn": null,
+                "status": 1,
+                "setUnique": 0,
+                "createdBy": 8830,
+                "updatedBy": 0,
+                "dateCreated": "2020-09-23T18:23:17.000+0000",
+                "dateUpdated": "2020-09-23T18:23:20.000+0000",
+                "type": {
+                    "documentTypeId": 6,
+                    "type": "document",
+                    "description": "Work Order",
+                    "status": 1,
+                    "statusChanger": "0",
+                    "setUnique": 0,
+                    "expirationDateRequired": 0,
+                    "userId": 2,
+                    "defaultAdded": 1,
+                    "dateCreated": null,
+                    "dateUpdated": "2018-09-20T14:27:34.000+0000",
+                    "createdBy": 2,
+                    "updatedBy": 2
+                }
+            }
+        ]
+    },
+    "337786documents": {
+        "documents": []
+    }
 }

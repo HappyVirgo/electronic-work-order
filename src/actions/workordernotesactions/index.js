@@ -33,7 +33,7 @@ export const fetchNotesWOData = async(dtlsID, token) => {
             'Content-Type': 'application/json',
         }
     }
-
+    console.log("NOTES: ", apiNotesWO + idDtls + notesURL)
     return dispatch => {
         return fetch(apiNotesWO + idDtls + notesURL, init)
             .then(response => response.json())
