@@ -32,7 +32,7 @@
     "/workorders/317694/note/aggregate": "/317694notes",
     "/workorders/337786/note/aggregate": "/337786notes",  
 
-    "/workorders/320496/note/aggregate/add": "/320496notes/workOrderNotes",    
+    "/workorders/320496/note/add": "/320496notes/workOrderNotes/",    
     "/workorders/323463/note/aggregate/add": "/323463notes/workOrderNotes",
     "/workorders/237228/note/aggregate/add": "/237228notes/workOrderNotes",
     "/workorders/272542/note/aggregate/add": "/272542notes",
