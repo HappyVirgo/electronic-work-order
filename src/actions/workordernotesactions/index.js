@@ -44,7 +44,7 @@ export const createNoteWOData = async(noteDescription, dtlsID, token, userId = "
     //Real url
     //const addNoteURL = "/note"
     //Fake API url
-    const addNoteURL = "/note/aggregate"
+    const addNoteURL = "/note/aggregate/add"
     const accessFetchToken = (tk) => {
         return tk.data
     }
