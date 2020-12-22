@@ -65,6 +65,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: "flex",
     position: "relative",
+    bixSizing: "unset"
   },
   container: {
     flexGrow: 1,
