@@ -5,7 +5,7 @@ import Moment from 'react-moment';
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+import { Typography, Link } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     }  
 }));
 
-export const BoxedDetails = ({currentEta, serviceProvider, serviceProviderLast, proposalStatus, invoiceStatus, nullVal}) => {
+export const BoxedDetails = ({proposalId, invoiceId, currentEta, serviceProvider, serviceProviderLast, proposalStatus, invoiceStatus, nullVal}) => {
+    const api_url = '/admin/';
     const classes = useStyles()
     const smallSize = 12
     const mediumSize = 6
@@ -62,7 +63,9 @@ export const BoxedDetails = ({currentEta, serviceProvider, serviceProviderLast, 
                     <Typography className={classes.text}><strong>Proposal Status: </strong></Typography>                    
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
+                    <Link href={`${api_url}Proposals/proposal_details/${proposalId}`}>
                         <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
+                    </Link>
                 </Grid>               
             </Grid>                    
             <Grid container>
@@ -70,12 +73,11 @@ export const BoxedDetails = ({currentEta, serviceProvider, serviceProviderLast, 
                     <Typography className={classes.text}><strong>Invoice Status: </strong></Typography>                    
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
-                    <Typography className={classes.text}>{invoiceStatus!==null?invoiceStatus:nullVal}</Typography>
+                    <Link href={`${api_url}Invoices/details/${invoiceId}`}>
+                        <Typography className={classes.text}>{invoiceStatus!==null?invoiceStatus:nullVal}</Typography>
+                    </Link>
                 </Grid>                              
             </Grid>             
         </Grid>
     )
 }
-
-
-
