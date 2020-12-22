@@ -52,12 +52,13 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
                 align={column.numeric || false ? "right" : "left"}
                 className={clsx(
                 classes.cell,
-                !column.width && classes.expandingCell
+                // !column.width && classes.expandingCell
+                classes.expandingCell
                 )}
-                style={{
-                flexBasis: column.width || false,
-                // height: ROW_SIZE
-                }}
+                // style={{
+                // flexBasis: column.width || false,
+                // // height: ROW_SIZE
+                // }}
             >
                 {
                     (getMultiItem===true)?

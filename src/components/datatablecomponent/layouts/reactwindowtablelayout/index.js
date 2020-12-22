@@ -44,7 +44,7 @@ const useTableStyles = makeStyles(theme => ({
         width: "100%",
         maxWidth: "100%",
         height: "100%",
-        minHieght:"100%"
+        minHieght:"100%",
     },
     row: {
         display: "flex",
@@ -63,7 +63,9 @@ const useTableStyles = makeStyles(theme => ({
         // flex: 1
     },
     expandingCell: {
-        flex: 1
+        flex: 1,
+        display: 'flex',
+        justifyContent: 'center'
     },
     dtableCols: {
         width: "100%",
