@@ -45,7 +45,6 @@ const useTableStyles = makeStyles(theme => ({
         maxWidth: "100%",
         height: "100%",
         minHieght:"100%",
-        boxSizing: "unset"
     },
     row: {
         display: "flex",
