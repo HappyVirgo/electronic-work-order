@@ -77,7 +77,6 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
     )
     return (
         <>
-        {/* {span} */}
         {item?Body:BodyEmpty}
         </>
     );
