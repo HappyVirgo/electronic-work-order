@@ -4,6 +4,5 @@ import memoize from "memoize-one";
 export const createItemData = memoize((classes, columns, data) => ({
     columns,
     classes,
-    // span,
     items: data
 }));
