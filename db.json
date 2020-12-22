@@ -2582,7 +2582,48 @@
         "invoiceNotes": null
     },
     "153476notes": {
-        "workOrderNotes": [],
+        "workOrderNotes": [
+            {
+                "wonId": 124296,
+                "wonUserId": 6038,
+                "wonWorkOrderId": 153476,
+                "wonNote": "Other old , we have newer PO's to use",
+                "createdBy": 6038,
+                "customerIds": null,
+                "serviceProviderIds": null,
+                "user": {
+                    "userProfileId": 6014,
+                    "userId": 6038,
+                    "companyName": "Averus Fire Services",
+                    "firstName": "Jen",
+                    "lastName": "Rivera",
+                    "phoneNumber": "800-393-8287"
+                },
+                "noteType": 0,
+                "createdAt": "2020-05-20T16:04:14.000+0000",
+                "updatedAt": "2020-05-20T16:04:14.000+0000"
+            },
+            {
+                "wonId": 185911,
+                "wonUserId": 2146,
+                "wonWorkOrderId": 153476,
+                "wonNote": "Can we get this ticket closed out please?",
+                "createdBy": 8818,
+                "customerIds": "[\"2152\"]",
+                "serviceProviderIds": "",
+                "user": {
+                    "userProfileId": 8796,
+                    "userId": 8818,
+                    "companyName": "Inspire Brands",
+                    "firstName": "General Manager",
+                    "lastName": "",
+                    "phoneNumber": null
+                },
+                "noteType": 1,
+                "createdAt": "2020-09-18T04:26:54.000+0000",
+                "updatedAt": "2020-09-18T04:26:54.000+0000"
+            }
+        ],
         "proposalNotes": null,
         "invoiceNotes": null
     },
