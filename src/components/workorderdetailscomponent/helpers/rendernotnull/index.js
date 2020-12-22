@@ -148,7 +148,9 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             <LinkActions
                 workOrderId={workOrderId}
                 invoiceStatus={invoiceStatus}
+                invoiceId={invoiceId}
                 proposalStatus={proposalStatus}
+                proposalId={proposalId}
             />
             <Divider/>
             <Grid container spacing={0}>

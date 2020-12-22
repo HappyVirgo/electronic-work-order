@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const api_url = "/admin/";
 
-export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
+export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStatus, proposalId}) => {
     const classes = useStyles()
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
@@ -69,7 +69,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
                 color="primary"
                 className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
                 onClick={
-                    () => window.open(`${api_url}Invoices/details/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Invoices/details/${invoiceId}`, "_blank")
                 }
             >
                 Invoice
@@ -79,7 +79,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, proposalStatus}) => {
                 color="primary" 
                 className={`${classes.linkButton} link-button ${proposalStatus && Object.keys(proposalStatus).length !== 0?'':classes.disabled}`} 
                 onClick={
-                    () => window.open(`${api_url}Proposals/proposal_details/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Proposals/proposal_details/${proposalId}`, "_blank")
                 }
             >
                 Proposal
