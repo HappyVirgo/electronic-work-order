@@ -164,6 +164,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     nullVal={nullVal}
                 />
                 <BoxedDetails 
+                    workOrderId={workOrderId}
                     currentEta={currentEta}
                     serviceProvider={serviceProvider}
                     serviceProviderLast={serviceProviderLast}
