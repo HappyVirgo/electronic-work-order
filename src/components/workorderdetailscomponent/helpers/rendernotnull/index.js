@@ -55,8 +55,10 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
     let locationPhone
     //Check PM
     let ifPM
-    let proposalStatus    
+    let proposalStatus
+    let proposalId    
     let invoiceStatus
+    let invoiceId
     let serviceProviderLast
     
     let isAvailable
@@ -106,9 +108,11 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             if(detailsdata.data.work_order.proposal!==nullVal){
                 let pre_proposalStatus = detailsdata.data.work_order.proposal.proposalStatus
                 proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
+                proposalId = detailsdata.data.work_order.proposal.proposalId
             }         
             //Bordered Section
             invoiceStatus = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice.reduce((acc, crr, idx)=> acc+(idx===0?'':', ')+crr.invoiceStatusDesc.description, ''):nullVal;
+            invoiceId = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice[0].invoiceId:nullVal;
             serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
             serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
             currentEta = detailsdata.data.work_order.currentEta!==nullVal?detailsdata.data.work_order.currentEta:nullVal;
@@ -164,7 +168,8 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     nullVal={nullVal}
                 />
                 <BoxedDetails 
-                    workOrderId={workOrderId}
+                    proposalId={proposalId}
+                    invoiceId={invoiceId}
                     currentEta={currentEta}
                     serviceProvider={serviceProvider}
                     serviceProviderLast={serviceProviderLast}
