@@ -99,7 +99,7 @@ export const MainActions = () => {
     const updateWOStatus = noteFunc.updateWOStatus
     const reassignedTo = noteFunc.handleReassignToSelect
     const reassignToVal = noteFunc.reassignToVal
-    console.log('reassignToVal', reassignToVal)
+    //console.log('reassignToVal', reassignToVal)
 
     const classes = useStyles()
     const addNoteContent = <div>
@@ -140,7 +140,7 @@ export const MainActions = () => {
                             </Select>
                         </FormControl>
                      </div>
-    console.log('reassignToVal', reassignToVal)
+    //console.log('reassignToVal', reassignToVal)
     return (
         <Grid item xs={12} md={12} lg={4} className="action-button-grid">
             <PopupComponent buttonLabel="ADD NOTE" modalTitle="Add Notes" btn2Classes={`${classes.actionButton} action-button`} btnClasses={`${classes.actionButton} action-button`} btn1Classes={`${classes.actionButtonOutlned} action-button`} btnStartIcon={<AddNote/>} btn1Label="Cancel" btn2Func={addNote} btn2Label="Submit" MuiDialogTitle={classes.MuiDialogTitle} content={addNoteContent} />
