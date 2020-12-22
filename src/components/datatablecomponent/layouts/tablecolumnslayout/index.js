@@ -21,10 +21,11 @@ export const TableColumns = ({ classes, columns }) => {
                 className={clsx(                    
                 classes.cell,
                 classes.column,
-                !column.width && classes.expandingCell
+                // !column.width && classes.expandingCell
+                classes.expandingCell
                 )}
                 style={{
-                flexBasis: column.width || false,
+                // flexBasis: column.width || false,
                 height: ROW_SIZE
                 }}
                 scope="col"

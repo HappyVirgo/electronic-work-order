@@ -55,65 +55,77 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
     let locationPhone
     //Check PM
     let ifPM
-    let proposalStatus    
+    let proposalStatus
+    let proposalId    
     let invoiceStatus
+    let invoiceId
     let serviceProviderLast
     
+    let isAvailable
 
     if(detailsdata!==undefined){
         //If is a PM
-        if(detailsdata.data.work_order.asset!==nullVal) {
-            ifPM = false
+        if(detailsdata.data.work_order===undefined) {
+            isAvailable = true
         } else {
-            ifPM = true
-        }
-        //Image Section
-        if(detailsdata.data.work_order.asset!==nullVal) {
-            let pre_image = detailsdata.data.work_order.asset.assetImage
-            image = pre_image[0]!==undefined?pre_image[0]['fileName']:nullVal;
-        }         
-        //Short Detail Section
-        if(detailsdata.data.work_order.asset!==nullVal){
-            let pre_assetName = detailsdata.data.work_order.asset
-            assetName = pre_assetName!==nullVal?detailsdata.data.work_order.asset.name:nullVal;
-        }        
-        if(detailsdata.data.work_order!==nullVal){
-            workOrderId = detailsdata.data.work_order.id!==nullVal?detailsdata.data.work_order.id:nullVal;
-        }          
-        woType = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.woType:nullVal;
-        if(detailsdata.data.work_order.asset!==nullVal){
-            let pre_manufacturer = detailsdata.data.work_order.asset.manufacturer
-            manufacturer = pre_manufacturer!==nullVal?detailsdata.data.work_order.asset.manufacturer.companyName:nullVal;
-        }
-        model = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.modelNumber:nullVal;
-        serial = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.serialNumber:nullVal;
-        assetType = detailsdata.data.work_order.assetType!==nullVal?detailsdata.data.work_order.assetType.name:nullVal;
-        warrantyLabel = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.warrantyAvailable:nullVal;
-        //Enhanced Section
-        id = detailsdata.data.work_order.id!==nullVal?detailsdata.data.work_order.id:nullVal;
-        description = detailsdata.data.work_order.description!==nullVal?detailsdata.data.work_order.description:nullVal;
-        status = detailsdata.data.work_order.workOrderStatus!==nullVal?detailsdata.data.work_order.workOrderStatus:nullVal;
-        priority = detailsdata.data.work_order.priority!==nullVal?detailsdata.data.work_order.priority.name:nullVal;
-        tradeType = detailsdata.data.work_order.tradeType!==nullVal?detailsdata.data.work_order.tradeType:nullVal;
-        problemType = detailsdata.data.work_order.problemType!==nullVal?detailsdata.data.work_order.problemType.name:nullVal;
-        categoryType = detailsdata.data.work_order.categoryType!==nullVal?detailsdata.data.work_order.categoryType.name:nullVal;
-        nte = detailsdata.data.work_order.nte!==nullVal?detailsdata.data.work_order.nte:nullVal;
-        if(detailsdata.data.work_order.proposal!==nullVal){
-            let pre_proposalStatus = detailsdata.data.work_order.proposal.proposalStatus
-            proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
-        }         
-        //Bordered Section
-        invoiceStatus = detailsdata.data.work_order.invoice!==nullVal?detailsdata.data.work_order.invoice.invoiceStatus:nullVal;
-        serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
-        serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
-        currentEta = detailsdata.data.work_order.currentEta!==nullVal?detailsdata.data.work_order.currentEta:nullVal;
-        //Location Section
-        locationAddress = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.address1:nullVal;
-        location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
-        locationPhone = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.phone1:nullVal;
+
+            if(detailsdata.data.work_order.asset!==nullVal) {
+                ifPM = false
+            } else {
+                ifPM = true
+            }
+            //Image Section
+            if(detailsdata.data.work_order.asset!==nullVal) {
+                let pre_image = detailsdata.data.work_order.asset.assetImage
+                image = pre_image[0]!==undefined?pre_image[0]['fileName']:nullVal;
+            }         
+            //Short Detail Section
+            if(detailsdata.data.work_order.asset!==nullVal){
+                let pre_assetName = detailsdata.data.work_order.asset
+                assetName = pre_assetName!==nullVal?detailsdata.data.work_order.asset.name:nullVal;
+            }        
+            if(detailsdata.data.work_order!==nullVal){
+                workOrderId = detailsdata.data.work_order.id!==nullVal?detailsdata.data.work_order.id:nullVal;
+            }          
+            woType = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.woType:nullVal;
+            if(detailsdata.data.work_order.asset!==nullVal){
+                let pre_manufacturer = detailsdata.data.work_order.asset.manufacturer
+                manufacturer = pre_manufacturer!==nullVal?detailsdata.data.work_order.asset.manufacturer.companyName:nullVal;
+            }
+            model = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.modelNumber:nullVal;
+            serial = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.asset.serialNumber:nullVal;
+            assetType = detailsdata.data.work_order.assetType!==nullVal?detailsdata.data.work_order.assetType.name:nullVal;
+            warrantyLabel = detailsdata.data.work_order.asset!==nullVal?detailsdata.data.work_order.warrantyAvailable:nullVal;
+            //Enhanced Section
+            id = detailsdata.data.work_order.id!==nullVal?detailsdata.data.work_order.id:nullVal;
+            description = detailsdata.data.work_order.description!==nullVal?detailsdata.data.work_order.description:nullVal;
+            status = detailsdata.data.work_order.workOrderStatus!==nullVal?detailsdata.data.work_order.workOrderStatus:nullVal;
+            priority = detailsdata.data.work_order.priority!==nullVal?detailsdata.data.work_order.priority.name:nullVal;
+            tradeType = detailsdata.data.work_order.tradeType!==nullVal?detailsdata.data.work_order.tradeType:nullVal;
+            problemType = detailsdata.data.work_order.problemType!==nullVal?detailsdata.data.work_order.problemType.name:nullVal;
+            categoryType = detailsdata.data.work_order.categoryType!==nullVal?detailsdata.data.work_order.categoryType.name:nullVal;
+            nte = detailsdata.data.work_order.nte!==nullVal?detailsdata.data.work_order.nte:nullVal;
+            if(detailsdata.data.work_order.proposal!==nullVal){
+                let pre_proposalStatus = detailsdata.data.work_order.proposal.proposalStatus
+                proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
+                proposalId = detailsdata.data.work_order.proposal.proposalId
+            }         
+            //Bordered Section
+            invoiceStatus = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice.reduce((acc, crr, idx)=> acc+(idx===0?'':', ')+crr.invoiceStatusDesc.description, ''):nullVal;
+            invoiceId = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice[0].invoiceId:nullVal;
+            serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
+            serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
+            currentEta = detailsdata.data.work_order.currentEta!==nullVal?detailsdata.data.work_order.currentEta:nullVal;
+            //Location Section
+            locationAddress = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.address1:nullVal;
+            location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
+            locationPhone = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.phone1:nullVal;
+
     }
     return(
         <div>
+            {isAvailable&& <div>Something went wrong!</div>}
+            {!isAvailable&& <>
             <Grid container spacing={0}>
                 <DetailsImageLayout
                     image={image}
@@ -136,7 +148,9 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             <LinkActions
                 workOrderId={workOrderId}
                 invoiceStatus={invoiceStatus}
+                invoiceId={invoiceId}
                 proposalStatus={proposalStatus}
+                proposalId={proposalId}
             />
             <Divider/>
             <Grid container spacing={0}>
@@ -156,6 +170,8 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     nullVal={nullVal}
                 />
                 <BoxedDetails 
+                    proposalId={proposalId}
+                    invoiceId={invoiceId}
                     currentEta={currentEta}
                     serviceProvider={serviceProvider}
                     serviceProviderLast={serviceProviderLast}
@@ -175,8 +191,8 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 history={history}
                 attachments={attachments}
                 notes={notes}
-            />                      
+            /></>}                      
         </div>            
-    )
+    )}
 }
         
