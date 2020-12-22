@@ -24,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
     }  
 }));
 
-export const BoxedDetails = ({workOrderId, currentEta, serviceProvider, serviceProviderLast, proposalStatus, invoiceStatus, nullVal}) => {
+export const BoxedDetails = ({proposalId, invoiceId, currentEta, serviceProvider, serviceProviderLast, proposalStatus, invoiceStatus, nullVal}) => {
+    const api_url = '/admin/';
     const classes = useStyles()
     const smallSize = 12
     const mediumSize = 6
@@ -62,7 +63,7 @@ export const BoxedDetails = ({workOrderId, currentEta, serviceProvider, serviceP
                     <Typography className={classes.text}><strong>Proposal Status: </strong></Typography>                    
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
-                    <Link href={`https://stage.ecotrak.com/admin/WorkOrders/${workOrderId}`}>
+                    <Link href={`${api_url}Proposals/proposal_details/${proposalId}`}>
                         <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
                     </Link>
                 </Grid>               
@@ -72,7 +73,7 @@ export const BoxedDetails = ({workOrderId, currentEta, serviceProvider, serviceP
                     <Typography className={classes.text}><strong>Invoice Status: </strong></Typography>                    
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
-                    <Link href={`https://stage.ecotrak.com/admin/WorkOrders/${invoiceStatus}`}>
+                    <Link href={`${api_url}Invoices/details/${invoiceId}`}>
                         <Typography className={classes.text}>{invoiceStatus!==null?invoiceStatus:nullVal}</Typography>
                     </Link>
                 </Grid>                              
