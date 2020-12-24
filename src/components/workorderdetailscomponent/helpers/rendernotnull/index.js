@@ -23,7 +23,7 @@ import {
     //ModalComponent
 } from '../../../../components'
 
-export const RenderNotNull = ({detailsdata, history, attachments, notes, warranty}) => {   
+export const RenderNotNull = ({detailsdata, history, attachments, notes, warranty, serviceProviders}) => {   
     //In null case
     const nullVal = null;    
     //Image Section
@@ -143,7 +143,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     warranty={warranty}
                     nullVal={nullVal}
                 />
-                <MainActions />
+                <MainActions serviceProviders={serviceProviders} />
             </Grid>
             <LinkActions
                 workOrderId={workOrderId}
