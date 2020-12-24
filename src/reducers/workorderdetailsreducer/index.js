@@ -22,7 +22,13 @@ const workOrderDetailsReducer = handleActions({
             ...state,
             data: action.data
         };    
-    }    
+    },
+    [types.RECEIVE_SERVICE_PROVIDERS]: (state, action) => {
+        return {
+            ...state,
+            data: action.data
+        };
+    },    
 }, initialState);
 
 export default workOrderDetailsReducer;
