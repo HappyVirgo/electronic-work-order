@@ -49,6 +49,9 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
     //Border Section
     let currentEta
     let serviceProvider
+    let assignTo
+    let invoiceStatus
+    let invoiceStatusDesc
     //Location Section
     let locationAddress
     let location
@@ -57,7 +60,6 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
     let ifPM
     let proposalStatus
     let proposalId    
-    let invoiceStatus
     let invoiceId
     let serviceProviderLast
     
@@ -109,8 +111,9 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 let pre_proposalStatus = detailsdata.data.work_order.proposal.proposalStatus
                 proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
                 proposalId = detailsdata.data.work_order.proposal.proposalId
-            }         
-            //Bordered Section
+            }  
+            assignTo = detailsdata.data.work_order.assignTo!==nullVal?detailsdata.data.work_order.assignTo.user:nullVal;   
+            //Bordered Section 
             invoiceStatus = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice.reduce((acc, crr, idx)=> acc+(idx===0?'':', ')+crr.invoiceStatusDesc.description, ''):nullVal;
             invoiceId = detailsdata.data.work_order.invoice.length!==0?detailsdata.data.work_order.invoice[0].invoiceId:nullVal;
             serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
@@ -120,6 +123,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             locationAddress = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.address1:nullVal;
             location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
             locationPhone = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.phone1:nullVal;
+            
 
     }
     return(
@@ -177,6 +181,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     serviceProviderLast={serviceProviderLast}
                     proposalStatus={proposalStatus}
                     invoiceStatus={invoiceStatus}
+                    assignTo={assignTo}
                     nullVal={nullVal}
                 />
                 <LocationDetails

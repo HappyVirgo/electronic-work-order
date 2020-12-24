@@ -41,10 +41,10 @@ const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, wa
         <>
         {firstLoading?(
             <div>
-            <Skeleton variant="text" />
-            <Skeleton variant="circle" width={40} height={40} />
-            <Skeleton variant="rect" height={210} />
-          </div>
+                <Skeleton variant="text" />
+                <Skeleton variant="circle" width={40} height={40} />
+                <Skeleton variant="rect" height={210} />
+            </div>
         ):(
             <div className="details-container">
                 {loadingDetails && <div className="loading-container">
