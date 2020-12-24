@@ -24,14 +24,12 @@ const useStyles = makeStyles((theme) => ({
     }  
 }));
 
-export const BoxedDetails = ({proposalId, invoiceId, currentEta, serviceProvider, serviceProviderLast, proposalStatus, invoiceStatus, nullVal}) => {
+export const BoxedDetails = ({proposalId, invoiceId, currentEta, serviceProvider, serviceProviderLast, proposalStatus, assignTo, invoiceStatus, nullVal}) => {
     const api_url = '/admin/';
     const classes = useStyles()
     const smallSize = 12
     const mediumSize = 6
-    const unixtest = currentEta!==null?currentEta:nullVal
-    const testing = Date.parse(unixtest)
-    //console.log(testing)
+    let assignToDesc = assignTo!==null?`${assignTo.firstName} ${assignTo.lastName} / ${assignTo.companyName}`:nullVal
     return (
         <Grid item xs={smallSize} md={12} lg={7} className={classes.etaSection}>
             <Grid container>
@@ -55,7 +53,7 @@ export const BoxedDetails = ({proposalId, invoiceId, currentEta, serviceProvider
                     <Typography className={classes.text}><strong>Assigned To: </strong></Typography>
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
-                    <Typography className={classes.text}>N/A</Typography>
+                    <Typography className={classes.text}>{assignToDesc!==null?assignToDesc:nullVal}</Typography>
                 </Grid>
             </Grid>     
             <Grid container>

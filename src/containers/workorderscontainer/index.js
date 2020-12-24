@@ -43,7 +43,7 @@ import { GlobalContext } from '../../context/globalcontext'
 let token
 //User ID
 let userId
-let userData
+//let userData
 //CTA component
 let ctadata
 //Datatable component
@@ -331,19 +331,18 @@ class WorkOrdersBuilder extends Component {
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
-
+        /*
         userData = await this.props.fetchUsersInformation()
         console.log(userData.userdata.user)
         userId = userData.userdata.user.user_id   
-        
+        */
         //Next line it's to develop in local     
-        //userId = "2152"
+        userId = "2152"
         this.setState({ 
             firstLoading: true
         })
         ctadata = await this.props.fetchCTAsData()
         tmpdata = await this.props.fetchEmergencyWOData()  
-        console.log(tmpdata)
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
             this.setState({

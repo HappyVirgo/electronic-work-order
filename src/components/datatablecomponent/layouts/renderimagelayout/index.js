@@ -27,7 +27,6 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
         checkImg = item[getDataKey][getExtraKey]!==undefined||null?item[getDataKey][getExtraKey]:[]   
         checkImg = checkImg.length>0?checkImg[0][getImgPath]:[]
         img = checkImg!==undefined?(checkImg.length!==0?IMG_URL+checkImg:placeholder):placeholder
-        console.log(img)
     }
     //Check for broken URL to add a placeholder
     const addDefaultSrc = (event) => {
