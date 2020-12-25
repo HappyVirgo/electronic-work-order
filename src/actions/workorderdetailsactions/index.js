@@ -89,6 +89,6 @@ export const fetchServiceProviders = async (dtlsID, token) => {
         return fetch(apiDetailsWO+idDtls+serviceProviderURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveDetailsWOData(json)))
-            .catch(error => cosole.log("Fetch Service Provider Error"));
+            .catch(error => console.log("Fetch Service Provider Error"));
     }
 }

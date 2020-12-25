@@ -134,7 +134,7 @@ export const MainActions = ({serviceProviders}) => {
                                         <MenuItem 
                                             key={index}
                                             value={item.serviceProviderProfile.companyName}
-                                        >{item}</MenuItem>
+                                        >{item.serviceProviderProfile.companyName}</MenuItem>
                                     )
                                 })):(<MenuItem
                                         value={2}
