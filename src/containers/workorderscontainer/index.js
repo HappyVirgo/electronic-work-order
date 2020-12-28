@@ -282,7 +282,6 @@ class WorkOrdersBuilder extends Component {
      * */
     handleDynamicData = (target) => {
         trgtID = target
-        console.log(trgtID)
     }      
     dynamicData = (event) => {
         event.preventDefault();
@@ -1120,7 +1119,8 @@ class WorkOrdersBuilder extends Component {
                     <Grid className="cta-section-component">
                         <CTASectionComponent 
                             ctadata={ctadata}
-                            tmpdata={tmpdata} 
+                            tmpdata={tmpdata}
+                            targetdata={trgtID} 
                         />
                     </Grid>            
                     <Grid container className="content-section">

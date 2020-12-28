@@ -76,13 +76,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const FilteringComponent = ({tmpdata}) => {
+const FilteringComponent = ({tmpdata, targetdata}) => {
     const classes = useStyles();
     const filterFunc = useContext(GlobalContext)
     const [disabledClassAssetType, setDisabledClassAssetType] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
     const [disabledClassStatus, setDisabledClassStatus] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
     const [disabledClassPriority, setDisabledClassPriority] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
 
+    console.log("TESTING: ", targetdata)
     //Functions to handle state changes
     const funcFilterByAssetType = filterFunc.handleFilterByAssetType 
     const funcFilterByStatus = filterFunc.handleFilterByStatus
@@ -97,19 +98,18 @@ const FilteringComponent = ({tmpdata}) => {
     let filterDataAssetType = filterByAssetType(data)
     let filterDataStatus = filterByStatus(data)
     let filterDataPriority = filterByPriority(data)
-    let disabledSelectAssetType = filterDataAssetType.length<=1?true:false
-    let disabledSelectStatus = filterDataStatus.length<=1?true:false
-    let disabledSelectPriority = filterDataPriority.length<=1?true:false
+    //let disabledSelectAssetType = filterDataAssetType.length<=1?true:false    
+    //Set "disabled" filters by default
+    const disabledSelectAssetType = false
+    let disabledSelectStatus = targetdata==="pendingWO"?true:false
+    let disabledSelectPriority = targetdata==="emergencyWO"?true:false
 
     useEffect(() => {
-        console.log(disabledSelectAssetType)
-        console.log(disabledSelectStatus)
-        console.log(disabledSelectPriority)
         if(!disabledSelectAssetType) {
             setDisabledClassAssetType([classes.filter, classes.eachFilter, classes.icon])
         }else{
             setDisabledClassAssetType([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
-        }
+        }        
         if(!disabledSelectStatus) {
             setDisabledClassStatus([classes.filter, classes.eachFilter, classes.icon])
         }else{
@@ -120,7 +120,17 @@ const FilteringComponent = ({tmpdata}) => {
         }else{
             setDisabledClassPriority([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
         }
-    }, [classes.filter, classes.filterDisabled, classes.eachFilter, classes.eachFilterDisabled, classes.icon,classes.iconDisabled, disabledSelectAssetType, disabledSelectPriority, disabledSelectStatus])
+    }, [
+        classes.filter,
+        classes.filterDisabled,
+        classes.eachFilter,
+        classes.eachFilterDisabled,
+        classes.icon,
+        classes.iconDisabled,
+        disabledSelectAssetType,
+        disabledSelectPriority,
+        disabledSelectStatus
+    ])
 
     //console.log(data)
     return (
