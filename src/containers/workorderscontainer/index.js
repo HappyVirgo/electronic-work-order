@@ -43,7 +43,7 @@ import { GlobalContext } from '../../context/globalcontext'
 let token
 //User ID
 let userId
-//let userData
+let userData
 //CTA component
 let ctadata
 //Datatable component
