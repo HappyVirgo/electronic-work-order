@@ -81,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
     reassignSelect: {
         flex: '1',
         marginTop: 'unset !important',
-        maxWidth: '173px',
     },
     disabled: {
         color: 'grey',
