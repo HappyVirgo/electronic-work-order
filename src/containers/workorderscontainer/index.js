@@ -32,6 +32,7 @@ import {
     fetchWarrantyWOData,
     createNoteWOData,
     updateWOStatus,
+    fetchServiceProviders,
 } from '../../actions';
 
 //Context
@@ -73,6 +74,7 @@ let noteDescription
 let workOrderUpdateResponse
 let updatedStatus
 let reassignToVal
+let serviceProviders
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -218,6 +220,7 @@ class WorkOrdersBuilder extends Component {
         //console.log('reassignToVal', reassignToVal)
     }
     handleReassignToSelect = (event) => {
+        console.log("id", event.target)
         let value = event.target.value
         this.setState({
             reassignToVal: value
@@ -351,6 +354,7 @@ class WorkOrdersBuilder extends Component {
         historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
+        serviceProviders = await this.props.fetchServiceProviders();
         // this.sortOrderNotesByDate()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
@@ -1011,6 +1015,8 @@ class WorkOrdersBuilder extends Component {
             const handleId = async(dtlsID) => {
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
+
                 // this.sortOrderNotesByDate()
                 attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
                 historydata = await this.props.fetchHistoryWOData(dtlsID, token)
@@ -1138,6 +1144,7 @@ class WorkOrdersBuilder extends Component {
                                 history={historydata} 
                                 attachments={attachmentsdata} 
                                 notes={notesdata}
+                                serviceProviders={serviceProviders}
                                 firstLoading={this.state.firstLoading}
                                 warranty={warrantydata}
                             />
@@ -1163,6 +1170,7 @@ const mapDispatchToProps = dispatch => ({
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
     updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus, reassignToVal)),
+    fetchServiceProviders: () => dispatch(fetchServiceProviders(dtlsID, token)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
