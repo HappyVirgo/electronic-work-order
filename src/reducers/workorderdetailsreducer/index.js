@@ -20,13 +20,14 @@ const workOrderDetailsReducer = handleActions({
     [types.UPDATE_WO_STATUS]: (state, action) => {
         return {
             ...state,
-            data: action.data
+            updatedWO: action.data
         };    
     },
     [types.RECEIVE_SERVICE_PROVIDERS]: (state, action) => {
+        console.log("action", action)
         return {
             ...state,
-            data: action.data
+            serviceProviders: action.data
         };
     },    
 }, initialState);

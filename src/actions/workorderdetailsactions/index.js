@@ -86,9 +86,9 @@ export const fetchServiceProviders = async (dtlsID, token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiDetailsWO+idDtls+serviceProviderURL, init)
+        return fetch(apiDetailsWO+idDtls+serviceProviderURL+"?userId=2152", init)
             .then(response => response.json())
-            .then(json => dispatch(receiveDetailsWOData(json)))
+            .then(json => dispatch(receiveServiceProviders(json)))
             .catch(error => console.log("Fetch Service Provider Error"));
     }
 }
