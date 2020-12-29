@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, loadingDetails, firstLoading}) => {
+const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, serviceProviders, loadingDetails, firstLoading}) => {
     const classes = useStyles()
     return (
         <>
@@ -57,6 +57,7 @@ const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, wa
                         attachments={attachments} 
                         notes={notes}
                         warranty={warranty}
+                        serviceProviders={serviceProviders}
                     />
                 </Paper>
             </div>
