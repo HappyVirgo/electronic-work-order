@@ -220,6 +220,7 @@ class WorkOrdersBuilder extends Component {
         //console.log('reassignToVal', reassignToVal)
     }
     handleReassignToSelect = (event) => {
+        console.log("id", event.target)
         let value = event.target.value
         this.setState({
             reassignToVal: value
@@ -1017,6 +1018,7 @@ class WorkOrdersBuilder extends Component {
                 detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                 notesdata = await this.props.fetchNotesWOData(dtlsID, token)
                 serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
+
                 // this.sortOrderNotesByDate()
                 attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
                 historydata = await this.props.fetchHistoryWOData(dtlsID, token)

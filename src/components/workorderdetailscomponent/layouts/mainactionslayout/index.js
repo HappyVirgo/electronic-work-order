@@ -81,7 +81,13 @@ const useStyles = makeStyles((theme) => ({
     reassignSelect: {
         flex: '1',
         marginTop: 'unset !important',
-    }
+        maxWidth: '173px',
+    },
+    disabled: {
+        color: 'grey',
+        backgroundColor: '#EEEEEE',
+        pointerEvents: 'none'
+    },
 }));
 
 // const serviceProviders = [
@@ -90,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
 //     "Reddi Industries"
 // ]
 
-export const MainActions = ({serviceProviders}) => {
+export const MainActions = ({serviceProviders, status}) => {
     const noteFunc = useContext(GlobalContext)
     const addNote = noteFunc.createNoteWOData
     const chageInputNote = noteFunc.handleNoteInput
@@ -100,7 +106,6 @@ export const MainActions = ({serviceProviders}) => {
     const reassignedTo = noteFunc.handleReassignToSelect
     const reassignToVal = noteFunc.reassignToVal
     //console.log('reassignToVal', reassignToVal)
-
     const classes = useStyles()
     const addNoteContent = <div>
                                 <FormControl required error={error} component="fieldset" style={{width:'100%'}}>
@@ -129,11 +134,11 @@ export const MainActions = ({serviceProviders}) => {
                                     value={1}
                                     disabled
                                 >Service Providers</MenuItem>
-                                {serviceProviders?(serviceProviders.assignTrades.map((item, index) => {
+                                {serviceProviders?(serviceProviders.data.assignTrades.map((item, index) => {
                                     return (
                                         <MenuItem 
                                             key={index}
-                                            value={item.serviceProviderProfile.companyName}
+                                            value={item.assignId}
                                         >{item.serviceProviderProfile.companyName}</MenuItem>
                                     )
                                 })):(<MenuItem
@@ -149,7 +154,7 @@ export const MainActions = ({serviceProviders}) => {
         <Grid item xs={12} md={12} lg={4} className="action-button-grid">
             <PopupComponent buttonLabel="ADD NOTE" modalTitle="Add Notes" btn1Classes={`${classes.actionButton} action-button`} btnClasses={`${classes.actionButton} action-button`} btn2Classes={`${classes.actionButtonOutlned} action-button`} btnStartIcon={<AddNote/>} btn2Label="Cancel" btn1Func={addNote} btn1Label="Submit" MuiDialogTitle={classes.MuiDialogTitle} content={addNoteContent} />
             <PopupComponent buttonLabel="Not Fixed" modalTitle="Not Fixed" btnClasses={`${classes.actionButton} action-button`} btn2Classes={`${classes.actionButton} action-button`} btn1Classes={`${classes.actionButton} action-button`} btnStartIcon={<NotFixed/>} btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content="Not fixed?" />
-            <PopupComponent buttonLabel="Reassign" modalTitle="Reassign" reassignToVal={reassignToVal} btnClasses={`${classes.actionButton} action-button`} btn2Classes={`${classes.actionButtonOutlned} action-button`} btn1Classes={`${classes.actionButton} action-button`} btnStartIcon={<ReAssigned/>}  btn2Label="Cancel" btn1Label="Reassign" btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content={reassignContent} />
+            <PopupComponent buttonLabel="Reassign" modalTitle="Reassign" reassignToVal={reassignToVal} btnClasses={`${classes.actionButton} action-button ${status==="UNASSIGNED" || status==="PENDING_ACCEPTANCE"?"":classes.disabled}`} btn2Classes={`${classes.actionButtonOutlned} action-button`} btn1Classes={`${classes.actionButton} action-button`} btnStartIcon={<ReAssigned/>}  btn2Label="Cancel" btn1Label="Reassign" btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content={reassignContent} />
             {/* <PopupComponent buttonLabel="Complete" modalTitle="Complete" btnClasses={`${classes.actionButton} action-button`} btn2Classes={`${classes.actionButton} action-button`} btn1Classes={`${classes.actionButton} action-button`} btnStartIcon={<Complete/>} btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content="Complete?" /> */}
             <PopupComponent buttonLabel="Cancel" modalTitle="Cancel" btnClasses={`${classes.actionButton} action-button`} btn2Classes={`${classes.actionButton} action-button`} btn1Classes={`${classes.actionButton} action-button`} btnStartIcon={<Cancel/>} btn1Func={updateWOStatus} MuiDialogTitle={classes.MuiDialogTitle} content="Cancel?" />
         </Grid>
