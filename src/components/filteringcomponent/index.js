@@ -83,7 +83,6 @@ const FilteringComponent = ({tmpdata, targetdata}) => {
     const [disabledClassStatus, setDisabledClassStatus] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
     const [disabledClassPriority, setDisabledClassPriority] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
 
-    console.log("TESTING: ", targetdata)
     //Functions to handle state changes
     const funcFilterByAssetType = filterFunc.handleFilterByAssetType 
     const funcFilterByStatus = filterFunc.handleFilterByStatus
