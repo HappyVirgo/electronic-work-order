@@ -1014,13 +1014,15 @@ class WorkOrdersBuilder extends Component {
             }
 
             const handleId = async(dtlsID) => {
-                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-                serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
-                // this.sortOrderNotesByDate()
-                attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-                historydata = await this.props.fetchHistoryWOData(dtlsID, token)
-                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
+                if(this.state.firstLoading === false) {
+                    detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+                    notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                    serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
+                    // this.sortOrderNotesByDate()
+                    attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+                    historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+                    warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
+                }
                 this.setState({loadingDetails: false}, console.log("setState LOAD"))
             }
             //Change details data
