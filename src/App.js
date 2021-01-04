@@ -35,11 +35,10 @@ const App = () => {
       setUserRole(payloadData.user.role_id);
       setUserStatus(payloadData.status);
       setLoading(false);
-*/
+      */
       setUserRole("3");
       setUserStatus("success");
-      setLoading(false);    
-
+      setLoading(false);        
       
     })
   }, [idleUpdate]);
@@ -50,7 +49,6 @@ const App = () => {
       //console.log('user is active', event)
       if(idleUpdate !== false){
         onIdle()
-        setIdleUpdate(false)
       }
     }     
     const onIdle = () => {
@@ -58,8 +56,8 @@ const App = () => {
         setIdleUpdate(true)
         axios.get(apiUsers)
         .then(res => {
-          const payloadData = res.data;
-          console.log(payloadData)
+          //const payloadData = res.data;
+          //console.log(payloadData)
           //setUserRole(payloadData.user.role_id);
           //Next line it's to develop in local 
           //setUserStatus("success"); 

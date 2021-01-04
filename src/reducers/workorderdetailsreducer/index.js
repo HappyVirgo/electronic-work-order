@@ -24,7 +24,6 @@ const workOrderDetailsReducer = handleActions({
         };    
     },
     [types.RECEIVE_SERVICE_PROVIDERS]: (state, action) => {
-        console.log("action", action)
         return {
             ...state,
             serviceProviders: action.data
