@@ -6,13 +6,13 @@
  */
 
 //Basic Imports
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 //import PropTypes from 'prop-types';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
 import { FormControl, Select, MenuItem, Grid } from '@material-ui/core';
-import ClearAllIcon from '@material-ui/icons/ClearAll';
+import ClearAllRoundedIcon from '@material-ui/icons/ClearAllRounded';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 
@@ -35,6 +35,14 @@ const useStyles = makeStyles((theme) => ({
         border: '3px solid #78b0dd',
         borderRadius: '38px',
     },
+    filterDisabled: {
+        width: "30%",
+        textAlign: 'center',
+        // padding: '5px',
+        padding: '0px',
+        border: '3px solid rgba(0, 0, 0, 0.5)',
+        borderRadius: '38px',
+    },    
     filterBox: {
         // margin: '15px 0px',
         margin: '10px 0px',
@@ -44,6 +52,9 @@ const useStyles = makeStyles((theme) => ({
     icon: {
         fill: 'white',
     },
+    iconDisabled: {
+        fill: 'rgba(0, 0, 0, 0.5)',
+    },    
     eachFilter: {
         color: 'white',
         "&&&:before": {
@@ -53,11 +64,25 @@ const useStyles = makeStyles((theme) => ({
             borderBottom: "none"
         }
     },
+    eachFilterDisabled: {
+        color: 'rgba(0, 0, 0, 0.5)',
+        "&&&:before": {
+            borderBottom: "none"
+        },
+        "&&:after": {
+            borderBottom: "none"
+        }
+    },    
 }));
 
 
-const FilteringComponent = ({tmpdata}) => {
+const FilteringComponent = ({tmpdata, targetdata}) => {
+    const classes = useStyles();
     const filterFunc = useContext(GlobalContext)
+    const [disabledClassAssetType, setDisabledClassAssetType] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
+    const [disabledClassStatus, setDisabledClassStatus] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
+    const [disabledClassPriority, setDisabledClassPriority] = useState([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
+
     //Functions to handle state changes
     const funcFilterByAssetType = filterFunc.handleFilterByAssetType 
     const funcFilterByStatus = filterFunc.handleFilterByStatus
@@ -72,21 +97,55 @@ const FilteringComponent = ({tmpdata}) => {
     let filterDataAssetType = filterByAssetType(data)
     let filterDataStatus = filterByStatus(data)
     let filterDataPriority = filterByPriority(data)
-    const classes = useStyles();
+    //let disabledSelectAssetType = filterDataAssetType.length<=1?true:false    
+    //Set "disabled" filters by default
+    const disabledSelectAssetType = false
+    let disabledSelectStatus = targetdata==="pendingWO"?true:false
+    let disabledSelectPriority = targetdata==="emergencyWO"?true:false
+
+    useEffect(() => {
+        if(!disabledSelectAssetType) {
+            setDisabledClassAssetType([classes.filter, classes.eachFilter, classes.icon])
+        }else{
+            setDisabledClassAssetType([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
+        }        
+        if(!disabledSelectStatus) {
+            setDisabledClassStatus([classes.filter, classes.eachFilter, classes.icon])
+        }else{
+            setDisabledClassStatus([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
+        }
+        if(!disabledSelectPriority) {
+            setDisabledClassPriority([classes.filter, classes.eachFilter, classes.icon])
+        }else{
+            setDisabledClassPriority([classes.filterDisabled, classes.eachFilterDisabled, classes.iconDisabled])
+        }
+    }, [
+        classes.filter,
+        classes.filterDisabled,
+        classes.eachFilter,
+        classes.eachFilterDisabled,
+        classes.icon,
+        classes.iconDisabled,
+        disabledSelectAssetType,
+        disabledSelectPriority,
+        disabledSelectStatus
+    ])
+
     //console.log(data)
     return (
         <Grid className={classes.filterBox}>
-            <FormControl className={classes.filter}>
+            <FormControl className={disabledClassAssetType[0]}>
                 <Select
+                    disabled={disabledSelectAssetType}
                     labelId="filter-1-filled-label"
                     id="filter-1-filled-label"
                     onChange={funcFilterByAssetType} 
                     value={filterByStateAssetType}
-                    className={classes.eachFilter}
+                    className={disabledClassAssetType[1]}
                     renderValue={(value) => { if(value && value !== 1) { return value} else {return 'Filter: Asset Type'} }}
                     inputProps={{
                         classes: {
-                            icon: classes.icon,
+                            icon: disabledClassAssetType[2],
                         },
                     }}
                     MenuProps = {{
@@ -109,17 +168,18 @@ const FilteringComponent = ({tmpdata}) => {
                     
                 </Select>
             </FormControl> 
-            <FormControl className={classes.filter}>
+            <FormControl className={disabledClassStatus[0]}>
                 <Select
+                    disabled={disabledSelectStatus}
                     labelId="filter-2-filled-label"
                     id="filter-2-filled-label"
                     onChange={funcFilterByStatus} 
                     renderValue={(value) => { if(value && value !== 1) { return value} else {return 'Filter: Status'} }}
                     value={filterByStateStatus}
-                    className={classes.eachFilter}
+                    className={disabledClassStatus[1]}
                     inputProps={{
                         classes: {
-                            icon: classes.icon,
+                            icon: disabledClassStatus[2],
                         },
                     }}
                     MenuProps = {{
@@ -142,17 +202,18 @@ const FilteringComponent = ({tmpdata}) => {
                     
                 </Select>
             </FormControl> 
-            <FormControl className={classes.filter}>
+            <FormControl className={disabledClassPriority[0]}>
                 <Select
+                    disabled={disabledSelectPriority}
                     labelId="filter-3-filled-label"
                     id="filter-3-filled-label"
                     onChange={funcFilterByPriority} 
                     value={filterByStatePriority}
                     renderValue={(value) => { if(value && value !== 1) { return value} else {return 'Filter: Priority'} }}
-                    className={classes.eachFilter}
+                    className={disabledClassPriority[1]}
                     inputProps={{
                         classes: {
-                            icon: classes.icon,
+                            icon: disabledClassPriority[2],
                         },
                     }}
                     MenuProps = {{
@@ -176,8 +237,17 @@ const FilteringComponent = ({tmpdata}) => {
                 </Select>
             </FormControl>
             <Tooltip title="Clear Filters" aria-label="clear">
-                <IconButton component="span" style={{padding:0}} onClick={funcFilterClearAll}>
-                    <ClearAllIcon fontSize="large" color="action"  />               
+                <IconButton 
+                    
+                    style={{padding:0}}
+                    onClick={funcFilterClearAll}
+                    color="secondary"
+                    >
+                        <ClearAllRoundedIcon 
+                            fontSize="large"
+                            color="action"
+                            
+                        />               
                 </IconButton>
             </Tooltip>
         </Grid>

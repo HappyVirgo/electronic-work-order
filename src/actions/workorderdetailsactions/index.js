@@ -70,3 +70,25 @@ export const updateWOStatus = async (dtlsID, token, updatedStatus, reassignToVal
             .catch(error => console.log(error))
     }
 }
+
+export const receiveServiceProviders = (data) => {
+    return {type: types.RECEIVE_SERVICE_PROVIDERS, data: data};
+}
+
+export const fetchServiceProviders = async (dtlsID, token) => {
+    const serviceProviderURL = '/reassign/providers'
+    let accessToken = await accessFetchToken(token)
+    let idDtls = await accessDtlId(dtlsID)
+    let init = { 
+        headers: {
+            Authorization: 'Bearer ' + accessToken,
+            'Content-Type': 'application/json',
+        } 
+    }  
+    return dispatch => {
+        return fetch(apiDetailsWO+idDtls+serviceProviderURL+"?userId=2152", init)
+            .then(response => response.json())
+            .then(json => dispatch(receiveServiceProviders(json)))
+            .catch(error => console.log("Fetch Service Provider Error"));
+    }
+}
