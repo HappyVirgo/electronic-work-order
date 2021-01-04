@@ -35,16 +35,16 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, loadingDetails, firstLoading}) => {
+const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, serviceProviders, loadingDetails, firstLoading}) => {
     const classes = useStyles()
     return (
         <>
         {firstLoading?(
             <div>
-            <Skeleton variant="text" />
-            <Skeleton variant="circle" width={40} height={40} />
-            <Skeleton variant="rect" height={210} />
-          </div>
+                <Skeleton variant="text" />
+                <Skeleton variant="circle" width={40} height={40} />
+                <Skeleton variant="rect" height={210} />
+            </div>
         ):(
             <div className="details-container">
                 {loadingDetails && <div className="loading-container">
@@ -57,6 +57,7 @@ const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, wa
                         attachments={attachments} 
                         notes={notes}
                         warranty={warranty}
+                        serviceProviders={serviceProviders}
                     />
                 </Paper>
             </div>
