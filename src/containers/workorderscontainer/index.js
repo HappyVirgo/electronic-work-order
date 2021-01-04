@@ -574,7 +574,7 @@ class WorkOrdersBuilder extends Component {
                                 work_orders: dataSearched
                             }
                         }                                              
-                    }else if(searchTermIn.length === 0) {
+                    }else if(searchTermIn.length === 0 && this.state.firstLoading === false) {
                         tmpdata = await this.props.fetchEmergencyWOData()
                     }                
                     break; 
@@ -1013,14 +1013,15 @@ class WorkOrdersBuilder extends Component {
             }
 
             const handleId = async(dtlsID) => {
-                detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
-                notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-                serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
-
-                // this.sortOrderNotesByDate()
-                attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-                historydata = await this.props.fetchHistoryWOData(dtlsID, token)
-                warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
+                if(this.state.firstLoading === false) {
+                    detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
+                    notesdata = await this.props.fetchNotesWOData(dtlsID, token)
+                    serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
+                    // this.sortOrderNotesByDate()
+                    attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
+                    historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+                    warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
+                }
                 this.setState({loadingDetails: false})
             }
             //Change details data
