@@ -332,7 +332,6 @@ class WorkOrdersBuilder extends Component {
     // }
     
     async componentDidMount() {
-        console.log("FIRST LOAD")
         token = await this.props.oauthFetchToken()
         /*
         userData = await this.props.fetchUsersInformation()
@@ -1023,7 +1022,7 @@ class WorkOrdersBuilder extends Component {
                     historydata = await this.props.fetchHistoryWOData(dtlsID, token)
                     warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
                 }
-                this.setState({loadingDetails: false}, console.log("setState LOAD"))
+                this.setState({loadingDetails: false})
             }
             //Change details data
             const handleChangePrevState = (dtlsID) => {
