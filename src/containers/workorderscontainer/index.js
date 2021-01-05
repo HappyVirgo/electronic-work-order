@@ -228,7 +228,11 @@ class WorkOrdersBuilder extends Component {
     }
 
     handleUpdateStatus = (target) => {
-        updatedStatus = target
+        if(target === "CANCEL"){
+            updatedStatus = "CANCELLED"
+        } else {
+            updatedStatus = target
+        }
         console.log("updatedStatus", updatedStatus)
     }
     updateWOStatus = (event) => {
@@ -1070,7 +1074,7 @@ class WorkOrdersBuilder extends Component {
             const prevUpdatedStatus = prevState.updatedStatus
             const currentUpdatedStatus = this.state.updatedStatus
             if( prevUpdatedStatus !== currentUpdatedStatus) {
-                workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus, reassignToVal)
+                workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus, reassignToVal, userId)
                 if(workOrderUpdateResponse) {
                     this.setState({
                         workOrderUpdateResponse: workOrderUpdateResponse,
