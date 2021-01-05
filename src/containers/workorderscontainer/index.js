@@ -1074,6 +1074,7 @@ class WorkOrdersBuilder extends Component {
             const prevUpdatedStatus = prevState.updatedStatus
             const currentUpdatedStatus = this.state.updatedStatus
             if( prevUpdatedStatus !== currentUpdatedStatus) {
+                console.log("USERID", userId)
                 workOrderUpdateResponse = await this.props.updateWOStatus(dtlsID, token, updatedStatus, reassignToVal, userId)
                 if(workOrderUpdateResponse) {
                     this.setState({
@@ -1174,7 +1175,7 @@ const mapDispatchToProps = dispatch => ({
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token, userId)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
-    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus, reassignToVal)),
+    updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus, reassignToVal, userId)),
     fetchServiceProviders: () => dispatch(fetchServiceProviders(dtlsID, token)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),

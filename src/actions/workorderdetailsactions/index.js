@@ -39,16 +39,20 @@ export const changeWOStatus = (data) => {
     return {type: types.UPDATE_WO_STATUS, data: data};
 }
 
-export const updateWOStatus = async (dtlsID, token, updatedStatus, reassignToVal, userId = "2152") => {
+export const updateWOStatus = async (dtlsID, token, updatedStatus, reassignToVal, userId) => {
     const updateStatusURL = "/status"
     let accessToken = await accessFetchToken(token)
     let idDtls = await accessDtlId(dtlsID)
     let data
-    console.log(updatedStatus, userId)
+    const accessFetchUserId = (id) => {
+        return id
+    }     
+    let accessUserId = await accessFetchUserId(userId)    
+    console.log(accessUserId)
     if(reassignToVal === undefined) {
         data = {
             status: updatedStatus,
-            userId
+            userId: accessUserId
         }
     } else {
         data = {
@@ -64,7 +68,6 @@ export const updateWOStatus = async (dtlsID, token, updatedStatus, reassignToVal
         },
         body: JSON.stringify(data)
     };
-
     return dispatch => {
         return fetch(apiDetailsWO+idDtls+updateStatusURL, requestOptions)
             .then(response => {console.log(response);response.json()})
