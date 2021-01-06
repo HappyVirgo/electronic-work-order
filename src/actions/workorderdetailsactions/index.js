@@ -27,7 +27,7 @@ export const fetchDetailsWOData = async (dtlsID, token) => {
             Authorization: 'Bearer ' + accessToken,
             'Content-Type': 'application/json',
         } 
-    }  
+    } 
     return dispatch => {
         return fetch(apiDetailsWO+idDtls, init)
             .then(response => response.json())
