@@ -66,16 +66,6 @@ export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStat
             </Button>
             <Button
                 variant="contained"
-                color="primary"
-                className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
-                onClick={
-                    () => window.open(`${api_url}Invoices/details/${invoiceId}`, "_blank")
-                }
-            >
-                Invoice
-            </Button>
-            <Button
-                variant="contained"
                 color="primary" 
                 className={`${classes.linkButton} link-button ${proposalStatus && Object.keys(proposalStatus).length !== 0?'':classes.disabled}`} 
                 onClick={
@@ -83,6 +73,16 @@ export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStat
                 }
             >
                 Proposal
+            </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
+                onClick={
+                    () => window.open(`${api_url}Invoices/details/${invoiceId}`, "_blank")
+                }
+            >
+                Invoice
             </Button>
         </Grid>
     )
