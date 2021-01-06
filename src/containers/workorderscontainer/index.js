@@ -284,8 +284,8 @@ class WorkOrdersBuilder extends Component {
         this.setState({ 
             firstLoading: true
         })
-        //ctadata = await this.props.fetchCTAsData()
-        ctadata = fetchCTAsDataTEST()
+        ctadata = await this.props.fetchCTAsData()
+        // ctadata = fetchCTAsDataTEST()
         console.log(ctadata)
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
