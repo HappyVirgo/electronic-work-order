@@ -13,6 +13,10 @@ import {
 } from './emercencyworkordersactions'
 
 import {
+    fetchOpenWOData,
+} from './openworkordersactions'
+
+import {
     fetchPendingWOData,
 } from './pendingworkordersactions'
 
@@ -68,6 +72,7 @@ export {
     fetchCTAsData,
     fetchSearchData,
     fetchEmergencyWOData,
+    fetchOpenWOData,
     fetchPendingWOData,
     fetchDetailsWOData,
     updateWOStatus,

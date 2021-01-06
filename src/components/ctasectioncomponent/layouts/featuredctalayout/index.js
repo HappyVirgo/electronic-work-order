@@ -21,10 +21,22 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '32px',
         float: 'left',
         fontWeight: 400
+    },
+    cta_open_text: {
+        color: '#FFFFFF;',
+        fontSize: '12px',
+        fontWeight: 400,
+        maxWidth: '100px',
+    },
+    cta_open_value: {
+        color: '#FFFFFF;',
+        fontSize: '32px',
+        float: 'left',
+        fontWeight: 400
     }
 }));
 
-export const FeaturedCTALayout = ({emergencyWorkOrders}) => {
+export const FeaturedCTALayout = ({emergencyWorkOrders, openWorkOrders}) => {
     //Setting function from context
     let change = useContext(GlobalContext)
     change = change.dynamicData
@@ -35,6 +47,10 @@ export const FeaturedCTALayout = ({emergencyWorkOrders}) => {
             <Grid item className="emergency-wo" id="emergencyWO" onClick={change}>
                 <Typography className={classes.cta_emergency_value} variant="body1">{emergencyWorkOrders}</Typography>
                 <Typography className={classes.cta_emergency_text} variant="body1">Emergency Work Orders</Typography>
+            </Grid>
+            <Grid item className="open-wo" id="openWO" onClick={change}>
+                <Typography className={classes.cta_open_value} variant="body1">{openWorkOrders}</Typography>
+                <Typography className={classes.cta_open_text} variant="body1">Open Work Orders</Typography>
             </Grid>
         </Grid>
     )
