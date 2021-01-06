@@ -22,6 +22,9 @@ export const RECEIVE_EMERGENCY_WO_DATA = 'RECEIVE_EMERGENCY_WO_DATA';
 //Pending WorkOrders
 export const RECEIVE_PENDING_WO_DATA = 'RECEIVE_PENDING_WO_DATA';
 
+//Open WorkOrders
+export const RECEIVE_OPEN_WO_DATA = 'RECEIVE_OPEN_WO_DATA';
+
 //Details WorkOrders
 export const RECEIVE_DETAILS_WO_DATA = 'RECEIVE_DETAILS_WO_DATA';
 
