@@ -79,7 +79,7 @@
                     padding: 0px 10px;
                 }
             }
-            .expired-wo {
+            .open-wo {
                 @include featured-box-cta;
                 display: flex;
                 align-items: center;
@@ -164,7 +164,7 @@
         text-align: center;
         justify-content: center;
     }  
-    .emergency-wo, .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo, .expired-wo {
+    .emergency-wo, .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo, .open-wo {
         width: 100% !important;
     } 
     .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo {

@@ -22,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
         float: 'left',
         fontWeight: 400
     },
-    cta_expired_text: {
+    cta_open_text: {
         color: '#FFFFFF;',
         fontSize: '12px',
         fontWeight: 400,
         maxWidth: '100px',
     },
-    cta_expired_value: {
+    cta_open_value: {
         color: '#FFFFFF;',
         fontSize: '32px',
         float: 'left',
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-export const FeaturedCTALayout = ({emergencyWorkOrders, expiredWorkOrders}) => {
+export const FeaturedCTALayout = ({emergencyWorkOrders, openWorkOrders}) => {
     //Setting function from context
     let change = useContext(GlobalContext)
     change = change.dynamicData
@@ -48,9 +48,9 @@ export const FeaturedCTALayout = ({emergencyWorkOrders, expiredWorkOrders}) => {
                 <Typography className={classes.cta_emergency_value} variant="body1">{emergencyWorkOrders}</Typography>
                 <Typography className={classes.cta_emergency_text} variant="body1">Emergency Work Orders</Typography>
             </Grid>
-            <Grid item className="expired-wo" id="expiredWO" onClick={change}>
-                <Typography className={classes.cta_expired_value} variant="body1">{expiredWorkOrders}</Typography>
-                <Typography className={classes.cta_expired_text} variant="body1">Expired Work Orders</Typography>
+            <Grid item className="open-wo" id="openWO" onClick={change}>
+                <Typography className={classes.cta_open_value} variant="body1">{openWorkOrders}</Typography>
+                <Typography className={classes.cta_open_text} variant="body1">Open Work Orders</Typography>
             </Grid>
         </Grid>
     )
