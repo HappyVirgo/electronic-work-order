@@ -157,14 +157,14 @@ const FilteringComponent = ({tmpdata, targetdata}) => {
                 >
                     <MenuItem className={classes.menuItem} value="" disabled><b>Asset Type:</b></MenuItem>
                     <MenuItem value={1}>Reset Filter</MenuItem>                    
-                    {filterDataAssetType.map((item, index) => {
+                    {!!filterDataAssetType?filterDataAssetType.map((item, index) => {
                         return (
                             <MenuItem 
                                 key={index}
                                 value={item}
                             >{item}</MenuItem>
                         )
-                    })}
+                    }):null}
                     
                 </Select>
             </FormControl> 
@@ -191,14 +191,14 @@ const FilteringComponent = ({tmpdata, targetdata}) => {
                 >
                     <MenuItem className={classes.menuItem} value="" disabled><b>Status:</b></MenuItem>
                     <MenuItem value={1}>Reset Filter</MenuItem>                    
-                    {filterDataStatus.map((item, index) => {
+                    {!!filterDataStatus?filterDataStatus.map((item, index) => {
                         return (
                             <MenuItem 
                                 key={index}
                                 value={item}
                             >{item}</MenuItem>
                         )
-                    })}
+                    }):null}
                     
                 </Select>
             </FormControl> 
@@ -225,14 +225,14 @@ const FilteringComponent = ({tmpdata, targetdata}) => {
                 >
                     <MenuItem className={classes.menuItem} value="" disabled><b>Priority:</b></MenuItem>
                     <MenuItem value={1}>Reset Filter</MenuItem>                    
-                    {filterDataPriority.map((item, index) => {
+                    {!!filterDataPriority?filterDataPriority.map((item, index) => {
                         return (
                             <MenuItem 
                                 key={index}
                                 value={item}
                             >{item}</MenuItem>
                         )
-                    })}
+                    }):null}
                     
                 </Select>
             </FormControl>

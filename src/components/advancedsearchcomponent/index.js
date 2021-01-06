@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const advancedSearchFields = ["Work Order ID", "Service Provider" ,"Asset Type", "Problem Type", "Trade Type"]
+const advancedSearchFields = ["Work Order ID", "Service Provider" ,"Asset Type", "Problem Type", "Trade Type", "Category Type"]
 
 const AdvancedSearchComponent = () => {
     const [searchBox, setSearchBox] = useState(false);
@@ -90,6 +90,7 @@ const AdvancedSearchComponent = () => {
                     <MenuItem className={classes.menuItem} value={3}><Radio color="primary" checked={searchByState===3} />{advancedSearchFields[2]}</MenuItem>
                     <MenuItem className={classes.menuItem} value={4}><Radio color="primary" checked={searchByState===4} />{advancedSearchFields[3]}</MenuItem>
                     <MenuItem className={classes.menuItem} value={5}><Radio color="primary" checked={searchByState===5} />{advancedSearchFields[4]}</MenuItem>
+                    <MenuItem className={classes.menuItem} value={6}><Radio color="primary" checked={searchByState===6} />{advancedSearchFields[5]}</MenuItem>
                 </Select>
             </FormControl>
             <FormControl className={classes.search}>           
