@@ -31,12 +31,14 @@ const CTASectionComponent = ({ctadata, tmpdata, targetdata}) => {
     let emergencyWorkOrders
     let pendingWorkOrders
     let unassignedWorkOrders
+    let expiredWorkOrders
     /** Wait until data is already fetched
      ** Then assign values to variables
      * */
     if(ctadata!==undefined) {
         assignedToMeWorkOrders = ctadata.data.assignedToMeWorkOrders
         emergencyWorkOrders = ctadata.data.emergencyWorkOrders
+        expiredWorkOrders = ctadata.data.expiredWorkOrders
         pendingWorkOrders = ctadata.data.pendingWorkOrders
         unassignedWorkOrders = ctadata.data.unassignedWorkOrders
     }
@@ -53,7 +55,8 @@ const CTASectionComponent = ({ctadata, tmpdata, targetdata}) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={6} className="cta-section">
                     <FeaturedCTALayout 
-                        emergencyWorkOrders={emergencyWorkOrders} 
+                        emergencyWorkOrders={emergencyWorkOrders}
+                        expiredWorkOrders={expiredWorkOrders}
                     />
                     <CTASectionLayout
                         assignedToMeWorkOrders={assignedToMeWorkOrders}
