@@ -22,7 +22,7 @@ import {
 
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
-    console.log("item", item)
+    // console.log("item", item)
     let woitemID = item?item.workOrderId:""
     let change = useContext(GlobalContext)
     const currentDtlsId = change.currentDtlsId
