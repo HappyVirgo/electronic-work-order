@@ -45,6 +45,8 @@ const columns = [
     multi_item: true,
     serviceprovider_index: "profile",
     serviceprovider: "companyName",
+    categorytype_index: "categoryType",
+    categorytype: "categoryTypeName",
     workorderid: "workOrderId",
   },   
   {

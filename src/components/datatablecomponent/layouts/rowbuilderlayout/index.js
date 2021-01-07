@@ -22,6 +22,7 @@ import {
 
 export const Row = ({ index, style, data: { columns, items, classes } }) => {
     const item = items[index];
+    // console.log("item", item)
     let woitemID = item?item.workOrderId:""
     let change = useContext(GlobalContext)
     const currentDtlsId = change.currentDtlsId
@@ -40,6 +41,8 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             let getServiceProvider_index = column.serviceprovider_index
             let getServiceProvider = column.serviceprovider
             let getWorkOrderId = column.workorderid
+            let getCategoryType_index = column.categorytype_index
+            let getCategoryType = column.categorytype
             //Check if object value are null and avoid broken loops 
             let firstCheck = item?item[getDataKey]:null
             let fullCheck = firstCheck?item[getDataKey][getExtraKey]:null
@@ -62,7 +65,7 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             >
                 {
                     (getMultiItem===true)?
-                        renderMultiItem({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, change}):
+                        renderMultiItem({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, getCategoryType_index, getCategoryType, change}):
                     ((getImage===true)?
                         renderImage({getImgPath, getExtraKey, getDataKey, checkItem, item, getWorkOrderId, change}):
                         renderSingleItem({getExtraKey, getDataKey, checkItem, item, getWorkOrderId, change})

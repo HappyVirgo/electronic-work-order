@@ -5,6 +5,7 @@
  * Ticket: ET-246
  */ 
 export const filterByStatus = (data) => {
+    if(!data) return null;
     let uniqueList
     //Build new object from data
     const newObj = data.map((item) => {

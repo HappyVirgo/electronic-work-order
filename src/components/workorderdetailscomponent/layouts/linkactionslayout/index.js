@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const api_url = "/admin/";
 
-export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStatus, proposalId}) => {
+export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStatus, proposalId, assetId}) => {
     const classes = useStyles()
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
@@ -59,20 +59,10 @@ export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStat
                 color="primary" 
                 className={`${classes.linkButton} link-button`}
                 onClick={
-                    () => window.open(`${api_url}Assets/view_assets/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Assets/view_assets/${assetId}`, "_blank")
                 }
             >
                 Asset
-            </Button>
-            <Button
-                variant="contained"
-                color="primary"
-                className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
-                onClick={
-                    () => window.open(`${api_url}Invoices/details/${invoiceId}`, "_blank")
-                }
-            >
-                Invoice
             </Button>
             <Button
                 variant="contained"
@@ -83,6 +73,16 @@ export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStat
                 }
             >
                 Proposal
+            </Button>
+            <Button
+                variant="contained"
+                color="primary"
+                className={`${classes.linkButton} link-button ${invoiceStatus && Object.keys(invoiceStatus).length !== 0?'':classes.disabled}`} 
+                onClick={
+                    () => window.open(`${api_url}Invoices/details/${invoiceId}`, "_blank")
+                }
+            >
+                Invoice
             </Button>
         </Grid>
     )

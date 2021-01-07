@@ -10,7 +10,6 @@ import {
     Alert, 
 } from '../../components'
 
-
 //Material UI
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
@@ -22,6 +21,7 @@ import {
     fetchCTAsData, 
     fetchSearchData,
     fetchEmergencyWOData, 
+    fetchOpenWOData, 
     fetchPendingWOData, 
     fetchDetailsWOData,
     fetchAssignedToMeWOData,
@@ -34,6 +34,14 @@ import {
     updateWOStatus,
     fetchServiceProviders,
 } from '../../actions';
+
+//Json Server API
+//To start the api server => json-server db.json --routes routes.json (Server running on localhost:3000)
+//Then run npm start / yarn start (Server running on localhost:3001)
+
+import {
+    fetchCTAsDataTEST,
+} from '../../faker'
 
 //Context
 import { GlobalContext } from '../../context/globalcontext'
@@ -100,12 +108,6 @@ class WorkOrdersBuilder extends Component {
             itsActive: false
         };
     }    
-    /**
-     * Description: Set state based on search input 
-     * Author: Carlos Blanco
-     * Date: 10/29/2020
-     * Ticket: ET-237
-     * */
     handleChangeStateSearchTerm = (value) => {
         searchTerm = value     
     }
@@ -115,12 +117,6 @@ class WorkOrdersBuilder extends Component {
             searchTerm: value,
         }, this.handleChangeStateSearchTerm(value));
     } 
-    /**
-     * Description: Set state based on search select 
-     * Author: Carlos Blanco
-     * Date: 10/30/2020
-     * Ticket: ET-237
-     * */    
     handleChangeStateSearchBy = (value) => {
         searchBy = value  
     }    
@@ -130,12 +126,6 @@ class WorkOrdersBuilder extends Component {
             searchBy: value
         }, this.handleChangeStateSearchBy(value));
     }
-    /**
-     * Description: Create Filter Component
-     * Author: Carlos Blanco
-     * Created: 11/06/2020
-     * Ticket: ET-246
-     */  
     handleChangeStateFilterByAssetType = (value) => {
         filterByAssetType = value       
         console.log(filterByAssetType)
@@ -146,12 +136,6 @@ class WorkOrdersBuilder extends Component {
             filterByAssetType: value,
         }, this.handleChangeStateFilterByAssetType(value))
     } 
-    /**
-     * Description: Create Filter Component
-     * Author: Carlos Blanco
-     * Created: 11/10/2020
-     * Ticket: ET-246
-     */  
     handleChangeStateFilterByStatus = (value) => {
         filterByStatus = value 
         console.log(filterByStatus)
@@ -162,12 +146,6 @@ class WorkOrdersBuilder extends Component {
             filterByStatus: value,
         }, this.handleChangeStateFilterByStatus(value))        
     } 
-    /**
-     * Description: Create Filter Component
-     * Author: Carlos Blanco
-     * Created: 11/10/2020
-     * Ticket: ET-246
-     */  
     handleChangeStateFilterByPriority = (value) => {
         filterByPriority = value       
         console.log(filterByPriority)
@@ -252,13 +230,6 @@ class WorkOrdersBuilder extends Component {
             }, this.handleUpdateStatus(target))
         }
     }
-    /**
-     * Description: Details components click events to change
-     * depending on datatable row
-     * Author: Carlos Blanco
-     * Date: 9/24/2020
-     * Ticket: ET-351
-     * */
     handleDynamicDetails = (target) => {
         dtlsID = target 
     }           
@@ -279,14 +250,6 @@ class WorkOrdersBuilder extends Component {
             },  this.handleDynamicDetails(target))
         }
     }
-    /**
-     * Description: Catch id from CTA component and pass
-     * to container state in order to set 
-     * the new data for the datatable
-     * Author: Carlos Blanco
-     * Date: 9/7/2020
-     * Ticket: ET-249
-     * */
     handleDynamicData = (target) => {
         trgtID = target
     }      
@@ -296,58 +259,34 @@ class WorkOrdersBuilder extends Component {
         if(target.length>0){
             this.setState({
                 targetId: target,
-                loading: true
+                // loading: true
             }, this.handleDynamicData(target))
         }else{
             target = event.target.closest('div')
             target = target.id
             this.setState({
                 targetId: target,
-                loading: true
+                // loading: true
             }, this.handleDynamicData(target))
         }
         
     }
-
-    // sortByDate = (a, b) => {
-    //     a = new Date(a.createdAt)
-    //     b = new Date(b.createdAt)
-    //     return b - a
-    // }
-
-    // sortOrderNotesByDate = () => {
-    //     let data = notesdata.data;
-    //     let workOrderNotes = [];
-    //     let proposalNotes = [];
-    //     let invoiceNotes = [];
-    //     if(!!notesdata.data.workOrderNotes) {
-    //         workOrderNotes = notesdata.data.workOrderNotes.sort(this.sortByDate)
-    //         data = {...data, workOrderNotes: workOrderNotes}
-    //     }
-    //     if(!!notesdata.data.proposalNotes) {
-    //         proposalNotes = notesdata.data.proposalNotes.sort(this.sortByDate)
-    //         data = {...data, proposalNotes: proposalNotes}
-    //     }
-    //     if(!!notesdata.data.invoiceNotes) {
-    //         invoiceNotes = notesdata.data.invoiceNotes.sort(this.sortByDate);
-    //         data = {...data, invoiceNotes: invoiceNotes}
-    //     }
-    //     notesdata = {...notesdata, data}
-    // }
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
-        /*
+        
         userData = await this.props.fetchUsersInformation()
         console.log(userData.userdata.user)
         userId = userData.userdata.user.user_id   
-        */
+        
         //Next line it's to develop in local     
-        userId = "2152"
+        //userId = "2152"
         this.setState({ 
             firstLoading: true
         })
         ctadata = await this.props.fetchCTAsData()
+        // ctadata = fetchCTAsDataTEST()
+        console.log(ctadata)
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
@@ -411,7 +350,9 @@ class WorkOrdersBuilder extends Component {
     // isCurrent = (element) => element.workOrderId.toString() === this.state.detailsId.toString();
 
     async componentDidUpdate(prevProps, prevState) {
-        
+
+        const currentState = this.state.targetId
+        //const props = this.props
         const searchTermIn = this.state.searchTerm
         const searchByIn = this.state.searchBy  
         const filterByInByAssetType = this.state.filterByAssetType
@@ -435,9 +376,31 @@ class WorkOrdersBuilder extends Component {
                 this.setState({
                     searchTerm: "",
                 })
-            }        
-            //Set data for DataTable Component
-            switch (this.state.targetId) {
+            }       
+            //Set/Search/Filter data for DataTable Component
+            /*
+            let incomingData = setSearchFilterHelper({
+                tmpdata,
+                searchTerm,
+                searchTermIn,
+                searchByIn,
+                filterByInByAssetType,
+                filterByInByStatus,
+                filterByInByPriority,
+                currentState,
+                props
+            })
+            incomingData.then(res => {
+                console.log(res)
+                tmpdata = res
+            })
+            */
+            switch (currentState) {
+                /**
+                 * All "term" arrays elements should be modified in order
+                 * to work with the new APIs
+                 */
+                //Each case should be the CTA id
                 case "emergencyWO":
                     if(searchTermIn.length>3 && searchByIn<=1) {
                         let tmp = await this.props.fetchEmergencyWOData()
@@ -580,6 +543,150 @@ class WorkOrdersBuilder extends Component {
                         }                                              
                     }else if(searchTermIn.length === 0 && this.state.firstLoading === false) {
                         tmpdata = await this.props.fetchEmergencyWOData()
+                    }                
+                    break; 
+                case "openWO":
+                    if(searchTermIn.length>3 && searchByIn<=1) {
+                        let tmp = await this.props.fetchOpenWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        if(filterByInByAssetType.length>0){
+                            let dataSearched = dataSearch.filter(term => term['description'].includes(searchTerm.toLowerCase()))
+                            dataSearched = dataSearched.filter(term => term['asset']['assetType']['description'].toLowerCase().includes(filterByInByAssetType.toLowerCase()))
+                            if(filterByInByPriority.length>0) {
+                                dataSearched = dataSearched.filter(term => {
+                                    let notNull = term['priority']!==null?term['priority']['description']:""
+                                    return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                                })
+                            } else if(filterByInByStatus.length>0) {
+                                dataSearched = dataSearched.filter(term => {
+                                    let notNull = term['status']!==null?term['status']['description']:""
+                                    return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
+                                })                         
+                            }
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                            
+                        } else {
+                            let dataSearched = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
+                            console.log(dataSearched)
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            } 
+                        }
+                    }else if(searchTermIn.length>3 && searchByIn>1){
+                        let tmp = await this.props.fetchSearchData()
+                        let dataSearched = tmp.data?tmp.data.work_orders:[]                        
+                        if(filterByInByPriority.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['priority']!==null?term['priority']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                            })
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                             
+                        } else if(filterByInByStatus.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['status']!==null?term['status']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
+                            })
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }                                                      
+                        } else if(filterByInByAssetType.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
+                            })
+                            tmpdata = {
+                                data: {
+                                    work_orders: dataSearched
+                                }
+                            }   
+                        } else {
+                            tmpdata = await this.props.fetchSearchData()
+                        }                        
+                    //Default filter by asset type without search                        
+                    }else if(filterByInByAssetType.length>0) {
+                        let tmp = await this.props.fetchOpenWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => {
+                            let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                            return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
+                        })
+                        if(filterByInByPriority.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['priority']!==null?term['priority']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                            })
+                        } else if(filterByInByStatus.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['status']!==null?term['status']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
+                            })                         
+                        }                        
+                        tmpdata = {
+                            data: {
+                                work_orders: dataSearched
+                            }
+                        }
+                    //Default filter by status without search   
+                    }else if(filterByInByStatus.length>0) {
+                        let tmp = await this.props.fetchOpenWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => {
+                            let notNull = term['status']!==null?term['status']['description']:""
+                            return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
+                        })
+                        if(filterByInByAssetType.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
+                            })
+                        } else if(filterByInByPriority.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['priority']!==null?term['priority']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                            })                         
+                        }                        
+                        tmpdata = {
+                            data: {
+                                work_orders: dataSearched
+                            }
+                        }  
+                    //Default filter by priority without search   
+                    }else if(filterByInByPriority.length>0) {
+                        let tmp = await this.props.fetchOpenWOData()
+                        let dataSearch = tmp.data?tmp.data.work_orders:[]
+                        let dataSearched = dataSearch.filter(term => {
+                            let notNull = term['priority']!==null?term['priority']['description']:""
+                            return notNull.toLowerCase().includes(filterByInByPriority.toLowerCase())
+                        })
+                        if(filterByInByAssetType.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByAssetType.toLowerCase())
+                            })
+                        } else if(filterByInByStatus.length>0) {
+                            dataSearched = dataSearched.filter(term => {
+                                let notNull = term['status']!==null?term['status']['description']:""
+                                return notNull.toLowerCase().includes(filterByInByStatus.toLowerCase())
+                            })                         
+                        }                        
+                        tmpdata = {
+                            data: {
+                                work_orders: dataSearched
+                            }
+                        }                                              
+                    }else if(searchTermIn.length === 0 && this.state.firstLoading === false) {
+                        tmpdata = await this.props.fetchOpenWOData()
                     }                
                     break; 
                 case "pendingWO":
@@ -1015,7 +1122,7 @@ class WorkOrdersBuilder extends Component {
                     tmpdata = await this.props.fetchEmergencyWOData()
                     break;
             }
-
+        
             const handleId = async(dtlsID) => {
                 if(this.state.firstLoading === false) {
                     detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
@@ -1173,6 +1280,7 @@ const mapDispatchToProps = dispatch => ({
     fetchWarrantyWOData: () => dispatch(fetchWarrantyWOData(dtlsID, token)),   
     fetchPendingWOData: () => dispatch(fetchPendingWOData(token, userId)),
     fetchEmergencyWOData: () => dispatch(fetchEmergencyWOData(token, userId)),
+    fetchOpenWOData: () => dispatch(fetchOpenWOData(token, userId)),
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
     updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus, reassignToVal, userId)),
