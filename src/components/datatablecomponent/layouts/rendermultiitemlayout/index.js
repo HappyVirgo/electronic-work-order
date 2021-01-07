@@ -8,8 +8,8 @@
 import React from "react";
 //Set render structure for multi-item column
 export const renderMultiItem = ({getExtraKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, getCategoryType_index, getCategoryType, change}) => {
-    console.log("item3", item)
-    console.log(getCategoryType_index, getCategoryType)
+    // console.log("item3", item)
+    // console.log(getCategoryType_index, getCategoryType)
     let assetWorkOrder = item?item['workOrderId']:null
     let __getServiceProvider_index = item?item[getServiceProvider_index]:null
     let getServiceProviderDef = __getServiceProvider_index?__getServiceProvider_index[getServiceProvider]:null
