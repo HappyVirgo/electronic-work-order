@@ -30,6 +30,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
     let image
     //Store data to display in new array
     let assetName
+    let assetId
     let workOrderId
     let woType
     let manufacturer
@@ -85,6 +86,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             if(detailsdata.data.work_order.asset!==nullVal){
                 let pre_assetName = detailsdata.data.work_order.asset
                 assetName = pre_assetName!==nullVal?detailsdata.data.work_order.asset.name:nullVal;
+                assetId = pre_assetName!==nullVal?detailsdata.data.work_order.asset.id:nullVal;
             }        
             if(detailsdata.data.work_order!==nullVal){
                 workOrderId = detailsdata.data.work_order.id!==nullVal?detailsdata.data.work_order.id:nullVal;
@@ -158,6 +160,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                 invoiceId={invoiceId}
                 proposalStatus={proposalStatus}
                 proposalId={proposalId}
+                assetId={assetId}
             />
             <Divider/>
             <Grid container spacing={0}>

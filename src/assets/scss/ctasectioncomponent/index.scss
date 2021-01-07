@@ -79,6 +79,23 @@
                     padding: 0px 10px;
                 }
             }
+            .open-wo {
+                @include featured-box-cta;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: #FF9022;
+                margin-bottom: $p5-margin;
+                // padding: 15px 10px;
+                padding: 10px 10px;
+                span:first-child {
+                    @include cta-first-child;
+                }
+                span:last-child {
+                    @include cta-last-child;
+                    padding: 0px 10px;
+                }
+            }
         }
         .common-cta-wo {
             div {
@@ -147,7 +164,7 @@
         text-align: center;
         justify-content: center;
     }  
-    .emergency-wo, .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo {
+    .emergency-wo, .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo, .open-wo {
         width: 100% !important;
     } 
     .assign-to-me-wo, .pending-acceptance-wo, .unassigned-wo {

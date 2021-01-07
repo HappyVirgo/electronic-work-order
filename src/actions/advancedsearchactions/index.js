@@ -43,7 +43,10 @@ export const fetchSearchData =  async (searchTerm, searchBy, token, userId) => {
             break;  
         case 5:
             searchParams = `?tradeType=${searchTerm}`
-            break;                       
+            break;
+        case 6:
+            searchParams = `?categoryType=${searchTerm}`
+            break;                      
         default:
             break;
     }
