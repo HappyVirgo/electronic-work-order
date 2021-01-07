@@ -95,7 +95,7 @@ const TabsComponent = ({history, attachments, notes}) => {
                     <Tabs value={value} onChange={handleChange} aria-label="tabs" className={'tab-list'} TabIndicatorProps={{style: {background:'#0072CE'}}}>
                         <Tab label={`Notes (${notesCount})`} {...a11yProps(0)} className={classes.tabParent}/>
                         <Tab label={`Attachments (${attachmentsCount})`} {...a11yProps(1)} className={classes.tabParent} />
-                        <Tab label={`History (${historyCount})`} {...a11yProps(2)} className={classes.tabParent} />
+                        {/* <Tab label={`History (${historyCount})`} {...a11yProps(2)} className={classes.tabParent} /> */}
                     </Tabs>
                 </AppBar>
                 <TabPanel value={value} index={0} className={'tab-panel'}>
