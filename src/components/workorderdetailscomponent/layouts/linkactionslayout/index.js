@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 
 const api_url = "/admin/";
 
-export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStatus, proposalId}) => {
+export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStatus, proposalId, assetId}) => {
     const classes = useStyles()
     return (
         <Grid className={`${classes.linkButtonGrid} link-button-grid`}>
@@ -59,7 +59,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStat
                 color="primary" 
                 className={`${classes.linkButton} link-button`}
                 onClick={
-                    () => window.open(`${api_url}Assets/view_assets/${workOrderId}`, "_blank")
+                    () => window.open(`${api_url}Assets/view_assets/${assetId}`, "_blank")
                 }
             >
                 Asset
