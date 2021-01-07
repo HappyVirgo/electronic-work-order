@@ -259,14 +259,14 @@ class WorkOrdersBuilder extends Component {
         if(target.length>0){
             this.setState({
                 targetId: target,
-                loading: true
+                // loading: true
             }, this.handleDynamicData(target))
         }else{
             target = event.target.closest('div')
             target = target.id
             this.setState({
                 targetId: target,
-                loading: true
+                // loading: true
             }, this.handleDynamicData(target))
         }
         
