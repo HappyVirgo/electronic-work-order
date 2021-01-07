@@ -46,7 +46,7 @@ const CTASectionComponent = ({ctadata, tmpdata, targetdata}) => {
     return (
             <Grid container className="cta-component">
                 <Grid item xs={12} md={5} lg={6} className="search-section">
-                    <h1>Landing Page Boilerplate</h1>
+                    <h1>Work Orders</h1>
                     <AdvancedSearchComponent />
                     <FilteringComponent
                         tmpdata={tmpdata}
