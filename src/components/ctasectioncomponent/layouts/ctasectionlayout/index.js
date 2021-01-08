@@ -46,7 +46,7 @@ export const CTASectionLayout = ({assignedToMeWorkOrders, pendingWorkOrders, una
         <Grid item xs={8} md={8} lg={8} className="common-cta-wo">
             <Grid item xs={4} md={4} lg={4} className="assign-to-me-wo" id="assignedWO" onClick={change}>
                 <Typography className={classes.cta_assigned_value} variant="h2">{assignedToMeWorkOrders}</Typography>
-                <Typography className={classes.cta_description_text} variant="body1">Assign to me</Typography>
+                <Typography className={classes.cta_description_text} variant="body1">Assigned to me</Typography>
             </Grid>
             <Grid item xs={4} md={4} lg={4} className="pending-acceptance-wo" id="pendingWO" onClick={change}>
                 <Typography className={classes.cta_pending_value} variant="h2">{pendingWorkOrders}</Typography>
