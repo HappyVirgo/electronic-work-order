@@ -100,9 +100,9 @@ const FilteringComponent = ({tmpdata, targetdata}) => {
     //let disabledSelectAssetType = filterDataAssetType.length<=1?true:false    
     //Set "disabled" filters by default
     const disabledSelectAssetType = false
-    let disabledSelectStatus = targetdata==="pendingWO"?true:false
-    let disabledSelectPriority = targetdata==="emergencyWO"?true:false
-
+    let target = targetdata===undefined?"emergencyWO":targetdata
+    let disabledSelectStatus = target==="pendingWO"?true:false
+    let disabledSelectPriority = target==="emergencyWO"?true:false
     useEffect(() => {
         if(!disabledSelectAssetType) {
             setDisabledClassAssetType([classes.filter, classes.eachFilter, classes.icon])
