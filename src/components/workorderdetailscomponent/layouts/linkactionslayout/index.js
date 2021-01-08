@@ -81,6 +81,7 @@ export const LinkActions = ({workOrderId, invoiceStatus, invoiceId, proposalStat
                 onClick={
                     () => window.open(`${api_url}Invoices/details/${invoiceId}`, "_blank")
                 }
+                disabled
             >
                 Invoice
             </Button>
