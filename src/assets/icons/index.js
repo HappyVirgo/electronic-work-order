@@ -10,5 +10,5 @@ export {
     NotFixed,
     ReAssigned,
     Complete,
-    Cancel    
+    Cancel, 
 }

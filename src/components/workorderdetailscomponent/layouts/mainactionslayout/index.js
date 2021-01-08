@@ -104,7 +104,7 @@ export const MainActions = ({serviceProviders, status}) => {
     const updateWOStatus = noteFunc.updateWOStatus
     const reassignedTo = noteFunc.handleReassignToSelect
     const reassignToVal = noteFunc.reassignToVal
-    console.log('serviceProviders', serviceProviders)
+    //console.log('serviceProviders', serviceProviders)
     const classes = useStyles()
     const addNoteContent = <div>
                                 <FormControl required error={error} component="fieldset" style={{width:'100%'}}>
