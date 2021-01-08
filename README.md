@@ -1,8 +1,3 @@
-## Landing page BOILERPLATE
-In order to start the fake api server run
-### json-server db.json --routes routes.json
-To run the server on port 3000
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
