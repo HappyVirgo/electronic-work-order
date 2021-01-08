@@ -40,11 +40,8 @@ export const fetchNotesWOData = async(dtlsID, token) => {
     }
 }
 
-export const createNoteWOData = async(noteDescription, dtlsID, token, userId = "2152") => {
-    //Real url
-    //const addNoteURL = "/note"
-    //Fake API url
-    const addNoteURL = "/note/aggregate/add"
+export const createNoteWOData = async(noteDescription, dtlsID, token, userId) => {
+    const addNoteURL = "/note"
     const accessFetchToken = (tk) => {
         return tk.data
     }
@@ -54,36 +51,10 @@ export const createNoteWOData = async(noteDescription, dtlsID, token, userId = "
     let accessToken = await accessFetchToken(token)
     let idDtls = await accessDtlId(dtlsID)
 
-    /**
-     * Real structure
-     */
-    /*
     let data = {
         userId,
         description: noteDescription
     }
-    */
-    //Fake structure
-    let data = {
-        wonId: 123456,
-        wonUserId: 123456,
-        wonWorkOrderId: 123456,
-        wonNote: noteDescription,
-        createdBy: 6038,
-        customerIds: null,
-        serviceProviderIds: null,
-        user: {
-          userProfileId: 6014,
-          userId: userId,
-          companyName: "Testing",
-          firstName: "Test",
-          lastName: "Test",
-          phoneNumber: "800-8000-5555"
-        },
-        noteType: 0,
-        createdAt: "2020-05-20T16:04:14.000+0000",
-        updatedAt: "2020-05-20T16:04:14.000+0000"
-      }
 
     const requestOptions = {
         method: 'POST',
