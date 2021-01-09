@@ -271,6 +271,10 @@ class WorkOrdersBuilder extends Component {
         }
         
     }
+    sortWOByCreatedDate = (data) => {
+        data.sort((a, b) => b.workOrderId-a.workOrderId);
+        data.sort((a, b) => b.dateCreated-a.dateCreated);
+    }
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
@@ -1198,8 +1202,9 @@ class WorkOrdersBuilder extends Component {
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: false
-            }, handleChangePrevState(dtlsID)) 
-            
+            }, handleChangePrevState(dtlsID))
+            this.sortWOByCreatedDate(tmpdata.data.work_orders) 
+            console.log("tmpdata", tmpdata);
         }
     }
     render() {
