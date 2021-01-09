@@ -291,6 +291,7 @@ class WorkOrdersBuilder extends Component {
         ctadata = await this.props.fetchCTAsData()
 
         tmpdata = await this.props.fetchEmergencyWOData()  
+        this.sortWOByCreatedDate(tmpdata.data.work_orders);
         if(tmpdata.data.work_orders!==undefined) {
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
             this.setState({
@@ -1147,6 +1148,7 @@ class WorkOrdersBuilder extends Component {
             // let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
             // if(currentIndex === -1) currentIndex = 0
             // this.array_move(tmpdata.data.work_orders, currentIndex, 0)
+            this.sortWOByCreatedDate(tmpdata.data.work_orders) 
 
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
@@ -1203,8 +1205,6 @@ class WorkOrdersBuilder extends Component {
                 targetId: this.state.targetId,
                 loading: false
             }, handleChangePrevState(dtlsID))
-            this.sortWOByCreatedDate(tmpdata.data.work_orders) 
-            console.log("tmpdata", tmpdata);
         }
     }
     render() {
