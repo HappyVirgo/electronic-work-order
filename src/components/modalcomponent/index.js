@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
 //Material UI
-import { Button, Divider, Link } from '@material-ui/core';
+import { Button, Divider } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 
 //Date format
@@ -228,8 +228,16 @@ const ModalComponent = ({title, data, type}) => {
             <p><strong>Updated At: </strong><span className={classes.date}><Moment format="MMMM D, YYYY hh:mm a">{updatedDate}</Moment></span></p>               
         </Grid>
     )  
+    
     const linkButton = (
-        <Button href={`${imageURL}${imageFile}`} variant="outlined" color="secondary" target="_blank" className={classes.button}>More details</Button>
+        <Button onClick={() => {
+            let url = `${imageURL}${imageFile}`;
+            let img = '<img src="'+url+'">';
+            let popup = window.open();
+            popup.document.write(img);                        
+            popup.print();
+        }} variant="outlined" color="secondary" className={classes.button}>More Details</Button>
+        
     )
     
     //History
