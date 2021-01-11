@@ -20,30 +20,29 @@ const App = () => {
     window.top.location.href='/admin/Users/index_new'
   }   
 
-  const [isLoading, setLoading] = useState(true);
-  const [userRole, setUserRole] = useState();
-  const [userStatus, setUserStatus] = useState();
+  const [isLoading, setLoading] = useState(false);
+  const [userRole, setUserRole] = useState("3");
+  const [userStatus, setUserStatus] = useState("success");
   const [idleUpdate, setIdleUpdate] = useState(false);
 
   //First check
   useEffect(() => {
-    axios.get(apiUsers)
+    /*axios.get(apiUsers)
     .then(res => {
-      /*
+
       const payloadData = res.data;
       console.log(payloadData)
       setUserRole(payloadData.user.role_id);
       setUserStatus(payloadData.status);
       setLoading(false);
-      */
 
       setUserRole("3");
       setUserStatus("success");
       setLoading(false); 
-            
-      
     })
+    */
   }, [idleUpdate]);
+
 
   const IdleTimerComponent = () => {
     const idleTimerRef = useRef(null)
@@ -56,14 +55,6 @@ const App = () => {
     const onIdle = () => {
         console.log("User idle!")
         setIdleUpdate(true)
-        axios.get(apiUsers)
-        .then(res => {
-          //const payloadData = res.data;
-          //console.log(payloadData)
-          //setUserRole(payloadData.user.role_id);
-          //Next line it's to develop in local 
-          //setUserStatus("success"); 
-        })        
     }
     
     return (
