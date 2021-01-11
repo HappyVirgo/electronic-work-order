@@ -92,8 +92,8 @@ const ModalComponent = ({title, data, type}) => {
         </Button>
     )
 
-    const buttonNoEffect = (
-        <Button variant="outlined" color="secondary" onClick={() => console.log("show more details.")} className={classes.button}>
+    const buttonAttachments = (
+        <Button variant="outlined" color="secondary" onClick={handleOpen} className={classes.button}>
             More details
         </Button>
     )  
@@ -304,7 +304,7 @@ const ModalComponent = ({title, data, type}) => {
         button = buttonWarranty
     } else if (type==="document") {
         body = bodyAttachments
-        button = buttonNoEffect
+        button = buttonAttachments
     } else if (type==="history") {
         body = bodyHistory
         button = buttonRegular
