@@ -377,6 +377,7 @@ class WorkOrdersBuilder extends Component {
                 })
             }     
             const filterData = ({dataSearch, filterByInByAssetType=[], filterByInByStatus=[], filterByInByPriority=[]}) => {
+                console.log("filterByInByStatus", filterByInByStatus);
                 if(filterByInByAssetType.length>0) {
                     dataSearch = dataSearch.filter(term => {
                         let notNull = term['asset']!==null?term['asset']['assetType']['description']:""
@@ -908,7 +909,7 @@ class WorkOrdersBuilder extends Component {
                         dataSearch = tmpl.data?tmpl.data.work_orders:[]
                     }           
                 }
-                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByPriority});
+                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus: 'Pending SP Acceptance', filterByInByPriority});
                 tmpdata = {
                     data: {
                         work_orders: dataSearch
@@ -1234,7 +1235,7 @@ class WorkOrdersBuilder extends Component {
                         dataSearch = tmpl.data?tmpl.data.work_orders:[]
                     }
                 } 
-                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByPriority});
+                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus: 'UnAssigned', filterByInByPriority});
                 tmpdata = {
                     data: {
                         work_orders: dataSearch
