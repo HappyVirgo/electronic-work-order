@@ -229,6 +229,21 @@ const ModalComponent = ({title, data, type}) => {
         </Grid>
     )  
     
+    const linkButton = (
+        <Button onClick={() => {
+            let url = `${imageURL}${imageFile}`;
+            let img = '<img src="'+url+'" alt="'+imageTitle+'">';
+            let m_title = "Attachments";
+            let header = '<html><head><title>' + m_title + '</title></head><body height="100%" width="100%">'
+            let popup = window.open();
+            popup.document.write(header);
+            popup.document.write(img);
+            popup.document.write('</body></html>');                     
+            popup.document.close();
+        }} variant="outlined" color="secondary" className={classes.button}>More Details</Button>
+        
+    )
+    
     //History
     const bodyHistory = (
         <Grid style={modalStyle} className={classes.paper}>
@@ -304,7 +319,7 @@ const ModalComponent = ({title, data, type}) => {
         button = buttonWarranty
     } else if (type==="document") {
         body = bodyAttachments
-        button = buttonNoEffect
+        button = linkButton
     } else if (type==="history") {
         body = bodyHistory
         button = buttonRegular
