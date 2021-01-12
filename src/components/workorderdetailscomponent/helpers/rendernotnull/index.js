@@ -49,6 +49,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
     let nte
     //Border Section
     let currentEta
+    let createdDate
     let serviceProvider
     let assignTo
     let invoiceStatus
@@ -121,6 +122,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             serviceProvider = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.firstName:nullVal;
             serviceProviderLast = detailsdata.data.work_order.serviceProviderProfile!==nullVal?detailsdata.data.work_order.serviceProviderProfile.lastName:nullVal;
             currentEta = detailsdata.data.work_order.currentEta!==nullVal?detailsdata.data.work_order.currentEta:nullVal;
+            createdDate = detailsdata.data.work_order.dateCreated!==nullVal?detailsdata.data.work_order.dateCreated:nullVal;
             //Location Section
             locationAddress = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.address1:nullVal;
             location = detailsdata.data.work_order.location!==nullVal?detailsdata.data.work_order.location.name:nullVal;
@@ -183,6 +185,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     proposalId={proposalId}
                     invoiceId={invoiceId}
                     currentEta={currentEta}
+                    createdDate={createdDate}
                     serviceProvider={serviceProvider}
                     serviceProviderLast={serviceProviderLast}
                     proposalStatus={proposalStatus}
