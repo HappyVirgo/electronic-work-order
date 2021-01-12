@@ -246,7 +246,7 @@ class WorkOrdersBuilder extends Component {
         }else{
             target = event.target.closest('div')
             target = target.id
-            if(target !== this.state.detailsId) {
+            if(!!target && target !== this.state.detailsId) {
                 this.setState({
                     detailsId: target,
                     loadingDetails: true
