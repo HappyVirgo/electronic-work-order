@@ -235,7 +235,7 @@ const ModalComponent = ({title, data, type}) => {
             let img = '<img src="'+url+'" alt="'+imageTitle+'">';
             let m_title = "Attachments";
             let header = '<html><head><title>' + m_title + '</title></head><body height="100%" width="100%">'
-            let popup = window.open("attachments", "Attachments");
+            let popup = window.open();
             popup.document.write(header);
             popup.document.write(img);
             popup.document.write('</body></html>');                     
