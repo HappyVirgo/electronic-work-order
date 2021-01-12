@@ -56,6 +56,7 @@ const advancedSearchFields = ["Work Order ID", "Service Provider" ,"Asset Type",
 
 const AdvancedSearchComponent = () => {
     const [searchBox, setSearchBox] = useState(false);
+    const [searchValue, setSearchValue] = useState("");
     let searchFunc = useContext(GlobalContext)
     let searchTerm = searchFunc.handleSearchTerm 
     let searchBy = searchFunc.handleSearchBy
@@ -100,8 +101,13 @@ const AdvancedSearchComponent = () => {
                     aria-describedby="search" 
                     type="search" 
                     fullWidth={true} 
-                    value={searchTermState}
-                    onChange={searchTerm}
+                    value={searchValue}
+                    onChange={(event) => {
+                        setSearchValue(event.target.value);
+                        if(event.target.value.length>3||event.target.value.length===0) {
+                            searchTerm(event); 
+                        }
+                    }}
                     InputProps={{ classes: {
                                     underline: classes.underline
                                 },
