@@ -582,7 +582,6 @@ class WorkOrdersBuilder extends Component {
                         }           
                     }
                     dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus});
-                    console.log(dataSearch)
                     tmpdata = {
                         data: {
                             work_orders: dataSearch
@@ -910,7 +909,6 @@ class WorkOrdersBuilder extends Component {
                     }           
                 }
                 dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByPriority});
-                console.log(dataSearch)
                 tmpdata = {
                     data: {
                         work_orders: dataSearch
@@ -1071,7 +1069,6 @@ class WorkOrdersBuilder extends Component {
                     }           
                 }
                 dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus, filterByInByPriority});
-                console.log(dataSearch)
                 tmpdata = {
                     data: {
                         work_orders: dataSearch
@@ -1238,7 +1235,6 @@ class WorkOrdersBuilder extends Component {
                     }
                 } 
                 dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByPriority});
-                console.log(dataSearch)
                 tmpdata = {
                     data: {
                         work_orders: dataSearch
