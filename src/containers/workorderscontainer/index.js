@@ -291,8 +291,8 @@ class WorkOrdersBuilder extends Component {
         ctadata = await this.props.fetchCTAsData()
 
         tmpdata = await this.props.fetchEmergencyWOData()  
-        this.sortWOByCreatedDate(tmpdata.data.work_orders);
         if(tmpdata.data.work_orders!==undefined) {
+            this.sortWOByCreatedDate(tmpdata.data.work_orders);
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
             this.setState({
                 detailsId: dtlsID,
