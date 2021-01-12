@@ -237,17 +237,21 @@ class WorkOrdersBuilder extends Component {
         event.preventDefault();
         let target = event.target.id
         if(target.length>0){
-            this.setState({
-                detailsId: target,
-                loadingDetails: true
-            }, this.handleDynamicDetails(target))
+            if(target !== this.state.detailsId) {
+                this.setState({
+                    detailsId: target,
+                    loadingDetails: true
+                }, this.handleDynamicDetails(target))
+            }
         }else{
             target = event.target.closest('div')
             target = target.id
-            this.setState({
-                detailsId: target,
-                loadingDetails: true
-            },  this.handleDynamicDetails(target))
+            if(!!target && target !== this.state.detailsId) {
+                this.setState({
+                    detailsId: target,
+                    loadingDetails: true
+                },  this.handleDynamicDetails(target))
+            }
         }
     }
     handleDynamicData = (target) => {
