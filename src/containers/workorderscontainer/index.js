@@ -215,18 +215,18 @@ class WorkOrdersBuilder extends Component {
     }
     updateWOStatus = (event) => {
         let target = event.target.parentElement.getAttribute("status")
-        if(target !== 'Reassign') {
+        if(target !== 'Reassign' && !!target) {
             target = target.toUpperCase().replace(' ', '_')
             this.setState({
                 updatedStatus: target,
-                loadingDetails: true,
+                // loadingDetails: true,
             }, this.handleUpdateStatus(target))
         } else {
             target = target.toUpperCase().replace(' ', '_')
             this.setState({
                 updatedStatus: target,
                 reassignToAvailable: !this.state.reassignToAvailable,
-                loadingDetails: true,
+                // loadingDetails: true,
             }, this.handleUpdateStatus(target))
         }
     }
@@ -271,6 +271,10 @@ class WorkOrdersBuilder extends Component {
         }
         
     }
+    sortWOByCreatedDate = (data) => {
+        data.sort((a, b) => b.workOrderId-a.workOrderId);
+        data.sort((a, b) => b.dateCreated-a.dateCreated);
+    }
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
@@ -288,6 +292,7 @@ class WorkOrdersBuilder extends Component {
 
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
+            this.sortWOByCreatedDate(tmpdata.data.work_orders);
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
             this.setState({
                 detailsId: dtlsID,
@@ -1143,6 +1148,7 @@ class WorkOrdersBuilder extends Component {
             // let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
             // if(currentIndex === -1) currentIndex = 0
             // this.array_move(tmpdata.data.work_orders, currentIndex, 0)
+            this.sortWOByCreatedDate(tmpdata.data.work_orders) 
 
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
@@ -1188,7 +1194,10 @@ class WorkOrdersBuilder extends Component {
                         loadingDetails: true
                     }, handleChangePrevState(dtlsID))
                 } else {
-                    alert("Server Error Occured")
+                    alert("Server Error Occured");
+                    this.setState({
+                        updatedStatus: ''
+                    });
                 }
             }
 
@@ -1198,8 +1207,7 @@ class WorkOrdersBuilder extends Component {
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: false
-            }, handleChangePrevState(dtlsID)) 
-            
+            }, handleChangePrevState(dtlsID))
         }
     }
     render() {

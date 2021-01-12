@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }  
 }));
 
-export const BoxedDetails = ({proposalId, invoiceId, currentEta, serviceProvider, serviceProviderLast, proposalStatus, assignTo, invoiceStatus, nullVal}) => {
+export const BoxedDetails = ({proposalId, invoiceId, currentEta, createdDate, serviceProvider, serviceProviderLast, proposalStatus, assignTo, invoiceStatus, nullVal}) => {
     const api_url = '/admin/';
     const classes = useStyles()
     const smallSize = 12
@@ -38,6 +38,14 @@ export const BoxedDetails = ({proposalId, invoiceId, currentEta, serviceProvider
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
                     <Typography className={classes.text}><span className={classes.date}><Moment format="MMMM D, YYYY hh:mm a">{currentEta!==null?currentEta:nullVal}</Moment></span></Typography>
+                </Grid>
+            </Grid>
+            <Grid container>
+                <Grid item xs={smallSize} md={mediumSize}>
+                    <Typography className={classes.text}><strong>Created Date: </strong></Typography>
+                </Grid>
+                <Grid item xs={smallSize} md={mediumSize}>
+                    <Typography className={classes.text}><span className={classes.date}><Moment format="MMMM D, YYYY hh:mm a">{createdDate!==null?createdDate:nullVal}</Moment></span></Typography>
                 </Grid>
             </Grid>
             <Grid container>
