@@ -271,6 +271,10 @@ class WorkOrdersBuilder extends Component {
         }
         
     }
+    sortWOByCreatedDate = (data) => {
+        data.sort((a, b) => b.workOrderId-a.workOrderId);
+        data.sort((a, b) => b.dateCreated-a.dateCreated);
+    }
     
     async componentDidMount() {
         token = await this.props.oauthFetchToken()
@@ -288,6 +292,7 @@ class WorkOrdersBuilder extends Component {
 
         tmpdata = await this.props.fetchEmergencyWOData()  
         if(tmpdata.data.work_orders!==undefined) {
+            this.sortWOByCreatedDate(tmpdata.data.work_orders);
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
             this.setState({
                 detailsId: dtlsID,
@@ -1143,6 +1148,7 @@ class WorkOrdersBuilder extends Component {
             // let currentIndex =  tmpdata.data.work_orders.findIndex(this.isCurrent);
             // if(currentIndex === -1) currentIndex = 0
             // this.array_move(tmpdata.data.work_orders, currentIndex, 0)
+            this.sortWOByCreatedDate(tmpdata.data.work_orders) 
 
             const prevSteDtls = prevState.detailsId
             const currentSteDtls = this.state.detailsId
@@ -1201,8 +1207,7 @@ class WorkOrdersBuilder extends Component {
                 detailsId: dtlsID,
                 targetId: this.state.targetId,
                 loading: false
-            }, handleChangePrevState(dtlsID)) 
-            
+            }, handleChangePrevState(dtlsID))
         }
     }
     render() {
