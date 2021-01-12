@@ -215,18 +215,18 @@ class WorkOrdersBuilder extends Component {
     }
     updateWOStatus = (event) => {
         let target = event.target.parentElement.getAttribute("status")
-        if(target !== 'Reassign') {
+        if(target !== 'Reassign' && !!target) {
             target = target.toUpperCase().replace(' ', '_')
             this.setState({
                 updatedStatus: target,
-                loadingDetails: true,
+                // loadingDetails: true,
             }, this.handleUpdateStatus(target))
         } else {
             target = target.toUpperCase().replace(' ', '_')
             this.setState({
                 updatedStatus: target,
                 reassignToAvailable: !this.state.reassignToAvailable,
-                loadingDetails: true,
+                // loadingDetails: true,
             }, this.handleUpdateStatus(target))
         }
     }
@@ -1188,7 +1188,10 @@ class WorkOrdersBuilder extends Component {
                         loadingDetails: true
                     }, handleChangePrevState(dtlsID))
                 } else {
-                    alert("Server Error Occured")
+                    alert("Server Error Occured");
+                    this.setState({
+                        updatedStatus: ''
+                    });
                 }
             }
 
