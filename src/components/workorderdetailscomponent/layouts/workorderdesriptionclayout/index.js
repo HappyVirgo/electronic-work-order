@@ -34,7 +34,7 @@ export const WorkOrderDescription = ({id, description, nullVal}) => {
     const classes = useStyles()
     return (
         <Grid item xs={12} className={classes.workOrderDescriptionContainer}>
-            {/*<Button variant="contained" className={classes.buttonEdit} color="secondary" startIcon={<EditIcon/>} href={`/workorder/edit/${id!==null?id:nullVal}`} >Edit</Button> */}
+            <Button variant="contained" className={classes.buttonEdit} color="secondary" startIcon={<EditIcon/>} href={`/admin/WorkOrders/work_order_details/${id!==null?id:nullVal}`} target={'_blank'}>Edit</Button>
             <Typography variant={'h1'} className={`${classes.title} details-title`}>Work Order: {id!==null?id:nullVal}</Typography>
             <Typography variant={'body1'} className={classes.description}>{description!==null?description:nullVal}</Typography> 
         </Grid>
