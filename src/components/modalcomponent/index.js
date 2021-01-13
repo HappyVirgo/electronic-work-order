@@ -319,11 +319,7 @@ const ModalComponent = ({title, data, type}) => {
         button = buttonWarranty
     } else if (type==="document") {
         body = bodyAttachments
-<<<<<<< HEAD
-        button = buttonAttachments
-=======
         button = linkButton
->>>>>>> 8f43e2d3e777c3ae6b5d5780e24e02d1b32b8c8e
     } else if (type==="history") {
         body = bodyHistory
         button = buttonRegular

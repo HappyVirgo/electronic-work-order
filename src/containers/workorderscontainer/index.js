@@ -35,14 +35,6 @@ import {
     fetchServiceProviders,
 } from '../../actions';
 
-//Json Server API
-//To start the api server => json-server db.json --routes routes.json (Server running on localhost:3000)
-//Then run npm start / yarn start (Server running on localhost:3001)
-
-import {
-    fetchCTAsDataTEST,
-} from '../../faker'
-
 //Context
 import { GlobalContext } from '../../context/globalcontext'
 
