@@ -401,6 +401,7 @@ class WorkOrdersBuilder extends Component {
             }
             let tmp
             let dataSearch
+            let dataSearchTemp
             //Set/Search/Filter data for DataTable Component
             /*
             let incomingData = setSearchFilterHelper({
@@ -580,7 +581,8 @@ class WorkOrdersBuilder extends Component {
                             dataSearch = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                         } else {
                             let tmpl = await this.props.fetchSearchData();
-                            dataSearch = tmpl.data?tmpl.data.work_orders:[]
+                            dataSearchTemp = tmpl.data?tmpl.data.work_orders:[]
+                            dataSearch = dataSearch.filter(term => JSON.stringify(dataSearchTemp).includes(JSON.stringify(term)));
                         }           
                     }
                     dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus});
@@ -740,8 +742,8 @@ class WorkOrdersBuilder extends Component {
                             dataSearch = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                         } else {
                             let tmpl = await this.props.fetchSearchData();
-                            dataSearch = tmpl.data?tmpl.data.work_orders:[]
-                            console.log("dataSearch", dataSearch)
+                            dataSearchTemp = tmpl.data?tmpl.data.work_orders:[]
+                            dataSearch = dataSearch.filter(term => JSON.stringify(dataSearchTemp).includes(JSON.stringify(term)));
                         }           
                     } 
                     dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus, filterByInByPriority});
@@ -907,10 +909,11 @@ class WorkOrdersBuilder extends Component {
                         dataSearch = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                     } else {
                         let tmpl = await this.props.fetchSearchData();
-                        dataSearch = tmpl.data?tmpl.data.work_orders:[]
+                        dataSearchTemp = tmpl.data?tmpl.data.work_orders:[]
+                        dataSearch = dataSearch.filter(term => JSON.stringify(dataSearchTemp).includes(JSON.stringify(term)));
                     }           
                 }
-                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus: 'Pending SP Acceptance', filterByInByPriority});
+                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByPriority});
                 tmpdata = {
                     data: {
                         work_orders: dataSearch
@@ -1067,7 +1070,8 @@ class WorkOrdersBuilder extends Component {
                         dataSearch = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                     } else {
                         let tmpl = await this.props.fetchSearchData();
-                        dataSearch = tmpl.data?tmpl.data.work_orders:[]
+                        dataSearchTemp = tmpl.data?tmpl.data.work_orders:[]
+                        dataSearch = dataSearch.filter(term => JSON.stringify(dataSearchTemp).includes(JSON.stringify(term)));
                     }           
                 }
                 dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus, filterByInByPriority});
@@ -1233,10 +1237,11 @@ class WorkOrdersBuilder extends Component {
                         dataSearch = dataSearch.filter(term => term['workOrderId'].toString().includes(searchTerm))
                     } else {
                         let tmpl = await this.props.fetchSearchData();
-                        dataSearch = tmpl.data?tmpl.data.work_orders:[]
+                        dataSearchTemp = tmpl.data?tmpl.data.work_orders:[]
+                        dataSearch = dataSearch.filter(term => JSON.stringify(dataSearchTemp).includes(JSON.stringify(term)));
                     }
                 } 
-                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByStatus: 'UnAssigned', filterByInByPriority});
+                dataSearch = filterData({dataSearch, filterByInByAssetType, filterByInByPriority});
                 tmpdata = {
                     data: {
                         work_orders: dataSearch
