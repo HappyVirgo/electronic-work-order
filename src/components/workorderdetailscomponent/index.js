@@ -53,7 +53,7 @@ const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, wa
                 <Paper className={classes.paper}>
                     <Details 
                         detailsdata={detailsdata}
-                        history={history} 
+                        //history={history} 
                         attachments={attachments} 
                         notes={notes}
                         warranty={warranty}
