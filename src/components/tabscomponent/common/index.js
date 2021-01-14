@@ -156,6 +156,12 @@ const CommonTable = ({tmpdata, infotab}) => {
         return b - a
     }
 
+    const sortByUpdatedDate = (a, b) => {
+        a = new Date(a.updatedDate)
+        b = new Date(b.updatedDate)
+        return b - a
+    }
+
     //Getting the data
     
     useEffect(() => {
@@ -163,7 +169,9 @@ const CommonTable = ({tmpdata, infotab}) => {
     if(tmpdata!==undefined){
             let dataSetup
             if (tmpdata.data.work_order_histories!==undefined) {
-                dataSetup = tmpdata.data['work_order_histories']
+                let histories = tmpdata.data['work_order_histories']
+                histories = histories.sort(sortByUpdatedDate)
+                dataSetup = histories
                 columns = columnsHistory
             } else if(tmpdata.data.documents!==undefined) {
                 dataSetup = tmpdata.data['documents']
