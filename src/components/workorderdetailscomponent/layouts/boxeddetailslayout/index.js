@@ -69,9 +69,9 @@ export const BoxedDetails = ({proposalId, invoiceId, currentEta, createdDate, se
                     <Typography className={classes.text}><strong>Proposal Status: </strong></Typography>                    
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
-                    <Link href={`${api_url}Proposals/proposal_details/${proposalId}`}>
-                        <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
-                    </Link>
+                    {/* <Link href={`${api_url}Proposals/proposal_details/${proposalId}`}> */}
+                    <Typography className={classes.text}>{proposalStatus!==null?proposalStatus:nullVal}</Typography>
+                    {/* </Link> */}
                 </Grid>               
             </Grid>                    
             <Grid container>
@@ -79,9 +79,9 @@ export const BoxedDetails = ({proposalId, invoiceId, currentEta, createdDate, se
                     <Typography className={classes.text}><strong>Invoice Status: </strong></Typography>                    
                 </Grid>
                 <Grid item xs={smallSize} md={mediumSize}>
-                    <Link href={`${api_url}Invoices/details/${invoiceId}`}>
-                        <Typography className={classes.text}>{invoiceStatus!==null?invoiceStatus:nullVal}</Typography>
-                    </Link>
+                    {/* <Link href={`${api_url}Invoices/details/${invoiceId}`}> */}
+                    <Typography className={classes.text}>{invoiceStatus!==null?invoiceStatus:nullVal}</Typography>
+                    {/* </Link> */}
                 </Grid>                              
             </Grid>             
         </Grid>
