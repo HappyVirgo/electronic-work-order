@@ -276,7 +276,6 @@ class WorkOrdersBuilder extends Component {
         token = await this.props.oauthFetchToken()
         /*
         userData = await this.props.fetchUsersInformation()
-        console.log(userData.userdata)
         userId = userData.userdata.user.user_id   
         */
         //Next line it's to develop in local     
