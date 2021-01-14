@@ -35,7 +35,8 @@ const App = () => {
       setUserRole(payloadData.user.role_id);
       setUserStatus(payloadData.status);
       setLoading(false);
-    })*/
+    })
+    */
 
   }, [idleUpdate]);
 
