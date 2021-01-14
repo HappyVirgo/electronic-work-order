@@ -32,7 +32,7 @@ import {
     fetchWarrantyWOData,
     createNoteWOData,
     updateWOStatus,
-    fetchServiceProviders,
+    //fetchServiceProviders,
 } from '../../actions';
 
 //Context
@@ -296,7 +296,7 @@ class WorkOrdersBuilder extends Component {
         //historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
-        serviceProviders = await this.props.fetchServiceProviders();
+        //serviceProviders = await this.props.fetchServiceProviders();
         // this.sortOrderNotesByDate()
         warrantydata = await this.props.fetchWarrantyWOData()
         attachmentsdata = await this.props.fetchAttachmentsWOData()
@@ -1256,7 +1256,7 @@ class WorkOrdersBuilder extends Component {
                 if(this.state.firstLoading === false) {
                     detailsdata = await this.props.fetchDetailsWOData(dtlsID, token)
                     notesdata = await this.props.fetchNotesWOData(dtlsID, token)
-                    serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
+                    //serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
                     // this.sortOrderNotesByDate()
                     attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
                     //historydata = await this.props.fetchHistoryWOData(dtlsID, token)
@@ -1389,7 +1389,7 @@ class WorkOrdersBuilder extends Component {
                                 //history={historydata} 
                                 attachments={attachmentsdata} 
                                 notes={notesdata}
-                                serviceProviders={serviceProviders}
+                                //serviceProviders={serviceProviders}
                                 firstLoading={this.state.firstLoading}
                                 warranty={warrantydata}
                             />
@@ -1416,7 +1416,7 @@ const mapDispatchToProps = dispatch => ({
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
     updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus, reassignToVal, userId)),
-    fetchServiceProviders: () => dispatch(fetchServiceProviders(dtlsID, token, userId)),
+    //fetchServiceProviders: () => dispatch(fetchServiceProviders(dtlsID, token, userId)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
     //fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
