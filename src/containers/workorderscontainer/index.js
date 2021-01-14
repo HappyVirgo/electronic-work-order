@@ -276,7 +276,7 @@ class WorkOrdersBuilder extends Component {
         token = await this.props.oauthFetchToken()
         /*
         userData = await this.props.fetchUsersInformation()
-        console.log(userData.userdata.user)
+        console.log(userData.userdata)
         userId = userData.userdata.user.user_id   
         */
         //Next line it's to develop in local     
@@ -1417,7 +1417,7 @@ const mapDispatchToProps = dispatch => ({
     fetchUsersInformation: () => dispatch(fetchUsersInformation(token)),
     fetchDetailsWOData: () => dispatch(fetchDetailsWOData(dtlsID, token)),
     updateWOStatus: () => dispatch(updateWOStatus(dtlsID, token, updatedStatus, reassignToVal, userId)),
-    fetchServiceProviders: () => dispatch(fetchServiceProviders(dtlsID, token)),
+    fetchServiceProviders: () => dispatch(fetchServiceProviders(dtlsID, token, userId)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
     fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),

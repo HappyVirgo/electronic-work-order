@@ -80,10 +80,14 @@ export const receiveServiceProviders = (data) => {
     return {type: types.RECEIVE_SERVICE_PROVIDERS, data: data};
 }
 
-export const fetchServiceProviders = async (dtlsID, token) => {
+export const fetchServiceProviders = async (dtlsID, token, userId) => {
     const serviceProviderURL = '/reassign/providers'
     let accessToken = await accessFetchToken(token)
     let idDtls = await accessDtlId(dtlsID)
+    const accessFetchUserId = (id) => {
+        return id
+    }     
+    let accessUserId = await accessFetchUserId(userId)      
     let init = { 
         headers: {
             Authorization: 'Bearer ' + accessToken,
@@ -91,7 +95,7 @@ export const fetchServiceProviders = async (dtlsID, token) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiDetailsWO+idDtls+serviceProviderURL+"?userId=2152", init)
+        return fetch(apiDetailsWO+idDtls+serviceProviderURL+"?userId="+accessUserId, init)
             .then(response => response.json())
             .then(json => dispatch(receiveServiceProviders(json)))
             .catch(error => console.log("Fetch Service Provider Error"));
