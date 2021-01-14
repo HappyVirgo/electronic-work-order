@@ -14,7 +14,7 @@ export const receiveAssignedToMeWOData = (data) => {
 }
 
 export const fetchAssignedToMeWOData = async (token, userId) => {
-    const assigntomeURL = "/assigned"
+    const assignedtomeURL = "/assigned"
     const accessFetchToken = (tk) => {
         return tk.data
     }
@@ -30,7 +30,7 @@ export const fetchAssignedToMeWOData = async (token, userId) => {
         } 
     }  
     return dispatch => {
-        return fetch(apiAssignedToMeWO+accessUserId+assigntomeURL, init)
+        return fetch(apiAssignedToMeWO+accessUserId+assignedtomeURL, init)
             .then(response => response.json())
             .then(json => dispatch(receiveAssignedToMeWOData(json)));
     }
