@@ -217,7 +217,7 @@ const ModalComponent = ({title, data, type}) => {
     )
     
     //Attachments
-    const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/cache/80x80/100/portrait/"
+    const imageURL = "https://ecotrak-documents-production.s3.us-east-2.amazonaws.com/img/uploads/photos/"
     const bodyAttachments = (
         <Grid style={modalStyle} className={classes.paper}>
             <h2 id="simple-modal-title">{description}</h2>
