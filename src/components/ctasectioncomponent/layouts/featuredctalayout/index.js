@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '32px',
         float: 'left',
         fontWeight: 400
+    },
+    cta_hide: {
+        display: "none !important"
     }
 }));
 
@@ -48,7 +51,7 @@ export const FeaturedCTALayout = ({emergencyWorkOrders, openWorkOrders}) => {
                 <Typography className={classes.cta_emergency_value} variant="body1">{emergencyWorkOrders}</Typography>
                 <Typography className={classes.cta_emergency_text} variant="body1">Emergency Work Orders</Typography>
             </Grid>
-            <Grid item className="open-wo" id="openWO" onClick={change}>
+            <Grid item className={`open-wo ${openWorkOrders>=5000?classes.cta_hide:""}`} id="openWO" onClick={change}>
                 <Typography className={classes.cta_open_value} variant="body1">{openWorkOrders}</Typography>
                 <Typography className={classes.cta_open_text} variant="body1">Open Work Orders</Typography>
             </Grid>

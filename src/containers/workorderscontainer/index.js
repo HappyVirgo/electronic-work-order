@@ -74,7 +74,7 @@ let noteDescription
 let workOrderUpdateResponse
 let updatedStatus
 let reassignToVal
-let serviceProviders
+//let serviceProviders
 
 class WorkOrdersBuilder extends Component {
     constructor() {
@@ -292,7 +292,7 @@ class WorkOrdersBuilder extends Component {
             this.setState({
                 detailsId: dtlsID,
             })
-        }
+        }      
         //historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
