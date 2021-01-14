@@ -26,7 +26,7 @@ import {
     fetchDetailsWOData,
     fetchAssignedToMeWOData,
     fetchUnassignedWOData,
-    fetchHistoryWOData,
+    //fetchHistoryWOData,
     fetchNotesWOData,
     fetchAttachmentsWOData,
     fetchWarrantyWOData,
@@ -52,7 +52,7 @@ let tmpdata
 //Details component
 let detailsdata
 //Tab component
-let historydata
+//let historydata
 let notesdata
 let attachmentsdata
 let dtlsID
@@ -293,7 +293,7 @@ class WorkOrdersBuilder extends Component {
                 detailsId: dtlsID,
             })
         }
-        historydata = await this.props.fetchHistoryWOData()
+        //historydata = await this.props.fetchHistoryWOData()
         detailsdata = await this.props.fetchDetailsWOData()
         notesdata = await this.props.fetchNotesWOData()
         serviceProviders = await this.props.fetchServiceProviders();
@@ -319,7 +319,7 @@ class WorkOrdersBuilder extends Component {
         notesdata = await this.props.fetchNotesWOData(dtlsID, token)
         // this.sortOrderNotesByDate()
         attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-        historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+        //historydata = await this.props.fetchHistoryWOData(dtlsID, token)
         warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)                  
     }
 
@@ -1259,7 +1259,7 @@ class WorkOrdersBuilder extends Component {
                     serviceProviders = await this.props.fetchServiceProviders(dtlsID, token);
                     // this.sortOrderNotesByDate()
                     attachmentsdata = await this.props.fetchAttachmentsWOData(dtlsID, token)
-                    historydata = await this.props.fetchHistoryWOData(dtlsID, token)
+                    //historydata = await this.props.fetchHistoryWOData(dtlsID, token)
                     warrantydata = await this.props.fetchWarrantyWOData(dtlsID, token)
                 }
                 this.setState({loadingDetails: false})
@@ -1386,7 +1386,7 @@ class WorkOrdersBuilder extends Component {
                             <WorkOrderDetailsComponent
                                 loadingDetails={this.state.loadingDetails}
                                 detailsdata={detailsdata}
-                                history={historydata} 
+                                //history={historydata} 
                                 attachments={attachmentsdata} 
                                 notes={notesdata}
                                 serviceProviders={serviceProviders}
@@ -1419,7 +1419,7 @@ const mapDispatchToProps = dispatch => ({
     fetchServiceProviders: () => dispatch(fetchServiceProviders(dtlsID, token, userId)),
     fetchAssignedToMeWOData: () => dispatch(fetchAssignedToMeWOData(token, userId)),
     fetchUnassignedWOData: () => dispatch(fetchUnassignedWOData(token, userId)),
-    fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
+    //fetchHistoryWOData: () => dispatch(fetchHistoryWOData(dtlsID, token)),
     fetchNotesWOData: () => dispatch(fetchNotesWOData(dtlsID, token)),
     createNoteWOData: () => dispatch(createNoteWOData(noteDescription, dtlsID, token, userId)),
     fetchAttachmentsWOData: ()=> dispatch(fetchAttachmentsWOData(dtlsID, token)),
