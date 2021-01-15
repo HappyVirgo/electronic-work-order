@@ -47,6 +47,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
     let problemType
     let categoryType
     let nte
+    let raisedNte
     //Border Section
     let currentEta
     let createdDate
@@ -110,6 +111,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
             problemType = detailsdata.data.work_order.problemType!==nullVal?detailsdata.data.work_order.problemType.name:nullVal;
             categoryType = detailsdata.data.work_order.categoryType!==nullVal?detailsdata.data.work_order.categoryType.name:nullVal;
             nte = detailsdata.data.work_order.nte!==nullVal?detailsdata.data.work_order.nte:nullVal;
+            raisedNte = detailsdata.data.work_order.raisedNte!==nullVal?detailsdata.data.work_order.raisedNte:nullVal;
             if(detailsdata.data.work_order.proposal!==nullVal){
                 let pre_proposalStatus = detailsdata.data.work_order.proposal.proposalStatus
                 proposalStatus = pre_proposalStatus!==nullVal?detailsdata.data.work_order.proposal.proposalStatus.description:nullVal;
@@ -179,6 +181,7 @@ export const RenderNotNull = ({detailsdata, history, attachments, notes, warrant
                     categoryType={categoryType}
                     woType={woType}
                     nte={nte}
+                    raisedNte={raisedNte}
                     nullVal={nullVal}
                 />
                 <BoxedDetails 
