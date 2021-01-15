@@ -7,7 +7,7 @@
 //Basic imports
 import React from "react";
 //Set render structure for multi-item column
-export const renderMultiItem = ({getExtraKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, getCategoryType_index, getCategoryType, change}) => {
+export const renderMultiItem = ({getExtraKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, getCategoryType_index, getCategoryType}) => {
     // console.log("item3", item)
     // console.log(getCategoryType_index, getCategoryType)
     let assetWorkOrder = item?item['workOrderId']:null
@@ -16,7 +16,7 @@ export const renderMultiItem = ({getExtraKey, checkItem, item, getServiceProvide
     let __getCategoryType_index = item?item[getCategoryType_index]:null
     let getCategoryTypeDef = __getCategoryType_index?__getCategoryType_index[getCategoryType]:null
     return (
-        <div id={assetWorkOrder} onClick={change} className={'dtableCols'}>
+        <div id={assetWorkOrder} className={'dtableCols'}>
             <strong>{getExtraKey!==false?(checkItem!==null?checkItem:assetWorkOrder):null}</strong><br/>
             <span><small>Service Providers: <b>{__getServiceProvider_index!==null?getServiceProviderDef:" "}</b></small></span><br/>
             <span><small>Category Type: <b>{__getCategoryType_index!==null?getCategoryTypeDef:" "}</b></small></span><br/>

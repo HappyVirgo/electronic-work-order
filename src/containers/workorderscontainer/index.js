@@ -236,7 +236,7 @@ class WorkOrdersBuilder extends Component {
                 }, this.handleDynamicDetails(target))
             }
         }else{
-            target = event.target.closest('div')
+            target = event.target.closest('.datatable-row')
             target = target.id
             if(!!target && target !== this.state.detailsId) {
                 this.setState({
