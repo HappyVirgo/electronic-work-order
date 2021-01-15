@@ -47,21 +47,21 @@ const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, wa
             </div>
         ):(
             <div className="details-container">
-                <Paper className={classes.paper}>
                     {loadingDetails && <div className="loading-container">
                         <CircularProgress />
                     </div>}
                     {!tmpDataAmount?(<div style={{display: 'flex', justifyContent: 'center'}}>No Available Details</div>):(
-                        <Details 
-                            detailsdata={detailsdata}
-                            //history={history} 
-                            attachments={attachments} 
-                            notes={notes}
-                            warranty={warranty}
-                            serviceProviders={serviceProviders}
-                        />
+                        <Paper className={classes.paper}>
+                            <Details 
+                                detailsdata={detailsdata}
+                                //history={history} 
+                                attachments={attachments} 
+                                notes={notes}
+                                warranty={warranty}
+                                serviceProviders={serviceProviders}
+                            />
+                        </Paper>
                     )}
-                </Paper>
             </div>
         )}
         </>
