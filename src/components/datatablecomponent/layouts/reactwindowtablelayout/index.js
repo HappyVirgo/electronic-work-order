@@ -78,7 +78,6 @@ const useTableStyles = makeStyles(theme => ({
 export const ReactWindowTable = ({ data, columns, firstLoading }) => {
     const classes = useTableStyles();
     const itemData = createItemData(classes, columns, data);
-    
     return (
         <div className={classes.root}>
         <Table className={classes.table} component="div">
@@ -95,24 +94,24 @@ export const ReactWindowTable = ({ data, columns, firstLoading }) => {
                         <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
                         <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
                     </>
-                    ):(
-                    <AutoSizer>
-                        {({ height, width }) => (
-                        <List
-                            key={itemKey}
-                            className={`list-table`}
-                            height={height}
-                            width={width}
-                            itemCount={data.length}
-                            itemSize={ROW_SIZE}
-                            itemKey={itemKey}
-                            itemData={itemData}
-                        >
-                            {Row}
-                        </List>
-                        )}
-                    </AutoSizer>
-                )
+                    ):(data.length?(
+                        <AutoSizer>
+                            {({ height, width }) => (
+                            <List
+                                key={itemKey}
+                                className={`list-table`}
+                                height={height}
+                                width={width}
+                                itemCount={data.length}
+                                itemSize={ROW_SIZE}
+                                itemKey={itemKey}
+                                itemData={itemData}
+                            >
+                                {Row}
+                            </List>
+                            )}
+                        </AutoSizer>
+                    ):(<div style={{margin: '20px', display: 'flex', justifyContent: 'center'}}>No Available Data</div>))
             }
             </TableBody>
         </Table>

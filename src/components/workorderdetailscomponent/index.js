@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, serviceProviders, loadingDetails, firstLoading}) => {
+const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, warranty, serviceProviders, loadingDetails, firstLoading, tmpDataAmount}) => {
     const classes = useStyles()
     return (
         <>
@@ -47,18 +47,20 @@ const WorkOrderDetailsComponent = ({detailsdata, history, attachments, notes, wa
             </div>
         ):(
             <div className="details-container">
-                {loadingDetails && <div className="loading-container">
-                    <CircularProgress />
-                </div>}
                 <Paper className={classes.paper}>
-                    <Details 
-                        detailsdata={detailsdata}
-                        //history={history} 
-                        attachments={attachments} 
-                        notes={notes}
-                        warranty={warranty}
-                        serviceProviders={serviceProviders}
-                    />
+                    {loadingDetails && <div className="loading-container">
+                        <CircularProgress />
+                    </div>}
+                    {!tmpDataAmount?(<div style={{display: 'flex', justifyContent: 'center'}}>No Available Details</div>):(
+                        <Details 
+                            detailsdata={detailsdata}
+                            //history={history} 
+                            attachments={attachments} 
+                            notes={notes}
+                            warranty={warranty}
+                            serviceProviders={serviceProviders}
+                        />
+                    )}
                 </Paper>
             </div>
         )}
