@@ -29,9 +29,9 @@
         height: 20px !important;
         font-size: 12px;
     }
-    :first-child {
-        padding-left: 10px !important;
-    }
+    // :first-child {
+    //     padding-left: 10px !important;
+    // }
 }
 
 @media only screen and (max-width: 500px) { 
@@ -46,9 +46,9 @@
             font-size: 12px;
             text-align: center;
         }
-        :first-child {
-            padding-left: 0px !important;
-        }
+        // :first-child {
+        //     padding-left: 0px !important;
+        // }
     }    
     .tab-list{
         >div>div{
