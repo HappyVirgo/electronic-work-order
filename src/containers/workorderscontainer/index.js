@@ -49,6 +49,7 @@ let userData
 let ctadata
 //Datatable component
 let tmpdata
+let tmpDataAmount
 //Details component
 let detailsdata
 //Tab component
@@ -289,6 +290,7 @@ class WorkOrdersBuilder extends Component {
         if(tmpdata.data.work_orders!==undefined) {
             this.sortWOByCreatedDate(tmpdata.data.work_orders);
             dtlsID = tmpdata.data.work_orders[0]['workOrderId']
+            tmpDataAmount = tmpdata.data.work_orders.length
             this.setState({
                 detailsId: dtlsID,
             })
@@ -1286,6 +1288,7 @@ class WorkOrdersBuilder extends Component {
                                         tmpdata.data.work_orders[0]['workOrderId']:
                                         dtlsID):dtlsID):
                                         dtlsID
+            tmpDataAmount = tmpdata.data.work_orders!==undefined?tmpdata.data.work_orders.length:0;
             //Choose if details preview it's based on the first response element or the selected by the user when clicks the row
             if( prevSteDtls !== ''){
                 if( prevSteDtls !== currentSteDtls ) {
@@ -1387,6 +1390,7 @@ class WorkOrdersBuilder extends Component {
                         </Grid>        
                         <Grid item xs={12} md={5} lg={5}>
                             <WorkOrderDetailsComponent
+                                tmpDataAmount={tmpDataAmount}
                                 loadingDetails={this.state.loadingDetails}
                                 detailsdata={detailsdata}
                                 //history={historydata} 
