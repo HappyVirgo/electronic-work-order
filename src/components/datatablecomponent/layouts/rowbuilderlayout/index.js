@@ -28,9 +28,7 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
     const currentDtlsId = change.currentDtlsId
     change = change.dynamicDetails
     const Body = (
-        <>
-        {span}
-        <TableRow component="div" className={`${classes.row} datatable-row ${woitemID.toString() === currentDtlsId.toString()?'selected':''}`} style={style}>
+        <TableRow component="div" id={woitemID} onClick={change} className={`${classes.row} datatable-row ${woitemID.toString() === currentDtlsId.toString()?'selected':''}`} style={style}>
         {columns.map((column, colIndex) => {
             //Check for null items 
             let checkItem
@@ -67,10 +65,10 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
             >
                 {
                     (getMultiItem===true)?
-                        renderMultiItem({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, getCategoryType_index, getCategoryType, change}):
+                        renderMultiItem({getExtraKey, getDataKey, checkItem, item, getServiceProvider, getServiceProvider_index, getWorkOrderId, getCategoryType_index, getCategoryType}):
                     ((getImage===true)?
-                        renderImage({getImgPath, getExtraKey, getDataKey, checkItem, item, getWorkOrderId, change}):
-                        renderSingleItem({getExtraKey, getDataKey, checkItem, item, getWorkOrderId, change})
+                        renderImage({getImgPath, getExtraKey, getDataKey, checkItem, item, getWorkOrderId}):
+                        renderSingleItem({getExtraKey, getDataKey, checkItem, item, getWorkOrderId})
                     )
                 }
             </TableCell>
