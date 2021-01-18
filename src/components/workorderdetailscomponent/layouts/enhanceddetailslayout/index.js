@@ -19,67 +19,67 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const EnhancedDetails = ({status, priority, tradeType, problemType, categoryType, woType, nte, nullVal}) => {
+export const EnhancedDetails = ({status, priority, tradeType, problemType, categoryType, woType, nte, raisedNte, nullVal}) => {
     const classes = useStyles()
     let statusDisplay
     let priorityDisplay
     switch (status) {
         case "PENDING":
-            statusDisplay = <span className="peding-badge">Pending</span>
+            statusDisplay = <div className="status-tag"><span className="peding-badge">Pending</span></div>
             break;
         case "PENDING_SP_ACCEPTANCE":
-            statusDisplay = <span className="peding-sp-acceptance-badge">Pending SP Acceptance</span>
+            statusDisplay = <div className="status-tag"><span className="peding-sp-acceptance-badge">Pending SP Acceptance</span></div>
             break;
         case "PENDING_ACCEPTANCE":
-            statusDisplay = <span className="pending-badge">Pending SP Acceptance</span>
+            statusDisplay = <div className="status-tag"><span className="pending-badge">Pending SP Acceptance</span></div>
             break;            
         case "ACCEPTED":
-            statusDisplay = <span className="accepted-badge">Accepted</span>
+            statusDisplay = <div className="status-tag"><span className="accepted-badge">Accepted</span></div>
             break;
         case "UNASSIGNED":
-            statusDisplay = <span className="unassigned-badge">UnAssigned</span>
+            statusDisplay = <div className="status-tag"><span className="unassigned-badge">UnAssigned</span></div>
             break;
         case "NOT_FIXED":
-            statusDisplay = <span className="not-fixed-badge">Not Fixed</span>
+            statusDisplay = <div className="status-tag"><span className="not-fixed-badge">Not Fixed</span></div>
             break;
         case "REJECTED":
-            statusDisplay = <span className="rejected-badge">Rejected</span>
+            statusDisplay = <div className="status-tag"><span className="rejected-badge">Rejected</span></div>
             break;
         case "COMPLETE":
-            statusDisplay = <span className="complete-badge">Complete</span>
+            statusDisplay = <div className="status-tag"><span className="complete-badge">Complete</span></div>
             break;
         case "ENROUTE":
-            statusDisplay = <span className="enroute-badge">EnRoute</span>
+            statusDisplay = <div className="status-tag"><span className="enroute-badge">EnRoute</span></div>
             break;
         case "ARRIVED":
-            statusDisplay = <span className="arrived-badge">Arrived</span>
+            statusDisplay = <div className="status-tag"><span className="arrived-badge">Arrived</span></div>
             break;
         case "PENDING_PARTS":
-            statusDisplay = <span className="pending-parts-badge">Pending Parts</span>
+            statusDisplay = <div className="status-tag"><span className="pending-parts-badge">Pending Parts</span></div>
             break;
         case "PROPOSAL_SUBMITTED":
-            statusDisplay = <span className="proposal-submitted-badge">Proposal Submitted</span>
+            statusDisplay = <div className="status-tag"><span className="proposal-submitted-badge">Proposal Submitted</span></div>
             break;
         case "PROPOSAL_APPROVED":
-            statusDisplay = <span className="proposal-approved-badge">Proposal Approved</span>
+            statusDisplay = <div className="status-tag"><span className="proposal-approved-badge">Proposal Approved</span></div>
             break;
         case "RETURN_VISIT_REQUIRED":
-            statusDisplay = <span className="return-visit-requiered-badge">Return Visit Required</span>
+            statusDisplay = <div className="status-tag"><span className="return-visit-requiered-badge">Return Visit Required</span></div>
             break;
         case "SUBMITTING_PROPOSAL":
-            statusDisplay = <span className="submitting-proposal-badge">Submitting Proposal</span>
+            statusDisplay = <div className="status-tag"><span className="submitting-proposal-badge">Submitting Proposal</span></div>
             break;
         case "CANCELLED":
-            statusDisplay = <span className="complete-badge">Cancelled</span>
+            statusDisplay = <div className="status-tag"><span className="complete-badge">Cancelled</span></div>
             break;
         case "REASSIGN":
-            statusDisplay = <span className="reassign-badge">ReAssign</span>
+            statusDisplay = <div className="status-tag"><span className="reassign-badge">ReAssign</span></div>
             break;
         case "PROPOSAL_REJECTED":
-            statusDisplay = <span className="proposal-rejected-badge">Proposal Rejected</span>
+            statusDisplay = <div className="status-tag"><span className="proposal-rejected-badge">Proposal Rejected</span></div>
             break;
         default:
-            statusDisplay = <span className="complete-badge">{status}</span>
+            statusDisplay = <div className="status-tag"><span className="complete-badge">{status}</span></div>
                 break;            
     }
     switch (priority) {
@@ -171,10 +171,18 @@ export const EnhancedDetails = ({status, priority, tradeType, problemType, categ
             </Grid>
             <Grid container>
                 <Grid item xs={titleSize}>
-                    <Typography variant={'body1'} className={classes.text}><strong>NTE: </strong></Typography>
+                    <Typography variant={'body1'} className={classes.text}><strong>Original NTE: </strong></Typography>
                 </Grid>
                 <Grid item xs={descSize}>
                     <Typography variant={'body1'} className={classes.text}>${nte!==null?nte:nullVal}</Typography>
+                </Grid>                
+            </Grid>
+            <Grid container>
+                <Grid item xs={titleSize}>
+                    <Typography variant={'body1'} className={classes.text}><strong>Raised NTE: </strong></Typography>
+                </Grid>
+                <Grid item xs={descSize}>
+                    <Typography variant={'body1'} className={classes.text}>${raisedNte!==null?raisedNte:nullVal}</Typography>
                 </Grid>                
             </Grid>                                                                        
         </Grid>

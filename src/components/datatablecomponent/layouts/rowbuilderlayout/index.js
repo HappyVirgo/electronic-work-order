@@ -20,7 +20,7 @@ import {
 // const ROW_SIZE = 140;
 //Building rows
 
-export const Row = ({ index, style, data: { columns, items, classes } }) => {
+export const Row = ({ index, style, data: { columns, items, classes, span } }) => {
     const item = items[index];
     // console.log("item", item)
     let woitemID = item?item.workOrderId:""
@@ -74,7 +74,8 @@ export const Row = ({ index, style, data: { columns, items, classes } }) => {
             </TableCell>
             );
         })}
-        </TableRow>        
+        </TableRow>
+        </>        
     )    
     const BodyEmpty = (
         <div></div>
