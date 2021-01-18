@@ -1,5 +1,5 @@
 //Basic imports
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 //Windowing imports
 import { FixedSizeList as List } from "react-window";
@@ -73,12 +73,22 @@ const useTableStyles = makeStyles(theme => ({
     },
     column: {}
 }));
-
 //Generating Table
+const topOfList = React.createRef();
+const span = (<span ref={topOfList} />);
+const scrollToTop = () => {
+    if (topOfList.current) {
+      topOfList.current.scrollIntoView({block: 'center'});
+    }
+};
 export const ReactWindowTable = ({ data, columns, firstLoading }) => {
     const classes = useTableStyles();
-    const itemData = createItemData(classes, columns, data);
-    
+    const [items, setItems] = useState([]);
+    useEffect(() => {
+        setItems(data);
+        scrollToTop();
+    }, [data])
+    const itemData = createItemData(classes, columns, items, span);
     return (
         <div className={classes.root}>
         <Table className={classes.table} component="div">
@@ -95,24 +105,24 @@ export const ReactWindowTable = ({ data, columns, firstLoading }) => {
                         <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
                         <Skeleton variant="rect" height="18%" style={{margin: '1%'}} />
                     </>
-                    ):(
-                    <AutoSizer>
-                        {({ height, width }) => (
-                        <List
-                            key={itemKey}
-                            className={`list-table`}
-                            height={height}
-                            width={width}
-                            itemCount={data.length}
-                            itemSize={ROW_SIZE}
-                            itemKey={itemKey}
-                            itemData={itemData}
-                        >
-                            {Row}
-                        </List>
-                        )}
-                    </AutoSizer>
-                )
+                    ):(data.length?(
+                        <AutoSizer>
+                            {({ height, width }) => (
+                                <List
+                                    key={itemKey}
+                                    className={`list-table`}
+                                    height={height}
+                                    width={width}
+                                    itemCount={items.length}
+                                    itemSize={ROW_SIZE}
+                                    itemKey={itemKey}
+                                    itemData={itemData}
+                                >
+                                    {Row}
+                                </List>    
+                            )}
+                        </AutoSizer>
+                    ):(<div style={{margin: '20px', display: 'flex', justifyContent: 'center'}}>No Available Data</div>))
             }
             </TableBody>
         </Table>
