@@ -38,7 +38,7 @@ import {
     priorityRFP
 } from '../index'
 
-export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, change}) => {
+export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item}) => {
 
     let data
     let itemData = item?item[getDataKey][getExtraKey]:""
@@ -50,7 +50,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Pending SP Acceptance":
@@ -59,7 +58,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Accepted":
@@ -68,7 +66,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "UnAssigned":
@@ -77,7 +74,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Not Fixed":
@@ -86,7 +82,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Rejected":
@@ -95,7 +90,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Complete":
@@ -104,7 +98,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "EnRoute":
@@ -113,7 +106,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Arrived":
@@ -122,7 +114,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Pending Parts":
@@ -131,7 +122,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Proposal Submitted":
@@ -140,7 +130,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Proposal Approved":
@@ -149,7 +138,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Return Visit Required":
@@ -158,7 +146,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Submitting Proposal":
@@ -167,7 +154,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Cancelled":
@@ -176,7 +162,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "ReAssign":
@@ -185,7 +170,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "Proposal Rejected":
@@ -194,7 +178,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
             //Priority
@@ -204,7 +187,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "L2 - Same Day":
@@ -213,7 +195,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "L3 - 24 Hours":
@@ -222,7 +203,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "L4 - 48 Hours":
@@ -231,7 +211,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "L5 - One Week":
@@ -240,7 +219,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "L6 - 30 Days":
@@ -249,7 +227,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "L7 - 30 Days":
@@ -258,7 +235,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;            
         case "PM":
@@ -267,7 +243,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         case "RFP - Proposal":
@@ -276,7 +251,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
         default:
@@ -285,7 +259,6 @@ export const renderSingleItem = ({getExtraKey, getDataKey, checkItem, item, chan
                 getDataKey,
                 checkItem,
                 item,
-                change
             })
             break;
     }

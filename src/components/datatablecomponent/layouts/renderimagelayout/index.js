@@ -16,7 +16,7 @@ import {
 
 
 ///Set render structure for single-item column
-export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change}) => {
+export const renderImage = ({getImgPath, getExtraKey, getDataKey, item}) => {
     let img
     let checkImg
     let url_plchdlr = item?(item['asset']!==null?item['asset']:null):null
@@ -33,7 +33,7 @@ export const renderImage = ({getImgPath, getExtraKey, getDataKey, item, change})
         event.target.src = PLACEHOLDER_URL
     }
     return (
-        <div id={item?item['workOrderId']:""} onClick={change} className={'dtableCols'}>
+        <div id={item?item['workOrderId']:""} className={'dtableCols'}>
             <img 
                 onError={addDefaultSrc}
                 width="80"
