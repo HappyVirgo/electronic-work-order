@@ -20,7 +20,7 @@ export const renderMultiItem = ({getExtraKey, checkItem, item, getServiceProvide
             <strong>{getExtraKey!==false?(checkItem!==null?checkItem:assetWorkOrder):null}</strong><br/>
             <span><small>Service Providers: <b>{__getServiceProvider_index!==null?getServiceProviderDef:" "}</b></small></span><br/>
             <span><small>Category Type: <b>{__getCategoryType_index!==null?getCategoryTypeDef:" "}</b></small></span><br/>
-            <span><small>Work Orders: <b>{assetWorkOrder}</b></small></span>
+            <span><small>Work Order ID: <b>{assetWorkOrder}</b></small></span>
         </div>
     );
 }

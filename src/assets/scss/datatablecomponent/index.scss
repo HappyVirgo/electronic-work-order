@@ -38,6 +38,28 @@
         margin-left: 16px;
         margin-right: 16px;
     }
+    .priorityL1 {
+       cursor: pointer !important; 
+    }
+    .priorityL2 {
+        cursor: pointer !important; 
+     }
+    .priorityL3 {
+        cursor: pointer !important; 
+    }
+    .priorityL4 {
+        cursor: pointer !important; 
+    }
+    .priorityL5 {
+        cursor: pointer !important; 
+    }
+    .priorityL6 {
+        cursor: pointer !important; 
+    }
+    .priorityL7 {
+        cursor: pointer !important; 
+    }
+     
 }
 .list-table {
     padding: 10px;
@@ -69,7 +91,6 @@
 
 .status-tag {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
