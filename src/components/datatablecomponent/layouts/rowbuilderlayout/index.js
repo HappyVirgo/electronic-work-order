@@ -28,6 +28,7 @@ export const Row = ({ index, style, data: { columns, items, classes, span } }) =
     const currentDtlsId = change.currentDtlsId
     change = change.dynamicDetails
     const Body = (
+        <>
         <TableRow component="div" id={woitemID} onClick={change} className={`${classes.row} datatable-row ${woitemID.toString() === currentDtlsId.toString()?'selected':''}`} style={style}>
         {columns.map((column, colIndex) => {
             //Check for null items 
