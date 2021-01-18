@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export const EnhancedDetails = ({status, priority, tradeType, problemType, categoryType, woType, nte, nullVal}) => {
+export const EnhancedDetails = ({status, priority, tradeType, problemType, categoryType, woType, nte, raisedNte, nullVal}) => {
     const classes = useStyles()
     let statusDisplay
     let priorityDisplay
@@ -171,10 +171,18 @@ export const EnhancedDetails = ({status, priority, tradeType, problemType, categ
             </Grid>
             <Grid container>
                 <Grid item xs={titleSize}>
-                    <Typography variant={'body1'} className={classes.text}><strong>NTE: </strong></Typography>
+                    <Typography variant={'body1'} className={classes.text}><strong>Original NTE: </strong></Typography>
                 </Grid>
                 <Grid item xs={descSize}>
                     <Typography variant={'body1'} className={classes.text}>${nte!==null?nte:nullVal}</Typography>
+                </Grid>                
+            </Grid>
+            <Grid container>
+                <Grid item xs={titleSize}>
+                    <Typography variant={'body1'} className={classes.text}><strong>Raised NTE: </strong></Typography>
+                </Grid>
+                <Grid item xs={descSize}>
+                    <Typography variant={'body1'} className={classes.text}>${raisedNte!==null?raisedNte:nullVal}</Typography>
                 </Grid>                
             </Grid>                                                                        
         </Grid>
