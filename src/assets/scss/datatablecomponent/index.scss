@@ -37,6 +37,8 @@
     img {
         margin-left: 16px;
         margin-right: 16px;
+        object-fit: cover;
+        max-height: 106px;
     }
     .priorityL1 {
        cursor: pointer !important; 
