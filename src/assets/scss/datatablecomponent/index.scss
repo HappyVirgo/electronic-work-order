@@ -1,0 +1,377 @@
+@import '../mixins.scss';
+@import '../variables.scss';
+
+.data-table-component {
+    width: 100%;
+    padding: 0px 15px;
+    height: 100%;
+}
+.datatable-row {
+    cursor: pointer; 
+    border-bottom: 2px solid $basic-light-gray;
+    display: flex;
+    justify-content: center;
+    :nth-child(2) {
+        display: block;
+        flex: 2
+    }
+    :nth-child(4) {
+        .dtableCols {
+            text-align: center;
+        }
+    }
+    &:hover {
+        background-color: $basic-background-color;
+    }
+    &.selected {
+        background-color: #E2F9FF;
+    }
+}
+.active {
+    background-color: $basic-background-color;
+}
+.dtableCols {
+    // width: 100%;
+    // height: 100%;
+    // margin-top: 16px;
+    img {
+        margin-left: 16px;
+        margin-right: 16px;
+        object-fit: cover;
+        max-height: 106px;
+    }
+    .priorityL1 {
+       cursor: pointer !important; 
+    }
+    .priorityL2 {
+        cursor: pointer !important; 
+     }
+    .priorityL3 {
+        cursor: pointer !important; 
+    }
+    .priorityL4 {
+        cursor: pointer !important; 
+    }
+    .priorityL5 {
+        cursor: pointer !important; 
+    }
+    .priorityL6 {
+        cursor: pointer !important; 
+    }
+    .priorityL7 {
+        cursor: pointer !important; 
+    }
+     
+}
+.list-table {
+    padding: 10px;
+    border-bottom: 1px solid $basic-light-gray;
+}
+.data-table-row {
+    div{
+        font-family: $font-family;
+        font-weight: 700;
+        font-size: 16px !important;
+        line-height: 70px !important;
+        color: $basic-blue;
+        border-bottom: 2px solid $basic-light-gray;
+    }
+    :first-child {
+        // padding-left: 16px !important;
+        min-width: 112px;
+        display: flex;
+        justify-content: center;
+    }
+    :nth-child(2) {
+        flex: 2;
+        display: block;
+    }
+    :nth-child(4) {
+        padding-right: 16px !important;
+    }    
+}
+
+.status-tag {
+    display: flex;
+    align-items: center;
+}
+
+//Status
+.accepted-status {
+    span {
+        @include status-text;
+        color: $accepted;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $accepted; 
+    }
+}
+.arrived-status {
+    span {
+        @include status-text;
+        color: $arrived;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $arrived; 
+    }
+}
+.proposal-approved-status {
+    span {
+        @include status-text;
+        color: $proposal-approved;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $proposal-approved; 
+    }
+}
+.proposal-submitted-status {
+    span {
+        @include status-text;
+        color: $proposal-submitted;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $proposal-submitted; 
+    }
+}
+.submitting-proposal-status {
+    span {
+        @include status-text;
+        color: $submitting-proposal;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $submitting-proposal; 
+    }
+}
+.complete-status {
+    span {
+        @include status-text;
+        color: $complete;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $complete; 
+    }
+}
+.enroute-status {
+    span {
+        @include status-text;
+        color: $enroute;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $enroute; 
+    }
+}
+.reassign-status {
+    span {
+        @include status-text;
+        color: $reassign;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $reassign; 
+    }
+}
+.unassigned-status {
+    span {
+        @include status-text;
+        color: $unassigned;
+    }
+    &::before{
+        @include status-label;
+        background-color: $unassigned;  
+    }
+}
+.not-fixed-status {
+    span {
+        @include status-text;
+        color: $not-fixed;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $not-fixed; 
+    }
+}
+.pending-status {
+    span {
+        @include status-text;
+        color: $pending;
+    }
+    &::before{
+        @include status-label;
+        background-color: $pending;      
+    }
+}
+.pending-sp-acceptance-status {
+    span {
+        @include status-text;
+        color: $pending-sp-acceptance;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $pending-sp-acceptance; 
+    }
+}
+.pending-parts-status {
+    span {
+        @include status-text;
+        color: $pending-parts;
+    }
+    &::before{
+        @include status-label;  
+        background-color: $pending-parts; 
+    }
+}
+.rejected-status {
+    span {
+        @include status-text;
+        color: $rejected;
+    }
+    &::before{
+        @include status-label;
+        background-color: $rejected;      
+    }
+}
+.proposal-rejected-status {
+    span {
+        @include status-text;
+        color: $proposal-rejected;
+    }
+    &::before{
+        @include status-label;
+        background-color: $proposal-rejected;      
+    }
+}
+.return-visit-required-status {
+    span {
+        @include status-text;
+        color: $return-visit-required;
+    }
+    &::before{
+        @include status-label;
+        background-color: $return-visit-required;      
+    }
+}
+
+
+//Priority
+.priorityL1 {
+    background-color: $light-red;
+    color: $red-color;
+    font-family: $font-family;
+    font-weight: 700;
+    div {
+        background-color: $red-color;
+        color: #FFF !important;
+        font-family: $font-family;
+        font-weight: 700;         
+    }
+}
+
+.priorityL2 {
+    background-color: $light-orange;
+    color: $orange-color;
+    font-family: $font-family;
+    font-weight: 700;    
+    div {
+        background-color: $orange-color;
+        color: #FFF !important;
+        font-family: $font-family;
+        font-weight: 700;         
+    }
+}
+
+.priorityL3 {
+    background-color: $light-cyan;
+    color: $cyan-color;
+    font-family: $font-family;
+    font-weight: 700;    
+    div {
+        background-color: $cyan-color;
+        color: #FFF !important;
+        font-family: $font-family;
+        font-weight: 700;         
+    }
+}
+
+.priorityL4 {
+    background-color: $light-purple;
+    color: $purple-color;
+    font-family: $font-family;
+    font-weight: 700;    
+    div {
+        background-color: $purple-color;
+        color: #FFF !important;
+        font-family: $font-family;
+        font-weight: 700;         
+    }    
+}
+
+.priorityL5 {
+    background-color: $light-brown;
+    color: $brown-color;
+    font-family: $font-family;
+    font-weight: 700;    
+    div {
+        background-color: $brown-color;
+        color: #FFF !important;
+        font-family: $font-family;
+        font-weight: 700;         
+    }    
+}
+
+.priorityL6 {
+    background-color: $light-gray;
+    color: $gray-color;
+    font-family: $font-family;
+    font-weight: 700;    
+    div {
+        background-color: $gray-color;
+        color: #FFF !important;
+        font-family: $font-family;
+        font-weight: 700;         
+    }    
+}
+
+.priorityPM {
+    background-color: $light-blue;
+    color: $blue-color;
+    font-family: $font-family;
+    font-weight: 700;    
+    div {
+        background-color: $blue-color;
+        color: #FFF !important;
+        font-family: $font-family;
+        font-weight: 700;         
+    }    
+}
+
+@media only screen and (max-width: 500px) { 
+    .data-table-row {
+        div {
+            line-height: 28px !important;
+            text-align: center;
+        }
+        :first-child {
+            padding-left: 0px !important;
+        }          
+    }
+    .dtableCols {
+        line-height: 12px !important;
+    }
+    .pending-status {
+        span {
+        font-size: 10px;
+        padding-left: 0px;
+        }
+        &::before{
+            width: 10px;
+            height: 10px;
+        }
+    }
+}
